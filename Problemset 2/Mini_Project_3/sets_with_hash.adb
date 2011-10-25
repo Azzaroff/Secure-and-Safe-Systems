@@ -17,7 +17,7 @@ end Empty_Set;
 procedure Insert (A: in out Set ; Item : Item_Type ) is
 inserted : boolean;
 begin
-	Maps.Insert(Key => Hash(Item), New_Item => Item, Container => A, Position => A'last, Inserted => inserted);
+	Maps.Insert(Key => Item, New_Item => Item, Container => Maps.map, Position => Maps.map.first, Inserted => inserted);
 end Insert;
 
 
