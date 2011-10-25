@@ -1,0 +1,109 @@
+V "GNAT Lib v4.6"
+M P W=b
+A -g
+A -g
+A -gnato
+A -gnatwa
+A -gnatQ
+A -gnat12
+A -gnatA
+P SS ZX
+R nnvvnnnnvnnvnnnnnnvvnvnnnvvvnvnvnnvnnvnnnvnnvnvnnnnnnvnnnnvnvvnnnnnnnnnnnnnnnnnn
+
+U main%b		main.adb		6ceb7428 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.containers%s	a-contai.ads		a-contai.ali
+W ada.containers.hash_tables%s  a-cohata.ads	a-cohata.ali
+W ada.containers.hash_tables.generic_keys%s
+W ada.containers.hash_tables.generic_operations%s
+W ada.containers.indefinite_hashed_maps%s
+W ada.containers.prime_numbers%s  a-coprnu.adb	a-coprnu.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.finalization%s	a-finali.adb		a-finali.ali
+W ada.finalization.list_controller%s  a-filico.adb  a-filico.ali
+W ada.streams%s		a-stream.ads		a-stream.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W ada.unchecked_deallocation%s
+W sets_with_hash%s	sets_with_hash.adb	sets_with_hash.ali
+W system%s		system.ads		system.ali
+W system.address_image%s  s-addima.adb		s-addima.ali
+W system.concat_2%s	s-conca2.adb		s-conca2.ali
+W system.finalization_implementation%s  s-finimp.adb  s-finimp.ali
+W system.finalization_root%s  s-finroo.adb	s-finroo.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+
+D ada.ads		20070406091342 3ffc8e18
+D a-contai.ads		20101025135029 61e5e089
+D a-cohata.ads		20101026104202 f4016a1a
+D a-chtgke.ads		20090409150019 fba5dead
+D a-chtgke.adb		20100909133812 2dde331d
+D a-chtgop.ads		20090409150019 ee32f6e8
+D a-chtgop.adb		20100909133812 cd0e5151
+D a-cihama.ads		20090409150019 2e09bd21
+D a-cihama.adb		20100909133812 7a4afceb
+D a-coprnu.ads		20090409150019 0cdf1864
+D a-except.ads		20090727140100 0c711ac9
+D a-finali.ads		20090409150019 e5e85fa4
+D a-filico.ads		20090409150019 872dc219
+D a-ioexce.ads		20091130110856 8b9de6cd
+D a-stream.ads		20090409150019 2ca4ee37
+D a-tags.ads		20101021101406 c7695348
+D a-textio.ads		20091028140912 386df5d4
+D a-unccon.ads		20070406091342 f9eb8f06
+D a-uncdea.ads		20070406091342 f15a5ed1
+D interfac.ads		20090409150019 f77d8799
+D i-cstrea.ads		20100622165701 1bd72c32
+D main.adb		20111025201832 4a2edb31
+D sets_with_hash.ads	20111025172909 7f4dba44
+D sets_with_hash.adb	20111025195408 bde8fcae
+D system.ads		20110928073203 23e1f70b
+D s-addima.ads		20090409150019 a1ec9d3a
+D s-conca2.ads		20090420091404 fbd0f2fc
+D s-crtl.ads		20100617122610 ac77b159
+D s-exctab.ads		20090417131547 66e51330
+D s-ficobl.ads		20100909103250 443b9d66
+D s-finimp.ads		20090409150019 46853fe8
+D s-finroo.ads		20090409150019 dbb860c9
+D s-parame.ads		20091130110856 9c5d83fa
+D s-secsta.ads		20090707124243 eea35a36
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-stratt.ads		20100909123135 aedef97e
+D s-traent.ads		20090417130712 5221ee41
+D s-unstyp.ads		20090409150019 6ae15c76
+D s-wchcon.ads		20090417130712 bfeb2e3d
+X 1 ada.ads
+16K9*Ada 19e8 22|1r6 3r6 8r23 10r45 12r14
+X 2 a-contai.ads
+16K13*Containers 24e19 22|3w10 10r49 12r18
+19M9*Hash_Type 22|10r60 12r29
+X 17 a-textio.ads
+49K13*Text_IO 472e16 22|1w10 8r27
+264U14*Put_Line 22|24s7 31s7 33s10 35s10
+X 22 main.adb
+6U11*main 6b11 37l5 37t9
+8K12 IO=8:27 24r4 31r4 33r7 35r7
+10V13 Hash{2|19M9} 10b13 10>20 13l8 13t12 18r15
+10i20 Item{positive} 12r39
+15K12 Hash_Set[23|8] 20r17 22r8 26r4 27r4 28r4 29r4
+20r4 s1{23|11R6[15]} 26m20 32r9
+20r8 s2{23|11R6[15]} 27m20 32r16
+20r12 s3{23|11R6[15]} 28m20 29m20 32r22
+X 23 sets_with_hash.ads
+4+14 Item_Type 22|16r8
+5V23 "="{boolean} 22|17r7
+6V23 Hash{2|19M9} 22|18r7
+8k9*Sets_With_Hash 22|2w6 15r28 23|40e19
+11R6 Set 22|20r26[15]
+13V18 "and"{11R6[22|15]} 22|32s12[15]
+18V18 "="{boolean}<8|64p24> 22|32s20[15]
+21U19 Insert 22|26s13[15] 27s13[15] 28s13[15] 29s13[15]
+

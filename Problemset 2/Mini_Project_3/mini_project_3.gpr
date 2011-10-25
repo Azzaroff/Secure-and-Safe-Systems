@@ -1,6 +1,6 @@
 project Mini_Project_3 is
 
-   for Main use ("sets_with_hash.adb");
+   for Main use ("main.adb");
    for Source_Dirs use ("./");
    for Object_Dir use "./";
    for Exec_Dir use "./";
