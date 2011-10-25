@@ -11,15 +11,15 @@ A -march=x86-64
 P ZX
 R nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnvvnnvnnnnnnnnnnnnnnn
 
-U ada_main%b		b~main.adb		a481697c NE OO PK IL
+U ada_main%b		b~main.adb		41dd83c4 NE OO PK IL
 W system%s		system.ads		system.ali
 W system.restrictions%s	s-restri.adb		s-restri.ali
 
-U ada_main%s		b~main.ads		e99a4dad EE NE OO PK IL
+U ada_main%s		b~main.ads		0cc6a715 EE NE OO PK IL
 W system%s		system.ads		system.ali
 
-D b~main.ads		20111025201833 ca7bbaa6
-D b~main.adb		20111025201833 d49a1ced
+D b~main.ads		20111025203004 2f27501e
+D b~main.adb		20111025203004 d49a1ced
 D system.ads		20110928073203 23e1f70b
 D s-restri.ads		20091130110856 ba60cf37
 D s-rident.ads		20101018103456 4282a67a

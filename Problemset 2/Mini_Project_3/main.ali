@@ -10,7 +10,7 @@ A -gnatA
 P SS ZX
 R nnvvnnnnvnnvnnnnnnvvnvnnnvvvnvnvnnvnnvnnnvnnvnvnnnnnnvnnnnvnvvnnnnnnnnnnnnnnnnnn
 
-U main%b		main.adb		6ceb7428 NE OO SU IL
+U main%b		main.adb		45a82775 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.containers%s	a-contai.ads		a-contai.ali
 W ada.containers.hash_tables%s  a-cohata.ads	a-cohata.ali
@@ -58,7 +58,7 @@ D a-unccon.ads		20070406091342 f9eb8f06
 D a-uncdea.ads		20070406091342 f15a5ed1
 D interfac.ads		20090409150019 f77d8799
 D i-cstrea.ads		20100622165701 1bd72c32
-D main.adb		20111025201832 4a2edb31
+D main.adb		20111025203002 636d886c
 D sets_with_hash.ads	20111025172909 7f4dba44
 D sets_with_hash.adb	20111025195408 bde8fcae
 D system.ads		20110928073203 23e1f70b
@@ -87,23 +87,27 @@ X 2 a-contai.ads
 19M9*Hash_Type 22|10r60 12r29
 X 17 a-textio.ads
 49K13*Text_IO 472e16 22|1w10 8r27
-264U14*Put_Line 22|24s7 31s7 33s10 35s10
+264U14*Put_Line 22|24s7 31s7 32s7 33s7 35s7 37s10 39s10 42s7 48s10 50s10
+. 53s7 54s7 55s7
 X 22 main.adb
-6U11*main 6b11 37l5 37t9
-8K12 IO=8:27 24r4 31r4 33r7 35r7
+6U11*main 6b11 56l5 56t9
+8K12 IO=8:27 24r4 31r4 32r4 33r4 35r4 37r7 39r7 42r4 48r7 50r7 53r4 54r4
+. 55r4
 10V13 Hash{2|19M9} 10b13 10>20 13l8 13t12 18r15
 10i20 Item{positive} 12r39
-15K12 Hash_Set[23|8] 20r17 22r8 26r4 27r4 28r4 29r4
-20r4 s1{23|11R6[15]} 26m20 32r9
-20r8 s2{23|11R6[15]} 27m20 32r16
-20r12 s3{23|11R6[15]} 28m20 29m20 32r22
+15K12 Hash_Set[23|8] 20r17 22r8 26r4 27r4 28r4 29r4 43r10 44r4 45r4 46r4
+20r4 s1{23|11R6[15]} 26m20 36r9 47r12 47r25
+20r8 s2{23|11R6[15]} 27m20 36r16 47r19
+20r12 s3{23|11R6[15]} 28m20 29m20 36r22 43m4 44m20 45m20 46m20
 X 23 sets_with_hash.ads
 4+14 Item_Type 22|16r8
 5V23 "="{boolean} 22|17r7
 6V23 Hash{2|19M9} 22|18r7
 8k9*Sets_With_Hash 22|2w6 15r28 23|40e19
 11R6 Set 22|20r26[15]
-13V18 "and"{11R6[22|15]} 22|32s12[15]
-18V18 "="{boolean}<8|64p24> 22|32s20[15]
-21U19 Insert 22|26s13[15] 27s13[15] 28s13[15] 29s13[15]
+13V18 "and"{11R6[22|15]} 22|36s12[15] 47s15[15]
+18V18 "="{boolean}<8|64p24> 22|36s20[15] 47s23[15]
+21U19 Insert 22|26s13[15] 27s13[15] 28s13[15] 29s13[15] 44s13[15] 45s13[15]
+. 46s13[15]
+23V18 Empty_Set{11R6[22|15]} 22|43s19[15]
 
