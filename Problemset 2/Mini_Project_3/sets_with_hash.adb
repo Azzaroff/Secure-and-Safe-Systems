@@ -17,8 +17,48 @@ end Empty_Set;
 procedure Insert (A: in out Set ; Item : Item_Type ) is
 inserted : boolean;
 begin
-	Maps.Insert(Key => Item, New_Item => Item, Container => Maps.map, Position => Maps.map.first, Inserted => inserted);
+   A.Insert(Key => Item, New_Item => Item, Container => A, Position => A.first, Inserted => inserted);
 end Insert;
+
+function "and" (A, B : Set ) return Set is
+begin
+   return A; --Dummy
+end "and"; -- union
+
+function "or" (A, B : Set ) return Set is
+begin
+   return A; --Dummy
+end "or"; -- intersection
+
+function "-" (A, B : Set ) return Set is
+begin
+   return A; --Dummy
+end "-"; -- difference
+
+function "<=" (A, B : Set ) return Boolean is
+begin
+   return true; --Dummy
+end "<="; -- A subset of B
+
+function "<" (A, B : Set ) return Boolean is
+begin
+   return true; --Dummy
+end "<"; -- A propper subset of B
+
+function "=" (A, B : Set ) return Boolean is
+begin
+   return true; --Dummy
+end "="; -- A and B are equal
+
+procedure Delete (A: in out Set ; Item : Item_Type ) is
+begin
+   null;
+end Delete; -- A − { Item }
+
+function "<=" ( Item : Item_Type ; S : Set ) return Boolean is
+begin
+   return true;
+end "<="; -- { Item } <= S
 
 
 end sets_with_hash;

@@ -1,0 +1,21 @@
+project Mini_Project_3 is
+
+   for Main use ("sets_with_hash.adb");
+   for Source_Dirs use ("./");
+   for Object_Dir use "./";
+   for Exec_Dir use "./";
+
+   package Compiler is
+      for Default_Switches ("ada") use ("-g", "-gnato", "-gnatwa", "-gnatQ", "-gnat05");
+   end Compiler;
+
+   package Builder is
+      for Default_Switches ("ada") use ("-g");
+   end Builder;
+
+   package Ide is
+      for Compiler_Command ("ada") use "gnatmake";
+      for Compiler_Command ("c") use "gcc";
+   end Ide;
+
+end Mini_Project_3;
