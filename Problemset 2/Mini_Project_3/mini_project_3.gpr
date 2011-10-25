@@ -6,7 +6,7 @@ project Mini_Project_3 is
    for Exec_Dir use "./";
 
    package Compiler is
-      for Default_Switches ("ada") use ("-g", "-gnato", "-gnatwa", "-gnatQ", "-gnat05");
+      for Default_Switches ("ada") use ("-g", "-gnato", "-gnatwa", "-gnatQ", "-gnat12");
    end Compiler;
 
    package Builder is

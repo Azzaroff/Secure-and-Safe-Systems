@@ -1,129 +1,123 @@
-V "GNAT Lib v4.4"
+V "GNAT Lib v4.6"
 A -g
 A -g
 A -gnato
 A -gnatwa
 A -gnatQ
-A -gnat05
+A -gnat12
 A -gnatA
-P CE NO SS ZX
-R nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnvnnnnnnnnnvnnnnnnnnnnnnnnnnvnvnnnnnnnnnnnnnnnn
+P SS ZX
+R nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnvnnnnnnnnnvnnnnnnnnnnnnnnnnvnnnnnnnnnnnnnnnnnn
 
-U sets_with_hash%b	sets_with_hash.adb	95b1c93e OO PK GE IL
+U sets_with_hash%b	sets_with_hash.adb	0dadadad NE OO PK GE IL
 
-D ada.ads		20070406091342 9c7dd3ea
-D a-contai.ads		20070406091342 7b35f559
-D a-cohata.ads		20090409232307 ab6e313e
-D a-cihama.ads		20090409232307 a284b7dc
-D a-except.ads		20090409232307 b54b55de
-D a-finali.ads		20090409232307 9eaacebd
-D a-stream.ads		20090409232307 34aca5be
-D a-tags.ads		20090409232307 bfa07446
-D a-unccon.ads		20070406091342 51e09df2
-D sets_with_hash.ads	20111025155720 81138818
-D sets_with_hash.adb	20111025161252 14a24126
-D system.ads		20110901104408 df55302f
-D s-exctab.ads		20090409232307 5c1c61ae
-D s-finimp.ads		20090409232307 9449f4cb
-D s-finroo.ads		20090409232307 1408f9d1
-D s-parame.ads		20090409232307 f32e56e9
-D s-secsta.ads		20090409232307 7bae3621
-D s-soflin.ads		20090409232307 0c6fd39d
-D s-stache.ads		20090409232307 257b3be8
-D s-stalib.ads		20090409232307 52b793d5
-D s-stoele.ads		20090409232307 ed966df3
-D s-stoele.adb		20090409232307 e9998c78
-D s-stratt.ads		20090409232307 fef7c1da
-D s-traent.ads		20090409232307 bd5f2753
-D s-unstyp.ads		20090409232307 c0f9fae5
+U sets_with_hash%s	sets_with_hash.ads	51440765 BN EE NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.containers%s	a-contai.ads		a-contai.ali
+W ada.containers.hash_tables%s  a-cohata.ads	a-cohata.ali
+W ada.containers.hash_tables.generic_keys%s
+W ada.containers.hash_tables.generic_operations%s
+W ada.containers.indefinite_hashed_maps%s
+W ada.containers.prime_numbers%s  a-coprnu.adb	a-coprnu.ali
+W ada.finalization%s	a-finali.adb		a-finali.ali
+W ada.streams%s		a-stream.ads		a-stream.ali
+W ada.unchecked_deallocation%s
+W system%s		system.ads		system.ali
+
+D ada.ads		20070406091342 3ffc8e18
+D a-contai.ads		20101025135029 61e5e089
+D a-cohata.ads		20101026104202 f4016a1a
+D a-chtgke.ads		20090409150019 fba5dead
+D a-chtgke.adb		20100909133812 2dde331d
+D a-chtgop.ads		20090409150019 ee32f6e8
+D a-chtgop.adb		20100909133812 cd0e5151
+D a-cihama.ads		20090409150019 2e09bd21
+D a-cihama.adb		20100909133812 7a4afceb
+D a-coprnu.ads		20090409150019 0cdf1864
+D a-except.ads		20090727140100 0c711ac9
+D a-finali.ads		20090409150019 e5e85fa4
+D a-stream.ads		20090409150019 2ca4ee37
+D a-tags.ads		20101021101406 c7695348
+D a-unccon.ads		20070406091342 f9eb8f06
+D a-uncdea.ads		20070406091342 f15a5ed1
+D sets_with_hash.ads	20111025172909 7f4dba44
+D sets_with_hash.adb	20111025174219 72e017e9
+D system.ads		20110928073203 23e1f70b
+D s-exctab.ads		20090417131547 66e51330
+D s-finimp.ads		20090409150019 46853fe8
+D s-finroo.ads		20090409150019 dbb860c9
+D s-parame.ads		20091130110856 9c5d83fa
+D s-secsta.ads		20090707124243 eea35a36
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-stratt.ads		20100909123135 aedef97e
+D s-traent.ads		20090417130712 5221ee41
+D s-unstyp.ads		20090409150019 6ae15c76
 X 1 ada.ads
-16K9*Ada 19e8 10|1r14 6r56 32r21
+16K9*Ada 19e8 17|1r14 6r56 32r21
 X 2 a-contai.ads
-16K13*Containers 22e19 10|1r18 6r60 32r25
-19M9*Hash_Type 10|6r71
-20I9*Count_Type<integer>
-X 4 a-cihama.ads
-39+9 Key_Type 10|33r11
-40+9 Element_Type 10|34r9
-42V18 Hash{2|19M9} 10|35r9
-43V18 Equivalent_Keys{boolean} 10|36r9
-46k24*Indefinite_Hashed_Maps 334e42 10|1w29 32r36
-50R9 Map 10|38r22[32]
-53R9 Cursor
-75V13 Capacity{2|20I9}
-79U14 Reserve_Capacity
-89V13 Length{2|20I9}
-92V13 Is_Empty{boolean}
-95U14 Clear
-104U14 Replace_Element
-117U14 Update_Element
-125U14 Move
-129U14 Insert
-147U14 Insert
-158U14 Include
-169U14 Replace
-180U14 Exclude
-197U14 Delete
-203V13 First{53R9[10|32]}
-218V13 Find{53R9[10|32]}
-224V13 Contains{boolean}
-227V13 Element{10|30E6}
-245U14 Iterate
-290U14 Adjust<6|50p14>
-293U14 Finalize<6|51p14>
-320U14 Write
-326U14 Read
-X 6 a-finali.ads
-49U14*Initialize<15|58p14>
-X 10 sets_with_hash.ads
-4+14 Item_Type 5r34 6r37 19r34 21r50 25r50 27r32 33r23 11|4r26 17r42 53r42
-. 58r24
+16K13*Containers 24e19 17|1r18 6r60 32r25
+19M9*Hash_Type 17|6r71
+X 8 a-cihama.ads
+39+9 Key_Type 17|33r11
+40+9 Element_Type 17|34r9
+42V18 Hash{2|19M9} 17|35r9
+43V18 Equivalent_Keys{boolean} 17|36r9
+46k24*Indefinite_Hashed_Maps 332e42 17|1w29 32r36
+50R9 Map 17|38r22[32] 18|21r24[17|32]
+147U14 Insert 18|21s12[17|32]
+149*7 Key{17|4+14} 18|22r22[17|32]
+150e7 New_Item{17|30E6} 18|23r19[17|32]
+X 17 sets_with_hash.ads
+4+14 Item_Type 5r34 6r37 19r34 21r50 25r50 27r32 33r23 18|4r26 17r42 57r42
+. 62r24
 5V23 "="{boolean} 5>28 5>31 36r28
 5*28 X{4+14}
 5*31 Y{4+14}
 6V23 Hash{2|19M9} 6>30 35r17
 6*30 Item{4+14}
-8k9*Sets_With_Hash 4z14 5z23 6z23 40l5 40e19 11|1b14 64l5 64t19
+8k9*Sets_With_Hash 4z14 5z23 6z23 40l5 40e19 18|1b14 69l5 69t19
 11R6*Set 13r32 13r45 14r31 14r44 15r30 15r43 16r31 17r30 18r30 19r53 21r37
-. 23r35 25r37 27r48 38c6 38e43 11|4r45 5r5 11r27 12r5 17r29 23r24 23r37 28r23
-. 28r36 33r22 33r35 38r23 43r22 48r22 53r29 58r40
-13V18*"and"{11R6} 13>25 13>28 11|23b10 26l5 26t10
-13r25 A{11R6} 11|23b17 25r11
-13r28 B{11R6} 11|23b20
-14V18*"or"{11R6} 14>24 14>27 11|28b10 31l5 31t9
-14r24 A{11R6} 11|28b16 30r11
-14r27 B{11R6} 11|28b19
-15V18*"-"{11R6} 15>23 15>26 11|33b10 36l5 36t8
-15r23 A{11R6} 11|33b15 35r11
-15r26 B{11R6} 11|33b18
-16V18*"<="{boolean} 16>24 16>27 11|38b10 41l5 41t9
-16r24 A{11R6} 11|38b16
-16r27 B{11R6} 11|38b19
-17V18*"<"{boolean} 17>23 17>26 11|43b10 46l5 46t8
-17r23 A{11R6} 11|43b15
-17r26 B{11R6} 11|43b18
-18V18*"="{boolean}<4|64p13> 18>23 18>26 11|48b10 51l5 51t8
-18r23 A{11R6} 11|48b15
-18r26 B{11R6} 11|48b18
-19V18*To_Set{11R6} 19>27 11|4b10 9l5 9t11
-19*27 Item{4+14} 11|4b19 7r10
-21U19*Insert 21=27 21>43 11|7r3 17b11 21l5 21t11
-21r27 A{11R6} 11|17b19 20r4 20r72
-21*43 Item{4+14} 11|17b35
-23V18*Empty_Set{11R6} 11|11b10 15l5 15t14
-25U19*Delete<4|189p14> 25=27 25>43 11|53b11 56l5 56t11
-25r27 A{11R6} 11|53b19
-25*43 Item{4+14} 11|53b35
-27V18*"<="{boolean} 27>25 27>44 11|58b10 61l5 61t9
-27*25 Item{4+14} 11|58b17
-27r44 S{11R6} 11|58b36
-30E6 Dummy_Type 30e40 34r25
+. 23r35 25r37 27r48 38c6 38e43 18|4r45 5r5 11r27 12r5 17r29 27r24 27r37 32r23
+. 32r36 37r22 37r35 42r23 47r22 52r22 57r29 62r40
+13V18*"and"{11R6} 13>25 13>28 18|27b10 30l5 30t10
+13r25 A{11R6} 18|27b17 29r11
+13r28 B{11R6} 18|27b20
+14V18*"or"{11R6} 14>24 14>27 18|32b10 35l5 35t9
+14r24 A{11R6} 18|32b16 34r11
+14r27 B{11R6} 18|32b19
+15V18*"-"{11R6} 15>23 15>26 18|37b10 40l5 40t8
+15r23 A{11R6} 18|37b15 39r11
+15r26 B{11R6} 18|37b18
+16V18*"<="{boolean} 16>24 16>27 18|42b10 45l5 45t9
+16r24 A{11R6} 18|42b16
+16r27 B{11R6} 18|42b19
+17V18*"<"{boolean} 17>23 17>26 18|47b10 50l5 50t8
+17r23 A{11R6} 18|47b15
+17r26 B{11R6} 18|47b18
+18V18*"="{boolean}<8|64p24> 18>23 18>26 18|52b10 55l5 55t8
+18r23 A{11R6} 18|52b15
+18r26 B{11R6} 18|52b18
+19V18*To_Set{11R6} 19>27 18|4b10 9l5 9t11
+19*27 Item{4+14} 18|4b19 7r10
+21U19*Insert 21=27 21>43 18|7s3 17b11 25l5 25t11
+21r27 A{11R6} 18|17b19 21m28
+21*43 Item{4+14} 18|17b35 22r29
+23V18*Empty_Set{11R6} 18|11b10 15l5 15t14
+25U19*Delete<8|189p14> 25=27 25>43 18|57b11 60l5 60t11
+25r27 A{11R6} 18|57b19
+25*43 Item{4+14} 18|57b35
+27V18*"<="{boolean} 27>25 27>44 18|62b10 65l5 65t9
+27*25 Item{4+14} 18|62b17
+27r44 S{11R6} 18|62b36
+30E6 Dummy_Type 30e39 34r25 18|18r15
 30n21 Dummy_Type_Value{30E6}
-32K9 Maps[4|46] 38r17
-38R6 Set<4|50R9[32]> 6|49P14 10|13p18 14p18 15p18 16p18 17p18 18P18 19p18
-. 21p19 23p18 25P19 27p18
-X 11 sets_with_hash.adb
-5r1 A{10|11R6} 7m1 8r8
-12r1 A{10|11R6} 14r16
-18b1 inserted{boolean}
+32K9 Maps[8|46] 38r17 18|21r7 21r19
+X 18 sets_with_hash.adb
+5r1 A{17|11R6} 7m1 8r8
+12r1 A{17|11R6} 14r16
+18e7 dummy{17|30E6} 23r31
 

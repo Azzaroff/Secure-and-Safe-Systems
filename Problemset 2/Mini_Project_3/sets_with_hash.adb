@@ -15,9 +15,13 @@ begin
 end Empty_Set;
 
 procedure Insert (A: in out Set ; Item : Item_Type ) is
-inserted : boolean;
+      dummy : Dummy_Type;
 begin
-   A.Insert(Key => Item, New_Item => Item, Container => A, Position => A.first, Inserted => inserted);
+
+      Maps.Insert(Maps.map(A),
+                     Key => item,
+                  New_Item => dummy);
+
 end Insert;
 
 function "and" (A, B : Set ) return Set is
@@ -59,6 +63,7 @@ function "<=" ( Item : Item_Type ; S : Set ) return Boolean is
 begin
    return true;
 end "<="; -- { Item } <= S
+
 
 
 end sets_with_hash;

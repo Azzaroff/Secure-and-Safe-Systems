@@ -17,9 +17,9 @@ type Set is private;
 	function "<" (A, B : Set ) return Boolean ; -- A propper subset of B
 	function "=" (A, B : Set ) return Boolean ; -- A and B are equal
 	function To_Set ( Item : Item_Type ) return Set ; -- { Item }
-	
+
 	procedure Insert (A: in out Set ; Item : Item_Type ) ; -- A or To_Set ( Item )
-	
+
 	function Empty_Set return Set ; -- {}
 
 	procedure Delete (A: in out Set ; Item : Item_Type ) ; -- A − { Item }
@@ -27,10 +27,10 @@ type Set is private;
 	function "<=" ( Item : Item_Type ; S : Set ) return Boolean ; -- { Item } <= S
 
 private
-type Dummy_Type is (Dummy_Type_Value ) ;
+type Dummy_Type is( Dummy_Type_Value) ;
 
 package Maps is new Ada.Containers.Indefinite_Hashed_Maps
-	( Key_Type => Item_Type, 
+	( Key_Type => Item_Type,
 	Element_Type => Dummy_Type,
 	Hash => Hash,
 	Equivalent_Keys => "=" ) ;
