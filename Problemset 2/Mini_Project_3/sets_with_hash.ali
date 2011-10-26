@@ -1,17 +1,10 @@
-V "GNAT Lib v4.6"
-A -g
-A -g
-A -gnato
-A -gnatwa
-A -gnatQ
-A -gnat12
-A -gnatA
+V "GNAT Lib v4.4"
 P SS ZX
-R nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnvnnvnnnnnnvnnnnnnnnnnnnnnnnvnnnnnnnnnnnnnnnnnn
+R nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnvnnvnnnnnnvnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
 
-U sets_with_hash%b	sets_with_hash.adb	c2a546ea NE OO PK GE IL
+U sets_with_hash%b	sets_with_hash.adb	079c5bce NE OO PK GE IL
 
-U sets_with_hash%s	sets_with_hash.ads	51440765 BN EE NE OO PK GE
+U sets_with_hash%s	sets_with_hash.ads	23973fc4 BN EE NE OO PK GE
 W ada%s			ada.ads			ada.ali
 W ada.containers%s	a-contai.ads		a-contai.ali
 W ada.containers.hash_tables%s  a-cohata.ads	a-cohata.ali
@@ -21,45 +14,46 @@ W ada.containers.indefinite_hashed_maps%s
 W ada.containers.prime_numbers%s  a-coprnu.adb	a-coprnu.ali
 W ada.finalization%s	a-finali.adb		a-finali.ali
 W ada.streams%s		a-stream.ads		a-stream.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.unchecked_deallocation%s
 W system%s		system.ads		system.ali
 
-D ada.ads		20070406091342 3ffc8e18
-D a-contai.ads		20101025135029 61e5e089
-D a-cohata.ads		20101026104202 f4016a1a
-D a-chtgke.ads		20090409150019 fba5dead
-D a-chtgke.adb		20100909133812 2dde331d
-D a-chtgop.ads		20090409150019 ee32f6e8
-D a-chtgop.adb		20100909133812 cd0e5151
-D a-cihama.ads		20090409150019 2e09bd21
-D a-cihama.adb		20100909133812 7a4afceb
-D a-coprnu.ads		20090409150019 0cdf1864
-D a-except.ads		20090727140100 0c711ac9
-D a-finali.ads		20090409150019 e5e85fa4
-D a-stream.ads		20090409150019 2ca4ee37
-D a-tags.ads		20101021101406 c7695348
-D a-unccon.ads		20070406091342 f9eb8f06
-D a-uncdea.ads		20070406091342 f15a5ed1
-D sets_with_hash.ads	20111025172909 7f4dba44
-D sets_with_hash.adb	20111025195408 bde8fcae
-D system.ads		20110928073203 23e1f70b
-D s-exctab.ads		20090417131547 66e51330
-D s-finimp.ads		20090409150019 46853fe8
-D s-finroo.ads		20090409150019 dbb860c9
-D s-parame.ads		20091130110856 9c5d83fa
-D s-secsta.ads		20090707124243 eea35a36
-D s-soflin.ads		20090729085153 9414c974
-D s-stache.ads		20090417130712 596fc1b4
-D s-stalib.ads		20101021102512 c4241c00
-D s-stoele.ads		20090417130712 facd7d98
-D s-stoele.adb		20100617152355 afc5dc80
-D s-stratt.ads		20100909123135 aedef97e
-D s-traent.ads		20090417130712 5221ee41
-D s-unstyp.ads		20090409150019 6ae15c76
+D ada.ads		20070406091342 9c7dd3ea
+D a-contai.ads		20070406091342 7b35f559
+D a-cohata.ads		20090409232307 ab6e313e
+D a-chtgke.ads		20090409232307 024aa314
+D a-chtgke.adb		20090409232307 02e6fc41
+D a-chtgop.ads		20090409232307 3232e6ff
+D a-chtgop.adb		20090409232307 fe7aae0d
+D a-cihama.ads		20090409232307 a284b7dc
+D a-cihama.adb		20090409232307 d3f067e2
+D a-coprnu.ads		20090409232307 2fc53e19
+D a-except.ads		20090409232307 b54b55de
+D a-finali.ads		20090409232307 9eaacebd
+D a-stream.ads		20090409232307 34aca5be
+D a-tags.ads		20090409232307 bfa07446
+D a-unccon.ads		20070406091342 51e09df2
+D a-uncdea.ads		20070406091342 dc667e6d
+D sets_with_hash.ads	20111026154924 81138818
+D sets_with_hash.adb	20111026154924 868fd3d6
+D system.ads		20110401031523 df55302f
+D s-exctab.ads		20090409232307 5c1c61ae
+D s-finimp.ads		20090409232307 9449f4cb
+D s-finroo.ads		20090409232307 1408f9d1
+D s-parame.ads		20090409232307 f32e56e9
+D s-secsta.ads		20090409232307 7bae3621
+D s-soflin.ads		20090409232307 0c6fd39d
+D s-stache.ads		20090409232307 257b3be8
+D s-stalib.ads		20090409232307 52b793d5
+D s-stoele.ads		20090409232307 ed966df3
+D s-stoele.adb		20090409232307 e9998c78
+D s-stratt.ads		20090409232307 fef7c1da
+D s-traent.ads		20090409232307 bd5f2753
+D s-unstyp.ads		20090409232307 c0f9fae5
 X 1 ada.ads
 16K9*Ada 19e8 17|1r14 6r56 32r21
 X 2 a-contai.ads
-16K13*Containers 24e19 17|1r18 6r60 32r25
+16K13*Containers 22e19 17|1r18 6r60 32r25
 19M9*Hash_Type 17|6r71
 20I9*Count_Type<integer>
 X 8 a-cihama.ads
@@ -67,30 +61,51 @@ X 8 a-cihama.ads
 40+9 Element_Type 17|34r9
 42V18 Hash{2|19M9} 17|35r9
 43V18 Equivalent_Keys{boolean} 17|36r9
-46k24*Indefinite_Hashed_Maps 332e42 17|1w29 32r36
+46k24*Indefinite_Hashed_Maps 334e42 17|1w29 32r36
 50R9 Map 17|38r22[32] 18|21r24[17|32] 92r34[17|32] 92r72[17|32] 101r26[17|32]
 . 101r39[17|32] 106r21[17|32] 112r43[17|32]
 53R9 Cursor 18|29r18[17|32] 30r18[17|32] 46r19[17|32] 47r19[17|32] 63r19[17|32]
 . 64r19[17|32] 79r19[17|32]
-64V24 "="{boolean}<12|64p24> 18|101s17[17|32]
-89V13 Length{2|20I9} 18|92s22[17|32] 92s60[17|32]
-98V13 Key{17|4+14} 18|33s23[17|32] 38s23[17|32] 51s22[17|32] 51s40[17|32]
-. 52s31[17|32] 68s22[17|32] 68s40[17|32] 69s31[17|32] 82s26[17|32]
-147U14 Insert 18|21s12[17|32]
+64V13 "="{boolean}<12|64p13> 18|101r17[17|32]
+75V13 Capacity{2|20I9}
+79U14 Reserve_Capacity
+89V13 Length{2|20I9} 18|92r22[17|32] 92r60[17|32]
+92V13 Is_Empty{boolean}
+95U14 Clear
+98V13 Key{17|4+14} 18|33r23[17|32] 38r23[17|32] 51r22[17|32] 51r40[17|32]
+. 52r31[17|32] 68r22[17|32] 68r40[17|32] 69r31[17|32] 82r26[17|32]
+104U14 Replace_Element
+117U14 Update_Element
+125U14 Move
+129U14 Insert
+147U14 Insert 18|21r12[17|32]
 149*7 Key{17|4+14} 18|22r22[17|32]
 150e7 New_Item{17|30E6} 18|23r19[17|32]
-189U14 Delete 18|106s9[17|32]
-203V13 First{53R9[17|32]} 18|29s28[17|32] 30s28[17|32] 46s29[17|32] 47s29[17|32]
-. 63s29[17|32] 64s29[17|32] 79s29[17|32]
-215U14 Next 18|34s13[17|32] 39s13[17|32] 54s18[17|32] 56s15[17|32] 71s18[17|32]
-. 73s15[17|32] 85s15[17|32]
-218V13 Find{53R9[17|32]} 18|112s33[17|32]
-230V13 Has_Element{boolean} 18|32s16[17|32] 37s16[17|32] 49s18[17|32] 50s21[17|32]
-. 66s18[17|32] 67s21[17|32] 81s18[17|32] 112s16[17|32]
+158U14 Include
+169U14 Replace
+180U14 Exclude
+189U14 Delete 18|106r9[17|32]
+197U14 Delete
+203V13 First{53R9[17|32]} 18|29r28[17|32] 30r28[17|32] 46r29[17|32] 47r29[17|32]
+. 63r29[17|32] 64r29[17|32] 79r29[17|32]
+215U14 Next 18|34r13[17|32] 39r13[17|32] 54r18[17|32] 56r15[17|32] 71r18[17|32]
+. 73r15[17|32] 85r15[17|32]
+218V13 Find{53R9[17|32]} 18|112r33[17|32]
+224V13 Contains{boolean}
+227V13 Element{17|30E6}
+230V13 Has_Element{boolean} 18|32r16[17|32] 37r16[17|32] 49r18[17|32] 50r21[17|32]
+. 66r18[17|32] 67r21[17|32] 81r18[17|32] 112r16[17|32]
+245U14 Iterate
+290U14 Adjust<12|50p14>
+293U14 Finalize<12|51p14>
+320U14 Write
+326U14 Read
+X 12 a-finali.ads
+49U14*Initialize<22|58p14>
 X 17 sets_with_hash.ads
 4+14 Item_Type 5r34 6r37 19r34 21r50 25r50 27r32 33r23 18|4r26 17r42 104r42
 . 109r24
-5V23 "="{boolean} 5>28 5>31 36r28 18|51s33 68s33
+5V23 "="{boolean} 5>28 5>31 36r28 18|51r33 68r33
 5*28 X{4+14}
 5*31 Y{4+14}
 6V23 Hash{2|19M9} 6>30 35r17
@@ -108,22 +123,22 @@ X 17 sets_with_hash.ads
 15V18*"-"{11R6} 15>23 15>26 18|61b10 76l5 76t8
 15r23 A{11R6} 18|61b15 62r18 63r35
 15r26 B{11R6} 18|61b18 64r35
-16V18*"<="{boolean} 16>24 16>27 18|78b10 82s38 88l5 88t9 93s14
+16V18*"<="{boolean} 16>24 16>27 18|78b10 82r38 88l5 88t9 93r14
 16r24 A{11R6} 18|78b16 79r35
 16r27 B{11R6} 18|78b19 82r41
 17V18*"<"{boolean} 17>23 17>26 18|90b10 97l5 97t8
 17r23 A{11R6} 18|90b15 92r38 93r19
 17r26 B{11R6} 18|90b18 92r76 93r21
-18V18*"="{boolean}<8|64p24> 18>23 18>26 18|99b10 102l5 102t8
+18V18*"="{boolean}<8|64p13> 18>23 18>26 18|99b10 102l5 102t8
 18r23 A{11R6} 18|99b15 101r30
 18r26 B{11R6} 18|99b18 101r43
-19V18*To_Set{11R6} 19>27 18|4b10 9l5 9t11 82s14
+19V18*To_Set{11R6} 19>27 18|4b10 9l5 9t11 82r14
 19*27 Item{4+14} 18|4b19 7r12
-21U19*Insert 21=27 21>43 18|7s2 17b11 25l5 25t11 33s10 38s10 52s18
+21U19*Insert 21=27 21>43 18|7r2 17b11 25l5 25t11 33r10 38r10 52r18
 21r27 A{11R6} 18|17b19 21m28
 21*43 Item{4+14} 18|17b35 22r29
 23V18*Empty_Set{11R6} 18|11b10 15l5 15t14
-25U19*Delete<8|189p14> 25=27 25>43 18|69s16 104b11 107l5 107t11
+25U19*Delete<8|189p14> 25=27 25>43 18|69r16 104b11 107l5 107t11
 25r27 A{11R6} 18|104b19 106m25
 25*43 Item{4+14} 18|104b35 106r28
 27V18*"<="{boolean} 27>25 27>44 18|109b10 113l5 113t9
@@ -135,6 +150,8 @@ X 17 sets_with_hash.ads
 . 39r8 46r14 47r14 49r13 50r16 51r17 51r35 52r26 54r13 56r10 63r14 64r14
 . 66r13 67r16 68r17 68r35 69r26 71r13 73r10 79r14 81r13 82r21 85r10 92r17
 . 92r29 92r55 92r67 101r12 101r21 101r34 106r4 106r16 112r11 112r28 112r38
+38R6 Set<8|50R9[32]> 12|49P14 17|13p18 14p18 15p18 16p18 17p18 18P18 19p18
+. 21p19 23p18 25P19 27p18
 X 18 sets_with_hash.adb
 5r1 A{17|11R6} 7m9 8r8
 12r1 A{17|11R6} 14r16
