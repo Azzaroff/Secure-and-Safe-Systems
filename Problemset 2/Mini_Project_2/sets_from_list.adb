@@ -118,12 +118,13 @@ end Delete;
 
 --tests if there is this element in set
 function "<=" ( Item : Item_Type ; S : Set ) return Boolean is
-position : Lists.Cursor;
+use Lists;
+position : Cursor;
 begin
-	position := Lists.Find(Item => Item, Container => Lists.list(S));
-	--if position /= (Lists.No_Element) then	
-	--	return true;	
-	--end if;	
+	position := Find(Item => Item, Container => list(S));
+	if position /= (No_Element) then	
+		return true;	
+	end if;	
 	return false;
 end "<=";
 
