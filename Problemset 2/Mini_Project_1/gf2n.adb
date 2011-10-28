@@ -39,6 +39,7 @@ begin
 	else
 		Put ("1");
 	end if;
+    Put_Line("");
 end Put;
  
 function "+" ( Left : Element ; Right : Element ) return Element is
