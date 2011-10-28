@@ -38,22 +38,22 @@ end Put;
  
 function "+" ( Left : Element ; Right : Element ) return Element is
 begin
-	return Left;
+	return (Left xor Right);
 end "+";
 
 function "-" ( Left : Element ; Right : Element ) return Element is
 begin
-	return Left;
+	return (Left xor Right);
 end "-";
 
 function "*" ( Left : Element ; Right : Element ) return Element is
 begin
-	return Left;
+	return Element (Integer (Left) * Integer(Right));
 end "*";
 
 function "/" ( Left : Element ; Right : Element ) return Element is
 begin
-	return Left;
+	return Element (Integer(Left) / Integer (Right));
 end "/";
 
 end GF2n;
