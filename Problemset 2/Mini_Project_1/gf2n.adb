@@ -77,7 +77,27 @@ end "*";
 
 function "/" ( Left : Element ; Right : Element ) return Element is
 begin
-	return Element (Integer(Left) / Integer (Right));
+	return gf2n."*"(Left, gf2n.Inverse(Right));
 end "/";
+
+-- calculating inverse using brute force algorithm
+function Inverse(Item : Element) return Element is
+Inverse : Element := 1;
+begin
+
+	if Item = Element (0) then -- 0 ist zu sich selbst invers
+		return Item;
+	end if;
+	
+	while Item = Element'Last loop
+		if gf2n."*"(Item, Inverse) = 1 then
+			exit;
+		else
+			Inverse := Inverse + 1;		
+		end if;
+	end loop;
+	
+	return Inverse;
+end Inverse;
 
 end GF2n;

@@ -13,5 +13,10 @@ function "*" ( Left : Element ; Right : Element ) return Element ;
 
 -- Can raise contrainterror 
     function "/" ( Left : Element ; Right : Element ) return Element;
+
+-- private
+
+function Inverse (Item : Element) return Element;
+
     end GF2n ; 
 
