@@ -23,8 +23,8 @@ begin
                 Exponent : Integer := Integer(Ada.Numerics.Elementary_Functions.Log(Float (result_bit) , 2.0));
                 Exponent_Width : Integer := Integer(Ada.Numerics.Elementary_Functions.Log(Float (Exponent) , 10.0)) + 1;
         begin
-				Put("x**");
-				Put (Width => Exponent_Width, Item => Exponent); --Hack für korrekte Breite 
+				Put("x **");
+				Put (Width => (Exponent_Width -1), Item => Exponent); --Hack für korrekte Breite 
 				Put(" + ");
         end;
 		end if;
