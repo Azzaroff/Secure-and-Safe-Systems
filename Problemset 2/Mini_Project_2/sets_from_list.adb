@@ -26,8 +26,8 @@ function "or" (A, B : Set ) return Set is
 begin
       while Lists.Has_Element(elemA) loop
          while Lists.Has_Element(elemB) loop
-            if (Lists.Element(elemA) = Lists.Element(elemB)) then
-               C.Insert( Lists.Element(elemA));
+            if (Lists.Contains(Lists.List(A),Lists.Element(elemB))) then
+               C.Insert( Lists.Element(elemB));
             end if;
             Lists.Next(elemB);
          end loop;
@@ -44,7 +44,7 @@ C : Set := A;
 begin
       while Lists.Has_Element(elemA) loop
          while Lists.Has_Element(elemB) loop
-            if (Lists.Element(elemA) = Lists.Element(elemB)) then
+            if (Lists.Contains(Lists.List(A),Lists.Element(elemB))) then
                Delete(C, Lists.Element(elemB));
             end if;
             Lists.Next(elemB);
@@ -59,12 +59,12 @@ function "<=" (A, B : Set ) return Boolean is
  	elemA : Lists.Cursor := First(A);
 begin
 	while Lists.Has_Element(elemA) loop
-		 if (To_Set(Lists.Element(elemA)) <= B) then
-		    return true;
-		 end if;
-         	Lists.Next(elemA);
+         if not(Lists.Contains(Lists.List(B),Lists.Element(elemA))) then
+            return false;
+         end if;
+         Lists.Next(elemA);
       	end loop;
-      	return false;
+      	return true;
 end "<=";
 
 --is a a propper subset of b
@@ -118,14 +118,8 @@ end Delete;
 
 --tests if there is this element in set
 function "<=" ( Item : Item_Type ; S : Set ) return Boolean is
-use Lists;
-position : Cursor;
 begin
-	position := Find(Item => Item, Container => list(S));
-	if position /= (No_Element) then	
-		return true;	
-	end if;	
-	return false;
+    return (To_Set(Item) <= S);
 end "<=";
 
 -- end of file

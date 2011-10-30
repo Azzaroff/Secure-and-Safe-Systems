@@ -139,7 +139,37 @@ procedure main is
        IO.Put_Line("");
        
    end Test_Subsets;
-   
+ 
+   procedure Test_Difference is
+   s1,s2,s3 : Hash_Set.Set;
+   begin
+       IO.Put_Line("");
+       IO.Put_Line("Testing Difference ('-')");
+       IO.Put_Line("");
+  
+       Hash_Set.insert(s1,1);
+       Hash_Set.insert(s1,2);
+       Hash_Set.insert(s1,3);
+       Hash_Set.insert(s1,4);
+       Hash_Set.insert(s2,1);
+       Hash_Set.insert(s2,2);
+       Hash_Set.insert(s3,3);
+       Hash_Set.insert(s3,4);
+
+       IO.Put_Line("{1,2,3,4} - {1,2} should be {3,4}.");
+       if ((s1 - s2) = s3) then
+          IO.Put_Line("TRUE");
+       else
+          IO.Put_Line("FALSE");
+       end if;
+
+       IO.Put_Line("");
+       IO.Put_Line("-----------------------------");
+       IO.Put_Line("");
+       
+   end Test_Difference;
+
+  
    procedure Test_Contains is
    s1 : Hash_Set.Set;
    begin
@@ -176,6 +206,7 @@ begin
    IO.Put_Line("Running all tests");
    Test_Union;
    Test_Intersection;
+   Test_Difference;
    Test_Subsets;
    Test_Contains;
 
