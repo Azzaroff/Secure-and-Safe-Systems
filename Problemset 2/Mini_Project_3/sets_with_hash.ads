@@ -38,4 +38,3 @@ package Maps is new Ada.Containers.Indefinite_Hashed_Maps
 type Set is new Maps.Map with null record ;
 
 end Sets_With_Hash ;
-

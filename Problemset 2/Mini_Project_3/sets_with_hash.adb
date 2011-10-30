@@ -1,6 +1,5 @@
 package body sets_with_hash is
 
-
 function To_Set ( Item : Item_Type ) return Set is
 A : Set;
 begin
@@ -48,13 +47,14 @@ function "or" (A, B : Set ) return Set is
 begin
       while Maps.Has_Element(elemA) loop
          while Maps.Has_Element(elemB) loop
-            if (Maps.Key(elemA) = Maps.Key(elemB)) then
-               C.Insert( Maps.Key(elemA));
+            if (Maps.Contains(Maps.Map(A),Maps.Key(elemB))) then
+               C.Insert( Maps.Key(elemB));
             end if;
             Maps.Next(elemB);
          end loop;
          Maps.Next(elemA);
       end loop;
+      
       return C;
 end "or"; -- intersection
 
@@ -65,7 +65,7 @@ function "-" (A, B : Set ) return Set is
 begin
       while Maps.Has_Element(elemA) loop
          while Maps.Has_Element(elemB) loop
-            if (Maps.Key(elemA) = Maps.Key(elemB)) then
+            if (Maps.Contains(Maps.Map(A),Maps.Key(elemB))) then
                Delete(C, Maps.Key(elemB));
             end if;
             Maps.Next(elemB);
@@ -79,12 +79,12 @@ function "<=" (A, B : Set ) return Boolean is
       elemA: Maps.Cursor := First(A);
 begin
       while Maps.Has_Element(elemA) loop
-         if (To_Set(Maps.Key(elemA)) <= B) then
-            return true;
+         if not(Maps.Contains(Maps.Map(B),Maps.Key(elemA))) then
+            return false;
          end if;
          Maps.Next(elemA);
       end loop;
-      return false;
+      return true; 
 end "<="; -- A subset of B
 
 function "<" (A, B : Set ) return Boolean is
@@ -107,9 +107,8 @@ begin
 end Delete; -- A − { Item }
 
 function "<=" ( Item : Item_Type ; S : Set ) return Boolean is
-   begin
-   -- Maps.Is_In findet er nicht obwohl es in der Referenz steht, deswegen dieser "Hack"
-   return Maps.Has_Element(Maps.find(Maps.map(S), item));
+begin
+   return (To_Set(Item) <= S);
 end "<="; -- { Item } <= S
 
 
