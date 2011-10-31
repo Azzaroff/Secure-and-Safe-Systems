@@ -18,5 +18,12 @@ function "*" ( Left : Element ; Right : Element ) return Element ;
 
 function Inverse (Item : Element) return Element;
 
-    end GF2n ; 
+
+function Shift_Left(Item : Element; Amount : Natural) return  Element;
+function Shift_Right(Item : Element; Amount : Natural) return  Element;
+   
+pragma Import (Intrinsic, Shift_Left);
+pragma Import (Intrinsic, Shift_Right);
+
+end GF2n ; 
 

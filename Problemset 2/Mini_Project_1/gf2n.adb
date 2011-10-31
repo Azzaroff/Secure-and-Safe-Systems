@@ -66,11 +66,11 @@ begin
                 p := p xor a; --If the rightmost bit of b is set, exclusive OR the product p by the value of a.
         end if;
         leftmost_a := Unsigned_32(a) and Unsigned_32(16#8#);-- Keep track of whether the leftmost bit of a is set to one
-        a := Element(Shift_Left(Unsigned_32(a), 1));-- Shift a one bit to the left, discarding the old leftmost bit, and making the new rightmost bit zero
+        a := Element(GF2n.Shift_Left(Element(a), 1));-- Shift a one bit to the left, discarding the old leftmost bit, and making the new rightmost bit zero
         if leftmost_a = 1 then
             a := a xor 16#1b#;  -- If a's leftmost bit had a value of one prior to this shift, exclusive or a with the hexadecimal number 0x1b (00011011 in binary). 0x1b corresponds to the irreducible polynomial with the high term eliminated. Muss noch generischer werden, momentan hard coded        
         end if;
-    b := Element(Shift_Right(Unsigned_32(b), 1));-- Shift b one bit to the right, discarding the rightmost bit, and making the leftmost bit have a value of zero.
+    b := Element(GF2n.Shift_Right(Element(b), 1));-- Shift b one bit to the right, discarding the rightmost bit, and making the leftmost bit have a value of zero.
     end loop;
     return p;
 end "*";
@@ -82,7 +82,7 @@ end "/";
 
 -- calculating inverse using brute force algorithm
 function Inverse(Item : Element) return Element is
-Inverse : Element := 1;
+Inverse : Natural := 1;
 begin
 
 	if Item = Element (0) then -- 0 ist zu sich selbst invers
@@ -90,14 +90,14 @@ begin
 	end if;
 	
 	while Item = Element'Last loop
-		if gf2n."*"(Item, Inverse) = 1 then
+		if gf2n."*"(Item, Element(Inverse)) = Element(1) then
 			exit;
 		else
 			Inverse := Inverse + 1;		
 		end if;
 	end loop;
 	
-	return Inverse;
+	return Element(Inverse);
 end Inverse;
 
 end GF2n;
