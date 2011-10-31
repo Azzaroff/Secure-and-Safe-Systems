@@ -54,18 +54,18 @@ end "-";
 
 function "*" ( Left : Element ; Right : Element ) return Element is
 p,a,b : Element := 0;
-logarithm : float;
+-- logarithm : float;
 leftmost_a : Unsigned_32;
 begin
     --http://en.wikipedia.org/wiki/Finite_field_arithmetic
     a := Left;
     b := Right;
-	logarithm   := Ada.Numerics.Elementary_Functions.Log(Float (F), 2.0 ); --gibt die Position des hoechsten Bits: 16 Logd = 4
+	--logarithm   := Ada.Numerics.Elementary_Functions.Log(Float (F), 2.0 ); --gibt die Position des hoechsten Bits: 16 Logd = 4
     for I in Unsigned_32 range 1..8 loop -- loop höchstes-bit mal des irreduziblen Polynoms
         if (1 = (Unsigned_32(b) and Unsigned_32(1))) then 
                 p := p xor a; --If the rightmost bit of b is set, exclusive OR the product p by the value of a.
         end if;
-        leftmost_a := Unsigned_32(a) and Unsigned_32(16#8#);-- Keep track of whether the leftmost bit of a is set to one
+        leftmost_a := Unsigned_32(a) and Unsigned_32(16#80#);-- Keep track of whether the leftmost bit of a is set to one
         a := Element(GF2n.Shift_Left(Element(a), 1));-- Shift a one bit to the left, discarding the old leftmost bit, and making the new rightmost bit zero
         if leftmost_a = 1 then
             a := a xor 16#1b#;  -- If a's leftmost bit had a value of one prior to this shift, exclusive or a with the hexadecimal number 0x1b (00011011 in binary). 0x1b corresponds to the irreducible polynomial with the high term eliminated. Muss noch generischer werden, momentan hard coded        
