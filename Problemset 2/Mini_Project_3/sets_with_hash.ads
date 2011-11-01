@@ -1,9 +1,12 @@
+with Ada.Text_IO;
+
 private with Ada.Containers.Indefinite_Hashed_Maps;
 
 generic
 	type Item_Type is private ;
 	with function "=" (X, Y: Item_Type ) return Boolean is <>;
 	with function Hash ( Item : Item_Type ) return Ada.Containers.Hash_Type is <>;
+        with procedure Put_Item(Item:Item_Type);
 
 package Sets_With_Hash is
 
@@ -25,6 +28,8 @@ type Set is private;
 	procedure Delete (A: in out Set ; Item : Item_Type ) ; -- A − { Item }
 
 	function "<=" ( Item : Item_Type ; S : Set ) return Boolean ; -- { Item } <= S
+
+	procedure Put(A:Set);
 
 private
 type Dummy_Type is( Dummy_Type_Value) ;

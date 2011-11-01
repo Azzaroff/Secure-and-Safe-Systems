@@ -1,4 +1,5 @@
 with Ada.Text_IO;
+with Ada.Integer_Text_IO;
 with Sets_With_Hash;
 with Ada.Containers;
 
@@ -11,11 +12,17 @@ procedure main is
    begin
       return Ada.Containers.Hash_Type(Item);
    end Hash;
+
+   procedure Put_Item(Item : Positive) is
+   begin
+      Ada.Integer_Text_IO.Put(Item,Width => 0);
+   end;
    
    package Hash_Set is new Sets_With_Hash
      ( Item_Type => Positive,
       "=" => "=",
-      Hash => Hash);
+      Hash => Hash,
+	  Put_Item => Put_Item);
    
    use Hash_Set;
 
@@ -77,6 +84,17 @@ procedure main is
           IO.Put_Line("TRUE");
        else
           IO.Put_Line("FALSE");
+       end if;
+
+	   Hash_Set.Put(s1 or s2);
+       IO.Put_Line("");
+       
+       s2 := Hash_Set.Empty_Set;
+	   IO.Put_Line("{3,213,3478364} intersect {} should be equal to {3,213,3478364}");
+       if ((s1 or s2) = s1) then
+          IO.Put_Line("TRUE");
+       else
+         IO.Put_Line("FALSE");
        end if;
        
           IO.Put_Line("");
