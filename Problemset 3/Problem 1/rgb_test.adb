@@ -3,8 +3,8 @@
 
   -- Test Driver Source
 
-  -- File:       /home/felix/workspace/Secure-and-Safe-Systems/Problemset 3/Problem 1/rgb_test.adb
-  -- Script:     /home/felix/workspace/Secure-and-Safe-Systems/Problemset 3/Problem 1/rgb_test.ts
+  -- File:       /home/paul/SSS/Secure-and-Safe-Systems/Problemset 3/Problem 1/rgb_test.adb
+  -- Script:     /home/paul/SSS/Secure-and-Safe-Systems/Problemset 3/Problem 1/rgb_test.ts
 
 
 with Ada.Command_Line, Ada.Exceptions;
@@ -58,9 +58,9 @@ begin  -- unit main block
 
   -- Test Case (1)   RGB Plus small Number
   declare
-    rgb1   : Color := To_Color(1,2,3);
+    rgb1   : Color := To_Color(0,0,0);
     rgb2   : Color := To_Color(3,2,1);
-    	rgb3   : Color := To_Color(4,4,4);
+    	rgb3   : Color := To_Color(3,2,1);
     	Result : Color;
   begin  -- test case
     begin  -- test part
@@ -80,7 +80,7 @@ begin  -- unit main block
           Driver_Internals.Test_Case_Passed := False;
           Driver_Internals.Fail_Result := True;
           Put_Line ("(1)  RGB Plus small Number");
-          Put_Line ("           Script name:'rgb_test.ts'; Line:5 ");
+          Put_Line ("           Script name:'rgb_test.ts'; Line:4 ");
           Put_Line ("      ...FAIL.");
           Put_Line ("         (" & "path `=>' was taken, but predicate is FALSE" & ")");
         end if;
@@ -88,7 +88,7 @@ begin  -- unit main block
         Driver_Internals.Test_Case_Passed := False;
         Driver_Internals.Fail_Result := True;
         Put_Line ("(1)  RGB Plus small Number");
-        Put_Line ("           Script name:'rgb_test.ts'; Line:5 ");
+        Put_Line ("           Script name:'rgb_test.ts'; Line:4 ");
         Put_Line ("      ...FAIL.");
         Put_Line ("         (" & "path `" & Driver_Internals.Taken_Path & "' when `=>' was expected" & ")");
       end if;
@@ -98,6 +98,98 @@ begin  -- unit main block
       when E: others =>
         Driver_Internals.Unexpected_Error := True;
         Put_Line ("ERROR: exception " & Ada.Exceptions.Exception_Name (E) & " raised in result part of test case 1.");
+        raise Driver_Internals.Program_Terminate;
+    end;  -- result part
+  end;  -- test case
+
+  -- Test Case (2)   RGB Plus mid Number
+  declare
+    rgb1   : Color := To_Color(1,2,3);
+    rgb2   : Color := To_Color(3,2,1);
+    	rgb3   : Color := To_Color(4,4,4);
+    	Result : Color;
+  begin  -- test case
+    begin  -- test part
+      Result := rgb1 + rgb2;
+      Driver_Internals.Set_Path ("=>");
+    exception
+      when E: others =>
+        Driver_Internals.Set_Path (Ada.Exceptions.Exception_Name (E));
+    end;  -- test part
+    begin  -- result part
+      if Driver_Internals.Path_Was ("=>") then
+        if Result = rgb3
+        then
+          Driver_Internals.Test_Case_Passed := True;
+          Put_Line ("(2)  pass.");
+        else
+          Driver_Internals.Test_Case_Passed := False;
+          Driver_Internals.Fail_Result := True;
+          Put_Line ("(2)  RGB Plus mid Number");
+          Put_Line ("           Script name:'rgb_test.ts'; Line:12 ");
+          Put_Line ("      ...FAIL.");
+          Put_Line ("         (" & "path `=>' was taken, but predicate is FALSE" & ")");
+        end if;
+      else
+        Driver_Internals.Test_Case_Passed := False;
+        Driver_Internals.Fail_Result := True;
+        Put_Line ("(2)  RGB Plus mid Number");
+        Put_Line ("           Script name:'rgb_test.ts'; Line:12 ");
+        Put_Line ("      ...FAIL.");
+        Put_Line ("         (" & "path `" & Driver_Internals.Taken_Path & "' when `=>' was expected" & ")");
+      end if;
+    exception
+      when Driver_Internals.Program_Terminate =>
+        raise;
+      when E: others =>
+        Driver_Internals.Unexpected_Error := True;
+        Put_Line ("ERROR: exception " & Ada.Exceptions.Exception_Name (E) & " raised in result part of test case 2.");
+        raise Driver_Internals.Program_Terminate;
+    end;  -- result part
+  end;  -- test case
+
+  -- Test Case (3)   RGB Plus large Number
+  declare
+    rgb1   : Color := To_Color(255,254,253);
+    rgb2   : Color := To_Color(1,2,3);
+    	rgb3   : Color := To_Color(255,255,255);
+    	Result : Color;
+  begin  -- test case
+    begin  -- test part
+      Result := rgb1 + rgb2;
+      Driver_Internals.Set_Path ("=>");
+    exception
+      when E: others =>
+        Driver_Internals.Set_Path (Ada.Exceptions.Exception_Name (E));
+    end;  -- test part
+    begin  -- result part
+      if Driver_Internals.Path_Was ("=>") then
+        if Result = rgb3
+        then
+          Driver_Internals.Test_Case_Passed := True;
+          Put_Line ("(3)  pass.");
+        else
+          Driver_Internals.Test_Case_Passed := False;
+          Driver_Internals.Fail_Result := True;
+          Put_Line ("(3)  RGB Plus large Number");
+          Put_Line ("           Script name:'rgb_test.ts'; Line:20 ");
+          Put_Line ("      ...FAIL.");
+          Put_Line ("         (" & "path `=>' was taken, but predicate is FALSE" & ")");
+        end if;
+      else
+        Driver_Internals.Test_Case_Passed := False;
+        Driver_Internals.Fail_Result := True;
+        Put_Line ("(3)  RGB Plus large Number");
+        Put_Line ("           Script name:'rgb_test.ts'; Line:20 ");
+        Put_Line ("      ...FAIL.");
+        Put_Line ("         (" & "path `" & Driver_Internals.Taken_Path & "' when `=>' was expected" & ")");
+      end if;
+    exception
+      when Driver_Internals.Program_Terminate =>
+        raise;
+      when E: others =>
+        Driver_Internals.Unexpected_Error := True;
+        Put_Line ("ERROR: exception " & Ada.Exceptions.Exception_Name (E) & " raised in result part of test case 3.");
         raise Driver_Internals.Program_Terminate;
     end;  -- result part
   end;  -- test case
