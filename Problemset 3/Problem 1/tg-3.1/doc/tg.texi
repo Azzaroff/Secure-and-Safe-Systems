@@ -1,0 +1,968 @@
+\input texinfo  @c -*-texinfo-*-
+@c $Id: tg.texi,v 1.4 1997/02/17 15:30:01 spiegel Exp $
+@c %**start of header
+@setfilename tg.info
+@settitle tg Test Driver Generator
+@setchapternewpage odd
+@iftex
+@afourpaper
+@end iftex
+@c %**end of header
+
+@titlepage
+@title tg
+@subtitle A Simple Test Driver Generator for Ada programs
+@subtitle (Version 3.1)
+@tex
+@author Andr\'e Spiegel 
+@author Free University of Berlin
+@author e-mail: spiegel@@inf.fu-berlin.de
+@end tex
+@page
+@end titlepage
+
+@node Top, Introduction, (dir), (dir)
+
+@ifinfo
+@code{tg} stands for @dfn{test driver generator}.  @code{tg} helps you
+to test software components, by generating programs that automatically
+perform such tests.
+
+This document applies to @code{tg} version 3.1.
+@end ifinfo
+
+@menu
+* Introduction::                The process of software testing 
+                                  and @code{tg}'s place in it.
+* Test Scripts::                The format of @code{tg}'s input files.
+* The tg Command::              How to invoke @code{tg} to translate
+                                  a script into a driver.
+* Drivers::                     What the generated programs look like.
+* A Complete Example::          A script for a simple example test.
+
+* Concept Index::               
+* Keyword Index::               
+@end menu
+
+@node    Introduction, Test Scripts, Top, Top
+@chapter Introduction
+@cindex test driver
+A @dfn{test driver} is a program which tests a piece of software.
+
+@cindex test case
+If you want to test something, for example an Ada package, you normally
+need to design a huge number of separate, elementary tests, which must
+be performed one after the other.  Each elementary test typically
+consists of a subprogram call to some routine of the package, passing
+certain input data to it, plus a subsequent analysis of the results of
+that call.  We call such an elementary test a @dfn{test case}.
+
+It follows that, normally, test drivers are very simple but large
+programs.  Mostly, they consist of endless repetitions of a single
+common pattern: that of a test case.  Thus, it would be nice to have a
+tool that generates such driver programs automatically.
+
+@cindex test script
+@code{tg} does just that.  You feed it with a description of a test,
+given in some special, convenient format in which you only need to
+specify the essentials of each test case.  @code{tg} takes this
+description -- we call it the @dfn{test script} -- and translates it
+into the source code of a corresponding test driver, which you can then
+compile, link, and execute.
+
+@cindex Native language of tg
+@cindex Programming language of tg
+@cindex Ada
+@code{tg}'s native language is Ada, but you might also use it to
+test software written in other programming languages.  (This would
+require `interfacing' that software to Ada, since the test driver is
+always an Ada program.)  @code{tg} itself is also written in Ada.
+
+(Throughout this document, @dfn{Ada} refers to ``Ada 95'', not to the
+now-obsolete version of the language called ``Ada 83''.  You cannot use
+@code{tg} in an Ada 83 environment.  Though you might contact me, the
+author, for an old version of @code{tg} written in Ada 83 -- I still
+have it on disc.)
+
+@menu
+* A Small Example::             An example of a test case, given both as
+                                  Ada code and in @code{tg} notation.
+* Testing Terminology::         Important words needed to understand 
+                                  the rest of this manual. 
+@end menu
+
+@node    A Small Example, Testing Terminology, Introduction, Introduction
+@section A Small Example
+Suppose you want to test an Ada function which counts the number of
+@samp{&} characters within a given string.
+
+@example
+function Count_Ampersand (Str : in String) return Natural;
+@end example
+
+One of your test cases might be to call it with parameter
+``abc&&&abc'' and verify that the result is three.  
+The code for this could look as follows.
+
+@example
+@group
+Put ("Testing three ampersands in the middle... ");
+begin
+  Count := Count_Ampersand ("abc&&&abc");
+  if Count = 3 then
+    Put_Line ("pass.");
+  else
+    Put_Line ("fail.");
+  end if;
+exception
+  when others =>
+    Put_Line ("fail.");
+end;
+@end group
+@end example
+
+That is a lot of code for a single test case.  In @code{tg} notation, to
+specify this test case, you would just write:
+
+@example
+@group
+***** Testing three ampersands in the middle...
+test Count := Count_Ampersand ("abc&&&abc");
+pass Count = 3
+@end group
+@end example
+
+The @code{tg} command translates this into code similar to that shown
+above and puts it into a complete driver program.
+
+@node  Testing Terminology,  , A Small Example, Introduction
+@section Testing Terminology
+
+@cindex test
+@cindex test case
+@cindex test script
+@cindex test item
+As it was explained above, @code{tg} views a @dfn{test} as a sequence of
+@dfn{test cases}.  The test is described, or specified, in a @dfn{test
+script file}.  You write this script in a special macro-type language
+which is described in the main part of this manual.  The piece of
+software which you test is called the @dfn{test item}.  It may be a
+single subprogram, or a package, or a complete software system.
+
+@cindex perform a test
+@cindex perform a test case
+@cindex execute a test driver
+@cindex execute a test case
+We say that a test is @dfn{performed} by @dfn{executing} the test driver
+program.  Likewise, the individual test cases are @dfn{performed} when
+the code into which their description was translated is @dfn{executed}.
+
+@cindex test call
+The crucial point of a test case is a subprogram call to the test item.
+We call this the @dfn{test call}.  The driver might do some preparatory
+work @emph{before} the test call, and @emph{after} the call has
+returned, the driver analyzes its results.
+
+@cindex results
+@cindex test results
+That means, there are three types of results: the result of the test
+call, of the test case, and of the complete test as a whole.
+
+@itemize @bullet
+@cindex result of a test call
+@item
+The result of the @emph{test call} is what it returns to the test
+driver.  This can be the return value of a function, or the values of any
+@code{out} parameters.  But it also includes everything that can be
+determined as an effect of the test call, like the state of a global
+flag, or output data written to some file, etc.
+
+@cindex path
+The result of the test call further includes the program @dfn{path} taken
+after it, because after an Ada subprogram call execution may either
+continue normally or it may be aborted by the raising of an exception.
+
+@item
+@cindex result of a test case
+@cindex pass (result of a test case)
+@cindex fail (result of a test case)
+The driver finds the result of the @emph{test case} by comparing the result
+of the test call to the expected result.  If they are equal, the test
+item is said to have @dfn{passed} the test case, otherwise it
+@dfn{failed} it.  We also say the result of the test case is either
+@dfn{pass} or @dfn{fail}.
+
+@cindex error (result of a test case)
+There is a third possibility, which occurs when something unexpected
+happens in a test case outside the test call.  For example, you might want
+to test a function that returns the length of a list, and you first have
+to build an example list to pass to that function.  If during building
+that list something goes wrong, the result of the test case is not `fail',
+but @dfn{error}. 
+
+The result `error' is more precisely defined as an exception propagating
+out of any part of a test case, apart from the test call.
+
+@cindex result of a test
+@item
+Finally, there is a @dfn{total test result} which is defined as
+@dfn{pass} if the test item passed all the test cases, and @dfn{fail} if
+it didn't.  The total test result is @dfn{undefined} if the result of any
+test case was `error'.
+
+@end itemize
+
+@node Test Scripts, The tg Command, Introduction, Top
+@chapter Test Scripts
+@cindex test script
+The term @dfn{test script} is commonly used for a document that
+describes how to perform a test of something.  In the context of
+@code{tg} the word has a more specific meaning: it means a complete,
+machine-processable description of a test driver program which performs
+the test.  In such a script only the essentials of the driver have to be
+specified.  The @code{tg} command is nothing but a compiler for test
+scripts; it translates them into correct Ada source code.
+
+Writing test scripts instead of coding the driver by hand not only saves
+a lot of work (the generated program is typically ten times larger than
+the script), but also helps to construct tests in a uniform,
+standardized way.
+
+@cindex global section (test script)
+@cindex test case section (test script)
+There are two main sections in a test script: the @dfn{global section}
+and the @dfn{test case section}.  As you can tell from the words,
+parameters for the whole test driver are set in the global section,
+while the individual test cases form the test case section.
+
+@menu
+* Test Script Basics::          The basic concepts.
+* The Global Section::          Common definitions for the whole driver.
+* The Test Case Section::       Specification of the individual test cases.
+@end menu
+
+@node Test Script Basics, The Global Section, Test Scripts, Test Scripts
+@section Test Script Basics
+Test Scripts should have filenames ending with @file{.ts}.
+
+@cindex keywords
+@cindex format of test scripts
+A test script mainly contains chunks of Ada code, marked by keywords
+which tell @code{tg} at what place in the driver it should put that
+code.  The basic idea of the format is to have the keywords begin in
+column 1, followed by the corresponding chunk of code, which can stretch
+over an arbitrary number of lines, all but the first of which must be
+indented.  The first line which begins with a non-blank character marks
+the end of the chunk.  (Empty lines, or lines containing only whitespace,
+do not end a chunk.)  Example:
+
+@example
+@group
+prepare Result := 0;
+        Done   := False;
+
+        if not Initialized then
+          Initialize;
+        end if;
+test ...
+@end group
+@end example
+
+The chunk of code which should become the `prepare part' of a test case
+begins with @samp{Result :=...} and ends with @samp{end if;} in the
+sixth line, then comes the next section, the `test part'.  (More on the
+meaning of these `parts' later.)
+
+@cindex case-sensitivity
+@cindex comments in test scripts
+@code{tg} is not case-sensitive, just like the Ada language itself.  You
+may write the @code{tg} keywords in upper, lower, or mixed case, just as
+your taste and coding conventions suggest.  Comments take the usual Ada
+form (@code{-- ...}).  Note that comments which apply to the
+@emph{script} should begin in column 1, otherwise @code{tg} might consider
+them part of a code chunk and copy them into the driver program
+(which could be confusing if someone ever examines the driver code).
+
+
+@node The Global Section, The Test Case Section, Test Script Basics, Test Scripts
+@section The Global Section
+@cindex global section
+The possible subparts of the global section are @code{fail_handling},
+@code{error_handling}, @code{context}, @code{exceptions}, and
+@code{define}.  They are explained subsequently, in that order. (Note
+that also in the script file the order of these parts may not be
+different.  This might change in future versions of @code{tg}.)  Apart
+from the @code{context} subpart, all of these are optional.
+
+Remember also that all the keywords which start a subpart must begin in
+column 1.
+
+@itemize @bullet
+
+@findex fail_handling
+@item
+@code{fail_handling} ( @code{stop} | @code{continue} ) 
+
+Specify what the driver should do if a test case fails.  The alternatives
+are to stop execution after the first failing test case, or to continue
+execution regardless of the test case results.  Default is
+@code{continue}.
+
+@findex error_handling
+@item
+@code{error_handling} ( @code{stop} | @code{continue} ) 
+
+Similar to @code{fail_handling} above.  Specify what to do if a test case
+results in an error.  Default is @code{stop}.
+
+@findex context
+@cindex context clause
+@item 
+@code{context} @var{clauses}
+
+@var{clauses} is an arbitrary number of with-/use-clauses which will be
+used as context clauses for the driver.  @var{clauses} may span several
+lines.  If it does, all but the first line must be indented.
+
+There @emph{must} be a context clause here which makes visible
+subprograms @code{Put_Line} and @code{New_Line}, since the test driver
+performs its output through these.  They will generally be those defined
+in @code{Ada.Text_IO}, thus you should normally write 
+
+@example
+context with Ada.Text_IO; use Ada.Text_IO;
+@end example
+
+in the @code{context} subpart.  But you may also provide alternate versions
+for @code{Put_Line} and @code{New_Line}. 
+
+@findex exceptions
+@cindex exception handlers
+@item
+@code{exceptions} @var{list}
+
+@var{list} must be a comma-separated, semicolon-terminated list of Ada
+exception identifiers.  These exceptions will be `monitored' by the
+driver, which means that a specific handler for each of these will be
+generated in each place where exceptions are checked for.
+
+This feature was necessary in the old, Ada 83 version of @code{tg} to find the
+names of exceptions that were raised.  It is no longer needed in the
+current, Ada 95 version.  @code{tg} creates @code{others}-handlers
+wherever they are necessary, and uses the predefined package
+@code{Ada.Exceptions} to get the exception names.
+
+@findex define (global)
+@cindex global declarations
+@cindex declarations (global)
+@cindex declarative part (global)
+@item
+@code{define} @var{lines}
+
+Subpart for global definitions.  @var{lines} will be placed into the
+declarative part of the generated driver.  You will typically define
+objects and subprograms here which are needed by the test cases.  Each
+of the test cases can also have its own @code{define} part for data or
+subprograms needed only by that individual test case.  Example:
+
+@example
+@group
+define Exit_Status : Integer;  -- used by all the test cases
+
+       function Result_Is_Correct (R : Result_Type) : Boolean is
+       begin
+         ...
+       end Result_Is_Correct;
+@end group
+@end example
+
+@end itemize
+
+@node The Test Case Section,  , The Global Section, Test Scripts
+@section The Test Case Section
+@cindex test case section
+The test case section of the script begins after the last part of
+the global section.  It may contain an arbitrary number of @dfn{test
+case descriptions} and @dfn{code parts}.
+
+@menu
+* Test Case Descriptions::      
+* Code Parts::                  
+@end menu
+
+
+@node Test Case Descriptions, Code Parts, The Test Case Section, The Test Case Section
+@subsection Test Case Descriptions
+
+@cindex test case description
+A test case description represents a single test case.  A @code{tg} test
+case is characterized as follows:
+
+@enumerate a
+@item
+@cindex define part (test case)
+It forms an Ada block of its own, thus it is possible to declare any
+data objects or subprograms needed for that particular test case.  You
+can do this in the @dfn{define part} (which resembles the define part of
+the global section).
+
+@item
+@cindex prepare part
+Before the actual test call, you might want to make some preparations.
+You can specify a @dfn{prepare part}, which is a chunk of code that the
+driver executes before the test call.
+
+@item
+@cindex test part
+@cindex test call
+The actual @dfn{test part} consists of a single Ada statement, typically
+a subprogram call to the software item under test.  Hence, another word
+for the test part is @dfn{test call}.
+
+@item
+@cindex result part
+After the test call has been executed, the driver checks whether it
+produced the expected result.  There are two elements of that result: 
+
+@enumerate 1
+@item
+@cindex path
+@cindex exception (raised by the test call)
+The program path that was taken after the test call.  Execution
+might have continued normally, or the test call might have raised
+an exception.  The test driver automatically determines the taken path
+and stores it in the form of a string for future use.  You don't need to
+create any exception handlers yourself.
+
+@item
+@cindex predicate (result part)
+The second element of the result is the value of an arbitrary predicate.
+You may specify any boolean Ada expression which the driver checks after
+the test call.  It may be a simple check for the value of a variable, or
+a call to a complex function of type Boolean.
+@end enumerate
+
+@item
+@cindex test case result
+@cindex output format
+@cindex result of a test case
+The driver reports the result of the test case (pass/fail) to the
+standard output stream.  You may specify the verboseness of that report.
+It is, for example, possible to suppress the report of passing test
+cases completely, while getting a full description of what happened in
+the event of a failing test case.  You set the verboseness through
+command line options at translation time (@pxref{The tg Command}).
+
+@item
+@cindex cleanup part
+Finally, you might have to clean up things.  You might, for example,
+want to delete any files created during the test, etc.  You can do this
+in the optional @dfn{cleanup part} of each test case.
+@end enumerate
+
+@cindex syntax (of a test case description)
+The pattern explained above is precisely reflected in the format of test
+case descriptions.  It looks like this:
+
+@findex define (test case)
+@findex prepare
+@findex test
+@findex cleanup
+@example
+@group
+*****    @var{test-case-title}
+define   @var{definitions}
+prepare  @var{preparations}
+test     @var{test-statement}
+pass     [ @var{path} ] [ ,  @var{predicate} ]
+cleanup  @var{cleanup-code}
+@end group
+@end example
+
+The meaning of the subparts @code{define}, @code{prepare}, and
+@code{cleanup} is clear from what has been said so far.  All of them are
+optional.  The title line, the @code{test} part and the
+@code{pass}-clauses, which are mandatory for every test case, are
+explained below.
+
+For complete example test cases, @xref{A Complete Example}.
+
+@menu
+* Test Case Titles::            
+* The Test Call::               
+* Pass Clauses::                
+@end menu
+
+@node Test Case Titles, The Test Call, Test Case Descriptions, Test Case Descriptions
+@subsubsection Test Case Titles
+@cindex title (of a test case)
+@cindex test case title
+@findex *****
+The start of a test case description is marked by the ``keyword''
+@code{*****}, which also serves as an optical marker in the script file.
+The rest of the line is the test case title.  It should explain briefly
+what is tested in that test case, allowing to decide quickly where the
+error lies, should this test case fail.  Example:
+
+@example
+***** function List_Length: List of length zero
+@end example
+
+@cindex number (of a test case)
+@cindex test case number
+@code{tg} numbers the test cases from 1 to n.  It is recommended that
+you insert the number of the test case into the title as well, because
+this makes it easier to find a particular test case later.  A
+parenthesized number at the beginning of the title is recognized by
+@code{tg} as the test case number.  Example:
+
+@example
+***** (17) function List_Length: List of length zero
+@end example
+
+@cindex test script mode (Emacs)
+@cindex ts-mode
+It is, of course, easy for these numbers to become inconsistent during
+the writing of a script file.  Therefore, there is a special @dfn{Test
+Script Mode} for Emacs, which provides a command to insert and correct
+the numbers automatically.  If everything is installed correctly, and if
+you use the suffix @code{.ts} for your script files, you only need to
+type C-c C-n in Emacs to get the correct numbers.
+
+Should the test case numbers in the script be inconsistent, @code{tg}
+warns about it at translation time.
+
+@node The Test Call, Pass Clauses, Test Case Titles, Test Case Descriptions
+@subsubsection The Test Call
+@cindex test call
+@cindex test part
+@code{tg} allows an arbitrary chunk of Ada code in the @code{test} part.
+But in general it should only contain a single statement, because this
+makes it much easier to find out what happened during the test
+(especially if the test call raises an exception).
+
+The results of the test call should be stored in variables local to that
+test case, such that they can later be checked in the @code{pass}-clause(s).
+
+Example:
+
+@example
+test  Result := Test_Item (Some_Parameter);
+@end example
+
+@node Pass Clauses,  , The Test Call, Test Case Descriptions
+@subsubsection Pass Clauses
+@cindex pass clause
+@findex pass
+There may be an arbitrary number of pass clauses after the test part.
+The result of the test case is ``pass'' if any one of these clauses is
+met.  A pass-clause may have any of the following three forms:
+
+@example
+@group
+pass  @var{path}
+pass  @var{predicate}
+pass  @var{path}, @var{predicate}
+@end group
+@end example
+
+@cindex path (taken in a test case)
+@cindex => (normal path in a test case)
+@cindex exception (raised by the test call)
+@var{path} indicates which path the program should take after the test
+call.  Its value may be either `=>', which stands for the normal path
+(no exception was raised), or @code{exception @var{exception-name}}, to
+indicate that the test call should raise the named exception.
+@var{exception-name} must be an exception identifier which is visible in
+the test case description.  You may use expanded (dot) notation here.  If
+there is no @var{path} indication, it defaults to `=>'.
+
+@cindex predicate (in a pass clause)
+@var{predicate} must be an Ada expression yielding a boolean value.  It
+may span several lines (continuation lines indented, as always), and
+@code{tg} uses it as the condition of an @code{if} statement.  If
+no predicate is given, it defaults (effectively) to @code{True}.
+
+A pass clause is said to be met if both the actual program path is
+correct and the predicate yields @code{True}.
+
+Examples:
+
+@example
+@group
+pass Number_Of_Elements = 5
+
+pass exception Constraint_Error
+
+pass exception IO_Exceptions.Name_Error, Analyze_Result
+
+pass Status = True
+     and then Is_Empty (List)
+
+pass =>, Max = 10.23  -- `=>' is not required here
+
+pass =>               -- the simplest pass-clause
+@end group
+@end example
+
+@node Code Parts,  , Test Case Descriptions, The Test Case Section
+@subsection Code Parts
+@cindex code part
+@findex code
+You may insert code parts between the test cases to do additional work.
+For example, you might want to initialize a package before doing the
+actual testing.  The syntax is fairly simple:
+
+@example
+code @var{lines}
+@end example
+
+@cindex exception (raised in a code part)
+@findex error_handling
+@code{tg} wraps Ada blocks around code parts and adds an exception
+handler at the end of each.  Should an exception propagate out of a code
+part, the driver reports it as an ``error''.  The global parameter
+@code{error_handling} (also @pxref{The Global Section}) determines
+whether execution of the driver continues after this event or not.
+
+Example:
+
+@example
+@group
+code Init;
+     Put_Line ("Package initialized.");
+
+     if Tasking_Status /= Running then
+       Put_Line ("Tasking is off.");
+     end if;
+
+     Put_Line ("Now continuing/starting with the test cases.");
+@end group
+@end example
+
+@node The tg Command, Drivers, Test Scripts, Top
+@chapter The tg Command
+@cindex tg (command line syntax)
+@cindex syntax (of the tg command line)
+The syntax for the @code{tg} command is
+
+@example
+tg [options] script_file [driver_file]
+@end example
+
+In its simplest form, @code{tg} only takes one argument, the name of the
+script file.  It reads and translates this script, writing the output
+to a file with the same name, but the suffix of the script (@file{.ts})
+changed to @file{.adb}.  Example:
+
+@example
+tg demo.ts
+@end example
+
+yields @file{demo.adb}.
+
+You may provide an explicit output file name as the last argument:
+
+@example
+tg demo.ts driver.adb
+@end example
+
+The options set the verboseness of the driver output.
+
+@table @code 
+@item -p @var{setting}
+Determines how the driver reports @emph{passing} test cases.
+@* @var{setting} may be one of
+
+@table @code
+@item off
+No output.
+@item numbers
+Only test case numbers, followed by the string ``pass.''.  @* This is the
+default.
+@item titles
+Numbers and titles, followed by ``...pass.'' on the next line.
+@item full
+Numbers and titles, ``...pass.'' on the next line, @* and a short
+explanation on the line below that.
+@end table
+
+@item -f @var{setting}
+Same as @code{-p}, but for @emph{failing} test cases.  @* Default is
+@code{full}.
+@end table
+
+Examples:
+
+@example
+tg -p full -f full demo.ts
+
+tg -p off demo.ts
+@end example
+
+@node Drivers, A Complete Example, The tg Command, Top
+@chapter Drivers
+The output of @code{tg} is the Ada source code of a single main program,
+the test driver.  You compile it, link it to the test item, and
+execute the resulting program in order to perform the test.
+
+You can have a look at the source code of the driver if you wish, to see
+how @code{tg} assembled your various code pieces, but there is no need
+for you to deal with this source code by any means.  It is not intended
+to be human-readable.  If you need to change something, you should
+modify the test script from which @code{tg} generated the driver.
+
+There are, however, a few internal functions and workings, of which you
+might want to make use in your test scripts.  These are described below.
+
+@menu
+* Structure::              The overall structure of test drivers.
+* Status Information::     Letting your code find out how a test went.
+* Example::                What the code for a test case really looks like.
+@end menu
+
+@node Structure, Status Information, Drivers, Drivers
+@section Structure
+A test driver generated by @code{tg} has the following structure:
+
+@example
+@group
+  -- header comment
+
+  with ...;  use  ...;  -- from the context clause
+
+  procedure <name_of_script> is
+
+      package Driver_Internals is
+          -- ...
+      end Driver_Internals;
+
+      -- ...
+      -- global define part here
+      -- ...
+
+      package body Driver_Internals is
+          -- ...
+      end Driver_Internals;
+
+  begin
+
+      -- ...
+      -- code of the test cases here
+      -- ...
+
+  exception
+     
+      -- default exception handlers
+
+  end <name_of_script>;
+@end group
+@end example
+
+The nested package @code{Driver_Internals} contains various status
+variables and routines to access them.  They are listed and explained in
+the next section.
+
+@node Status Information, Example, Structure, Drivers
+@section Status Information
+The package @code{Driver_Internals}, which is contained in the
+declarative region of the test driver program, exports the following
+declarations:
+
+@itemize
+@item
+@code{function Passed return Boolean;} @*
+@code{function Failed return Boolean;}
+
+These functions indicate the result of the current test case.  You may
+use them in the @code{cleanup} part, or in a subsequent code section, to
+take different action depending on the result.
+
+@item
+@code{function Taken_Path return String;}
+
+The path that the program took after the last test call.  The value is
+either ``=>'', if no exception was raised, or the name of the exception.
+
+@item
+@code{function Path_Was (Path : in String) return Boolean;}
+
+Function for comparing the @code{Taken_Path} (see above) with a given
+value.
+
+@item
+@code{Program_Terminate : exception;}
+
+This exception is being propagated by all handlers, and caught at the
+top level to perform a graceful exit.  You may raise it yourself if you
+wish.
+
+@end itemize
+
+The other functions declared in package @code{Driver_Internals} are
+intended for use by the generated code only.
+
+@node Example,  , Status Information, Drivers
+@section Example
+@code{tg} translates the test case description
+
+@group
+@example
+***** X = 3
+define Result : Positive;
+test   Result := Subject(3);
+pass   exception Another_Error
+@end example
+@end group
+
+@noindent
+into the following code (slightly reformatted make it more readable):
+
+@group
+@example
+  -- Test Case (3)   X = 3
+  declare
+    Result : Positive;
+  begin  -- test case
+    begin  -- test part
+      Result := Subject(3);
+      Driver_Internals.Set_Path ("=>");
+    exception
+      when Another_Error =>
+        Driver_Internals.Set_Path ("Another_Error");
+      when E: others =>
+        Driver_Internals.Set_Path (Ada.Exceptions.Exception_Name (E));
+    end;  -- test part
+    begin  -- result part
+      if Driver_Internals.Path_Was ("Another_Error") then
+        Driver_Internals.Test_Case_Passed := True;
+        Put_Line ("(3) pass.");
+      else
+        Driver_Internals.Test_Case_Passed := False;
+        Driver_Internals.Fail_Result := True;
+        Put_Line ("(3)  X = 3");
+        Put_Line ("      ...FAIL.");
+        Put_Line ("         (" & "path `" & Driver_Internals.Taken_Path & "' when `Another_Error' was expected" & ")");
+      end if;
+    exception
+      when Driver_Internals.Program_Terminate =>
+        raise;
+      when E: others =>
+        Driver_Internals.Unexpected_Error := True;
+        Put_Line ("ERROR: exception " & Ada.Exceptions.Exception_Name (E) & " raised in result part of test case 3.");
+    end;  -- result part
+  end;  -- test case
+@end example
+@end group
+
+@node A Complete Example, Concept Index, Drivers, Top
+@chapter A Complete Example
+We want to test a single Ada function @code{Subject}, contained in the
+package @code{Under_Test}.
+
+@example
+@group
+package Under_Test is
+
+  Strange_Error, 
+  Another_Error, 
+  Illegal_Parameter : exception;
+
+  function Subject (X : in Positive) return Positive;
+
+end Under_Test;
+@end group
+@end example
+
+@code{Subject} is required to return one if @code{X} is one, and raise
+exceptions @code{Strange_Error}, @code{Another_Error}, or
+@code{Illegal_Parameter} if @code{X} is two, three, or greater than
+three, respectively.
+
+The following script describes an appropriate test:
+
+@example
+-- FILE: example.ts
+
+context with Text_IO;    use Text_IO;
+        with Under_Test; use Under_Test;
+
+exceptions Strange_Error, Another_Error, Illegal_Parameter;
+
+***** X = 1
+define Result : Positive;
+test   Result := Subject(1);
+pass   Result = 1
+
+***** X = 2
+define Result : Positive;
+test   Result := Subject(2);
+pass   exception Strange_Error
+
+***** X = 3
+define Result : Positive;
+test   Result := Subject(3);
+pass   exception Another_Error
+
+***** X = 4
+define Result : Positive;
+test   Result := Subject(4);
+pass   exception Illegal_Parameter
+
+***** X = Positive'Last
+define Result : Positive;
+test   Result := Subject(Positive'Last);
+pass   exception Illegal_Parameter
+@end example
+
+You can translate @code{example.ts} by issuing the command
+
+@example
+tg example.ts
+@end example
+
+This produces @code{example.adb}, the source code of the driver.  You
+have to compile it and link it with package @code{Under_Test}.
+Executing the resulting program then produces the following output
+
+@example
+@group
+(1) pass.
+(2) pass.
+(3) pass.
+(4) pass.
+(5) pass.
+
+Total test result: pass.
+@end group
+@end example
+
+Now suppose that in test case (3), @code{Subject} raised exception
+@code{Illegal_Parameter} by mistake.  Then the output would be
+
+@example
+@group
+(1) pass.
+(2) pass.
+(3) X = 3
+     ...FAIL.
+        (path `Illegal_Parameter' when `Another_Error' was expected)
+(4) pass.
+(5) pass.
+
+Total test result: FAIL.
+@end group
+@end example
+
+@node Concept Index, Keyword Index, A Complete Example, Top
+@unnumbered Concept Index
+
+@printindex cp
+
+@node Keyword Index,  , Concept Index, Top
+@unnumbered Keyword Index
+
+@printindex fn
+
+@contents
+@bye

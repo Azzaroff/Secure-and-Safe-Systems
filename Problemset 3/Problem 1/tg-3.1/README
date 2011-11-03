@@ -1,0 +1,94 @@
+  
+  tg -- a simple test driver generator for Ada programs
+
+This is the source distribution of tg version 3.1.
+
+tg is a program that helps testing software.  If you want to test a
+piece of software, that normally means you have to execute it over and
+over again, passing various sets of input data to it, and verifying
+that it gives the correct results for each input.  You normally write
+a program that does all this automatically.  Such a program is called
+a "test driver".
+
+tg can generate such test driver programs, given a very succinct
+description of the individual test cases.  tg translates this
+description into a complete Ada program.  If you compile this
+test driver, link it with the software you want to test, and execute
+it, it performs all the test cases and tells you whether the software
+under test behaved as expected or not.
+
+tg is designed for the Ada programming language, but you can also use
+it for software written in other languages.  You might even test
+binary programs with it, of which you don't have the source code at
+all.
+
+To find out how tg works, read the documentation, which is provided as
+an Emacs info file (doc/tg.info).  You might also print out doc/tg.ps,
+which is a postscript version of this document.
+
+
+1. How to build tg
+
+Very simple.  All you need is GNAT, the GNU Ada Compiler, version 3.01
+or higher.  GNAT is a full Ada 95 compiler, integrated into the GNU
+compilation system.  It can be found under the address
+ftp://cs.nyu.edu/pub/gnat.
+
+If you have GNAT installed, simply `cd' to the top level directory of
+this distribution and type 
+
+       gnatmake tg
+
+That's it.  Given the strict definition of the Ada programming
+language, tg should work on every conceivable operating system that
+has files and something like a command line interface.  If you find an
+OS on which tg does NOT compile out-of-the-box, make sure to tell me
+about it.
+
+`tg' does not use any GNAT-specific features, so it should be easy to
+build with other Ada 95 compilers, too.
+
+
+2. How to install tg
+
+Very simple.  Put the binary (tg) somewhere in your path
+(/usr/local/bin under UNIX, for instance).  Put the tg.info file into
+your GNU documentation hierarchy.  You may also print tg.ps on paper.
+
+
+3. How to get started
+
+Have a look into the "examples" directory which contains a further
+README file.
+
+
+4. A note on the code
+
+I've been using tg for quite some time, and find it a valuable, robust
+tool.  It is by no means a perfect product, though.  The code does the
+job, but I started writing it several years ago, when my own Ada style
+was only emerging.  I think I could write a much better program today.
+
+Comments, suggestions, bug reports, and enhancements are appreciated.
+
+
+5. Copyright and Author
+
+tg was written and is copyrighted (C) 1996, 1997 by Andre Spiegel,
+<spiegel@inf.fu-berlin.de>.  The program is under the GNU General 
+Public License, which appears in the file COPYING. In short:
+
+    tg is free software, you can redistribute and/or modify it under
+    the terms of the GNU General Public License as published by the
+    Free Software Foundation; either version 2 of the License, or (at
+    your option) any later version.
+
+    tg is distributed in the hope that it will be useful, but WITHOUT
+    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public
+    License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place - Suite 330,  Boston, 
+    MA 02111-1307, USA.

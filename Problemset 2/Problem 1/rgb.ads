@@ -13,6 +13,7 @@ package RGB is
 function "+"(Left : Color; Right : Color)  return Color;	
 function "-"(Left : Color; Right : Color)  return Color;
 function "*"(Left : Color; Right : Color)  return Color; -- dot product
+function "="(Left : Color; Right : Color)  return Boolean;
 
 
 --print the Intensity of each color as hex values.

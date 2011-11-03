@@ -1,0 +1,939 @@
+This is Info file tg.info, produced by Makeinfo-1.55 from the input
+file tg.texi.
+
+
+File: tg.info,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
+
+   `tg' stands for "test driver generator".  `tg' helps you to test
+software components, by generating programs that automatically perform
+such tests.
+
+   This document applies to `tg' version 3.1.
+
+* Menu:
+
+* Introduction::                The process of software testing
+                                  and `tg''s place in it.
+* Test Scripts::                The format of `tg''s input files.
+* The tg Command::              How to invoke `tg' to translate
+                                  a script into a driver.
+* Drivers::                     What the generated programs look like.
+* A Complete Example::          A script for a simple example test.
+
+* Concept Index::
+* Keyword Index::
+
+
+File: tg.info,  Node: Introduction,  Next: Test Scripts,  Prev: Top,  Up: Top
+
+Introduction
+************
+
+   A "test driver" is a program which tests a piece of software.
+
+   If you want to test something, for example an Ada package, you
+normally need to design a huge number of separate, elementary tests,
+which must be performed one after the other.  Each elementary test
+typically consists of a subprogram call to some routine of the package,
+passing certain input data to it, plus a subsequent analysis of the
+results of that call.  We call such an elementary test a "test case".
+
+   It follows that, normally, test drivers are very simple but large
+programs.  Mostly, they consist of endless repetitions of a single
+common pattern: that of a test case.  Thus, it would be nice to have a
+tool that generates such driver programs automatically.
+
+   `tg' does just that.  You feed it with a description of a test,
+given in some special, convenient format in which you only need to
+specify the essentials of each test case.  `tg' takes this description
+- we call it the "test script" - and translates it into the source code
+of a corresponding test driver, which you can then compile, link, and
+execute.
+
+   `tg''s native language is Ada, but you might also use it to test
+software written in other programming languages.  (This would require
+`interfacing' that software to Ada, since the test driver is always an
+Ada program.)  `tg' itself is also written in Ada.
+
+   (Throughout this document, "Ada" refers to "Ada 95", not to the
+now-obsolete version of the language called "Ada 83".  You cannot use
+`tg' in an Ada 83 environment.  Though you might contact me, the
+author, for an old version of `tg' written in Ada 83 - I still have it
+on disc.)
+
+* Menu:
+
+* A Small Example::             An example of a test case, given both as
+                                  Ada code and in `tg' notation.
+* Testing Terminology::         Important words needed to understand
+                                  the rest of this manual.
+
+
+File: tg.info,  Node: A Small Example,  Next: Testing Terminology,  Prev: Introduction,  Up: Introduction
+
+A Small Example
+===============
+
+   Suppose you want to test an Ada function which counts the number of
+`&' characters within a given string.
+
+     function Count_Ampersand (Str : in String) return Natural;
+
+   One of your test cases might be to call it with parameter
+"abc&&&abc" and verify that the result is three.  The code for this
+could look as follows.
+
+     Put ("Testing three ampersands in the middle... ");
+     begin
+       Count := Count_Ampersand ("abc&&&abc");
+       if Count = 3 then
+         Put_Line ("pass.");
+       else
+         Put_Line ("fail.");
+       end if;
+     exception
+       when others =>
+         Put_Line ("fail.");
+     end;
+
+   That is a lot of code for a single test case.  In `tg' notation, to
+specify this test case, you would just write:
+
+     ***** Testing three ampersands in the middle...
+     test Count := Count_Ampersand ("abc&&&abc");
+     pass Count = 3
+
+   The `tg' command translates this into code similar to that shown
+above and puts it into a complete driver program.
+
+
+File: tg.info,  Node: Testing Terminology,  Prev: A Small Example,  Up: Introduction
+
+Testing Terminology
+===================
+
+   As it was explained above, `tg' views a "test" as a sequence of
+"test cases".  The test is described, or specified, in a "test script
+file".  You write this script in a special macro-type language which is
+described in the main part of this manual.  The piece of software which
+you test is called the "test item".  It may be a single subprogram, or
+a package, or a complete software system.
+
+   We say that a test is "performed" by "executing" the test driver
+program.  Likewise, the individual test cases are "performed" when the
+code into which their description was translated is "executed".
+
+   The crucial point of a test case is a subprogram call to the test
+item.  We call this the "test call".  The driver might do some
+preparatory work *before* the test call, and *after* the call has
+returned, the driver analyzes its results.
+
+   That means, there are three types of results: the result of the test
+call, of the test case, and of the complete test as a whole.
+
+   * The result of the *test call* is what it returns to the test
+     driver.  This can be the return value of a function, or the values
+     of any `out' parameters.  But it also includes everything that can
+     be determined as an effect of the test call, like the state of a
+     global flag, or output data written to some file, etc.
+
+     The result of the test call further includes the program "path"
+     taken after it, because after an Ada subprogram call execution may
+     either continue normally or it may be aborted by the raising of an
+     exception.
+
+   * The driver finds the result of the *test case* by comparing the
+     result of the test call to the expected result.  If they are
+     equal, the test item is said to have "passed" the test case,
+     otherwise it "failed" it.  We also say the result of the test case
+     is either "pass" or "fail".
+
+     There is a third possibility, which occurs when something
+     unexpected happens in a test case outside the test call.  For
+     example, you might want to test a function that returns the length
+     of a list, and you first have to build an example list to pass to
+     that function.  If during building that list something goes wrong,
+     the result of the test case is not `fail', but "error".
+
+     The result `error' is more precisely defined as an exception
+     propagating out of any part of a test case, apart from the test
+     call.
+
+   * Finally, there is a "total test result" which is defined as "pass"
+     if the test item passed all the test cases, and "fail" if it
+     didn't.  The total test result is "undefined" if the result of any
+     test case was `error'.
+
+
+File: tg.info,  Node: Test Scripts,  Next: The tg Command,  Prev: Introduction,  Up: Top
+
+Test Scripts
+************
+
+   The term "test script" is commonly used for a document that
+describes how to perform a test of something.  In the context of `tg'
+the word has a more specific meaning: it means a complete,
+machine-processable description of a test driver program which performs
+the test.  In such a script only the essentials of the driver have to be
+specified.  The `tg' command is nothing but a compiler for test
+scripts; it translates them into correct Ada source code.
+
+   Writing test scripts instead of coding the driver by hand not only
+saves a lot of work (the generated program is typically ten times
+larger than the script), but also helps to construct tests in a uniform,
+standardized way.
+
+   There are two main sections in a test script: the "global section"
+and the "test case section".  As you can tell from the words,
+parameters for the whole test driver are set in the global section,
+while the individual test cases form the test case section.
+
+* Menu:
+
+* Test Script Basics::          The basic concepts.
+* The Global Section::          Common definitions for the whole driver.
+* The Test Case Section::       Specification of the individual test cases.
+
+
+File: tg.info,  Node: Test Script Basics,  Next: The Global Section,  Prev: Test Scripts,  Up: Test Scripts
+
+Test Script Basics
+==================
+
+   Test Scripts should have filenames ending with `.ts'.
+
+   A test script mainly contains chunks of Ada code, marked by keywords
+which tell `tg' at what place in the driver it should put that code.
+The basic idea of the format is to have the keywords begin in column 1,
+followed by the corresponding chunk of code, which can stretch over an
+arbitrary number of lines, all but the first of which must be indented.
+The first line which begins with a non-blank character marks the end
+of the chunk.  (Empty lines, or lines containing only whitespace, do
+not end a chunk.)  Example:
+
+     prepare Result := 0;
+             Done   := False;
+     
+             if not Initialized then
+               Initialize;
+             end if;
+     test ...
+
+   The chunk of code which should become the `prepare part' of a test
+case begins with `Result :=...' and ends with `end if;' in the sixth
+line, then comes the next section, the `test part'.  (More on the
+meaning of these `parts' later.)
+
+   `tg' is not case-sensitive, just like the Ada language itself.  You
+may write the `tg' keywords in upper, lower, or mixed case, just as
+your taste and coding conventions suggest.  Comments take the usual Ada
+form (`-- ...').  Note that comments which apply to the *script* should
+begin in column 1, otherwise `tg' might consider them part of a code
+chunk and copy them into the driver program (which could be confusing
+if someone ever examines the driver code).
+
+
+File: tg.info,  Node: The Global Section,  Next: The Test Case Section,  Prev: Test Script Basics,  Up: Test Scripts
+
+The Global Section
+==================
+
+   The possible subparts of the global section are `fail_handling',
+`error_handling', `context', `exceptions', and `define'.  They are
+explained subsequently, in that order. (Note that also in the script
+file the order of these parts may not be different.  This might change
+in future versions of `tg'.)  Apart from the `context' subpart, all of
+these are optional.
+
+   Remember also that all the keywords which start a subpart must begin
+in column 1.
+
+   * `fail_handling' ( `stop' | `continue' )
+
+     Specify what the driver should do if a test case fails.  The
+     alternatives are to stop execution after the first failing test
+     case, or to continue execution regardless of the test case
+     results.  Default is `continue'.
+
+   * `error_handling' ( `stop' | `continue' )
+
+     Similar to `fail_handling' above.  Specify what to do if a test
+     case results in an error.  Default is `stop'.
+
+   * `context' CLAUSES
+
+     CLAUSES is an arbitrary number of with-/use-clauses which will be
+     used as context clauses for the driver.  CLAUSES may span several
+     lines.  If it does, all but the first line must be indented.
+
+     There *must* be a context clause here which makes visible
+     subprograms `Put_Line' and `New_Line', since the test driver
+     performs its output through these.  They will generally be those
+     defined in `Ada.Text_IO', thus you should normally write
+
+          context with Ada.Text_IO; use Ada.Text_IO;
+
+     in the `context' subpart.  But you may also provide alternate
+     versions for `Put_Line' and `New_Line'.
+
+   * `exceptions' LIST
+
+     LIST must be a comma-separated, semicolon-terminated list of Ada
+     exception identifiers.  These exceptions will be `monitored' by the
+     driver, which means that a specific handler for each of these will
+     be generated in each place where exceptions are checked for.
+
+     This feature was necessary in the old, Ada 83 version of `tg' to
+     find the names of exceptions that were raised.  It is no longer
+     needed in the current, Ada 95 version.  `tg' creates
+     `others'-handlers wherever they are necessary, and uses the
+     predefined package `Ada.Exceptions' to get the exception names.
+
+   * `define' LINES
+
+     Subpart for global definitions.  LINES will be placed into the
+     declarative part of the generated driver.  You will typically
+     define objects and subprograms here which are needed by the test
+     cases.  Each of the test cases can also have its own `define' part
+     for data or subprograms needed only by that individual test case.
+     Example:
+
+          define Exit_Status : Integer;  -- used by all the test cases
+          
+                 function Result_Is_Correct (R : Result_Type) : Boolean is
+                 begin
+                   ...
+                 end Result_Is_Correct;
+
+
+File: tg.info,  Node: The Test Case Section,  Prev: The Global Section,  Up: Test Scripts
+
+The Test Case Section
+=====================
+
+   The test case section of the script begins after the last part of
+the global section.  It may contain an arbitrary number of "test case
+descriptions" and "code parts".
+
+* Menu:
+
+* Test Case Descriptions::
+* Code Parts::
+
+
+File: tg.info,  Node: Test Case Descriptions,  Next: Code Parts,  Prev: The Test Case Section,  Up: The Test Case Section
+
+Test Case Descriptions
+----------------------
+
+   A test case description represents a single test case.  A `tg' test
+case is characterized as follows:
+
+  a. It forms an Ada block of its own, thus it is possible to declare
+     any data objects or subprograms needed for that particular test
+     case.  You can do this in the "define part" (which resembles the
+     define part of the global section).
+
+  b. Before the actual test call, you might want to make some
+     preparations.  You can specify a "prepare part", which is a chunk
+     of code that the driver executes before the test call.
+
+  c. The actual "test part" consists of a single Ada statement,
+     typically a subprogram call to the software item under test.
+     Hence, another word for the test part is "test call".
+
+  d. After the test call has been executed, the driver checks whether it
+     produced the expected result.  There are two elements of that
+     result:
+
+       1. The program path that was taken after the test call.
+          Execution might have continued normally, or the test call
+          might have raised an exception.  The test driver
+          automatically determines the taken path and stores it in the
+          form of a string for future use.  You don't need to create
+          any exception handlers yourself.
+
+       2. The second element of the result is the value of an arbitrary
+          predicate.  You may specify any boolean Ada expression which
+          the driver checks after the test call.  It may be a simple
+          check for the value of a variable, or a call to a complex
+          function of type Boolean.
+
+  e. The driver reports the result of the test case (pass/fail) to the
+     standard output stream.  You may specify the verboseness of that
+     report.  It is, for example, possible to suppress the report of
+     passing test cases completely, while getting a full description of
+     what happened in the event of a failing test case.  You set the
+     verboseness through command line options at translation time
+     (*note The tg Command::.).
+
+  f. Finally, you might have to clean up things.  You might, for
+     example, want to delete any files created during the test, etc.
+     You can do this in the optional "cleanup part" of each test case.
+
+   The pattern explained above is precisely reflected in the format of
+test case descriptions.  It looks like this:
+
+     *****    TEST-CASE-TITLE
+     define   DEFINITIONS
+     prepare  PREPARATIONS
+     test     TEST-STATEMENT
+     pass     [ PATH ] [ ,  PREDICATE ]
+     cleanup  CLEANUP-CODE
+
+   The meaning of the subparts `define', `prepare', and `cleanup' is
+clear from what has been said so far.  All of them are optional.  The
+title line, the `test' part and the `pass'-clauses, which are mandatory
+for every test case, are explained below.
+
+   For complete example test cases, *Note A Complete Example::.
+
+* Menu:
+
+* Test Case Titles::
+* The Test Call::
+* Pass Clauses::
+
+
+File: tg.info,  Node: Test Case Titles,  Next: The Test Call,  Prev: Test Case Descriptions,  Up: Test Case Descriptions
+
+Test Case Titles
+................
+
+   The start of a test case description is marked by the "keyword"
+`*****', which also serves as an optical marker in the script file.
+The rest of the line is the test case title.  It should explain briefly
+what is tested in that test case, allowing to decide quickly where the
+error lies, should this test case fail.  Example:
+
+     ***** function List_Length: List of length zero
+
+   `tg' numbers the test cases from 1 to n.  It is recommended that you
+insert the number of the test case into the title as well, because this
+makes it easier to find a particular test case later.  A parenthesized
+number at the beginning of the title is recognized by `tg' as the test
+case number.  Example:
+
+     ***** (17) function List_Length: List of length zero
+
+   It is, of course, easy for these numbers to become inconsistent
+during the writing of a script file.  Therefore, there is a special
+"Test Script Mode" for Emacs, which provides a command to insert and
+correct the numbers automatically.  If everything is installed
+correctly, and if you use the suffix `.ts' for your script files, you
+only need to type C-c C-n in Emacs to get the correct numbers.
+
+   Should the test case numbers in the script be inconsistent, `tg'
+warns about it at translation time.
+
+
+File: tg.info,  Node: The Test Call,  Next: Pass Clauses,  Prev: Test Case Titles,  Up: Test Case Descriptions
+
+The Test Call
+.............
+
+   `tg' allows an arbitrary chunk of Ada code in the `test' part.  But
+in general it should only contain a single statement, because this
+makes it much easier to find out what happened during the test
+(especially if the test call raises an exception).
+
+   The results of the test call should be stored in variables local to
+that test case, such that they can later be checked in the
+`pass'-clause(s).
+
+   Example:
+
+     test  Result := Test_Item (Some_Parameter);
+
+
+File: tg.info,  Node: Pass Clauses,  Prev: The Test Call,  Up: Test Case Descriptions
+
+Pass Clauses
+............
+
+   There may be an arbitrary number of pass clauses after the test part.
+The result of the test case is "pass" if any one of these clauses is
+met.  A pass-clause may have any of the following three forms:
+
+     pass  PATH
+     pass  PREDICATE
+     pass  PATH, PREDICATE
+
+   PATH indicates which path the program should take after the test
+call.  Its value may be either `=>', which stands for the normal path
+(no exception was raised), or `exception EXCEPTION-NAME', to indicate
+that the test call should raise the named exception.  EXCEPTION-NAME
+must be an exception identifier which is visible in the test case
+description.  You may use expanded (dot) notation here.  If there is no
+PATH indication, it defaults to `=>'.
+
+   PREDICATE must be an Ada expression yielding a boolean value.  It
+may span several lines (continuation lines indented, as always), and
+`tg' uses it as the condition of an `if' statement.  If no predicate is
+given, it defaults (effectively) to `True'.
+
+   A pass clause is said to be met if both the actual program path is
+correct and the predicate yields `True'.
+
+   Examples:
+
+     pass Number_Of_Elements = 5
+     
+     pass exception Constraint_Error
+     
+     pass exception IO_Exceptions.Name_Error, Analyze_Result
+     
+     pass Status = True
+          and then Is_Empty (List)
+     
+     pass =>, Max = 10.23  -- `=>' is not required here
+     
+     pass =>               -- the simplest pass-clause
+
+
+File: tg.info,  Node: Code Parts,  Prev: Test Case Descriptions,  Up: The Test Case Section
+
+Code Parts
+----------
+
+   You may insert code parts between the test cases to do additional
+work.  For example, you might want to initialize a package before doing
+the actual testing.  The syntax is fairly simple:
+
+     code LINES
+
+   `tg' wraps Ada blocks around code parts and adds an exception
+handler at the end of each.  Should an exception propagate out of a code
+part, the driver reports it as an "error".  The global parameter
+`error_handling' (also *note The Global Section::.) determines whether
+execution of the driver continues after this event or not.
+
+   Example:
+
+     code Init;
+          Put_Line ("Package initialized.");
+     
+          if Tasking_Status /= Running then
+            Put_Line ("Tasking is off.");
+          end if;
+     
+          Put_Line ("Now continuing/starting with the test cases.");
+
+
+File: tg.info,  Node: The tg Command,  Next: Drivers,  Prev: Test Scripts,  Up: Top
+
+The tg Command
+**************
+
+   The syntax for the `tg' command is
+
+     tg [options] script_file [driver_file]
+
+   In its simplest form, `tg' only takes one argument, the name of the
+script file.  It reads and translates this script, writing the output
+to a file with the same name, but the suffix of the script (`.ts')
+changed to `.adb'.  Example:
+
+     tg demo.ts
+
+   yields `demo.adb'.
+
+   You may provide an explicit output file name as the last argument:
+
+     tg demo.ts driver.adb
+
+   The options set the verboseness of the driver output.
+
+`-p SETTING'
+     Determines how the driver reports *passing* test cases.
+     SETTING may be one of
+
+    `off'
+          No output.
+
+    `numbers'
+          Only test case numbers, followed by the string "pass.".
+          This is the default.
+
+    `titles'
+          Numbers and titles, followed by "...pass." on the next line.
+
+    `full'
+          Numbers and titles, "...pass." on the next line,
+          and a short explanation on the line below that.
+
+`-f SETTING'
+     Same as `-p', but for *failing* test cases.
+     Default is `full'.
+
+   Examples:
+
+     tg -p full -f full demo.ts
+     
+     tg -p off demo.ts
+
+
+File: tg.info,  Node: Drivers,  Next: A Complete Example,  Prev: The tg Command,  Up: Top
+
+Drivers
+*******
+
+   The output of `tg' is the Ada source code of a single main program,
+the test driver.  You compile it, link it to the test item, and execute
+the resulting program in order to perform the test.
+
+   You can have a look at the source code of the driver if you wish, to
+see how `tg' assembled your various code pieces, but there is no need
+for you to deal with this source code by any means.  It is not intended
+to be human-readable.  If you need to change something, you should
+modify the test script from which `tg' generated the driver.
+
+   There are, however, a few internal functions and workings, of which
+you might want to make use in your test scripts.  These are described
+below.
+
+* Menu:
+
+* Structure::              The overall structure of test drivers.
+* Status Information::     Letting your code find out how a test went.
+* Example::                What the code for a test case really looks like.
+
+
+File: tg.info,  Node: Structure,  Next: Status Information,  Prev: Drivers,  Up: Drivers
+
+Structure
+=========
+
+   A test driver generated by `tg' has the following structure:
+
+       -- header comment
+     
+       with ...;  use  ...;  -- from the context clause
+     
+       procedure <name_of_script> is
+     
+           package Driver_Internals is
+               -- ...
+           end Driver_Internals;
+     
+           -- ...
+           -- global define part here
+           -- ...
+     
+           package body Driver_Internals is
+               -- ...
+           end Driver_Internals;
+     
+       begin
+     
+           -- ...
+           -- code of the test cases here
+           -- ...
+     
+       exception
+     
+           -- default exception handlers
+     
+       end <name_of_script>;
+
+   The nested package `Driver_Internals' contains various status
+variables and routines to access them.  They are listed and explained in
+the next section.
+
+
+File: tg.info,  Node: Status Information,  Next: Example,  Prev: Structure,  Up: Drivers
+
+Status Information
+==================
+
+   The package `Driver_Internals', which is contained in the
+declarative region of the test driver program, exports the following
+declarations:
+
+   * `function Passed return Boolean;'
+     `function Failed return Boolean;'
+
+     These functions indicate the result of the current test case.  You
+     may use them in the `cleanup' part, or in a subsequent code
+     section, to take different action depending on the result.
+
+   * `function Taken_Path return String;'
+
+     The path that the program took after the last test call.  The
+     value is either "=>", if no exception was raised, or the name of
+     the exception.
+
+   * `function Path_Was (Path : in String) return Boolean;'
+
+     Function for comparing the `Taken_Path' (see above) with a given
+     value.
+
+   * `Program_Terminate : exception;'
+
+     This exception is being propagated by all handlers, and caught at
+     the top level to perform a graceful exit.  You may raise it
+     yourself if you wish.
+
+   The other functions declared in package `Driver_Internals' are
+intended for use by the generated code only.
+
+
+File: tg.info,  Node: Example,  Prev: Status Information,  Up: Drivers
+
+Example
+=======
+
+   `tg' translates the test case description
+
+     ***** X = 3
+     define Result : Positive;
+     test   Result := Subject(3);
+     pass   exception Another_Error
+
+into the following code (slightly reformatted make it more readable):
+
+       -- Test Case (3)   X = 3
+       declare
+         Result : Positive;
+       begin  -- test case
+         begin  -- test part
+           Result := Subject(3);
+           Driver_Internals.Set_Path ("=>");
+         exception
+           when Another_Error =>
+             Driver_Internals.Set_Path ("Another_Error");
+           when E: others =>
+             Driver_Internals.Set_Path (Ada.Exceptions.Exception_Name (E));
+         end;  -- test part
+         begin  -- result part
+           if Driver_Internals.Path_Was ("Another_Error") then
+             Driver_Internals.Test_Case_Passed := True;
+             Put_Line ("(3) pass.");
+           else
+             Driver_Internals.Test_Case_Passed := False;
+             Driver_Internals.Fail_Result := True;
+             Put_Line ("(3)  X = 3");
+             Put_Line ("      ...FAIL.");
+             Put_Line ("         (" & "path `" & Driver_Internals.Taken_Path & "' when `Another_Error' was expected" & ")");
+           end if;
+         exception
+           when Driver_Internals.Program_Terminate =>
+             raise;
+           when E: others =>
+             Driver_Internals.Unexpected_Error := True;
+             Put_Line ("ERROR: exception " & Ada.Exceptions.Exception_Name (E) & " raised in result part of test case 3.");
+         end;  -- result part
+       end;  -- test case
+
+
+File: tg.info,  Node: A Complete Example,  Next: Concept Index,  Prev: Drivers,  Up: Top
+
+A Complete Example
+******************
+
+   We want to test a single Ada function `Subject', contained in the
+package `Under_Test'.
+
+     package Under_Test is
+     
+       Strange_Error,
+       Another_Error,
+       Illegal_Parameter : exception;
+     
+       function Subject (X : in Positive) return Positive;
+     
+     end Under_Test;
+
+   `Subject' is required to return one if `X' is one, and raise
+exceptions `Strange_Error', `Another_Error', or `Illegal_Parameter' if
+`X' is two, three, or greater than three, respectively.
+
+   The following script describes an appropriate test:
+
+     -- FILE: example.ts
+     
+     context with Text_IO;    use Text_IO;
+             with Under_Test; use Under_Test;
+     
+     exceptions Strange_Error, Another_Error, Illegal_Parameter;
+     
+     ***** X = 1
+     define Result : Positive;
+     test   Result := Subject(1);
+     pass   Result = 1
+     
+     ***** X = 2
+     define Result : Positive;
+     test   Result := Subject(2);
+     pass   exception Strange_Error
+     
+     ***** X = 3
+     define Result : Positive;
+     test   Result := Subject(3);
+     pass   exception Another_Error
+     
+     ***** X = 4
+     define Result : Positive;
+     test   Result := Subject(4);
+     pass   exception Illegal_Parameter
+     
+     ***** X = Positive'Last
+     define Result : Positive;
+     test   Result := Subject(Positive'Last);
+     pass   exception Illegal_Parameter
+
+   You can translate `example.ts' by issuing the command
+
+     tg example.ts
+
+   This produces `example.adb', the source code of the driver.  You
+have to compile it and link it with package `Under_Test'.  Executing
+the resulting program then produces the following output
+
+     (1) pass.
+     (2) pass.
+     (3) pass.
+     (4) pass.
+     (5) pass.
+     
+     Total test result: pass.
+
+   Now suppose that in test case (3), `Subject' raised exception
+`Illegal_Parameter' by mistake.  Then the output would be
+
+     (1) pass.
+     (2) pass.
+     (3) X = 3
+          ...FAIL.
+             (path `Illegal_Parameter' when `Another_Error' was expected)
+     (4) pass.
+     (5) pass.
+     
+     Total test result: FAIL.
+
+
+File: tg.info,  Node: Concept Index,  Next: Keyword Index,  Prev: A Complete Example,  Up: Top
+
+Concept Index
+*************
+
+* Menu:
+
+* => (normal path in a test case):      Pass Clauses.
+* Ada:                                  Introduction.
+* case-sensitivity:                     Test Script Basics.
+* cleanup part:                         Test Case Descriptions.
+* code part:                            Code Parts.
+* comments in test scripts:             Test Script Basics.
+* context clause:                       The Global Section.
+* declarations (global):                The Global Section.
+* declarative part (global):            The Global Section.
+* define part (test case):              Test Case Descriptions.
+* error (result of a test case):        Testing Terminology.
+* exception (raised by the test call):  Pass Clauses.
+* exception (raised by the test call):  Test Case Descriptions.
+* exception (raised in a code part):    Code Parts.
+* exception handlers:                   The Global Section.
+* execute a test case:                  Testing Terminology.
+* execute a test driver:                Testing Terminology.
+* fail (result of a test case):         Testing Terminology.
+* format of test scripts:               Test Script Basics.
+* global declarations:                  The Global Section.
+* global section:                       The Global Section.
+* global section (test script):         Test Scripts.
+* keywords:                             Test Script Basics.
+* Native language of tg:                Introduction.
+* number (of a test case):              Test Case Titles.
+* output format:                        Test Case Descriptions.
+* pass (result of a test case):         Testing Terminology.
+* pass clause:                          Pass Clauses.
+* path:                                 Testing Terminology.
+* path:                                 Test Case Descriptions.
+* path (taken in a test case):          Pass Clauses.
+* perform a test:                       Testing Terminology.
+* perform a test case:                  Testing Terminology.
+* predicate (in a pass clause):         Pass Clauses.
+* predicate (result part):              Test Case Descriptions.
+* prepare part:                         Test Case Descriptions.
+* Programming language of tg:           Introduction.
+* result of a test:                     Testing Terminology.
+* result of a test call:                Testing Terminology.
+* result of a test case:                Test Case Descriptions.
+* result of a test case:                Testing Terminology.
+* result part:                          Test Case Descriptions.
+* results:                              Testing Terminology.
+* syntax (of a test case description):  Test Case Descriptions.
+* syntax (of the tg command line):      The tg Command.
+* test:                                 Testing Terminology.
+* test call:                            Testing Terminology.
+* test call:                            Test Case Descriptions.
+* test call:                            The Test Call.
+* test case:                            Testing Terminology.
+* test case:                            Introduction.
+* test case description:                Test Case Descriptions.
+* test case number:                     Test Case Titles.
+* test case result:                     Test Case Descriptions.
+* test case section:                    The Test Case Section.
+* test case section (test script):      Test Scripts.
+* test case title:                      Test Case Titles.
+* test driver:                          Introduction.
+* test item:                            Testing Terminology.
+* test part:                            The Test Call.
+* test part:                            Test Case Descriptions.
+* test results:                         Testing Terminology.
+* test script:                          Testing Terminology.
+* test script:                          Test Scripts.
+* test script:                          Introduction.
+* test script mode (Emacs):             Test Case Titles.
+* tg (command line syntax):             The tg Command.
+* title (of a test case):               Test Case Titles.
+* ts-mode:                              Test Case Titles.
+
+
+File: tg.info,  Node: Keyword Index,  Prev: Concept Index,  Up: Top
+
+Keyword Index
+*************
+
+* Menu:
+
+* *****:                                Test Case Titles.
+* cleanup:                              Test Case Descriptions.
+* code:                                 Code Parts.
+* context:                              The Global Section.
+* define (global):                      The Global Section.
+* define (test case):                   Test Case Descriptions.
+* error_handling:                       The Global Section.
+* error_handling:                       Code Parts.
+* exceptions:                           The Global Section.
+* fail_handling:                        The Global Section.
+* pass:                                 Pass Clauses.
+* prepare:                              Test Case Descriptions.
+* test:                                 Test Case Descriptions.
+
+
+
+Tag Table:
+Node: Top83
+Node: Introduction854
+Node: A Small Example2883
+Node: Testing Terminology4016
+Node: Test Scripts6791
+Node: Test Script Basics8070
+Node: The Global Section9668
+Node: The Test Case Section12660
+Node: Test Case Descriptions13022
+Node: Test Case Titles16118
+Node: The Test Call17535
+Node: Pass Clauses18143
+Node: Code Parts19697
+Node: The tg Command20618
+Node: Drivers21878
+Node: Structure22899
+Node: Status Information23858
+Node: Example25075
+Node: A Complete Example26748
+Node: Concept Index28972
+Node: Keyword Index33196
+
+End Tag Table

@@ -1,0 +1,8 @@
+Version 3.1
+
+   Corrected minor type errors, both in `tg' and generated code,
+   that were uncovered by recent Ada compilers (e.g. GNAT 3.09).
+
+Version 3.0 
+
+   first public release

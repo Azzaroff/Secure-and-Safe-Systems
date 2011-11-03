@@ -40,6 +40,14 @@ Result(Blue) 	:= (Left(Blue) * Right(Blue)) mod (Intensity'Last+1);
 return Result;
 end "*";
 
+function "="(Left : Color; Right : Color)  return Boolean is
+begin
+return Left(Red) = Right(Red) and
+	Left(Green) = Right(Green) and
+	Left(Blue) = Right(Blue);
+
+end "=";
+
 procedure Put(Item  : in Color) is
 begin
 Ada.Text_IO.Put ("R: ");

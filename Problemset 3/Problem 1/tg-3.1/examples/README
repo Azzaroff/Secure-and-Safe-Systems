@@ -1,0 +1,52 @@
+This directory contains two test scripts, `demo1.ts' and `demo2.ts'.
+Both describe tests for the package `Under_Test', which contains a
+single routine `Subject'.  This package is provided in the files
+`under_test.ad[bs]'.
+
+To use, first build the `tg' program.  Put it somewhere on your path,
+then type
+
+  tg demo1.ts
+  gnatmake demo1
+
+This creates a file `demo1.adb', the Ada source code of the driver
+that was specified in `demo1.ts'.  The `gnatmake' command compiles
+this driver, and the test item (package Under_Test), and links them
+together into the executable `demo1'.  Run it by typing
+
+  demo1
+
+This should produce the output
+
+
+  (1) pass.
+  (2) pass.
+  (3) pass.
+  (4) pass.
+  (5) pass.
+
+  Total test result: pass.
+
+
+Do the same for `demo2.ts'.  This file contains test cases that are
+*supposed* to fail.  The output should be
+
+
+  (1)  X = 1
+        ...FAIL.
+           (path `=>' was taken, but predicate is FALSE)
+              **Actual Result:  1
+  ERROR: exception UNDER_TEST.STRANGE_ERROR raised in prepare part of test case 2.
+  (2) pass.
+  (3) pass.
+  ERROR: exception CONSTRAINT_ERROR raised in cleanup part of test case 3.
+  (4) pass.
+  (5)  X = 5
+        ...FAIL.
+           (path `UNDER_TEST.ILLEGAL_PARAMETER' when `=>' was expected)
+
+  Total test result: FAIL,
+          there were one or more unexpected errors
+
+
+  
