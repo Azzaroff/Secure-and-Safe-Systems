@@ -1,4 +1,5 @@
 context with rgb;    use rgb;
+        with Text_IO;    use Text_IO;
 
 
 ***** RGB Plus small Number
@@ -7,5 +8,4 @@ define  rgb1   : Color := To_Color(1,2,3);
 		rgb3   : Color := To_Color(4,4,4);
 		Result : Color;
 test   Result := rgb1 + rgb2;
-pass   Result = rgb3;
-
+pass   Result = rgb3
