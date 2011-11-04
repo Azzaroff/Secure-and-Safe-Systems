@@ -2,7 +2,7 @@ package body coffee_machine is
 
 procedure Initialize( X : out State) is
 begin
-X := 0; 
+X := 0; -- init an empty credit
 end Initialize;
 
 -- there are three states:
