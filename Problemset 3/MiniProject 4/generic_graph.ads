@@ -40,4 +40,13 @@ package Generic_Graph is
 
 private
    -- implementation dependent ... 
+   type Vertex_Type is record
+	predecessor 	: Vertex_Array;
+	successor	: Vertex_Array;
+   end record;
+
+   type Graph_Type is record
+	vertices	: Vertex_Array;
+   end record;	
+
 end Generic_Graph;
