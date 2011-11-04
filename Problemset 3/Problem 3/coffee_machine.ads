@@ -6,7 +6,7 @@ package Coffee_Machine is
    -- Given 30 cents or more, the coffee is produced immediately
    -- (Note that Overspending is Possible)
       
-   type State is private;
+   type State is range 0..2;
    type Action is(Ten_Cent, Twenty_Cent, Button);
    type Reaction is(Nothing, Drop_All_Coins, Coffee);
    
@@ -15,6 +15,6 @@ package Coffee_Machine is
 	       Act   : in Action;
 	       React : out Reaction);
    
-private
-   type State is range 0..2;  
+--private
+--   type State is range 0..2;  
 end Coffee_Machine;
