@@ -1,4 +1,4 @@
-package Coffee Machine is
+package Coffee_Machine is
    -- Simulation of a coin-driven coffee machine
    -- User: - One slot to insert coins (only, 10 or, 20 cents)
    --       - One button to press (''money back'')
