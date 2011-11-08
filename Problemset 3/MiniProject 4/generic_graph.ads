@@ -1,3 +1,5 @@
+with Ada.Containers.Doubly_Linked_Lists;
+
 generic
    type Vertex_Type is private;
 package Generic_Graph is
@@ -39,14 +41,26 @@ package Generic_Graph is
 
 
 private
-   -- implementation dependent ... 
-   type Vertex_Type is record
-	predecessor 	: Vertex_Array;
-	successor	: Vertex_Array;
+   -- implementation dependent ...
+   
+   type Edge_Type is record
+		weight : Edge_Weight;
+		head : Vertex_Type;
+		tail : Vertex_Type;
    end record;
 
-   type Graph_Type is record
-	vertices	: Vertex_Array;
-   end record;	
-
+   package Vertex_Lists is new Ada.Containers.Doubly_Linked_Lists
+   	(Element_Type => Vertex_Type);
+  
+   type Vertex_List is new Vertex_Lists.List with null record;
+  
+   package Edge_Lists is new Ada.Containers.Doubly_Linked_Lists
+   	(Element_Type => Edge_Type);
+  
+   type Edge_List is new Edge_Lists.List with null record;
+   
+   type Graph_Type is tagged limited record 
+   		vertices : Vertex_List;
+		edges : Edge_List;
+   end record;
 end Generic_Graph;
