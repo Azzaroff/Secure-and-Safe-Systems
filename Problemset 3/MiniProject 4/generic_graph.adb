@@ -2,9 +2,11 @@ package body generic_graph is
 
 -- turns the graph into an empty graph without vertices and edges
    procedure Clear (Graph : in out Graph_Type) is
-   tmp : Graph_Type;
+   tmpV : Vertex_List;
+   tmpE : Edge_List;
 	begin
-		null;
+		Graph.vertices := tmpV;
+		Graph.edges := tmpE;
 	end Clear;
 
    
@@ -12,7 +14,7 @@ package body generic_graph is
    -- the new Vertex is unmarked
    procedure Add_Vertex (Graph  : in out Graph_Type; Vertex : in Vertex_Type) is
 	begin
-		null;
+		Graph.vertices.append(Vertex);
 	end Add_Vertex;
    
    
@@ -22,40 +24,81 @@ package body generic_graph is
    procedure Add_Edge (Graph: in out Graph_Type;
                        Head, Tail: in Vertex_Type;
                        Weight: in Edge_Weight) is
+	edge : Edge_Type := (Weight, Head, Tail);
 	begin
-		null;
+		Graph.edges.append(edge);
 	end Add_Edge;
 
    
    -- returns the weight of an edge; Natural'Last if the Edge doesn't exist
    function Weight_Of (Graph: Graph_Type;
 		       Head, Tail: Vertex_Type) return Edge_Weight is
+	cursor : Edge_Lists.Cursor := First(Graph.edges);
+	elem : Edge_Type;
 	begin
-		return 0;
+		while Edge_Lists.Has_Element(Cursor) loop
+			elem := Edge_Lists.Element(Cursor);
+			if (elem.head = Head and then elem.tail = Tail) then
+				return elem.weight;
+			end if;
+			Edge_Lists.Next(Cursor);
+		end loop;
+		return Natural'Last;
 	end Weight_Of;
 
    -- all nodes K with an edge from Vertex to K
    function Successors (Graph  : Graph_Type;
                         Vertex : Vertex_Type) return Vertex_Array is
-	dummy : Vertex_Array := (vertex,vertex);
+	cursor : Edge_Lists.Cursor := First(Graph.edges);
+	vertex_count : Positive := Positive(Length(Graph.vertices));
+	v_array: Vertex_Array(1..vertex_count); 
+	elem : Edge_Type;
+	index : Positive := 1;
 	begin
-		return dummy;
+		while Edge_Lists.Has_Element(Cursor) loop
+			elem := Edge_Lists.Element(Cursor);
+			if elem.Head = Vertex then
+					v_array(index) := elem.Tail;
+					index := index +1;
+			end if;
+			Edge_Lists.Next(Cursor);
+		end loop;
+		return v_array;
 	end Successors;
    
    -- all nodes K with an edge from K to Vertex
    function Predecessors (Graph  : Graph_Type;
                           Vertex : Vertex_Type) return Vertex_Array is
-	dummy : Vertex_Array := (vertex,vertex);
+	cursor : Edge_Lists.Cursor := First(Graph.edges);
+	vertex_count : Positive := Positive(Length(Graph.vertices));
+	v_array: Vertex_Array(1..vertex_count); 
+	elem : Edge_Type;
+	index : Positive := 1;
 	begin
-		return dummy;
+		while Edge_Lists.Has_Element(Cursor) loop
+			elem := Edge_Lists.Element(Cursor);
+			if elem.Tail = Vertex then
+					v_array(index) := elem.Head;
+					index := index +1;
+			end if;
+			Edge_Lists.Next(Cursor);
+		end loop;
+		return v_array;
 	end Predecessors;
    
    -- return all vertices in the Graph
    function All_Vertices(Graph : Graph_Type) return Vertex_Array is
-	vertex : vertex_type;
-	dummy : Vertex_Array := (vertex,vertex);
+	cursor : Vertex_Lists.Cursor := First(Graph.vertices);
+	vertex_count : Positive := Positive(Length(Graph.vertices));
+	v_array: Vertex_Array(1..vertex_count); 
+	index : Positive := 1;
 	begin
-		return dummy;
+		while Vertex_Lists.Has_Element(Cursor) loop
+			v_array(index) := Vertex_Lists.Element(Cursor);
+			index := index + 1;
+			Vertex_Lists.Next(Cursor);
+		end loop;
+		return v_array;
 	end All_Vertices;
 
 end generic_graph;
