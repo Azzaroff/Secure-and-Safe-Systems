@@ -701,6 +701,63 @@ begin  -- unit main block
     end;  -- result part
   end;  -- test case
 
+  -- Test Case (12)   COFFEE_MACHINE return no coin
+  declare
+    cm_state 	: 	State;  
+    actbtn		:	Action	:= Button;
+    rea		:	Reaction;
+    Result 		: 	Reaction:= Nothing;
+  begin  -- test case
+    begin  -- prepare part
+      initialize(cm_state);
+    exception
+      when Driver_Internals.Program_Terminate =>
+        raise;
+      when E: others =>
+        Driver_Internals.Unexpected_Error := True;
+        Put_Line ("ERROR: exception " & Ada.Exceptions.Exception_Name (E) & " raised in prepare part of test case 12.");
+        raise Driver_Internals.Program_Terminate;
+    end;  -- prepare part
+
+    begin  -- test part
+      X(cm_state, actbtn, rea);
+      Driver_Internals.Set_Path ("=>");
+    exception
+      when E: others =>
+        Driver_Internals.Set_Path (Ada.Exceptions.Exception_Name (E));
+    end;  -- test part
+    begin  -- result part
+      if Driver_Internals.Path_Was ("=>") then
+        if Result = rea
+        then
+          Driver_Internals.Test_Case_Passed := True;
+          Put_Line ("(12)  pass.");
+        else
+          Driver_Internals.Test_Case_Passed := False;
+          Driver_Internals.Fail_Result := True;
+          Put_Line ("(12)  COFFEE_MACHINE return no coin");
+          Put_Line ("           Script name:'coffee_machine_test.ts'; Line:121 ");
+          Put_Line ("      ...FAIL.");
+          Put_Line ("         (" & "path `=>' was taken, but predicate is FALSE" & ")");
+        end if;
+      else
+        Driver_Internals.Test_Case_Passed := False;
+        Driver_Internals.Fail_Result := True;
+        Put_Line ("(12)  COFFEE_MACHINE return no coin");
+        Put_Line ("           Script name:'coffee_machine_test.ts'; Line:121 ");
+        Put_Line ("      ...FAIL.");
+        Put_Line ("         (" & "path `" & Driver_Internals.Taken_Path & "' when `=>' was expected" & ")");
+      end if;
+    exception
+      when Driver_Internals.Program_Terminate =>
+        raise;
+      when E: others =>
+        Driver_Internals.Unexpected_Error := True;
+        Put_Line ("ERROR: exception " & Ada.Exceptions.Exception_Name (E) & " raised in result part of test case 12.");
+        raise Driver_Internals.Program_Terminate;
+    end;  -- result part
+  end;  -- test case
+
   --  End of test cases
   New_Line;
   Put ("Script name 'coffee_machine_test.ts'");

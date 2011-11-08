@@ -117,3 +117,12 @@ prepare initialize(cm_state);
 	X(cm_state, act10, rea);
 test	X(cm_state, actbtn, rea);
 pass	Result = rea
+
+***** COFFEE_MACHINE return no coin
+define cm_state 	: 	State;  
+	actbtn		:	Action	:= Button;
+	rea		:	Reaction;
+	Result 		: 	Reaction:= Nothing;
+prepare initialize(cm_state);
+test	X(cm_state, actbtn, rea);
+pass	Result = rea
