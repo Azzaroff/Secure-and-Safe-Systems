@@ -51,6 +51,8 @@ private
 
    package Vertex_Lists is new Ada.Containers.Doubly_Linked_Lists
    	(Element_Type => Vertex_Type);
+
+   use Vertex_Lists;
   
    type Vertex_List is new Vertex_Lists.List with null record;
   
