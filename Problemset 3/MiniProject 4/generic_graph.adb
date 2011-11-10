@@ -13,8 +13,12 @@ package body generic_graph is
    -- inserts new Vertex; raises Constraint_Error if Vertex is already there
    -- the new Vertex is unmarked
    procedure Add_Vertex (Graph  : in out Graph_Type; Vertex : in Vertex_Type) is
+	cursor : Vertex_Lists.Cursor := First(Graph.vertices);
 	begin
-		Graph.vertices.append(Vertex);
+		cursor := Vertex_Lists.Find(Container => Vertex_Lists.List(Graph.vertices), Item => Vertex);
+		if cursor = Vertex_Lists.No_Element then
+			Graph.vertices.append(Vertex);
+		end if;
 	end Add_Vertex;
    
    
