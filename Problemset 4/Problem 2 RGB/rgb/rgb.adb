@@ -11,7 +11,7 @@ begin
 	return Result;
 end To_Color;
 -- PLUS
-function "+"(Left : Color; Right : Color)  return Color is
+function add (Left : Color; Right : Color)  return Color is
 Result : Color;
 begin
 if Left(Red) + Right(Red) > Intensity'Last then
@@ -33,10 +33,10 @@ else
 end if;
 
 return Result;
-end "+";
+end add;
 
 -- MINUS
-function "-"(Left : Color; Right : Color)  return Color is
+function sub (Left : Color; Right : Color)  return Color is
 Result : Color;
 begin
 if Left(Red) - Right(Red) < Intensity'First then
@@ -57,10 +57,10 @@ else
 	Result(Blue) := Left(Blue) - Right(Blue);
 end if;
 return Result;
-end "-";
+end sub;
 
 -- MULT
-function "*"(Left : Color; Right : Color)  return Color is
+function mult(Left : Color; Right : Color)  return Color is
 Result : Color;
 begin
 if Left(Red) * Right(Red) > Intensity'Last then
@@ -81,27 +81,27 @@ else
 	Result(Blue) := Left(Blue) * Right(Blue);
 end if;
 return Result;
-end "*";
+end mult;
 
 -- EQUAL
-function "="(Left : Color; Right : Color)  return Boolean is
+function equals(Left : Color; Right : Color)  return Boolean is
 begin
 return (Left(Red) = Right(Red) and
 	Left(Green) = Right(Green)) and
 	Left(Blue) = Right(Blue);
 
-end "=";
+end equals;
 -- PUT
 procedure Put(Item  : in Color) is
+--# hide Put
 begin
 Ada.Text_IO.Put ("R: ");
-Ada.Integer_Text_IO.Put (Item(Red), Base => 16, Width => 3);
+Ada.Integer_Text_IO.Put (Item(Red), 16, 3);
 Ada.Text_IO.Put	(" G: ");
-Ada.Integer_Text_IO.Put (Item(Green), Base => 16, Width => 3);
+Ada.Integer_Text_IO.Put (Item(Green), 16, 3);
 Ada.Text_IO.Put	(" B: ");
-Ada.Integer_Text_IO.Put (Item(Blue), Base => 16, Width => 3);
+Ada.Integer_Text_IO.Put (Item(Blue), 16, 3);
 Ada.Text_IO.Put	(".");
-
 end Put;
 
 end rgb;

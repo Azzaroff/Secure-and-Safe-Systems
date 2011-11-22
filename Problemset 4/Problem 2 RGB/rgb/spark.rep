@@ -5,11 +5,11 @@
            *******************************************************
 
 
-                        DATE : 22-NOV-2011 14:56:18.72
+                        DATE : 22-NOV-2011 15:23:25.86
 
 Options:
     noswitch
-    noindex_file
+    index_file=//home/paul/SSS/SPARK/lib/spark/current/spark.idx
     nowarning_file
     notarget_compiler_data
     noconfig_file
@@ -20,7 +20,7 @@ Options:
     nohtml
     nostatistics
     fdl_identifiers=accept
-    flow_analysis=information
+    flow_analysis=data
     language=2005
     profile=sequential
     annotation_character=#
@@ -34,7 +34,8 @@ Selected files:
    rgb.ads
 
 
-No Index files were used
+Index Filename(s) used were: 
+   /home/paul/SSS/SPARK/lib/spark/current/spark.idx
 
 
 No Meta Files used
@@ -47,6 +48,15 @@ Source Filename(s) used were:
    /home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Problem 2 RGB/rgb/rgb.ads
 
 
+The following were required during analysis but could not be located:
+
+   Unit name                                     Unit type             Reason
+   ---------                                     ---------             ------
+   Integer_Text_IO                               package or generic specification
+                                                                       Omitted from index file.
+   Text_IO                                       package or generic specification
+                                                                       Omitted from index file.
+
 
 Source Filename:   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Problem 2 RGB/rgb/rgb.ads
 Listing Filename:  /home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Problem 2 RGB/rgb/rgb.lst
@@ -55,30 +65,40 @@ Listing Filename:  /home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Problem 2
    Unit type:  package specification
    Unit has been analysed, any errors are listed below.
 
-6 error(s) or warning(s)
+8 error(s) or warning(s)
 
 Line
    1  with Ada.Text_IO, Ada.Integer_Text_IO;
-           ^1           ^2
---- (  1)  Warning           :  1: The identifier Ada is either undeclared or not 
+               ^1           ^2
+--- (  1)  Warning           :  1: The identifier Text_IO is either undeclared or not 
            visible at this point.
---- (  2)  Warning           :  1: The identifier Ada is either undeclared or not 
-           visible at this point.
+--- (  2)  Warning           :  1: The identifier Integer_Text_IO is either 
+           undeclared or not visible at this point.
 
-  20  procedure Put(Item  : in Color);
-                ^3
-*** (  3)  Semantic Error    :154: The subprogram or task body Put does not have an 
-           annotation.
+   2  --#inherit Text_IO, Integer_Text_IO, Ada;
+                 ^3       ^5
+*** (  3)  Semantic Error    :135: The package Text_IO is undeclared or not visible, 
+           or there is a circularity in the list of inherited packages.
 --- (  4)  Warning           :430: SLI generation abandoned owing to syntax or 
            semantic errors or multiple units in a single source file.
+*** (  5)  Semantic Error    :135: The package Integer_Text_IO is undeclared or not 
+           visible, or there is a circularity in the list of inherited packages.
 
-  23  	type RGB is (Red, Green, Blue);
-      	     ^5
-*** (  5)  Semantic Error    : 10: Illegal redeclaration of identifier RGB.
+  22  --# derives null from Item;
 
-  24  	type Color is array (RGB) of Intensity;
-      	                     ^6
-*** (  6)  Semantic Error    : 63: RGB is not a type mark.
+--- (  6)  Note              :  1: This dependency relation was not used for this 
+           analysis and has not been checked for accuracy.
+
+  25  type Color is array (RGB_Type) of Intensity;
+           ^7
+*** (  7)  Semantic Error    : 10: Illegal redeclaration of identifier Color.
+
+  29  end RGB;
+          ^8
+*** (  8)  Semantic Error    : 27: The private type Color does not have an associated 
+           full definition.
+
+Note: Data flow analysis mode selected
 
 
 --End of file--------------------------------------------------

@@ -1,4 +1,5 @@
 with Ada.Text_IO, Ada.Integer_Text_IO;
+--#inherit Text_IO, Integer_Text_IO, Ada;
 
 package RGB is
 	type Color is private;
@@ -18,8 +19,11 @@ function equals	(Left : Color; Right : Color)  return Boolean;
 
 --print the Intensity of each color as hex values.
 procedure Put(Item  : in Color);
+--# derives null from Item;
+
+type RGB_Type is (Red, Green, Blue);
+type Color is array (RGB_Type) of Intensity;
 
 private
-	type RGB is (Red, Green, Blue);
-	type Color is array (RGB) of Intensity;
+	
 end RGB;
