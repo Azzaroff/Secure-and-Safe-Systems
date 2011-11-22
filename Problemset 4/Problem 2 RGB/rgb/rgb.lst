@@ -5,10 +5,16 @@
            *******************************************************
 
 
-                        DATE : 22-NOV-2011 14:14:05.20
+                        DATE : 22-NOV-2011 14:56:18.71
 
 Line
    1  with Ada.Text_IO, Ada.Integer_Text_IO;
+           ^1           ^2
+--- (  1)  Warning           :  1: The identifier Ada is either undeclared or not 
+           visible at this point.
+--- (  2)  Warning           :  1: The identifier Ada is either undeclared or not 
+           visible at this point.
+
    2  
    3  package RGB is
    4  	type Color is private;
@@ -20,32 +26,30 @@ Line
   10  			return Color;
   11  
   12  -- Saturation arithmetics
-  13  function "+"(Left : Color; Right : Color)  return Color;	
-                                                             ^1
-*** (  1)  Syntax Error      : reserved word "RENAMES" expected.
---- (  2)  Warning           :430: SLI generation abandoned owing to syntax or 
-           semantic errors or multiple units in a single source file.
-
-  14  function "-"(Left : Color; Right : Color)  return Color;
-                                                             ^3
-*** (  3)  Syntax Error      : reserved word "RENAMES" expected.
-
-  15  function "*"(Left : Color; Right : Color)  return Color; -- dot product
-                                                             ^4
-*** (  4)  Syntax Error      : reserved word "RENAMES" expected.
-
-  16  function "="(Left : Color; Right : Color)  return Boolean;
-                                                               ^5
-*** (  5)  Syntax Error      : reserved word "RENAMES" expected.
-
+  13  function add 	(Left : Color; Right : Color)  return Color;	
+  14  function sub	(Left : Color; Right : Color)  return Color;
+  15  function mult	(Left : Color; Right : Color)  return Color; -- dot product
+  16  function equals	(Left : Color; Right : Color)  return Boolean;
   17  
   18  
   19  --print the Intensity of each color as hex values.
   20  procedure Put(Item  : in Color);
+                ^3
+*** (  3)  Semantic Error    :154: The subprogram or task body Put does not have an 
+           annotation.
+--- (  4)  Warning           :430: SLI generation abandoned owing to syntax or 
+           semantic errors or multiple units in a single source file.
+
   21  
   22  private
   23  	type RGB is (Red, Green, Blue);
+      	     ^5
+*** (  5)  Semantic Error    : 10: Illegal redeclaration of identifier RGB.
+
   24  	type Color is array (RGB) of Intensity;
+      	                     ^6
+*** (  6)  Semantic Error    : 63: RGB is not a type mark.
+
   25  end RGB;
 
 

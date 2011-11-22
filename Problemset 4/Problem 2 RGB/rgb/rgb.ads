@@ -10,10 +10,10 @@ package RGB is
 			return Color;
 
 -- Saturation arithmetics
-function "+"(Left : Color; Right : Color)  return Color;	
-function "-"(Left : Color; Right : Color)  return Color;
-function "*"(Left : Color; Right : Color)  return Color; -- dot product
-function "="(Left : Color; Right : Color)  return Boolean;
+function add 	(Left : Color; Right : Color)  return Color;	
+function sub	(Left : Color; Right : Color)  return Color;
+function mult	(Left : Color; Right : Color)  return Color; -- dot product
+function equals	(Left : Color; Right : Color)  return Boolean;
 
 
 --print the Intensity of each color as hex values.

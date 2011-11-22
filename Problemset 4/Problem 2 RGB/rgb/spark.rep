@@ -5,7 +5,7 @@
            *******************************************************
 
 
-                        DATE : 22-NOV-2011 14:14:05.20
+                        DATE : 22-NOV-2011 14:56:18.72
 
 Options:
     noswitch
@@ -21,7 +21,7 @@ Options:
     nostatistics
     fdl_identifiers=accept
     flow_analysis=information
-    language=95
+    language=2005
     profile=sequential
     annotation_character=#
     rules=none
@@ -51,29 +51,34 @@ Source Filename(s) used were:
 Source Filename:   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Problem 2 RGB/rgb/rgb.ads
 Listing Filename:  /home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Problem 2 RGB/rgb/rgb.lst
 
-***     No units in file
+   Unit name:  RGB
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
 
-
-5 error(s) or warning(s)
+6 error(s) or warning(s)
 
 Line
-  13  function "+"(Left : Color; Right : Color)  return Color;	
-                                                             ^1
-*** (  1)  Syntax Error      : reserved word "RENAMES" expected.
---- (  2)  Warning           :430: SLI generation abandoned owing to syntax or 
+   1  with Ada.Text_IO, Ada.Integer_Text_IO;
+           ^1           ^2
+--- (  1)  Warning           :  1: The identifier Ada is either undeclared or not 
+           visible at this point.
+--- (  2)  Warning           :  1: The identifier Ada is either undeclared or not 
+           visible at this point.
+
+  20  procedure Put(Item  : in Color);
+                ^3
+*** (  3)  Semantic Error    :154: The subprogram or task body Put does not have an 
+           annotation.
+--- (  4)  Warning           :430: SLI generation abandoned owing to syntax or 
            semantic errors or multiple units in a single source file.
 
-  14  function "-"(Left : Color; Right : Color)  return Color;
-                                                             ^3
-*** (  3)  Syntax Error      : reserved word "RENAMES" expected.
+  23  	type RGB is (Red, Green, Blue);
+      	     ^5
+*** (  5)  Semantic Error    : 10: Illegal redeclaration of identifier RGB.
 
-  15  function "*"(Left : Color; Right : Color)  return Color; -- dot product
-                                                             ^4
-*** (  4)  Syntax Error      : reserved word "RENAMES" expected.
-
-  16  function "="(Left : Color; Right : Color)  return Boolean;
-                                                               ^5
-*** (  5)  Syntax Error      : reserved word "RENAMES" expected.
+  24  	type Color is array (RGB) of Intensity;
+      	                     ^6
+*** (  6)  Semantic Error    : 63: RGB is not a type mark.
 
 
 --End of file--------------------------------------------------
