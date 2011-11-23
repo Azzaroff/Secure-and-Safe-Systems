@@ -3,16 +3,12 @@ package body rgb is
 function To_Color(RedIntensity		: Intensity;
 		  GreenIntensity	: Intensity;
 		  BlueIntensity		: Intensity ) return Color is
-Result : Color;
 begin
-	Result(Red) 	:= RedIntensity;
-	Result(Green)	:= GreenIntensity;
-	Result(Blue)	:= BlueIntensity;
-	return Result;
+	return Color'(Red => RedIntensity, Green => GreenIntensity, Blue => BlueIntensity);
 end To_Color;
 -- PLUS
 function add (Left : Color; Right : Color)  return Color is
-Result : Color;
+Result : Color := Color'(others => 0);
 begin
 if Left(Red) + Right(Red) > Intensity'Last then
 	Result(Red) := Intensity'Last;
@@ -37,7 +33,7 @@ end add;
 
 -- MINUS
 function sub (Left : Color; Right : Color)  return Color is
-Result : Color;
+Result : Color := Color'(others => 0);
 begin
 if Left(Red) - Right(Red) < Intensity'First then
 	Result(Red) := Intensity'First;
@@ -61,7 +57,7 @@ end sub;
 
 -- MULT
 function mult(Left : Color; Right : Color)  return Color is
-Result : Color;
+Result : Color := Color'(others => 0);
 begin
 if Left(Red) * Right(Red) > Intensity'Last then
 	Result(Red) := Intensity'Last;
