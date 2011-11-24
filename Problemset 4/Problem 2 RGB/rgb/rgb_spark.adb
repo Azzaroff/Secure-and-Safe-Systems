@@ -7,7 +7,7 @@ begin
 	return Color'(Red => RedIntensity, Green => GreenIntensity, Blue => BlueIntensity);
 end To_Color;
 -- PLUS
-function add (Left : Color; Right : Color)  return Color is
+procedure add(Left : in Color; Right : in Color, Result : out Color) is
 Result : Color := Color'(others => 0);
 begin
 if Left(Red) + Right(Red) > Intensity'Last then
@@ -32,7 +32,7 @@ return Result;
 end add;
 
 -- MINUS
-function sub (Left : Color; Right : Color)  return Color is
+procedure sub(Left : in Color; Right : in Color, Result : out Color) is
 Result : Color := Color'(others => 0);
 begin
 if Left(Red) - Right(Red) < Intensity'First then
@@ -56,7 +56,7 @@ return Result;
 end sub;
 
 -- MULT
-function mult(Left : Color; Right : Color)  return Color is
+procedure mult(Left : in Color; Right : in Color, Result : out Color) is
 Result : Color := Color'(others => 0);
 begin
 if Left(Red) * Right(Red) > Intensity'Last then
@@ -79,10 +79,24 @@ end if;
 return Result;
 end mult;
 
--- EQUAL
-function equals(Left : Color; Right : Color)  return Boolean is
+--DIVISION
+
+procedure divi(Left : in Color; Right : in Color, Result : out Color)  is
 begin
-return (Left(Red) = Right(Red) and
+	if Left(Valid) = False or Right(Valid) = False then
+		Result(Valid) := False;
+	else
+		Result(Red) := Left(Red) / Right(Red);
+		Result(Green) := Left(Green) / Right(Green);
+		Result(Blue) := Left(Blue) / Right(Blue);
+		Result(Vaild) := True;
+	end if;
+end divi;
+
+-- EQUAL
+ procedure equals(Left : in Color; Right : in Color, Result : out Color) is
+begin
+Result := (Left(Red) = Right(Red) and
 	Left(Green) = Right(Green)) and
 	Left(Blue) = Right(Blue);
 
