@@ -21,8 +21,39 @@ package Coffee_Machine is
 	       React : out Reaction);
    post => (if (S'old /= S) then (
              if Act = Ten_Cent then (
-                 if S = 0 then do some shit)
-             )
+                 if S'Old = 0 then (
+			React = Nothing;
+			S = 1;
+		)elsif S'Old = 1 then (
+			React = Nothing;
+			S = 2;
+		)elsif S'Old = 2 then (
+			React = Coffee;
+			S = 0;
+		)
+             )elsif Act = Twenty_Cent then (
+		if S'Old = 0 then (
+			React = Nothing;
+			S = 2;
+		)elsif S'Old = 1 then (
+			React = Coffee;
+			S = 0;
+		)elsif S'Old = 2 then (
+			React = Coffee;
+			S = 0;
+		)
+	     )elsif Act = Button then (
+		if S'Old = 0 then (
+			React = Nothing;
+			S = 0;
+		)elsif S'Old = 1 then (
+			React = Drop_All_Coins;
+			S = 0;
+		)elsif S'Old = 2 then (
+			React = Drop_All_Coins;
+			S = 0;
+		)
+		)
            ); 
    
 private
