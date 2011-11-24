@@ -9,11 +9,21 @@ package Coffee_Machine is
    type State is private;
    type Action is(Ten_Cent, Twenty_Cent, Button);
    type Reaction is(Nothing, Drop_All_Coins, Coffee);
-   
+
+   -- pre conditions not necessary, because very possible input can occur
+   -- no need for range checks because compiler checks that
+
    procedure Initialize( X : out State);
+   post => (X = 0); 
+
    procedure X(S     : in out State;
 	       Act   : in Action;
 	       React : out Reaction);
+   post => (if (S'old /= S) then (
+             if Act = Ten_Cent then (
+                 if S = 0 then do some shit)
+             )
+           ); 
    
 private
    type State is range 0..2;  
