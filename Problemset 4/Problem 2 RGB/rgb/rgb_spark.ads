@@ -25,7 +25,7 @@ package RGB_Spark is
    
    -- Return only True if "Left" and "Right" is a valid color, and 
    -- "Left" and "Right" represent the same color in the RGB  color model,
-   procedure equals(Left : in Color; Right : in Color; Result : out Color);
+   procedure equals(Left : in Color; Right : in Color; Result : out Boolean);
    --# derives Result from Left,Right; 
        
    -- Perform saturation arithmetic if "Left" and "Right" is a valid color,

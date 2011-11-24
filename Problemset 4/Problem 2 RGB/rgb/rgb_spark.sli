@@ -1,0 +1,54 @@
+V "SPARK 2011"
+A -noswitch
+A -index_file=spark.idx
+A -nowarning_file
+A -notarget_compiler_data
+A -noconfig_file
+A -source_extension=ada
+A -listing_extension=lst
+A -nodictionary_file
+A -report_file=spark.rep
+A -nohtml
+A -nostatistics
+A -fdl_identifiers=accept
+A -flow_analysis=information
+A -language=95
+A -profile=sequential
+A -annotation_character=#
+A -rules=none
+A -error_explanations=off
+A -justification_option=full
+A -output_directory=.
+A -output_directory (actual)=/home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Problem 2 RGB/rgb/
+P
+R
+
+U RGB_Spark%b rgb_spark.adb
+U RGB_Spark%s rgb_spark.ads
+
+D rgb_spark.adb 00000000000000 00000000
+D rgb_spark.ads 00000000000000 00000000
+
+X 2 rgb_spark.ads
+9e7 Valid 24r20
+12i23 RedIntensity 16r28
+13i8 GreenIntensity 16r42
+14i8 BlueIntensity 16r58
+15r14 Result 16m16
+23r22 Item 24r15
+28r21 Left 29r28
+28r38 Right 29r33
+28e56 Result 29m16
+33r18 Left 34r28
+33r35 Right 34r33
+33r53 Result 34m16
+35r18 Left 36r28
+35r35 Right 36r33
+35r53 Result 36m16
+37r19 Left 38r28
+37r36 Right 38r33
+37r54 Result 38m16
+44r19 Left 45r28
+44r36 Right 45r33
+44r54 Result 45m16
+49r18 Item 50r26
