@@ -18,67 +18,88 @@ end Is_Valid;
 -- PLUS
 procedure add(Left : in Color; Right : in Color; Result : out Color) is
 begin
-if Left.Value(Red) + Right.Value(Red) > Intensity'Last then
-	Result.Value(Red) := Intensity'Last;
-else
-	Result.Value(Red) := Left.Value(Red) + Right.Value(Red);
+Result.Value := RGB_Color'(others => 0);
+Result.Valid := false;
+
+if Left.Valid and Right.Valid then 
+    Result.Valid := true;
+
+    if Left.Value(Red) + Right.Value(Red) > Intensity'Last then
+        Result.Value(Red) := Intensity'Last;
+    else
+        Result.Value(Red) := Left.Value(Red) + Right.Value(Red);
+    end if;
+
+    if Left.Value(Green) + Right.Value(Green) > Intensity'Last then
+        Result.Value(Green) := Intensity'Last;
+    else
+        Result.Value(Green) := Left.Value(Green) + Right.Value(Green);
+    end if;
+
+    if Left.Value(Blue) + Right.Value(Blue) > Intensity'Last then
+        Result.Value(Blue) := Intensity'Last;
+    else
+        Result.Value(Blue) := Left.Value(Blue) + Right.Value(Blue);
+    end if;
 end if;
 
-if Left.Value(Green) + Right.Value(Green) > Intensity'Last then
-	Result.Value(Green) := Intensity'Last;
-else
-	Result.Value(Green) := Left.Value(Green) + Right.Value(Green);
-end if;
-
-if Left.Value(Blue) + Right.Value(Blue) > Intensity'Last then
-	Result.Value(Blue) := Intensity'Last;
-else
-	Result.Value(Blue) := Left.Value(Blue) + Right.Value(Blue);
-end if;
-Result.Valid := True;
 end add;
 
 -- MINUS
 procedure sub(Left : in Color; Right : in Color; Result : out Color) is
 begin
-if Left.Value(Red) - Right.Value(Red) < Intensity'First then
-	Result.Value(Red) := Intensity'First;
-else
-	Result.Value(Red) := Left.Value(Red) - Right.Value(Red);
-end if;
+Result.Value := RGB_Color'(others => 0);
+Result.Valid := false;
 
-if Left.Value(Green) - Right.Value(Green) < Intensity'First then
-	Result.Value(Green) := Intensity'First;
-else
-	Result.Value(Green) := Left.Value(Green) - Right.Value(Green);
-end if;
+if Left.Valid and Right.Valid then Result.Valid := true;
 
-if Left.Value(Blue) - Right.Value(Blue) < Intensity'First then
-	Result.Value(Blue) := Intensity'First;
-else
-	Result.Value(Blue) := Left.Value(Blue) - Right.Value(Blue);
+    if Left.Value(Red) - Right.Value(Red) < Intensity'First then
+        Result.Value(Red) := Intensity'First;
+    else
+        Result.Value(Red) := Left.Value(Red) - Right.Value(Red);
+    end if;
+
+    if Left.Value(Green) - Right.Value(Green) < Intensity'First then
+        Result.Value(Green) := Intensity'First;
+    else
+        Result.Value(Green) := Left.Value(Green) - Right.Value(Green);
+    end if;
+
+    if Left.Value(Blue) - Right.Value(Blue) < Intensity'First then
+        Result.Value(Blue) := Intensity'First;
+    else
+        Result.Value(Blue) := Left.Value(Blue) - Right.Value(Blue);
+    end if;
+
 end if;
 end sub;
 
 -- MULT
 procedure mult(Left : in Color; Right : in Color; Result : out Color) is
 begin
-if Left.Value(Red) * Right.Value(Red) > Intensity'Last then
-	Result.Value(Red) := Intensity'Last;
-else
-	Result.Value(Red) := Left.Value(Red) * Right.Value(Red);
-end if;
+Result.Value := RGB_Color'(others => 0);
+Result.Valid := false;
 
-if Left.Value(Green) * Right.Value(Green) > Intensity'Last then
-	Result.Value(Green) := Intensity'Last;
-else
-	Result.Value(Green) := Left.Value(Green) * Right.Value(Green);
-end if;
+if Left.Valid and Right.Valid then Result.Valid := true;
 
-if Left.Value(Blue) * Right.Value(Blue) > Intensity'Last then
-	Result.Value(Blue) := Intensity'Last;
-else
-	Result.Value(Blue) := Left.Value(Blue) * Right.Value(Blue);
+    if Left.Value(Red) * Right.Value(Red) > Intensity'Last then
+        Result.Value(Red) := Intensity'Last;
+    else
+        Result.Value(Red) := Left.Value(Red) * Right.Value(Red);
+    end if;
+
+    if Left.Value(Green) * Right.Value(Green) > Intensity'Last then
+        Result.Value(Green) := Intensity'Last;
+    else
+        Result.Value(Green) := Left.Value(Green) * Right.Value(Green);
+    end if;
+
+    if Left.Value(Blue) * Right.Value(Blue) > Intensity'Last then
+        Result.Value(Blue) := Intensity'Last;
+    else
+        Result.Value(Blue) := Left.Value(Blue) * Right.Value(Blue);
+    end if;
+
 end if;
 end mult;
 
@@ -86,18 +107,20 @@ end mult;
 
 procedure divi(Left : in Color; Right : in Color; Result : out Color)  is
 begin
-	if Left.Valid = False or Right.Valid = False then
-		Result.Valid := False;
-	else
+Result.Value := RGB_Color'(others => 0);
+Result.Valid := false;
+
+    if (Left.Valid and Right.Valid) and then Right.Value(Red) > 0 and then Right.Value(Green) > 0 and then Right.Value(Blue) > 0 then
+		Result.Valid := true;
 		Result.Value(Red) := Left.Value(Red) / Right.Value(Red);
 		Result.Value(Green) := Left.Value(Green) / Right.Value(Green);
 		Result.Value(Blue) := Left.Value(Blue) / Right.Value(Blue);
-		Result.Valid := True;
 	end if;
+
 end divi;
 
 -- EQUAL
- procedure equals(Left : in Color; Right : in Color; Result : out Boolean) is
+procedure equals(Left : in Color; Right : in Color; Result : out Boolean) is
 begin
 Result := (Left.Value(Red) = Right.Value(Red) and
 	Left.Value(Green) = Right.Value(Green)) and
