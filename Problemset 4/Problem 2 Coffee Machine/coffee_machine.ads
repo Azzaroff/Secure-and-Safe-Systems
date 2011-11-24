@@ -6,56 +6,54 @@ package Coffee_Machine is
    -- Given 30 cents or more, the coffee is produced immediately
    -- (Note that Overspending is Possible)
       
-   type State is private;
+   type State is range 0..2;  
    type Action is(Ten_Cent, Twenty_Cent, Button);
    type Reaction is(Nothing, Drop_All_Coins, Coffee);
 
    -- pre conditions not necessary, because very possible input can occur
    -- no need for range checks because compiler checks that
 
-   procedure Initialize( X : out State);
+   procedure Initialize( X : out State) with
    post => (X = 0); 
 
    procedure X(S     : in out State;
 	       Act   : in Action;
-	       React : out Reaction);
+	       React : out Reaction) with
    post => (if (S'old /= S) then (
              if Act = Ten_Cent then (
                  if S'Old = 0 then (
-			React = Nothing;
-			S = 1;
+			React = Nothing and
+			S = 1 
 		)elsif S'Old = 1 then (
-			React = Nothing;
-			S = 2;
+			React = Nothing and
+			S = 2
 		)elsif S'Old = 2 then (
-			React = Coffee;
-			S = 0;
+			React = Coffee and
+			S = 0
 		)
              )elsif Act = Twenty_Cent then (
 		if S'Old = 0 then (
-			React = Nothing;
-			S = 2;
+			React = Nothing and
+			S = 2
 		)elsif S'Old = 1 then (
-			React = Coffee;
-			S = 0;
+			React = Coffee and
+			S = 0
 		)elsif S'Old = 2 then (
-			React = Coffee;
-			S = 0;
+			React = Coffee and
+			S = 0
 		)
 	     )elsif Act = Button then (
 		if S'Old = 0 then (
-			React = Nothing;
-			S = 0;
+			React = Nothing and
+			S = 0
 		)elsif S'Old = 1 then (
-			React = Drop_All_Coins;
-			S = 0;
+			React = Drop_All_Coins and
+			S = 0
 		)elsif S'Old = 2 then (
-			React = Drop_All_Coins;
-			S = 0;
+			React = Drop_All_Coins and 
+			S = 0
 		)
 		)
-           ); 
+           )); 
    
-private
-   type State is range 0..2;  
 end Coffee_Machine;
