@@ -4,8 +4,14 @@ package body Graph_Algorithms is
 procedure Breadth_First_Search(G       : in out Graph_Type;
 				Source : in out Vertex_Type) is
 begin
-	null;
+	for all I in G.Successor(Source) loop
+		if I.Get_Mark(G, I) /= Graph'First then
+			G.Set_Mark(G, I, Mark_Graph'First);
+			Breadth_First_Search(G, I);
+		end if;
+	end loop;
 end Breadth_First_Search;
+
 
 -- DEPTH FIRST SEARCH
 procedure Depth_First_Search(G         : in out Graph_Type;
