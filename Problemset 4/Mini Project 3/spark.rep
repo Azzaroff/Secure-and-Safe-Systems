@@ -1,0 +1,158 @@
+           *******************************************************
+                         Report of SPARK Examination
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 26-NOV-2011 00:04:20.16
+
+Options:
+    noswitch
+    noindex_file
+    nowarning_file
+    notarget_compiler_data
+    noconfig_file
+    source_extension=ada
+    listing_extension=lst
+    nodictionary_file
+    report_file=spark.rep
+    nohtml
+    nostatistics
+    fdl_identifiers=accept
+    flow_analysis=information
+    language=95
+    profile=sequential
+    annotation_character=#
+    rules=none
+    error_explanations=off
+    justification_option=full
+    output_directory=.
+    output_directory (actual)=/home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/
+
+Selected files:
+   correct_ballot_box.ads
+
+
+No Index files were used
+
+
+No Meta Files used
+
+
+Full warning reporting selected
+
+
+Source Filename(s) used were:
+   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/correct_ballot_box.ads
+
+
+
+Source Filename:   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/correct_ballot_box.ads
+Listing Filename:  /home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/correct_ballot_box.lst
+
+***     No units in file
+
+
+27 error(s) or warning(s)
+
+Line
+   1  package Correct_Ballot_Box is
+                                   ^1
+*** (  1)  Lexical Error     : Illegal token - Token ignored.
+--- (  2)  Warning           :430: SLI generation abandoned owing to syntax or 
+           semantic errors or multiple units in a single source file.
+
+   3     Number_Of_Options: constant Positive := 10;
+                                                    ^3
+*** (  3)  Lexical Error     : Illegal token - Token ignored.
+
+   4     -- parties / candidates to choose from
+                                               ^4
+*** (  4)  Lexical Error     : Illegal token - Token ignored.
+
+   6     Number_Of_Voters: constant Positive := 1000;
+                                                     ^5
+*** (  5)  Lexical Error     : Illegal token - Token ignored.
+
+   8     subtype Options is Positive range 1 .. Number_Of_Options;
+                                                                  ^6
+*** (  6)  Lexical Error     : Illegal token - Token ignored.
+
+   9     subtype Voters  is Natural  range 0 .. Number_Of_Voters;
+                                                                 ^7
+*** (  7)  Lexical Error     : Illegal token - Token ignored.
+
+  11     Remaining_Voters: Voters := Voters'Last;
+                                                 ^8
+*** (  8)  Lexical Error     : Illegal token - Token ignored.
+
+  12     -- number of people who did not yet vote
+                                                 ^9
+*** (  9)  Lexical Error     : Illegal token - Token ignored.
+
+  14     Votes: array(Options) of Voters := (others => 0);
+                ^10                                       ^11
+*** ( 10)  Syntax Error      : reserved word "ALIASED", reserved word "CONSTANT" 
+           or start of TYPE_MARK expected.
+*** ( 11)  Lexical Error     : Illegal token - Token ignored.
+
+  17     function Is_Empty return Boolean;
+                                          ^12
+*** ( 12)  Lexical Error     : Illegal token - Token ignored.
+
+  18  --# global in Remaining_Voters, Votes;
+                                            ^13
+*** ( 13)  Lexical Error     : Illegal token - Token ignored.
+
+  20     procedure Vote_For(Vote: Options) with
+                                           ^14 ^15
+*** ( 14)  Syntax Error      : No complete PROCEDURE_SPECIFICATION can be 
+           followed by reserved word "WITH" here.
+*** ( 15)  Lexical Error     : Illegal token - Token ignored.
+
+  21     --  Pre  => Remaining_Voters > 0,
+                                          ^16
+*** ( 16)  Lexical Error     : Illegal token - Token ignored.
+
+  22     --  Post => (Remaining_Voters = Remaining_Voters'Old-1) and
+                                                                    ^17
+*** ( 17)  Lexical Error     : Illegal token - Token ignored.
+
+  23     --    (for all I in Options => (if I = Vote
+                                                    ^18
+*** ( 18)  Lexical Error     : Illegal token - Token ignored.
+
+  24     --                              then Votes(I) = Votes'Old(I) +1
+                                                                        ^19
+*** ( 19)  Lexical Error     : Illegal token - Token ignored.
+
+  25     --                              else Votes(I) = Votes'Old(I)));
+                                                                        ^20
+*** ( 20)  Lexical Error     : Illegal token - Token ignored.
+
+  26  --# global in Remaining_Voters, in Votes;
+                                      ^21      ^22
+*** ( 21)  Syntax Error      : No GLOBAL_VARIABLE can start with reserved word 
+           "IN". A semicolon and not a comma should precede an "IN" in a moded 
+           global definition.
+*** ( 22)  Lexical Error     : Illegal token - Token ignored.
+
+  27  --# pre (Remaining_Voters > 0)
+                                    ^23
+*** ( 23)  Lexical Error     : Illegal token - Token ignored.
+
+  28  --# post (Remaining_Voters = Remaining_Voters~-1)
+      ^24                                              ^25
+*** ( 24)  Syntax Error      : No complete ANNOTATION_PRIMARY can be followed by 
+           ANNOTATION_END here.
+*** ( 25)  Lexical Error     : Illegal token - Token ignored.
+
+  30  end Correct_Ballot_Box;
+      ^26                    ^27
+*** ( 26)  Syntax Error      : No complete ANNOTATION_PRIMARY can be followed by 
+           ANNOTATION_END here.
+*** ( 27)  Lexical Error     : Illegal token - Token ignored.
+
+
+--End of file--------------------------------------------------

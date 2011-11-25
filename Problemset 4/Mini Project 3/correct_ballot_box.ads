@@ -13,15 +13,18 @@ package Correct_Ballot_Box is
 
    Votes: array(Options) of Voters := (others => 0);
 
-   function Is_Empty return Boolean is
-      ((Remaining_Voters = Voters'Last)
-       and (for all I in Options => Votes(I) = 0));
+
+   function Is_Empty return Boolean;
+--# global in Remaining_Voters, Votes;
 
    procedure Vote_For(Vote: Options) with
-     Pre  => Remaining_Voters > 0,
-     Post => (Remaining_Voters = Remaining_Voters'Old-1) and
-       (for all I in Options => (if I = Vote
-                                 then Votes(I) = Votes'Old(I) +1
-                                 else Votes(I) = Votes'Old(I)));
+   --  Pre  => Remaining_Voters > 0,
+   --  Post => (Remaining_Voters = Remaining_Voters'Old-1) and
+   --    (for all I in Options => (if I = Vote
+   --                              then Votes(I) = Votes'Old(I) +1
+   --                              else Votes(I) = Votes'Old(I)));
+--# global in Remaining_Voters, in Votes;
+--# pre (Remaining_Voters > 0)
+--# post (Remaining_Voters = Remaining_Voters~-1)
 
 end Correct_Ballot_Box;
