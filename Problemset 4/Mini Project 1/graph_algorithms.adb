@@ -3,19 +3,23 @@ package body Graph_Algorithms is
 -- BREADTH FIRST SEARCH
 procedure Breadth_First_Search(G       : in out Graph_Type;
 				Source : in out Vertex_Type) is
-Queue : Vertex_Array;
-Queue2: Vertex_Array;
+Queue 	: Mark_List.List;
+cursor 	: Mark_List.Cursor;
+elem	: Mark_Type;
 begin
-	--FALSCH
-	Queue := G.Successor(Source); -- just for help
-	for all J : Vertex_Type in Queue loop
-		for all I : Vertex_Type in Queue loop -- mark all childs
+	elem := (null, Source);
+	Queue.append(Source);
+	cursor := First(Queue.List);
+	while Queue.Has_Element(Cursor) loop -- for all elements in queue
+		elem := Queue.Element(Cursor);
+		for all I : Marked_Type in G.Successor(elem(Marked_Vertex)) loop -- mark all childs
 			if G.Get_Mark(G, I) /= Graph'First then
 				G.Set_Mark(G, I, Mark_Graph'First);
 			end if;
+			Queue.append(I); -- Append all Childs to queue
 		end loop;
-		Queue2 := Queue;
-		Queue := G.Successor(J);
+		Queue.Delete(Cursor); --delete first element of queue
+		Queue.Next(Cursor);
 	end loop;
 		
 end Breadth_First_Search;
