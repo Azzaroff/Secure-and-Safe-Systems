@@ -50,18 +50,17 @@ end Depth_First_Search;
 -- MINIMAL SPANNING TREE
 function Minimal_Spanning_Tree(G       : in Graph_Type;
 				Source : in Vertex_Type) return Graph_Type is
+Result	: Graph_Type;
 begin
-	null;
-	return G;
+	return Result;
 end Minimal_Spanning_Tree;
 
 --SHORTEST PATH
 function Shortest_Path(G  	    : in Graph_Type;
 			Source      : in Vertex_Type;
-			Destination : in Vertex_Type)	return Vertex_Array is
+			Destination : in Vertex_Type)	return Graphs.Vertex_Array is
 begin
-	null;
-	return Destination;
+	return G.Successors(Source);
 end Shortest_Path;
 
 end Graph_Algorithms;

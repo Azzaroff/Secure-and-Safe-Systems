@@ -3,7 +3,7 @@ private with Ada.Containers.Indefinite_Doubly_Linked_Lists;
 generic
    type Vertex_Type is private;
 package Generic_Graph is
-   type Graph_Type is tagged limited private;
+   type Graph_Type is tagged private;
    subtype Edge_Weight is Natural;
    type Vertex_Array is array (Positive range <>) of Vertex_Type;
    
@@ -53,7 +53,7 @@ package Vertex_List is new Ada.Containers.Indefinite_Doubly_Linked_Lists
 package Edge_List is new Ada.Containers.Indefinite_Doubly_Linked_Lists
   (Element_Type => Edge_Type, "=" => "=");
 
-type Graph_Type is tagged limited 
+type Graph_Type is tagged 
    record
       Vertices: Vertex_List.List;
       Edges   : Edge_List.List;
