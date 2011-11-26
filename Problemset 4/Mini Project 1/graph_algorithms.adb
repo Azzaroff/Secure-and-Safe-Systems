@@ -1,25 +1,32 @@
+with Ada.Containers.Doubly_Linked_Lists;
+
 package body Graph_Algorithms is
 
 -- BREADTH FIRST SEARCH
 procedure Breadth_First_Search(G       : in out Graph_Type;
 				Source : in out Vertex_Type) is
-Queue 	: Mark_List.List;
-cursor 	: Mark_List.Cursor;
-elem	: Mark_Type;
+
+package Queue_List is new Ada.Containers.Doubly_Linked_Lists(Vertex_Type);
+use Queue_List;
+Queue 	: List;
+cursor 	: Queue_List.Cursor;
+elem	: Vertex_Type;
+elem2	: Vertex_Type;
 begin
-	elem := (null, Source);
+	elem := Source;
 	Queue.append(Source);
-	cursor := First(Queue.List);
-	while Queue.Has_Element(Cursor) loop -- for all elements in queue
-		elem := Queue.Element(Cursor);
-		for all I : Marked_Type in G.Successor(elem(Marked_Vertex)) loop -- mark all childs
-			if G.Get_Mark(G, I) /= Graph'First then
-				G.Set_Mark(G, I, Mark_Graph'First);
+	cursor := Queue_List.First(Queue);
+	while Queue_List.Has_Element(Cursor) loop -- for all elements in queue
+		elem := Queue_List.Element(Cursor);
+		for I in G.Successors(elem)'Range loop -- mark all childs
+			elem2 := G.Successors(elem)(I);
+			if G.Get_Mark(elem2) /= Vertex_Mark'First then
+				G.Set_Mark(elem2, Vertex_Mark'First);
 			end if;
-			Queue.append(I); -- Append all Childs to queue
+			Queue.append(elem2); -- Append all Childs to queue
 		end loop;
 		Queue.Delete(Cursor); --delete first element of queue
-		Queue.Next(Cursor);
+		Queue_List.Next(Cursor);
 	end loop;
 		
 end Breadth_First_Search;
@@ -28,11 +35,13 @@ end Breadth_First_Search;
 -- DEPTH FIRST SEARCH
 procedure Depth_First_Search(G         : in out Graph_Type;
 				Source : in out Vertex_Type) is
+elem	: Vertex_Type;
 begin
-	for all I : Vertex_Type in G.Successor(Source) loop
-		if G.Get_Mark(G, I) /= Graph'First then
-			G.Set_Mark(G, I, Mark_Graph'First);
-			Depth_First_Search(G, I);
+	for I in G.Successors(Source)'Range loop
+		elem	:= G.Successors(Source)(I);
+		if G.Get_Mark(elem) /= Vertex_Mark'First then
+			G.Set_Mark(elem, Vertex_Mark'First);
+			Depth_First_Search(G, elem);
 		end if;
 	end loop;
 end Depth_First_Search;

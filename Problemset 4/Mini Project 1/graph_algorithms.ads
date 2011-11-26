@@ -1,7 +1,8 @@
-with Mark_Graph;
+with Mark_Graph, Generic_Graph;
 
 generic
-   with package Graph  is new Mark_Graph(<>);
+   with package Graph  is new Mark_Graph(<>); 
+
 package Graph_Algorithms is  
    use Graph;
    -- Marks all Vertices with Vertex_Mark'First that are reachable from 
@@ -31,5 +32,6 @@ package Graph_Algorithms is
    -- Source or Destination is not a vertex of G. 
    function Shortest_Path(G           : in Graph_Type;
 			  Source      : in Vertex_Type;
-			  Destination : in Vertex_Type)	return Vertex_Array;
+			  Destination : in Vertex_Type)	return Graphs.Vertex_Array;
+
 end Graph_Algorithms;
