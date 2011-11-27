@@ -1,0 +1,42 @@
+V "SPARK 2011"
+A -noswitch
+A -index_file=spark.idx
+A -nowarning_file
+A -notarget_compiler_data
+A -noconfig_file
+A -source_extension=ada
+A -listing_extension=lst
+A -nodictionary_file
+A -report_file=spark.rep
+A -nohtml
+A -nostatistics
+A -fdl_identifiers=accept
+A -flow_analysis=data
+A -language=2005
+A -profile=sequential
+A -annotation_character=#
+A -rules=none
+A -error_explanations=off
+A -justification_option=full
+A -output_directory=.
+A -output_directory (actual)=/home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/
+P
+R
+
+U correct_ballot_box%b correct_ballot_box.adb
+U correct_ballot_box%s correct_ballot_box.ads
+
+D correct_ballot_box.adb 00000000000000 00000000
+D correct_ballot_box.ads 00000000000000 00000000
+
+X 2 correct_ballot_box.ads
+13I12 Voters 24r39
+16H4 Remaining_Voters 36m16 2o9 3r17 23r18 24r20 34r22 37r36 38r13 39r14
+. 39r33
+19H4 Votes 37m16 2o26 3r34 23r36 25r36 26r12 35r33 40r36 41r14
+. 41r25 41r44 41r55
+22V13 Is_Empty 23>18 23>36
+25i17 I 26r18
+28U14 Vote_For 34=22 35=33
+28i23 Vote 37r30
+40i17 I 41r20 41r32 41r50 41r62
