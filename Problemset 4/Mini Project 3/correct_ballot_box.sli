@@ -12,14 +12,14 @@ A -nohtml
 A -nostatistics
 A -fdl_identifiers=accept
 A -flow_analysis=data
-A -language=2005
+A -language=95
 A -profile=sequential
 A -annotation_character=#
 A -rules=none
 A -error_explanations=off
 A -justification_option=full
 A -output_directory=.
-A -output_directory (actual)=/home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/
+A -output_directory (actual)=/home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/
 P
 R
 

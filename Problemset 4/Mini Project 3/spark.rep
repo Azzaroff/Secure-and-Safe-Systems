@@ -5,11 +5,11 @@
            *******************************************************
 
 
-                        DATE : 27-NOV-2011 18:25:07.96
+                        DATE : 28-NOV-2011 18:15:22.31
 
 Options:
     noswitch
-    index_file=spark.idx
+    noindex_file
     nowarning_file
     notarget_compiler_data
     noconfig_file
@@ -20,22 +20,21 @@ Options:
     nohtml
     nostatistics
     fdl_identifiers=accept
-    flow_analysis=data
-    language=2005
+    flow_analysis=information
+    language=95
     profile=sequential
     annotation_character=#
     rules=none
     error_explanations=off
     justification_option=full
     output_directory=.
-    output_directory (actual)=/home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/
+    output_directory (actual)=/home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/
 
 Selected files:
-   correct_ballot_box.adb
+   correct_ballot_box.ads
 
 
-Index Filename(s) used were: 
-   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/spark.idx
+No Index files were used
 
 
 No Meta Files used
@@ -45,37 +44,18 @@ Full warning reporting selected
 
 
 Source Filename(s) used were:
-   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/correct_ballot_box.adb
-   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/correct_ballot_box.ads
+   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/correct_ballot_box.ads
 
 
 
-Source Filename:   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/correct_ballot_box.ads
-No Listing File
+Source Filename:   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/correct_ballot_box.ads
+Listing Filename:  /home/paul/SSS/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/correct_ballot_box.lst
 
    Unit name:  Correct_Ballot_Box
    Unit type:  package specification
    Unit has been analysed, any errors are listed below.
 
-1 error(s) or warning(s)
-
-Line
-  37     --#         Votes from *, Vote, Remaining_Voters;
-
---- (  1)  Note              :  1: This dependency relation was not used for this 
-           analysis and has not been checked for accuracy.
-
-
-Source Filename:   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/correct_ballot_box.adb
-Listing Filename:  /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 4/Mini Project 3/correct_ballot_box.lst
-
-   Unit name:  correct_ballot_box
-   Unit type:  package body
-   Unit has been analysed, any errors are listed below.
-
 No errors found
-
-Note: Data flow analysis mode selected
 
 
 --End of file--------------------------------------------------
