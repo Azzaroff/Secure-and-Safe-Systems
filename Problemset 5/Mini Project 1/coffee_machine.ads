@@ -14,7 +14,7 @@ package Coffee_Machine is
    -- no need for range checks because compiler checks that
 
    procedure Initialize( X : out State);
-   -- derives X from null;
+   --# derives X from ;
    -- initializes X;
 
    --# post X = 0;

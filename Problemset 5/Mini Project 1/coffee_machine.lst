@@ -5,7 +5,7 @@
            *******************************************************
 
 
-                        DATE : 05-DEC-2011 09:40:45.76
+                        DATE : 05-DEC-2011 10:36:54.57
 
 Line
    1  package Coffee_Machine is
@@ -24,7 +24,7 @@ Line
   14     -- no need for range checks because compiler checks that
   15  
   16     procedure Initialize( X : out State);
-  17     -- derives X from null;
+  17     --# derives X from ;
   18     -- initializes X;
   19  
   20     --# post X = 0;
@@ -34,8 +34,8 @@ Line
   24  	       Act   : in Action;
   25  	       React : out Reaction);
   26     --# derives 	S from * &
-  27     --# 		null from Act&
-             		             ^1
+  27     --# 		null from Act &
+             		              ^1
 *** (  1)  Syntax Error      : No complete DEPENDENCY_CLAUSE_OPTREP can be 
            followed by "&" here.
 --- (  2)  Warning           :430: SLI generation abandoned owing to syntax or 
