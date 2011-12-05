@@ -13,47 +13,18 @@ package Coffee_Machine is
    -- pre conditions not necessary, because very possible input can occur
    -- no need for range checks because compiler checks that
 
-   procedure Initialize( X : out State) with
-   post => (X = 0); 
+   procedure Initialize( X : out State);
+   -- derives X from null;
+   -- initializes X;
+
+   --# post X = 0;
+   
 
    procedure X(S     : in out State;
 	       Act   : in Action;
-	       React : out Reaction) with
-   post => (if (S'old /= S) then (
-             if Act = Ten_Cent then (
-                 if S'Old = 0 then (
-			React = Nothing and
-			S = 1 
-		)elsif S'Old = 1 then (
-			React = Nothing and
-			S = 2
-		)elsif S'Old = 2 then (
-			React = Coffee and
-			S = 0
-		)
-             )elsif Act = Twenty_Cent then (
-		if S'Old = 0 then (
-			React = Nothing and
-			S = 2
-		)elsif S'Old = 1 then (
-			React = Coffee and
-			S = 0
-		)elsif S'Old = 2 then (
-			React = Coffee and
-			S = 0
-		)
-	     )elsif Act = Button then (
-		if S'Old = 0 then (
-			React = Nothing and
-			S = 0
-		)elsif S'Old = 1 then (
-			React = Drop_All_Coins and
-			S = 0
-		)elsif S'Old = 2 then (
-			React = Drop_All_Coins and 
-			S = 0
-		)
-		)
-           )); 
+	       React : out Reaction);
+   --# derives 	S from * &
+   --# 		null from Act &
+   --#		React from ;
    
 end Coffee_Machine;

@@ -1,0 +1,49 @@
+           *******************************************************
+                            Listing of SPARK Text
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 05-DEC-2011 09:40:45.76
+
+Line
+   1  package Coffee_Machine is
+   2     -- Simulation of a coin-driven coffee machine
+   3     -- User: - One slot to insert coins (only, 10 or, 20 cents)
+   4     --       - One button to press (''money back'')
+   5     -- Machine: one slot to drop coins, the coffee output
+   6     -- Given 30 cents or more, the coffee is produced immediately
+   7     -- (Note that Overspending is Possible)
+   8        
+   9     type State is range 0..2;  
+  10     type Action is(Ten_Cent, Twenty_Cent, Button);
+  11     type Reaction is(Nothing, Drop_All_Coins, Coffee);
+  12  
+  13     -- pre conditions not necessary, because very possible input can occur
+  14     -- no need for range checks because compiler checks that
+  15  
+  16     procedure Initialize( X : out State);
+  17     -- derives X from null;
+  18     -- initializes X;
+  19  
+  20     --# post X = 0;
+  21     
+  22  
+  23     procedure X(S     : in out State;
+  24  	       Act   : in Action;
+  25  	       React : out Reaction);
+  26     --# derives 	S from * &
+  27     --# 		null from Act&
+             		             ^1
+*** (  1)  Syntax Error      : No complete DEPENDENCY_CLAUSE_OPTREP can be 
+           followed by "&" here.
+--- (  2)  Warning           :430: SLI generation abandoned owing to syntax or 
+           semantic errors or multiple units in a single source file.
+
+  28     --#		React from ;
+  29     
+  30  end Coffee_Machine;
+
+
+--End of file--------------------------------------------------
