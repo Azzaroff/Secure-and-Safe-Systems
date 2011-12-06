@@ -15,7 +15,6 @@ package coffee_machine is
 
    procedure Initialize( X : out State);
    --# derives X from ;
-   -- initializes X;
 
    --# post X = 0;
    

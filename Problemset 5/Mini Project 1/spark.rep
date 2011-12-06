@@ -5,7 +5,7 @@
            *******************************************************
 
 
-                        DATE : 06-DEC-2011 13:39:54.51
+                        DATE : 06-DEC-2011 13:43:06.27
 
 Options:
     noswitch
@@ -21,21 +21,21 @@ Options:
     nostatistics
     fdl_identifiers=accept
     flow_analysis=information
-    language=2005
+    language=95
     profile=sequential
     annotation_character=#
     rules=none
     error_explanations=off
     justification_option=full
     output_directory=.
-    output_directory (actual)=/home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/
+    output_directory (actual)=/home/paul/SSS/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/
 
 Selected files:
    coffee_machine.adb
 
 
 Index Filename(s) used were: 
-   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/spark.idx
+   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/spark.idx
 
 
 No Meta Files used
@@ -45,12 +45,12 @@ Full warning reporting selected
 
 
 Source Filename(s) used were:
-   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.adb
-   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.ads
+   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.adb
+   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.ads
 
 
 
-Source Filename:   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.ads
+Source Filename:   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.ads
 No Listing File
 
    Unit name:  coffee_machine
@@ -60,8 +60,8 @@ No Listing File
 No errors found
 
 
-Source Filename:   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.adb
-Listing Filename:  /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.lst
+Source Filename:   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.adb
+Listing Filename:  /home/paul/SSS/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.lst
 
    Unit name:  coffee_machine
    Unit type:  package body
