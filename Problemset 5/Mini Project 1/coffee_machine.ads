@@ -1,4 +1,4 @@
-package Coffee_Machine is
+package coffee_machine is
    -- Simulation of a coin-driven coffee machine
    -- User: - One slot to insert coins (only, 10 or, 20 cents)
    --       - One button to press (''money back'')
@@ -23,8 +23,7 @@ package Coffee_Machine is
    procedure X(S     : in out State;
 	       Act   : in Action;
 	       React : out Reaction);
-   --# derives 	S from * &
-   --# 		null from Act &
-   --#		React from ;
+   --# derives 	S from *,Act &
+   --#		React from S,Act;
    
 end Coffee_Machine;

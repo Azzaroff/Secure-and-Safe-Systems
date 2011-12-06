@@ -5,11 +5,11 @@
            *******************************************************
 
 
-                        DATE : 05-DEC-2011 10:36:54.57
+                        DATE : 06-DEC-2011 13:39:54.51
 
 Options:
     noswitch
-    noindex_file
+    index_file=spark.idx
     nowarning_file
     notarget_compiler_data
     noconfig_file
@@ -21,20 +21,21 @@ Options:
     nostatistics
     fdl_identifiers=accept
     flow_analysis=information
-    language=95
+    language=2005
     profile=sequential
     annotation_character=#
     rules=none
     error_explanations=off
     justification_option=full
     output_directory=.
-    output_directory (actual)=/home/paul/SSS/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/
+    output_directory (actual)=/home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/
 
 Selected files:
-   coffee_machine.ads
+   coffee_machine.adb
 
 
-No Index files were used
+Index Filename(s) used were: 
+   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/spark.idx
 
 
 No Meta Files used
@@ -44,25 +45,29 @@ Full warning reporting selected
 
 
 Source Filename(s) used were:
-   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.ads
+   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.adb
+   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.ads
 
 
 
-Source Filename:   /home/paul/SSS/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.ads
-Listing Filename:  /home/paul/SSS/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.lst
+Source Filename:   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.ads
+No Listing File
 
-***     No units in file
+   Unit name:  coffee_machine
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
 
 
-2 error(s) or warning(s)
+Source Filename:   /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.adb
+Listing Filename:  /home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/coffee_machine.lst
 
-Line
-  27     --# 		null from Act &
-             		              ^1
-*** (  1)  Syntax Error      : No complete DEPENDENCY_CLAUSE_OPTREP can be 
-           followed by "&" here.
---- (  2)  Warning           :430: SLI generation abandoned owing to syntax or 
-           semantic errors or multiple units in a single source file.
+   Unit name:  coffee_machine
+   Unit type:  package body
+   Unit has been analysed, any errors are listed below.
+
+No errors found
 
 
 --End of file--------------------------------------------------

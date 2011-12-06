@@ -1,0 +1,36 @@
+V "SPARK 2011"
+A -noswitch
+A -index_file=spark.idx
+A -nowarning_file
+A -notarget_compiler_data
+A -noconfig_file
+A -source_extension=ada
+A -listing_extension=lst
+A -nodictionary_file
+A -report_file=spark.rep
+A -nohtml
+A -nostatistics
+A -fdl_identifiers=accept
+A -flow_analysis=information
+A -language=2005
+A -profile=sequential
+A -annotation_character=#
+A -rules=none
+A -error_explanations=off
+A -justification_option=full
+A -output_directory=.
+A -output_directory (actual)=/home/azzaroff/workspace/Secure-and-Safe-Systems/Problemset 5/Mini Project 1/
+P
+R
+
+U coffee_machine%b coffee_machine.adb
+U coffee_machine%s coffee_machine.ads
+
+D coffee_machine.adb 00000000000000 00000000
+D coffee_machine.ads 00000000000000 00000000
+
+X 2 coffee_machine.ads
+16i26 X 17m16 20r13
+23i16 S 26m17 27r20
+24e9 Act 26r26 27r22
+25e9 React 27m9
