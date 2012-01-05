@@ -1,8 +1,8 @@
 package body gcd is
 
-procedure GCD (X, Y : in Integer;
-		result : out Integer) is
-xhelp, yhelp : Integer;
+procedure GCD (X, Y : in Natural;
+		result : out Natural) is
+xhelp, yhelp : Natural;
 begin
 	xhelp := X;
 	yhelp := Y;
