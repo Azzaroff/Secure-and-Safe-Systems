@@ -11,7 +11,7 @@ begin
 	end if;
 	
 	i := min;
-	while((i > 0) and not((X mod i = 0) and (Y mod i = 0))) loop
+	while((i > 1) and not((X mod i = 0) and (Y mod i = 0))) loop
 		i := i -1;
 	end loop;
 
