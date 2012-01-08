@@ -1,0 +1,73 @@
+           *******************************************************
+                         Report of SPARK Examination
+                            Examiner GPL 2010-SMT
+             Copyright (C) 2010 Altran Praxis Limited, Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 06-JAN-2012 13:31:29.12
+
+Options:
+    noswitch
+    index_file=gcd2.idx
+    nowarning_file
+    notarget_compiler_data
+    noconfig_file
+    source_extension=ada
+    listing_extension=lst
+    nodictionary_file
+    report_file=spark.rep
+    nohtml
+    nostatistics
+    fdl_identifiers=accept
+    flow_analysis=information
+    language=95
+    profile=sequential
+    annotation_character=#
+    rules=none
+    error_explanations=off
+    justification_option=full
+    output_directory=.
+    output_directory (actual)=/home/felix/workspace/Secure-and-Safe-Systems/Problemset 6/Mini Project 3/
+
+Selected files:
+   gcd2.adb
+
+
+Index Filename(s) used were: 
+   /home/felix/workspace/Secure-and-Safe-Systems/Problemset 6/Mini Project 3/gcd2.idx
+
+
+No Meta Files used
+
+
+Full warning reporting selected
+
+
+Source Filename(s) used were:
+   /home/felix/workspace/Secure-and-Safe-Systems/Problemset 6/Mini Project 3/gcd2.adb
+   /home/felix/workspace/Secure-and-Safe-Systems/Problemset 6/Mini Project 3/gcd2.ads
+
+
+
+Source Filename:   /home/felix/workspace/Secure-and-Safe-Systems/Problemset 6/Mini Project 3/gcd2.ads
+No Listing File
+
+   Unit name:  gcd2
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /home/felix/workspace/Secure-and-Safe-Systems/Problemset 6/Mini Project 3/gcd2.adb
+Listing Filename:  /home/felix/workspace/Secure-and-Safe-Systems/Problemset 6/Mini Project 3/gcd2.lst
+
+   Unit name:  gcd2
+   Unit type:  package body
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+--End of file--------------------------------------------------

@@ -1,21 +1,17 @@
 package body gcd2 is
 
-procedure GCD (X, Y : in Natural;
-		result : out Natural) is
-min, i : Natural;
+procedure GCD (X, Y : in Positive;
+		result : out Positive) is
 begin
 	if (X < Y) then
-		min := X;
+		result := X;
 	else
-		min := y;
+		result := y;
 	end if;
 	
-	i := min;
-	while((i > 1) and not((X mod i = 0) and (Y mod i = 0))) loop
-		i := i -1;
+	while((result > 1) and not((X mod result = 0) and (Y mod result = 0))) loop
+		result := result -1;
 	end loop;
-
-	result := i;
 end GCD;
 
 end gcd2;

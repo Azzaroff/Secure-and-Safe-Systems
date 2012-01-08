@@ -1,0 +1,34 @@
+           *******************************************************
+                            Listing of SPARK Text
+                            Examiner GPL 2010-SMT
+             Copyright (C) 2010 Altran Praxis Limited, Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 06-JAN-2012 13:31:29.12
+
+Line
+   1  package body gcd2 is
+   2  
+   3  procedure GCD (X, Y : in Positive;
+   4  		result : out Positive) is
+   5  begin
+   6  	if (X < Y) then
+   7  		result := X;
+   8  	else
+   9  		result := y;
+  10  	end if;
+  11  	
+  12  	while((result > 1) and not((X mod result = 0) and (Y mod result = 0))) loop
+  13  		result := result -1;
+  14  	end loop;
+  15  end GCD;
+
++++        Flow analysis of subprogram GCD performed: no 
+           errors found.
+
+  16  
+  17  end gcd2;
+
+
+--End of file--------------------------------------------------
