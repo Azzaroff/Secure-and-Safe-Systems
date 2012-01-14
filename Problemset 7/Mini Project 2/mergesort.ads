@@ -7,4 +7,5 @@ generic
 package Mergesort is
    procedure Merge(Left, Right : in Collection_Type; Result : out Collection_Type);
    procedure Sort (Item : in out Collection_Type);
+   function Sort_with_Tasks (Item : Collection_Type) return Collection_Type;
 end MergeSort;

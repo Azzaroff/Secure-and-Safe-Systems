@@ -59,7 +59,7 @@ begin
    Ada.Text_IO.Put_Line("unsorted List from file: ");
    Print(List);
    Ada.Text_IO.Put_Line("sorted List: ");
-   List_Sort.Sort(List);
+   List := List_Sort.Sort_with_Tasks(List);
    Print(List);
 end Mergesort_Test;
 
