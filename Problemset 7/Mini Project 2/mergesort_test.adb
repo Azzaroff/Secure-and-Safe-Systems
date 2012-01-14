@@ -1,64 +1,64 @@
 with Ada.Text_IO; use Ada.Text_IO; 
 with Ada.Strings.Unbounded;
-with Ada.Strings.Fixed; use Ada.Strings.Fixed;
+with Ada.Integer_Text_IO;
+with Ada.Containers.Vectors;
 with Ada.Command_Line; use Ada.Command_Line;
 with Mergesort; 
  
 procedure Mergesort_Test is
    type List_Type is array(Positive range <>) of Integer;
+   package Integer_Vectors is new Ada.Containers.Vectors(Natural, Integer);
+
+   
+
    package List_Sort is new Mergesort(Integer, Positive, List_Type);
+
    procedure Print(Item : List_Type) is
-   begin
+   begin 
       for I in Item'range loop
          Put(Integer'Image(Item(I)));
       end loop;
       New_Line;
    end Print;
 
-   function Parse_Commas (Source_String : String) return List_Type is
-   Index_List : array(1..256) of Natural;
-   Next_Index : Natural := 1;
-   Result_List : List_Type(1 .. 1);
+   function Read_Ints (File_Name : String) return Integer_Vectors.Vector is
+ 
+   Input_File      	: Ada.Text_IO.File_Type;
+   Num       		: Integer;
+   
+   Numbers : Integer_Vectors.Vector;
+ 
    begin
-   Index_List(Next_Index) := 1;
-   while Index_List(Next_Index) < Source_String'Last loop
-      Next_Index := Next_Index + 1;
-      Index_List(Next_Index) := 1 + Index(Source_String(Index_List(Next_Index - 1)..Source_String'Last), ",");
-      if Index_List(Next_Index) = 1 then 
-         Index_List(Next_Index) := Source_String'Last + 2;
-      end if;
-      Result_List := Result_List & Integer'Value(Source_String(Index_List(Next_Index - 1)..Index_List(Next_Index)-2));
+ 
+   Ada.Text_IO.Open (File=>Input_File, Mode=>Ada.Text_IO.In_File, Name=>File_Name);
+   while not (Ada.Text_IO.End_Of_File (Input_File)) loop
+      Ada.Integer_Text_IO.Get(Item => Num, File => Input_File);
+      --Ada.Text_IO.Put_Line(Integer'Image(Num));
+      Numbers.Append(Num);
    end loop;
-   return Result_List;
-   end Parse_Commas;
-
-   function Line_By_Line (Filename : in String) return List_Type is
-   File       : Ada.Text_IO.File_Type;
-   Line_Count : Natural := 0;
-   List_of_Numbers : List_Type(1 .. 1);
-   begin
-   Ada.Text_IO.Open (File => File,
-	             Mode => Ada.Text_IO.In_File,
-	             Name => Filename);
-   while not Ada.Text_IO.End_Of_File (File) loop
-      declare
-	 Line : String := Ada.Text_IO.Get_Line (File);
-      begin
-	 Line_Count := Line_Count + 1;
-	 List_of_Numbers := List_of_Numbers & Parse_Commas(Line);
-      end;
-   end loop;
-   Ada.Text_IO.Close (File);
-   return List_of_Numbers;
-end Line_By_Line;
+   Ada.Text_IO.Close (File=>Input_File);
+   return Numbers;
+   end Read_Ints;
 
 
    
  
-   List : List_Type := (1, 5, 2, 7, 3, 9, 4, 6);
+   --List : List_Type := (1, 5, 2, 7, 3, 9, 4, 6);
+   Numbers : Integer_Vectors.Vector := Read_Ints(Argument(1));
+   Cursor : Integer_Vectors.Cursor;
+   List : List_Type(1 .. Integer(Numbers.Length));
+   Index : Integer := 1;
 begin
-   List := Line_By_Line(Argument(1));
+   Cursor := Integer_Vectors.First(Numbers);
+   while Integer_Vectors.Has_Element(Cursor) loop
+        List(Index) := Integer_Vectors.Element(Cursor);
+        Integer_Vectors.Next(Cursor);
+        Index := Index + 1;
+   end loop;
+   
+   Ada.Text_IO.Put_Line("unsorted List from file: ");
    Print(List);
+   Ada.Text_IO.Put_Line("sorted List: ");
    List_Sort.Sort(List);
    Print(List);
 end Mergesort_Test;
