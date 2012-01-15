@@ -31,9 +31,11 @@ procedure Mute_Workers (End_Value : Integer) is
 	task body Worker is
 		My_Name : Character := '?';
 		Val, Diff, Cnt: Positive;
-		hof_array : Hofstadter_Array(Cnt);
-		hof_val : Positive;
-		hof_eval: Boolean;
+		Command : Character;
+		Available : Boolean;
+		--hof_val : Positive;
+		--hof_eval: Boolean;
+		--hof_array_in : Hofstadter_Array;
 		begin
 		accept Start(Name: Character;
 				Start, Offset, Counter : Positive) do
@@ -43,18 +45,22 @@ procedure Mute_Workers (End_Value : Integer) is
 			Cnt	:= Counter;
 		end Start;
 		for I in 1 .. Cnt loop
-			hof_val := I;
-			hof_array.Get_Value(hof_val, hof_eval);
-			if not hof_eval then
-				hof_val := Hofstadter.Q(Val);
-				hof_array.Put_Value(I, hof_val);
-			end if;
-			Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & hof_val'Img);
+			Ada.Text_IO.Get_Immediate (Command, Available);
+			exit when Available and Command = 'q';
+			--hof_val := I;
+			--hof_array.Get_Value(hof_val, hof_eval);
+			--if not hof_eval then
+			--	hof_val := Hofstadter.Q(Val);
+			--	hof_array.Put_Value(I, hof_val);
+			--end if;
+			--Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & hof_val'Img);
+			Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & Hofstadter.Q(Val)'Img);
 			Val := Val + Diff;
 		end loop;
 	end Worker;
 
 	O, Tw, Th, F : Worker;
+	--hof_array : Hofstadter_Array(End_Value);
 begin
    O.Start('1', 1, 4, End_Value);
    Tw.Start('2', 2, 4, End_Value);
