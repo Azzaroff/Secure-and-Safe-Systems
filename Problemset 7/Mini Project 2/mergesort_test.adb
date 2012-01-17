@@ -14,8 +14,13 @@ procedure Mergesort_Test is
    package List_Sort is new Mergesort(Integer, Positive, List_Type);
 
    procedure Print(Item : List_Type) is
+	Command : Character;
+	Available : Boolean;
+
    begin 
       for I in Item'range loop
+	 Ada.Text_IO.Get_Immediate (Command, Available);
+	 exit when Available and (Command = 'q' or Command = 'Q'); 
          Put(Integer'Image(Item(I)));
       end loop;
       New_Line;
@@ -57,7 +62,7 @@ begin
    end loop;
    
    Ada.Text_IO.Put_Line("unsorted List from file: ");
-   Print(List);
+   --Print(List);
    Ada.Text_IO.Put_Line("sorted List: ");
    List := List_Sort.Sort_with_Tasks(List);
    Print(List);

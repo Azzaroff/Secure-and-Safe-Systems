@@ -1,3 +1,5 @@
+with Ada.Text_IO;
+
 package body Mergesort is
  
    -----------
@@ -33,6 +35,9 @@ package body Mergesort is
  
    procedure Sort (Item : in out Collection_Type)is
       Middle : Index_Type;
+      Command   : Character;
+      Available : Boolean;
+
    begin
       if Item'Length > 1 then
          Middle := Index_Type'Val((Item'Length / 2) + Index_Type'Pos(Item'First));
@@ -46,9 +51,12 @@ package body Mergesort is
             for I in Right'range loop
                Right(I) := Item(I);
             end loop;
-            Sort(Left);
-            Sort(Right);
-            Merge(Left, Right, Item);
+	    Ada.Text_IO.Get_Immediate (Command, Available);
+	    if not (Available and Command = 'q') then
+		    Sort(Left);
+		    Sort(Right);
+		    Merge(Left, Right, Item);
+	    end if;
          end;
       end if;
    end Sort;
