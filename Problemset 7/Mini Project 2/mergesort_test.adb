@@ -57,10 +57,10 @@ procedure Mergesort_Test is
    Index : Integer := 1;
    Start_Zeit, End_Zeit : Ada.Calendar.Time;
    Diff_Zeit : Ada.Calendar.Day_Duration;
-   h : Natural;
-   m : Natural;
-   s : Natural;
-   ms : Ada.Calendar.Day_Duration;
+--   h : Natural;
+--   m : Natural;
+--   s : Natural;
+--   ms : Ada.Calendar.Day_Duration;
 begin
    Cursor := Integer_Vectors.First(Numbers);
    while Integer_Vectors.Has_Element(Cursor) loop
@@ -79,10 +79,10 @@ begin
    Print(List);
    Ada.Calendar.Formatting.Split(Diff_Zeit,h,m,s,ms);
    Ada.Text_IO.Put_Line(Ada.Calendar.Formatting.Image(Diff_Zeit));
-   Ada.Text_IO.Put_Line(Integer'Image(h));
-   Ada.Text_IO.Put_Line(Integer'Image(m));
-   Ada.Text_IO.Put_Line(Integer'Image(s));
-   Ada.Text_IO.Put_Line(Ada.Calendar.Formatting.Image(ms));
+--   Ada.Text_IO.Put_Line(Integer'Image(h));
+--   Ada.Text_IO.Put_Line(Integer'Image(m));
+--   Ada.Text_IO.Put_Line(Integer'Image(s));
+--   Ada.Text_IO.Put_Line(Ada.Calendar.Formatting.Image(ms));
 end Mergesort_Test;
 
 
