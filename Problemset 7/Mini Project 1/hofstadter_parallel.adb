@@ -6,9 +6,10 @@ protected body Hofstadter_Array is
 	procedure Get_Value(Index : in out Positive; success : out Boolean) is 
 	Old_Index : Positive := Index;
 	begin
-		if List(Index) /= 0 then
+		if List(Index) > 0 then
 			success := true;
 			Index := List(Old_Index);
+			--Ada.Text_IO.Put_Line(Old_Index'Img & Index'Img);
 		else
 			success := false;
 		end if;
@@ -17,15 +18,39 @@ protected body Hofstadter_Array is
 	begin
 		List(Index) := Value;
 	end Put_Value;
+	procedure Print is
+	begin
+	   Ada.Text_IO.Put_Line("print:");
+	   for I in List'range loop
+		Ada.Text_IO.Put_Line(I'Img & List(I)'Img);
+   	   end loop;
+	end Print;
 end Hofstadter_Array;
 
+protected body One_Way_Counter is
+	procedure Increment is
+	begin
+		if Threshold < N then
+			Threshold := Threshold + 1;
+		end if;
+	end Increment;
+	function Is_Done return Boolean is
+	begin
+		return (Threshold = N);
+	end Is_Done;
+end One_Way_Counter;
 
-procedure Mute_Workers (End_Value : Integer) is
+
+procedure Mute_Workers (End_Value : Integer; End_Time : Duration) is
 	type List_Type is array(Positive range <>) of Integer;
+	hof_array : Hofstadter_Array(End_Value);
+	one_counter : One_Way_Counter(4);
+	
 
 	task type Worker is
 		entry Start(Name: Character;
-				Start, Offset, Counter : Positive);
+				Start, Offset, Counter : Positive;
+				End_Time : Duration);
 	end Worker;
 
 	task body Worker is
@@ -33,39 +58,51 @@ procedure Mute_Workers (End_Value : Integer) is
 		Val, Diff, Cnt: Positive;
 		Command : Character;
 		Available : Boolean;
-		--hof_val : Positive;
-		--hof_eval: Boolean;
-		--hof_array_in : Hofstadter_Array;
+		E_T  : Duration;
+		hof_val : Positive;
+		hof_eval: Boolean;
 		begin
 		accept Start(Name: Character;
-				Start, Offset, Counter : Positive) do
+				Start, Offset, Counter : Positive;
+				End_Time : Duration) do
 			My_Name := Name;
 			Val 	:= Start;
 			Diff 	:= Offset;
 			Cnt	:= Counter;
+			E_T     := End_Time;
 		end Start;
+		select
+			delay E_T;
+		then abort
 		for I in 1 .. Cnt loop
 			Ada.Text_IO.Get_Immediate (Command, Available);
 			exit when Available and Command = 'q';
-			--hof_val := I;
-			--hof_array.Get_Value(hof_val, hof_eval);
-			--if not hof_eval then
-			--	hof_val := Hofstadter.Q(Val);
-			--	hof_array.Put_Value(I, hof_val);
-			--end if;
+			hof_val := I;
+			hof_array.Get_Value(hof_val, hof_eval);
+			if not hof_eval then
+				hof_val := Hofstadter.Q(Val);
+				hof_array.Put_Value(I, hof_val);
+			end if;
 			--Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & hof_val'Img);
-			Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & Hofstadter.Q(Val)'Img);
+			--Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & Hofstadter.Q(Val)'Img);
 			Val := Val + Diff;
 		end loop;
+		one_counter.Increment;
+		end select;
 	end Worker;
 
 	O, Tw, Th, F : Worker;
-	--hof_array : Hofstadter_Array(End_Value);
+	
 begin
-   O.Start('1', 1, 4, End_Value);
-   Tw.Start('2', 2, 4, End_Value);
-   Th.Start('3', 3, 4, End_Value);
-   F.Start('4', 4, 4, End_Value);
+   O.Start('1', 1, 4, End_Value, End_Time);
+   Tw.Start('2', 2, 4, End_Value, End_Time);
+   Th.Start('3', 3, 4, End_Value, End_Time);
+   F.Start('4', 4, 4, End_Value, End_Time);
+   
+   while not one_counter.Is_Done loop
+	null;
+   end loop;   
+   hof_array.Print;
 
 end Mute_Workers;
 
