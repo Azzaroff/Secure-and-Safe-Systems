@@ -1,6 +1,15 @@
-with Hofstadter_Parallel, Hofstadter, Ada.Text_IO;
+with Hofstadter_Parallel, Ada.Text_IO;
 
 package body Hofstadter_Parallel is
+
+function Q(N: Positive) return Positive is
+   begin
+      if N < 3 then
+         return 1;
+      else
+         return Q(N - Q(N-1)) + Q(N - Q(N-2));
+      end if;
+   end Q;
 
 protected body Hofstadter_Array is
 	procedure Get_Value(Index : in out Positive; success : out Boolean) is 
@@ -59,8 +68,8 @@ procedure Mute_Workers (End_Value : Integer; End_Time : Duration) is
 		Command : Character;
 		Available : Boolean;
 		E_T  : Duration;
-		hof_val : Positive;
-		hof_eval: Boolean;
+		--hof_val : Positive;
+		--hof_eval: Boolean;
 		begin
 		accept Start(Name: Character;
 				Start, Offset, Counter : Positive;
@@ -71,17 +80,19 @@ procedure Mute_Workers (End_Value : Integer; End_Time : Duration) is
 			Cnt	:= Counter;
 			E_T     := End_Time;
 		end Start;
-		for I in 1 .. Cnt loop
+		Ada.Text_IO.Put_Line("Counter: " & Cnt'Img);
+		while Val <= Cnt loop
 			Ada.Text_IO.Get_Immediate (Command, Available);
 			exit when Available and Command = 'q';
-			hof_val := I;
-			hof_array.Get_Value(hof_val, hof_eval);
-			if not hof_eval then
-				hof_val := Hofstadter.Q(Val);
-				hof_array.Put_Value(I, hof_val);
-			end if;
+			--hof_val := I;
+			--hof_array.Get_Value(hof_val, hof_eval);
+			--if not hof_eval then
+			--	hof_val := Q(Val);
+			--	hof_array.Put_Value(I, hof_val);
+			--end if;
 			--Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & hof_val'Img);
-			--Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & Hofstadter.Q(Val)'Img);
+			Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & Q(Val)'Img);
+			hof_array.Put_Value(Val, Q(Val));
 			Val := Val + Diff;
 		end loop;
 		one_counter.Increment;

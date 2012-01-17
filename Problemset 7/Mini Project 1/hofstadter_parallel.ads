@@ -1,6 +1,7 @@
 package Hofstadter_Parallel is
     type List_Type is array(Positive range <>) of Integer;
 
+    function Q(N: Positive) return Positive;
     procedure Mute_Workers(End_Value : Integer; End_Time : Duration);
     protected type Hofstadter_Array(S : Integer) is       
 	procedure Get_Value(Index : in out Positive; success : out Boolean); -- return on Index the value or Index, if the value was not recently calculated
