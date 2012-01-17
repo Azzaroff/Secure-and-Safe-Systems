@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo $RANDOM > rand.txt
-for i in {0..100000} 
+for ((i=0;i<=$1;i++))
 do
   echo $RANDOM >> rand.txt
 done
