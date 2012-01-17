@@ -71,9 +71,6 @@ procedure Mute_Workers (End_Value : Integer; End_Time : Duration) is
 			Cnt	:= Counter;
 			E_T     := End_Time;
 		end Start;
-		select
-			delay E_T;
-		then abort
 		for I in 1 .. Cnt loop
 			Ada.Text_IO.Get_Immediate (Command, Available);
 			exit when Available and Command = 'q';
@@ -88,7 +85,6 @@ procedure Mute_Workers (End_Value : Integer; End_Time : Duration) is
 			Val := Val + Diff;
 		end loop;
 		one_counter.Increment;
-		end select;
 	end Worker;
 
 	O, Tw, Th, F : Worker;
