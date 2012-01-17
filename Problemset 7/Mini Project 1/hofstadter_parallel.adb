@@ -1,4 +1,5 @@
 with Hofstadter_Parallel, Ada.Text_IO;
+with Armageddon;
 
 package body Hofstadter_Parallel is
 
@@ -51,7 +52,6 @@ end One_Way_Counter;
 
 
 procedure Mute_Workers (End_Value : Integer; End_Time : Duration) is
-	type List_Type is array(Positive range <>) of Integer;
 	hof_array : Hofstadter_Array(End_Value);
 	one_counter : One_Way_Counter(4);
 	
