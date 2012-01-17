@@ -4,7 +4,9 @@ with Ada.Integer_Text_IO;
 with Ada.Containers.Vectors;
 with Ada.Command_Line; use Ada.Command_Line;
 with Mergesort; 
- 
+with Ada.Calendar;
+with Ada.Calendar.Formatting;
+
 procedure Mergesort_Test is
    type List_Type is array(Positive range <>) of Integer;
    package Integer_Vectors is new Ada.Containers.Vectors(Natural, Integer);
@@ -53,6 +55,12 @@ procedure Mergesort_Test is
    Cursor : Integer_Vectors.Cursor;
    List : List_Type(1 .. Integer(Numbers.Length));
    Index : Integer := 1;
+   Start_Zeit, End_Zeit : Ada.Calendar.Time;
+   Diff_Zeit : Ada.Calendar.Day_Duration;
+--   h : Natural;
+--   m : Natural;
+--   s : Natural;
+--   ms : Ada.Calendar.Day_Duration;
 begin
    Cursor := Integer_Vectors.First(Numbers);
    while Integer_Vectors.Has_Element(Cursor) loop
@@ -64,8 +72,17 @@ begin
    Ada.Text_IO.Put_Line("unsorted List from file: ");
    --Print(List);
    Ada.Text_IO.Put_Line("sorted List: ");
+   Start_Zeit := Ada.Calendar.Clock;
    List := List_Sort.Sort_with_Tasks(List);
+   End_Zeit := Ada.Calendar.Clock;
+   Diff_Zeit := Ada.Calendar."-"(End_Zeit,Start_Zeit);
    Print(List);
+   Ada.Calendar.Formatting.Split(Diff_Zeit,h,m,s,ms);
+   Ada.Text_IO.Put_Line(Ada.Calendar.Formatting.Image(Diff_Zeit));
+--   Ada.Text_IO.Put_Line(Integer'Image(h));
+--   Ada.Text_IO.Put_Line(Integer'Image(m));
+--   Ada.Text_IO.Put_Line(Integer'Image(s));
+--   Ada.Text_IO.Put_Line(Ada.Calendar.Formatting.Image(ms));
 end Mergesort_Test;
 
 
