@@ -3,6 +3,7 @@ with Armageddon;
 
 package body Hofstadter_Parallel is
 
+
 function Q(N: Positive) return Positive is
    begin
       if N < 3 then
@@ -62,14 +63,14 @@ procedure Mute_Workers (End_Value : Integer; End_Time : Duration) is
 				End_Time : Duration);
 	end Worker;
 
-	task body Worker is
+    task body Worker is
 		My_Name : Character := '?';
 		Val, Diff, Cnt: Positive;
 		Command : Character;
 		Available : Boolean;
 		E_T  : Duration;
-		--hof_val : Positive;
-		--hof_eval: Boolean;
+		hof_val : Positive;
+		hof_eval: Boolean;
 		begin
 		accept Start(Name: Character;
 				Start, Offset, Counter : Positive;
@@ -84,31 +85,39 @@ procedure Mute_Workers (End_Value : Integer; End_Time : Duration) is
 		while Val <= Cnt loop
 			Ada.Text_IO.Get_Immediate (Command, Available);
 			exit when Available and Command = 'q';
-			--hof_val := I;
-			--hof_array.Get_Value(hof_val, hof_eval);
-			--if not hof_eval then
-			--	hof_val := Q(Val);
-			--	hof_array.Put_Value(I, hof_val);
-			--end if;
-			--Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & hof_val'Img);
-			Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & Q(Val)'Img);
+			hof_val := Val;
+			hof_array.Get_Value(hof_val, hof_eval);
+			if not hof_eval then
+				hof_val := Q(Val);
+				hof_array.Put_Value(Val, hof_val);
+			end if;
+			Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & hof_val'Img);
+			--Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & Q(Val)'Img);
 			hof_array.Put_Value(Val, Q(Val));
 			Val := Val + Diff;
 		end loop;
 		one_counter.Increment;
 	end Worker;
 
-	O, Tw, Th, F : Worker;
-	
 begin
-   O.Start('1', 1, 4, End_Value, End_Time);
-   Tw.Start('2', 2, 4, End_Value, End_Time);
-   Th.Start('3', 3, 4, End_Value, End_Time);
-   F.Start('4', 4, 4, End_Value, End_Time);
-   
-   while not one_counter.Is_Done loop
-	null;
-   end loop;   
+
+    declare
+        O, Tw, Th, F: Worker;--, Fi, S, Se, E : Worker;
+    begin --declare
+       O.Start('1', 1, 4, End_Value, End_Time);
+       Tw.Start('2', 2, 4, End_Value, End_Time);
+       Th.Start('3', 3, 4, End_Value, End_Time);
+       F.Start('4', 4, 4, End_Value, End_Time);
+--       Fi.Start('5', 5, 8, End_Value, End_Time);
+--       S.Start('6', 6, 8, End_Value, End_Time);
+--       Se.Start('7', 7, 8, End_Value, End_Time);
+--       E.Start('8', 8, 8, End_Value, End_Time);
+    end; --declare
+
+
+  -- while not one_counter.Is_Done loop
+--	null;
+ --  end loop;   
    hof_array.Print;
 
 end Mute_Workers;
