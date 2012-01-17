@@ -51,10 +51,22 @@ protected body One_Way_Counter is
 	end Is_Done;
 end One_Way_Counter;
 
+protected body Abort_Tasks is
+	procedure Set_Done is
+	begin
+	    Done := True;
+    end Set_Done;
+	function Is_Done return Boolean is
+	begin
+		return Done;
+	end Is_Done;
+end Abort_Tasks;
+
 
 procedure Mute_Workers (End_Value : Integer; End_Time : Duration) is
 	hof_array : Hofstadter_Array(End_Value);
 	one_counter : One_Way_Counter(4);
+    Ragnaroek : Abort_Tasks;
 	
 
 	task type Worker is
@@ -84,7 +96,10 @@ procedure Mute_Workers (End_Value : Integer; End_Time : Duration) is
 		Ada.Text_IO.Put_Line("Counter: " & Cnt'Img);
 		while Val <= Cnt loop
 			Ada.Text_IO.Get_Immediate (Command, Available);
-			exit when Available and Command = 'q';
+			if (Available and Command = 'q') or Ragnaroek.Is_Done then
+                Ragnaroek.Set_Done;  
+                exit;
+            end if;
 			hof_val := Val;
 			hof_array.Get_Value(hof_val, hof_eval);
 			if not hof_eval then
@@ -92,8 +107,6 @@ procedure Mute_Workers (End_Value : Integer; End_Time : Duration) is
 				hof_array.Put_Value(Val, hof_val);
 			end if;
 			Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & hof_val'Img);
-			--Ada.Text_IO.Put_Line(My_Name & " " & Val'Img & Q(Val)'Img);
-			hof_array.Put_Value(Val, Q(Val));
 			Val := Val + Diff;
 		end loop;
 		one_counter.Increment;

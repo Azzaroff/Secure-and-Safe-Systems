@@ -13,7 +13,14 @@ package Hofstadter_Parallel is
     protected type One_Way_Counter(N: Positive) is
 	procedure Increment;
 	function Is_Done return Boolean;
-	private
-		Threshold : Natural := 0;
+	    private
+		    Threshold : Natural := 0;
     end One_Way_Counter;
+    
+    protected type Abort_Tasks is
+	procedure Set_Done;
+	function Is_Done return Boolean;
+	    private
+		    Done : Boolean := false;
+    end Abort_Tasks;
 end Hofstadter_Parallel;
