@@ -77,7 +77,7 @@ begin
    End_Zeit := Ada.Calendar.Clock;
    Diff_Zeit := Ada.Calendar."-"(End_Zeit,Start_Zeit);
    Print(List);
-   Ada.Calendar.Formatting.Split(Diff_Zeit,h,m,s,ms);
+   --Ada.Calendar.Formatting.Split(Diff_Zeit,h,m,s,ms);
    Ada.Text_IO.Put_Line(Ada.Calendar.Formatting.Image(Diff_Zeit));
 --   Ada.Text_IO.Put_Line(Integer'Image(h));
 --   Ada.Text_IO.Put_Line(Integer'Image(m));
