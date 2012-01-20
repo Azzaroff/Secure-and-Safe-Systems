@@ -71,9 +71,11 @@ begin
    
    Ada.Text_IO.Put_Line("unsorted List from file: ");
    --Print(List);
-   Ada.Text_IO.Put_Line("sorted List: ");
    Start_Zeit := Ada.Calendar.Clock;
+   Ada.Text_IO.Put_Line("sorting");
    List := List_Sort.Sort_with_Tasks(List, Integer'Value(Argument(2)));
+   Ada.Text_IO.Put_Line("done");
+   Ada.Text_IO.Put_Line("sorted List: ");
    End_Zeit := Ada.Calendar.Clock;
    Diff_Zeit := Ada.Calendar."-"(End_Zeit,Start_Zeit);
    Print(List);
