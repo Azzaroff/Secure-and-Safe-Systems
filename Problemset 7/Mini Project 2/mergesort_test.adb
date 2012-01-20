@@ -73,7 +73,7 @@ begin
    --Print(List);
    Ada.Text_IO.Put_Line("sorted List: ");
    Start_Zeit := Ada.Calendar.Clock;
-   List := List_Sort.Sort_with_Tasks(List);
+   List := List_Sort.Sort_with_Tasks(List, Integer'Value(Argument(2)));
    End_Zeit := Ada.Calendar.Clock;
    Diff_Zeit := Ada.Calendar."-"(End_Zeit,Start_Zeit);
    Print(List);

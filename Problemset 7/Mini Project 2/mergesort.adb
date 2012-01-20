@@ -1,18 +1,57 @@
 with Ada.Text_IO;
 
 package body Mergesort is
+
+-----------------
+-- Shared Type --
+-----------------
+
+
+protected body Abort_Tasks is
+	procedure Set_Done is
+	begin
+	    Done := True;
+    end Set_Done;
+	function Is_Done return Boolean is
+	begin
+		return Done;
+	end Is_Done;
+	procedure Start_Time_Counter is
+	begin
+		Start_Time := Ada.Real_Time.Clock;
+	end Start_Time_Counter;
+	function Is_Timed_Out(time_out : Integer) return Boolean is
+	now : Ada.Real_Time.Time := Ada.Real_Time.Clock;
+	difference : Ada.Real_Time.Time_Span;
+	begin
+		difference := Ada.Real_Time."-"(now, Start_Time);
+		return (Ada.Real_Time.">"(difference, Ada.Real_Time.Milliseconds(1000*time_out)));
+	end Is_Timed_Out;
+	
+end Abort_Tasks;
+
+------------------
+-- declaration ---
+------------------
+Ragnaroek : Abort_Tasks;
  
    -----------
    -- Merge --
    -----------
  
-   procedure Merge(Left, Right : in Collection_Type; Result : out Collection_Type) is
+   procedure Merge(Left, Right : in Collection_Type; Result : out Collection_Type; Time_Out : Integer) is
       Left_Index : Index_Type := Left'First;
       Right_Index : Index_Type := Right'First;
       Result_Index : Index_Type := Result'First;
+	  Command : Character;
+	  Available : Boolean;
    begin
       while Left_Index <= Left'Last and Right_Index <= Right'Last loop
-         if Left(Left_Index) < Right(Right_Index) then
+		Ada.Text_IO.Get_Immediate (Command, Available);
+	    if ((Available and then Command = 'q') or Ragnaroek.Is_Timed_Out(Time_Out)) then
+			exit;
+		end if;
+		if Left(Left_Index) < Right(Right_Index) then
             Result(Result_Index) := Left(Left_Index);
             Left_Index := Index_Type'Succ(Left_Index); -- increment Left_Index
          else
@@ -33,7 +72,7 @@ package body Mergesort is
    -- Sort --
    ----------
  
-   procedure Sort (Item : in out Collection_Type)is
+   procedure Sort (Item : in out Collection_Type; Time_Out : Integer)is
       Middle : Index_Type;
       Command   : Character;
       Available : Boolean;
@@ -52,16 +91,16 @@ package body Mergesort is
                Right(I) := Item(I);
             end loop;
 	    Ada.Text_IO.Get_Immediate (Command, Available);
-	    if not (Available and Command = 'q') then
-		    Sort(Left);
-		    Sort(Right);
-		    Merge(Left, Right, Item);
+	    if not ((Available and then Command = 'q') or Ragnaroek.Is_Timed_Out(Time_Out)) then
+		    Sort(Left, Time_Out);
+		    Sort(Right, Time_Out);
+		    Merge(Left, Right, Item, Time_Out);
 	    end if;
          end;
       end if;
    end Sort;
 
-   function Sort_with_Tasks (Item : Collection_Type) return Collection_Type is 
+   function Sort_with_Tasks (Item : Collection_Type; Time_Out : Integer) return Collection_Type is 
 
 	task Left_Task is
 		entry Sort_Left(Item : in out Collection_Type);
@@ -74,14 +113,14 @@ package body Mergesort is
 	task body Left_Task is
 	begin
 		accept Sort_Left(Item : in out Collection_Type) do
-			Sort(Item);
+			Sort(Item, Time_Out);
 		end Sort_Left;
 	end Left_Task;
 
 	task body Right_Task is
 	begin
 		accept Sort_Right(Item : in out Collection_Type) do
-			Sort(Item);
+			Sort(Item, Time_Out);
 		end Sort_Right;
 	end Right_Task;
 
@@ -89,6 +128,7 @@ package body Mergesort is
       	Middle : Index_Type;
 
    begin
+	Ragnaroek.Start_Time_Counter;
 	if Item'Length <= 1 then
          return Item;
        else
@@ -97,15 +137,24 @@ package body Mergesort is
             Left : Collection_Type(Item'First..Index_Type'Pred(Middle));
             Right : Collection_Type(Middle..Item'Last);
          begin
+			if Ragnaroek.Is_Timed_Out(Time_Out) then
+				return Item;
+			end if;				
             for I in Left'range loop
                Left(I) := Item(I);
             end loop;
             for I in Right'range loop
                Right(I) := Item(I);
             end loop;
+			if Ragnaroek.Is_Timed_Out(Time_Out) then
+				return Item;
+			end if;	
             Left_Task.Sort_Left(Left);
             Right_Task.Sort_Right(Right);
-            Merge(Left, Right, Result);
+			if Ragnaroek.Is_Timed_Out(Time_Out) then
+				return Item;
+			end if;	
+            Merge(Left, Right, Result, Time_Out);
          end;
          return Result;
       end if;
