@@ -134,7 +134,7 @@ Ragnaroek : Abort_Tasks;
 	end Right_Task;
 
 	Result : Collection_Type(Item'range);
-      	Middle : Index_Type;
+   	Middle : Index_Type;
 
    begin
 	Ragnaroek.Start_Time_Counter;
