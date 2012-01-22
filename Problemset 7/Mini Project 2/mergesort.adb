@@ -13,6 +13,7 @@ package body Mergesort is
 protected body Abort_Tasks is
 	procedure Set_Done is
 	begin
+		Ada.Text_IO.Put_Line("Set Done");
 	    Done := True;
     end Set_Done;
 	function Is_Done return Boolean is
@@ -54,7 +55,7 @@ Ragnaroek : Abort_Tasks;
    begin
       while Left_Index <= Left'Last and Right_Index <= Right'Last loop
 		Ada.Text_IO.Get_Immediate (Command, Available);
-	    if ((Available and then Command = 'q') or Ragnaroek.Is_Timed_Out(Time_Out) or Ragnaroek.Is_Done) then
+	    if ((Available and then (Command = 'q' or Command = 'Q')) or Ragnaroek.Is_Timed_Out(Time_Out) or Ragnaroek.Is_Done) then
 			exit;
 		end if;
 		if Left(Left_Index) < Right(Right_Index) then
@@ -67,13 +68,15 @@ Ragnaroek : Abort_Tasks;
          Result_Index := Index_Type'Succ(Result_Index); -- increment Result_Index
       end loop;
 	  Ada.Text_IO.Get_Immediate (Command, Available);
-      if not ((Available and then Command = 'q') or Ragnaroek.Is_Timed_Out(Time_Out) or Ragnaroek.Is_Done) then
+      if not ((Available and then (Command = 'q' or Command = 'Q')) or Ragnaroek.Is_Timed_Out(Time_Out) or Ragnaroek.Is_Done) then
 			  if Left_Index <= Left'Last then
 				 Result(Result_Index..Result'Last) := Left(Left_Index..Left'Last);
 			  end if;
 			  if Right_Index <= Right'Last then
 				 Result(Result_Index..Result'Last) := Right(Right_Index..Right'Last);
 			  end if;
+	  else
+		Ragnaroek.Set_Done;
 		end if;
    end Merge;
  
@@ -100,11 +103,13 @@ Ragnaroek : Abort_Tasks;
                Right(I) := Item(I);
             end loop;
 	    Ada.Text_IO.Get_Immediate (Command, Available);
-	    if not ((Available and then Command = 'q') or Ragnaroek.Is_Timed_Out(Time_Out) or Ragnaroek.Is_Done) then
+	    if not ((Available and then (Command = 'q' or Command = 'Q')) or Ragnaroek.Is_Timed_Out(Time_Out) or Ragnaroek.Is_Done) then
 		    Sort(Left, Time_Out);
 		    Sort(Right, Time_Out);
 		    Merge(Left, Right, Item, Time_Out);
-	    end if;
+	    else
+			Ragnaroek.Set_Done;
+		end if;
          end;
       end if;
    end Sort;
@@ -135,6 +140,8 @@ Ragnaroek : Abort_Tasks;
 
 	Result : Collection_Type(Item'range);
    	Middle : Index_Type;
+    Command : Character;
+    Available : Boolean;
 
    begin
 	Ragnaroek.Start_Time_Counter;
@@ -146,21 +153,39 @@ Ragnaroek : Abort_Tasks;
             Left : Collection_Type(Item'First..Index_Type'Pred(Middle));
             Right : Collection_Type(Middle..Item'Last);
          begin
-			if Ragnaroek.Is_Timed_Out(Time_Out) or Ragnaroek.Is_Done then
+			Ada.Text_IO.Get_Immediate (Command, Available);
+			if (Available and then (Command = 'q' or Command = 'Q')) or Ragnaroek.Is_Timed_Out(Time_Out) or Ragnaroek.Is_Done then
+				Ragnaroek.Set_Done;
 				return Item;
 			end if;				
             for I in Left'range loop
-               Left(I) := Item(I);
+				Ada.Text_IO.Get_Immediate (Command, Available);
+				if (Available and then (Command = 'q' or Command = 'Q')) or Ragnaroek.Is_Timed_Out(Time_Out) or Ragnaroek.Is_Done then
+					Ragnaroek.Set_Done;
+					exit;
+				else
+					Left(I) := Item(I);
+				end if;				
             end loop;
             for I in Right'range loop
-               Right(I) := Item(I);
+				Ada.Text_IO.Get_Immediate (Command, Available);
+				if (Available and then (Command = 'q' or Command = 'Q')) or Ragnaroek.Is_Timed_Out(Time_Out) or Ragnaroek.Is_Done then
+					Ragnaroek.Set_Done;
+					exit;
+				else
+					Right(I) := Item(I);
+				end if;				
+
             end loop;
 			if Ragnaroek.Is_Timed_Out(Time_Out) then
+				Ragnaroek.Set_Done;
 				return Item;
 			end if;	
+			Ada.Text_IO.Get_Immediate (Command, Available);
             Left_Task.Sort_Left(Left);
             Right_Task.Sort_Right(Right);
-			if Ragnaroek.Is_Timed_Out(Time_Out) or Ragnaroek.Is_Done then
+			if (Available and then (Command = 'q' or Command = 'Q')) or Ragnaroek.Is_Timed_Out(Time_Out) or Ragnaroek.Is_Done then
+				Ragnaroek.Set_Done;
 				return Item;
 			end if;	
             Merge(Left, Right, Result, Time_Out);
