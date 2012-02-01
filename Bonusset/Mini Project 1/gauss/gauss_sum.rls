@@ -1,0 +1,36 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+                              /*Examiner GPL 2011*/
+             /*Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 01-FEB-2012 10:50:37.53*/
+
+                          /*function Gauss.gauss_sum*/
+
+
+rule_family gauss_sum_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+gauss_sum_rules(1): integer__size >= 0 may_be_deduced.
+gauss_sum_rules(2): integer__first <= integer__last may_be_deduced.
+gauss_sum_rules(3): integer__base__first <= integer__base__last may_be_deduced.
+gauss_sum_rules(4): integer__base__first <= integer__first may_be_deduced.
+gauss_sum_rules(5): integer__base__last >= integer__last may_be_deduced.
+gauss_sum_rules(6): positive__size >= 0 may_be_deduced.
+gauss_sum_rules(7): positive__first may_be_replaced_by 1.
+gauss_sum_rules(8): positive__first <= positive__last may_be_deduced.
+gauss_sum_rules(9): positive__base__first <= positive__base__last may_be_deduced.
+gauss_sum_rules(10): positive__base__first <= positive__first may_be_deduced.
+gauss_sum_rules(11): positive__base__last >= positive__last may_be_deduced.
+gauss_sum_rules(12): gauss_positive__size >= 0 may_be_deduced.
+gauss_sum_rules(13): gauss_positive__first may_be_replaced_by 1.
+gauss_sum_rules(14): gauss_positive__last may_be_replaced_by 46340.
+gauss_sum_rules(15): gauss_positive__base__first <= 
+     gauss_positive__base__last may_be_deduced.
+gauss_sum_rules(16): gauss_positive__base__first <= 
+     gauss_positive__first may_be_deduced.
+gauss_sum_rules(17): gauss_positive__base__last >= gauss_positive__last may_be_deduced.

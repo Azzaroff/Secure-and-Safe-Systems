@@ -1,0 +1,49 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 01-FEB-2012 10:50:37.53
+
+                          function Gauss.gauss_sum
+
+
+
+
+For path(s) from start to run-time check associated with statement of line 7:
+
+function_gauss_sum_1.
+H1:    true .
+H2:    n >= gauss_positive__first .
+H3:    n <= gauss_positive__last .
+        ->
+C1:    n * (n + 1) div 2 >= integer__base__first .
+C2:    n * (n + 1) div 2 <= integer__base__last .
+C3:    2 <> 0 .
+C4:    n * (n + 1) >= integer__base__first .
+C5:    n * (n + 1) <= integer__base__last .
+C6:    n + 1 >= integer__base__first .
+C7:    n + 1 <= integer__base__last .
+ 
+
+For path(s) from start to finish:
+
+function_gauss_sum_2.
+H1:    true .
+H2:    n >= gauss_positive__first .
+H3:    n <= gauss_positive__last .
+H4:    n * (n + 1) div 2 >= integer__base__first .
+H5:    n * (n + 1) div 2 <= integer__base__last .
+H6:    2 <> 0 .
+H7:    n * (n + 1) >= integer__base__first .
+H8:    n * (n + 1) <= integer__base__last .
+H9:    n + 1 >= integer__base__first .
+H10:   n + 1 <= integer__base__last .
+        ->
+C1:    n * (n + 1) div 2 = n * (n + 1) div 2 .
+C2:    n * (n + 1) div 2 >= positive__first .
+C3:    n * (n + 1) div 2 <= positive__last .
+ 
+
