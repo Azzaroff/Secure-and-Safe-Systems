@@ -5,12 +5,12 @@
            {*******************************************************}
 
 
-                        {DATE : 01-FEB-2012 10:50:37.53}
+                        {DATE : 01-FEB-2012 15:00:00.71}
 
-                          {function Gauss.gauss_sum}
+                         {procedure Gauss.gauss_sum}
 
 
-title function gauss_sum;
+title procedure gauss_sum;
 
   function round__(real) : integer;
   const gauss_positive__base__first : integer = pending; 

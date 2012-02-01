@@ -5,21 +5,21 @@
 *****************************************************************************
 
 
-CREATED 01-FEB-2012, 10:50:37  SIMPLIFIED 01-FEB-2012, 10:50:40
+CREATED 01-FEB-2012, 15:00:00  SIMPLIFIED 01-FEB-2012, 15:00:03
 
 SPARK Simplifier GPL 2011
 Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
 
-function Gauss.gauss_sum
+procedure Gauss.gauss_sum
 
 
 
 
 For path(s) from start to run-time check associated with statement of line 7:
 
-function_gauss_sum_1.
-H1:    n >= 1 .
-H2:    n <= 46340 .
+procedure_gauss_sum_1.
+H1:    n <= 46340 .
+H2:    n > 0 .
 H3:    integer__size >= 0 .
 H4:    integer__first <= integer__last .
 H5:    integer__base__first <= integer__base__last .
@@ -35,40 +35,16 @@ H14:   positive__base__first <= 1 .
 H15:   gauss_positive__base__first <= 1 .
 H16:   gauss_positive__base__last >= 46340 .
        ->
-C1:    n * (n + 1) div 2 >= integer__base__first .
-C2:    n * (n + 1) div 2 <= integer__base__last .
-C3:    n * (n + 1) >= integer__base__first .
-C4:    n * (n + 1) <= integer__base__last .
-C5:    n + 1 >= integer__base__first .
-C6:    n + 1 <= integer__base__last .
+C1:    n * (n + 1) div 2 <= positive__last .
+C2:    n * (n + 1) >= integer__base__first .
+C3:    n * (n + 1) <= integer__base__last .
+C4:    n + 1 >= integer__base__first .
+C5:    n + 1 <= integer__base__last .
 
 
 For path(s) from start to finish:
 
-function_gauss_sum_2.
-H1:    n >= 1 .
-H2:    n <= 46340 .
-H3:    n * (n + 1) div 2 >= integer__base__first .
-H4:    n * (n + 1) div 2 <= integer__base__last .
-H5:    n * (n + 1) >= integer__base__first .
-H6:    n * (n + 1) <= integer__base__last .
-H7:    n + 1 >= integer__base__first .
-H8:    n + 1 <= integer__base__last .
-H9:    integer__size >= 0 .
-H10:   integer__first <= integer__last .
-H11:   integer__base__first <= integer__base__last .
-H12:   integer__base__first <= integer__first .
-H13:   integer__base__last >= integer__last .
-H14:   positive__size >= 0 .
-H15:   positive__base__first <= positive__base__last .
-H16:   positive__base__last >= positive__last .
-H17:   gauss_positive__size >= 0 .
-H18:   gauss_positive__base__first <= gauss_positive__base__last .
-H19:   1 <= positive__last .
-H20:   positive__base__first <= 1 .
-H21:   gauss_positive__base__first <= 1 .
-H22:   gauss_positive__base__last >= 46340 .
-       ->
-C1:    n * (n + 1) div 2 <= positive__last .
+procedure_gauss_sum_2.
+*** true .          /* all conclusions proved */
 
 
