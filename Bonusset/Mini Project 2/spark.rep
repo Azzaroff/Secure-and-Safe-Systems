@@ -1,0 +1,81 @@
+           *******************************************************
+                         Report of SPARK Examination
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 01-FEB-2012 12:55:50.03
+
+Options:
+    noswitch
+    noindex_file
+    nowarning_file
+    notarget_compiler_data
+    noconfig_file
+    source_extension=ada
+    listing_extension=lst
+    nodictionary_file
+    report_file=spark.rep
+    nohtml
+    vcg
+    nostatistics
+    fdl_identifiers=accept
+    flow_analysis=information
+    language=95
+    profile=sequential
+    annotation_character=#
+    rules=none
+    error_explanations=off
+    justification_option=full
+    output_directory=.
+    output_directory (actual)=/home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/
+
+Selected files:
+   @spark.smf
+
+
+No Index files were used
+
+
+Meta File(s) used were:
+   spark.smf
+      /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty.ads
+      /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty.adb
+
+
+Full warning reporting selected
+
+
+Source Filename(s) used were:
+   /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty.ads
+   /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty.adb
+
+
+
+Source Filename:   /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty.ads
+Listing Filename:  /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty.lst
+
+   Unit name:  Faculty
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty.adb
+Listing Filename:  /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty.lst
+
+   Unit name:  Faculty
+   Unit type:  package body
+   Unit has been analysed, any errors are listed below.
+
+1 error(s) or warning(s)
+
+Line
+   8  		while i < n loop
+
+--- (  1)  Warning           :402: Default assertion planted to cut loop.
+
+
+--End of file--------------------------------------------------

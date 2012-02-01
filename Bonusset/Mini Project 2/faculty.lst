@@ -1,0 +1,39 @@
+           *******************************************************
+                            Listing of SPARK Text
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 01-FEB-2012 12:55:50.03
+
+Line
+   1  package body Faculty is
+   2  	-- maximum n = 12 fac := 12! = 479001600
+   3  	function calculate_faculty(n : in Faculty_Positive) return Positive is
+   4  	fac : Positive := 1;
+   5  	i 	: Integer := 0;
+   6  	begin
+   7  		-- Assert i < n;
+   8  		while i < n loop
+
+--- (  1)  Warning           :402: Default assertion planted to cut loop.
+
+   9  			-- Assert i < n and fac = fac_arr(i+1) and fac <= Positive'Last;		
+  10  			i := i + 1;	
+  11  			-- Assert i <= n and fac = fac_arr(i-1) and fac*i <= Positive'Last ;			
+  12  			fac := fac * i;				
+  13  			-- Assert i <= n and fac = fac_arr(i) and fac <= Positive'Last and fac >= Positive'First;
+  14  		end loop;
+  15  		--# Assert i >= n and fac = fac_arr(n) and fac <= Positive'Last and fac >= Positive'First;
+  16  		return fac;
+  17  	end calculate_faculty;
+
++++        Flow analysis of subprogram calculate_faculty 
+           performed: no errors found.
+
+  18  
+  19  end Faculty;
+
+
+--End of file--------------------------------------------------

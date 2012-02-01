@@ -1,0 +1,118 @@
+           *******************************************************
+                       Semantic Analysis of SPARK Text
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 01-FEB-2012 12:55:50.03
+
+                     function Faculty.calculate_faculty
+
+
+
+
+For path(s) from start to default assertion of line 8:
+
+function_calculate_faculty_1.
+H1:    true .
+H2:    n >= faculty_positive__first .
+H3:    n <= faculty_positive__last .
+        ->
+C1:    n >= faculty_positive__first .
+C2:    n <= faculty_positive__last .
+ 
+
+For path(s) from default assertion of line 8 to default assertion of line 8:
+
+function_calculate_faculty_2.
+H1:    n >= faculty_positive__first .
+H2:    n <= faculty_positive__last .
+H3:    i >= integer__first .
+H4:    i <= integer__last .
+H5:    i < n .
+H6:    i >= integer__first .
+H7:    i <= integer__last .
+H8:    i + 1 >= integer__first .
+H9:    i + 1 <= integer__last .
+H10:   fac >= positive__first .
+H11:   fac <= positive__last .
+H12:   i + 1 >= integer__first .
+H13:   i + 1 <= integer__last .
+H14:   fac * (i + 1) >= positive__first .
+H15:   fac * (i + 1) <= positive__last .
+        ->
+C1:    n >= faculty_positive__first .
+C2:    n <= faculty_positive__last .
+ 
+
+For path(s) from default assertion of line 8 to run-time check associated with statement of line 10:
+
+function_calculate_faculty_3.
+H1:    n >= faculty_positive__first .
+H2:    n <= faculty_positive__last .
+H3:    i >= integer__first .
+H4:    i <= integer__last .
+H5:    i < n .
+H6:    i >= integer__first .
+H7:    i <= integer__last .
+        ->
+C1:    i + 1 >= integer__first .
+C2:    i + 1 <= integer__last .
+ 
+
+For path(s) from default assertion of line 8 to run-time check associated with statement of line 12:
+
+function_calculate_faculty_4.
+H1:    n >= faculty_positive__first .
+H2:    n <= faculty_positive__last .
+H3:    i >= integer__first .
+H4:    i <= integer__last .
+H5:    i < n .
+H6:    i >= integer__first .
+H7:    i <= integer__last .
+H8:    i + 1 >= integer__first .
+H9:    i + 1 <= integer__last .
+H10:   fac >= positive__first .
+H11:   fac <= positive__last .
+H12:   i + 1 >= integer__first .
+H13:   i + 1 <= integer__last .
+        ->
+C1:    fac * (i + 1) >= positive__first .
+C2:    fac * (i + 1) <= positive__last .
+ 
+
+For path(s) from default assertion of line 8 to assertion of line 15:
+
+function_calculate_faculty_5.
+H1:    n >= faculty_positive__first .
+H2:    n <= faculty_positive__last .
+H3:    i >= integer__first .
+H4:    i <= integer__last .
+H5:    not (i < n) .
+        ->
+C1:    i >= n .
+C2:    fac = element(fac_arr, [n]) .
+C3:    fac <= positive__last .
+C4:    fac >= positive__first .
+C5:    n >= faculty_positive__first .
+C6:    n <= faculty_positive__last .
+ 
+
+For path(s) from assertion of line 15 to finish:
+
+function_calculate_faculty_6.
+H1:    i >= n .
+H2:    fac = element(fac_arr, [n]) .
+H3:    fac <= positive__last .
+H4:    fac >= positive__first .
+H5:    n >= faculty_positive__first .
+H6:    n <= faculty_positive__last .
+H7:    fac >= positive__first .
+H8:    fac <= positive__last .
+        ->
+C1:    fac = element(fac_arr, [n]) .
+C2:    fac >= positive__first .
+C3:    fac <= positive__last .
+ 
+

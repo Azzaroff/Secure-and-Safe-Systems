@@ -1,0 +1,171 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+*****************************************************************************
+
+
+CREATED 01-FEB-2012, 12:55:50  SIMPLIFIED 01-FEB-2012, 12:55:50
+
+SPARK Simplifier GPL 2011
+Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+
+function Faculty.calculate_faculty
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_calculate_faculty_1.  @@@@@@@@@@
+***  Proved C1:  n >= faculty_positive__first
+     using hypothesis H2.
+***  Proved C2:  n <= faculty_positive__last
+     using hypothesis H3.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_calculate_faculty_2.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+***  Proved C1:  n >= faculty_positive__first
+     using hypothesis H1.
+***  Proved C2:  n <= faculty_positive__last
+     using hypothesis H2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_calculate_faculty_3.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+***  Proved C1:  i + 1 >= integer__first
+     using hypothesis H3.
+-S-  Applied substitution rule calculate_fa_rules(15).
+     This was achieved by replacing all occurrences of faculty_positive__first 
+          by:
+          1.
+<S>  New H1:  n >= 1
+-S-  Applied substitution rule calculate_fa_rules(16).
+     This was achieved by replacing all occurrences of faculty_positive__last 
+          by:
+          12.
+<S>  New H2:  n <= 12
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+     +++  New H8:  integer__size >= 0
+     +++  New H9:  integer__first <= integer__last
+     +++  New H10:  integer__base__first <= integer__base__last
+     +++  New H11:  integer__base__first <= integer__first
+     +++  New H12:  integer__base__last >= integer__last
+     +++  New H13:  positive__size >= 0
+     +++  New H14:  positive__base__first <= positive__base__last
+     +++  New H15:  positive__base__last >= positive__last
+     +++  New H16:  faculty_positive__size >= 0
+     +++  New H17:  faculty_positive__base__first <= 
+          faculty_positive__base__last
+     +++  New H18:  1 <= positive__last
+     +++  New H19:  positive__base__first <= 1
+     +++  New H20:  faculty_positive__base__first <= 1
+     +++  New H21:  faculty_positive__base__last >= 12
+
+
+@@@@@@@@@@  VC: function_calculate_faculty_4.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H3).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H12 has been replaced by "true".  (It is already present, as H8)
+          .
+---  Hypothesis H13 has been replaced by "true".  (It is already present, as H9)
+          .
+-S-  Applied substitution rule calculate_fa_rules(9).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New H10:  fac >= 1
+<S>  New C1:  fac * (i + 1) >= 1
+-S-  Applied substitution rule calculate_fa_rules(15).
+     This was achieved by replacing all occurrences of faculty_positive__first 
+          by:
+          1.
+<S>  New H1:  n >= 1
+-S-  Applied substitution rule calculate_fa_rules(16).
+     This was achieved by replacing all occurrences of faculty_positive__last 
+          by:
+          12.
+<S>  New H2:  n <= 12
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H4 (redundant, given H9).
+---  Eliminated hypothesis H8 (redundant, given H3).
+     +++  New H14:  integer__size >= 0
+     +++  New H15:  integer__first <= integer__last
+     +++  New H16:  integer__base__first <= integer__base__last
+     +++  New H17:  integer__base__first <= integer__first
+     +++  New H18:  integer__base__last >= integer__last
+     +++  New H19:  positive__size >= 0
+     +++  New H20:  positive__base__first <= positive__base__last
+     +++  New H21:  positive__base__last >= positive__last
+     +++  New H22:  faculty_positive__size >= 0
+     +++  New H23:  faculty_positive__base__first <= 
+          faculty_positive__base__last
+     +++  New H24:  1 <= positive__last
+     +++  New H25:  positive__base__first <= 1
+     +++  New H26:  faculty_positive__base__first <= 1
+     +++  New H27:  faculty_positive__base__last >= 12
+
+
+@@@@@@@@@@  VC: function_calculate_faculty_5.  @@@@@@@@@@
+***  Proved C1:  i >= n
+     using hypothesis H5.
+***  Proved C5:  n >= faculty_positive__first
+     using hypothesis H1.
+***  Proved C6:  n <= faculty_positive__last
+     using hypothesis H2.
+-S-  Applied substitution rule calculate_fa_rules(9).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New C4:  fac >= 1
+>>>  Restructured hypothesis H5 into:
+     >>>  H5:  n <= i
+-S-  Applied substitution rule calculate_fa_rules(15).
+     This was achieved by replacing all occurrences of faculty_positive__first 
+          by:
+          1.
+<S>  New H1:  n >= 1
+-S-  Applied substitution rule calculate_fa_rules(16).
+     This was achieved by replacing all occurrences of faculty_positive__last 
+          by:
+          12.
+<S>  New H2:  n <= 12
+     +++  New H6:  integer__size >= 0
+     +++  New H7:  integer__first <= integer__last
+     +++  New H8:  integer__base__first <= integer__base__last
+     +++  New H9:  integer__base__first <= integer__first
+     +++  New H10:  integer__base__last >= integer__last
+     +++  New H11:  positive__size >= 0
+     +++  New H12:  positive__base__first <= positive__base__last
+     +++  New H13:  positive__base__last >= positive__last
+     +++  New H14:  faculty_positive__size >= 0
+     +++  New H15:  faculty_positive__base__first <= 
+          faculty_positive__base__last
+     +++  New H16:  1 <= positive__last
+     +++  New H17:  positive__base__first <= 1
+     +++  New H18:  faculty_positive__base__first <= 1
+     +++  New H19:  faculty_positive__base__last >= 12
+
+
+@@@@@@@@@@  VC: function_calculate_faculty_6.  @@@@@@@@@@
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H8 has been replaced by "true".  (It is already present, as H3).
+***  Proved C1:  fac = element(fac_arr, [n])
+     using hypothesis H2.
+***  Proved C2:  fac >= positive__first
+     using hypothesis H4.
+***  Proved C3:  fac <= positive__last
+     using hypothesis H3.
+***  PROVED VC.
+

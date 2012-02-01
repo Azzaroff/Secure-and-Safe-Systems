@@ -1,16 +1,19 @@
-with Ada.Text_IO;
-
 package body Faculty is
 	-- maximum n = 12 fac := 12! = 479001600
-	procedure calculate_faculty(n : in Positive) is
+	function calculate_faculty(n : in Faculty_Positive) return Positive is
 	fac : Positive := 1;
-	i 	: Positive := n;
+	i 	: Integer := 0;
 	begin
-		while i > 1 loop
-			fac := fac * i;
-			i := i - 1;
+		-- Assert i < n;
+		while i < n loop
+			-- Assert i < n and fac = fac_arr(i+1) and fac <= Positive'Last;		
+			i := i + 1;	
+			-- Assert i <= n and fac = fac_arr(i-1) and fac*i <= Positive'Last ;			
+			fac := fac * i;				
+			-- Assert i <= n and fac = fac_arr(i) and fac <= Positive'Last and fac >= Positive'First;
 		end loop;
-		Ada.Text_IO.Put_Line("The faculty of n ="&n'Img&" is "&fac'Img);
+		--# Assert i >= n and fac = fac_arr(n) and fac <= Positive'Last and fac >= Positive'First;
+		return fac;
 	end calculate_faculty;
 
 end Faculty;
