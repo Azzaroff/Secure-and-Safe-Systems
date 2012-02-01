@@ -1,0 +1,34 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+                              /*Examiner GPL 2011*/
+             /*Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 01-FEB-2012 14:42:48.45*/
+
+                     /*function Faculty.calculate_faculty*/
+
+
+rule_family calculate_fa_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+calculate_fa_rules(1): positive__first <= element(fac_arr, [I]) may_be_deduced_from [1 <= I, I <= 12].
+calculate_fa_rules(2): element(fac_arr, [I]) <= positive__last may_be_deduced_from [1 <= I, I <= 12].
+calculate_fa_rules(3): integer__size >= 0 may_be_deduced.
+calculate_fa_rules(4): integer__first may_be_replaced_by -2147483648.
+calculate_fa_rules(5): integer__last may_be_replaced_by 2147483647.
+calculate_fa_rules(6): integer__base__first may_be_replaced_by -2147483648.
+calculate_fa_rules(7): integer__base__last may_be_replaced_by 2147483647.
+calculate_fa_rules(8): positive__size >= 0 may_be_deduced.
+calculate_fa_rules(9): positive__first may_be_replaced_by 1.
+calculate_fa_rules(10): positive__last may_be_replaced_by 2147483647.
+calculate_fa_rules(11): positive__base__first may_be_replaced_by -2147483648.
+calculate_fa_rules(12): positive__base__last may_be_replaced_by 2147483647.
+calculate_fa_rules(13): faculty_positive__size >= 0 may_be_deduced.
+calculate_fa_rules(14): faculty_positive__first may_be_replaced_by 1.
+calculate_fa_rules(15): faculty_positive__last may_be_replaced_by 12.
+calculate_fa_rules(16): faculty_positive__base__first may_be_replaced_by -2147483648.
+calculate_fa_rules(17): faculty_positive__base__last may_be_replaced_by 2147483647.

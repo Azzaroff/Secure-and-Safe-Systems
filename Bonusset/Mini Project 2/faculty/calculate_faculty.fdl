@@ -1,0 +1,37 @@
+           {*******************************************************}
+                               {FDL Declarations}
+                              {Examiner GPL 2011}
+             {Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.}
+           {*******************************************************}
+
+
+                        {DATE : 01-FEB-2012 14:42:48.45}
+
+                     {function Faculty.calculate_faculty}
+
+
+title function calculate_faculty;
+
+  function round__(real) : integer;
+  type faculty_array = array [integer] of integer;
+  const fac_arr : faculty_array = pending;
+  const faculty_positive__base__first : integer = pending; 
+  const faculty_positive__base__last : integer = pending; 
+  const positive__base__first : integer = pending; 
+  const positive__base__last : integer = pending; 
+  const integer__base__first : integer = pending; 
+  const integer__base__last : integer = pending; 
+  const faculty_positive__first : integer = pending; 
+  const faculty_positive__last : integer = pending; 
+  const faculty_positive__size : integer = pending; 
+  const positive__first : integer = pending; 
+  const positive__last : integer = pending; 
+  const positive__size : integer = pending; 
+  const integer__first : integer = pending; 
+  const integer__last : integer = pending; 
+  const integer__size : integer = pending; 
+  var n : integer;
+  var fac : integer;
+  var i : integer;
+
+end;

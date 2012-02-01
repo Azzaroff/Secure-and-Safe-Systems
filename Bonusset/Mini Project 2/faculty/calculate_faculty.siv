@@ -1,0 +1,93 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+*****************************************************************************
+
+
+CREATED 01-FEB-2012, 14:42:48  SIMPLIFIED 01-FEB-2012, 14:42:48
+
+SPARK Simplifier GPL 2011
+Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+
+function Faculty.calculate_faculty
+
+
+
+
+For path(s) from start to assertion of line 7:
+
+function_calculate_faculty_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 7 to assertion of line 9:
+
+function_calculate_faculty_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 9 to assertion of line 9:
+
+function_calculate_faculty_3.
+H1:    i >= 0 .
+H2:    n <= 12 .
+H3:    fac * (i + 1) <= 2147483647 .
+H4:    fac >= 1 .
+H5:    fac <= 2147483647 .
+H6:    fac * (i + 1) >= 1 .
+H7:    i + 1 < n .
+H8:    integer__size >= 0 .
+H9:    positive__size >= 0 .
+H10:   faculty_positive__size >= 0 .
+       ->
+C1:    fac * (i + 1) * (i + 2) <= 2147483647 .
+
+
+For path(s) from assertion of line 9 to run-time check associated with 
+          statement of line 10:
+
+function_calculate_faculty_4.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 9 to run-time check associated with 
+          statement of line 12:
+
+function_calculate_faculty_5.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 7 to finish:
+
+function_calculate_faculty_6.
+H1:    n >= 1 .
+H2:    n <= 12 .
+H3:    i <= 2147483647 .
+H4:    n <= i .
+H5:    integer__size >= 0 .
+H6:    positive__size >= 0 .
+H7:    faculty_positive__size >= 0 .
+       ->
+C1:    1 = element(fac_arr, [n]) .
+
+
+For path(s) from assertion of line 9 to finish:
+
+function_calculate_faculty_7.
+H1:    i >= 0 .
+H2:    i < n .
+H3:    n >= 1 .
+H4:    n <= 12 .
+H5:    fac * (i + 1) <= 2147483647 .
+H6:    fac >= 1 .
+H7:    fac <= 2147483647 .
+H8:    fac * (i + 1) >= 1 .
+H9:    n <= i + 1 .
+H10:   integer__size >= 0 .
+H11:   positive__size >= 0 .
+H12:   faculty_positive__size >= 0 .
+       ->
+C1:    fac * (i + 1) = element(fac_arr, [n]) .
+
+
