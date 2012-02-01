@@ -4,15 +4,15 @@ package body Faculty is
 	fac : Positive := 1;
 	i 	: Integer := 0;
 	begin
-		-- Assert i < n;
+		--# Assert i >= 0 and fac = 1;
 		while i < n loop
-			-- Assert i < n and fac = fac_arr(i+1) and fac <= Positive'Last;		
+			--# Assert i >= 0 and i < n and n>= Faculty_Positive'First and n <= Faculty_Positive'Last and (fac*(i+1)) <= Positive'Last;
 			i := i + 1;	
-			-- Assert i <= n and fac = fac_arr(i-1) and fac*i <= Positive'Last ;			
+			-- Assert i <= n and i <= Integer'Last and fac = fac_arr(i-1) and fac*i <= Positive'Last ;			
 			fac := fac * i;				
 			-- Assert i <= n and fac = fac_arr(i) and fac <= Positive'Last and fac >= Positive'First;
 		end loop;
-		--# Assert i >= n and fac = fac_arr(n) and fac <= Positive'Last and fac >= Positive'First;
+		-- Assert i >= n and fac = fac_arr(n) and fac <= Positive'Last and fac >= Positive'First;
 		return fac;
 	end calculate_faculty;
 

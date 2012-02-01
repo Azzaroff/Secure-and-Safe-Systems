@@ -5,7 +5,7 @@
            *******************************************************
 
 
-                        DATE : 01-FEB-2012 12:55:50.03
+                        DATE : 01-FEB-2012 14:42:48.45
 
 Line
    1  package body Faculty is
@@ -14,18 +14,15 @@ Line
    4  	fac : Positive := 1;
    5  	i 	: Integer := 0;
    6  	begin
-   7  		-- Assert i < n;
+   7  		--# Assert i >= 0 and fac = 1;
    8  		while i < n loop
-
---- (  1)  Warning           :402: Default assertion planted to cut loop.
-
-   9  			-- Assert i < n and fac = fac_arr(i+1) and fac <= Positive'Last;		
+   9  			--# Assert i >= 0 and i < n and n>= Faculty_Positive'First and n <= Faculty_Positive'Last and (fac*(i+1)) <= Positive'Last;
   10  			i := i + 1;	
-  11  			-- Assert i <= n and fac = fac_arr(i-1) and fac*i <= Positive'Last ;			
+  11  			-- Assert i <= n and i <= Integer'Last and fac = fac_arr(i-1) and fac*i <= Positive'Last ;			
   12  			fac := fac * i;				
   13  			-- Assert i <= n and fac = fac_arr(i) and fac <= Positive'Last and fac >= Positive'First;
   14  		end loop;
-  15  		--# Assert i >= n and fac = fac_arr(n) and fac <= Positive'Last and fac >= Positive'First;
+  15  		-- Assert i >= n and fac = fac_arr(n) and fac <= Positive'Last and fac >= Positive'First;
   16  		return fac;
   17  	end calculate_faculty;
 

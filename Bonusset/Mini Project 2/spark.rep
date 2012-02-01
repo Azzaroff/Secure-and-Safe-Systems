@@ -5,14 +5,14 @@
            *******************************************************
 
 
-                        DATE : 01-FEB-2012 12:55:50.03
+                        DATE : 01-FEB-2012 14:42:48.45
 
 Options:
     noswitch
     noindex_file
     nowarning_file
     notarget_compiler_data
-    noconfig_file
+    config_file=spark.cfg
     source_extension=ada
     listing_extension=lst
     nodictionary_file
@@ -47,6 +47,19 @@ Meta File(s) used were:
 Full warning reporting selected
 
 
+Target configuration file:
+Line
+   1  package Standard is
+   2     type Integer is range -2147483648 ..  2147483647;
+   3     type Float is digits  6 range -3.40282E+38 ..  3.40282E+38;
+   4     type Short_Short_Integer is range -128 ..  127;
+   5     type Short_Integer is range -32768 ..  32767;
+   6     type Long_Integer is range -2147483648 ..  2147483647;
+   7     type Long_Long_Integer is range -9223372036854775808 ..  9223372036854775807;
+   8     type Short_Float is digits  6 range -3.40282E+38 ..  3.40282E+38;
+   9  end Standard;
+
+
 Source Filename(s) used were:
    /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty.ads
    /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty.adb
@@ -70,12 +83,7 @@ Listing Filename:  /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 
    Unit type:  package body
    Unit has been analysed, any errors are listed below.
 
-1 error(s) or warning(s)
-
-Line
-   8  		while i < n loop
-
---- (  1)  Warning           :402: Default assertion planted to cut loop.
+No errors found
 
 
 --End of file--------------------------------------------------
