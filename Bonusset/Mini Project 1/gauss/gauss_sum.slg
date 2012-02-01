@@ -5,81 +5,55 @@
 *****************************************************************************
 
 
-CREATED 01-FEB-2012, 10:50:37  SIMPLIFIED 01-FEB-2012, 10:50:40
+CREATED 01-FEB-2012, 15:00:00  SIMPLIFIED 01-FEB-2012, 15:00:03
 
 SPARK Simplifier GPL 2011
 Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
 
-function Gauss.gauss_sum
+procedure Gauss.gauss_sum
 
 
 
 
 
 
-@@@@@@@@@@  VC: function_gauss_sum_1.  @@@@@@@@@@
+@@@@@@@@@@  VC: procedure_gauss_sum_1.  @@@@@@@@@@
 %%%  Simplified C3 on reading formula in, to give:
      %%%  C3:  true
 ***  Proved C3:  true
--S-  Applied substitution rule gauss_sum_rules(13).
-     This was achieved by replacing all occurrences of gauss_positive__first by:
-          1.
-<S>  New H2:  n >= 1
--S-  Applied substitution rule gauss_sum_rules(14).
-     This was achieved by replacing all occurrences of gauss_positive__last by:
-          46340.
-<S>  New H3:  n <= 46340
----  Eliminated hypothesis H1 (true-hypothesis).
-     +++  New H4:  integer__size >= 0
-     +++  New H5:  integer__first <= integer__last
-     +++  New H6:  integer__base__first <= integer__base__last
-     +++  New H7:  integer__base__first <= integer__first
-     +++  New H8:  integer__base__last >= integer__last
-     +++  New H9:  positive__size >= 0
-     +++  New H10:  positive__base__first <= positive__base__last
-     +++  New H11:  positive__base__last >= positive__last
-     +++  New H12:  gauss_positive__size >= 0
-     +++  New H13:  gauss_positive__base__first <= gauss_positive__base__last
-     +++  New H14:  1 <= positive__last
-     +++  New H15:  positive__base__first <= 1
-     +++  New H16:  gauss_positive__base__first <= 1
-     +++  New H17:  gauss_positive__base__last >= 46340
-
-
-@@@@@@@@@@  VC: function_gauss_sum_2.  @@@@@@@@@@
-%%%  Simplified H6 on reading formula in, to give:
-     %%%  H6:  true
-%%%  Simplified C1 on reading formula in, to give:
-     %%%  C1:  true
-***  Proved C1:  true
 -S-  Applied substitution rule gauss_sum_rules(7).
      This was achieved by replacing all occurrences of positive__first by:
           1.
-<S>  New C2:  n * (n + 1) div 2 >= 1
+<S>  New C1:  n * (n + 1) div 2 >= 1
 -S-  Applied substitution rule gauss_sum_rules(13).
      This was achieved by replacing all occurrences of gauss_positive__first by:
           1.
-<S>  New H2:  n >= 1
+<S>  New H3:  n >= 1
 -S-  Applied substitution rule gauss_sum_rules(14).
      This was achieved by replacing all occurrences of gauss_positive__last by:
           46340.
-<S>  New H3:  n <= 46340
----  Eliminated hypothesis H1 (true-hypothesis).
----  Eliminated hypothesis H6 (true-hypothesis).
-***  Proved C2:  n * (n + 1) div 2 >= 1
-     using hypotheses H2 & H2.
-     +++  New H11:  integer__size >= 0
-     +++  New H12:  integer__first <= integer__last
-     +++  New H13:  integer__base__first <= integer__base__last
-     +++  New H14:  integer__base__first <= integer__first
-     +++  New H15:  integer__base__last >= integer__last
-     +++  New H16:  positive__size >= 0
-     +++  New H17:  positive__base__first <= positive__base__last
-     +++  New H18:  positive__base__last >= positive__last
-     +++  New H19:  gauss_positive__size >= 0
-     +++  New H20:  gauss_positive__base__first <= gauss_positive__base__last
-     +++  New H21:  1 <= positive__last
-     +++  New H22:  positive__base__first <= 1
-     +++  New H23:  gauss_positive__base__first <= 1
-     +++  New H24:  gauss_positive__base__last >= 46340
+<S>  New H4:  n <= 46340
+---  Eliminated hypothesis H4 (duplicate of H1).
+---  Eliminated hypothesis H3 (duplicate of H2).
+***  Proved C1:  n * (n + 1) div 2 >= 1
+     using hypotheses H3 & H3.
+     +++  New H5:  integer__size >= 0
+     +++  New H6:  integer__first <= integer__last
+     +++  New H7:  integer__base__first <= integer__base__last
+     +++  New H8:  integer__base__first <= integer__first
+     +++  New H9:  integer__base__last >= integer__last
+     +++  New H10:  positive__size >= 0
+     +++  New H11:  positive__base__first <= positive__base__last
+     +++  New H12:  positive__base__last >= positive__last
+     +++  New H13:  gauss_positive__size >= 0
+     +++  New H14:  gauss_positive__base__first <= gauss_positive__base__last
+     +++  New H15:  1 <= positive__last
+     +++  New H16:  positive__base__first <= 1
+     +++  New H17:  gauss_positive__base__first <= 1
+     +++  New H18:  gauss_positive__base__last >= 46340
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_2.  @@@@@@@@@@
+***  Proved C1:  true
+***  PROVED VC.
 

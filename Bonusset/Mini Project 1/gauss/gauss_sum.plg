@@ -1,0 +1,257 @@
+*****************************************************************************
+SPADE Transcript of Interactive Proof Session
+
+SPARK Proof Checker GPL 2011
+Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+
+*****************************************************************************
+
+DATE : 01-FEB-2012  TIME : 15:58:29
+
+
+STEP 0
+*** True VC eliminated: procedure_gauss_sum_2
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_1
+H1:  n <= 46340
+H2:  n > 0
+H3:  integer__size >= 0
+H4:  integer__first <= integer__last
+H5:  integer__base__first <= integer__base__last
+H6:  integer__base__first <= integer__first
+H7:  integer__base__last >= integer__last
+H8:  positive__size >= 0
+H9:  positive__base__first <= positive__base__last
+H10:  positive__base__last >= positive__last
+H11:  gauss_positive__size >= 0
+H12:  gauss_positive__base__first <= gauss_positive__base__last
+H13:  1 <= positive__last
+H14:  positive__base__first <= 1
+H15:  gauss_positive__base__first <= 1
+H16:  gauss_positive__base__last >= 46340
+-->
+  C1:  n * (n + 1) div 2 <= positive__last
+  C2:  n * (n + 1) >= integer__base__first
+  C3:  n * (n + 1) <= integer__base__last
+  C4:  n + 1 >= integer__base__first
+  C5:  n + 1 <= integer__base__last
+
+
+STEP 2
+Command: consult
+Consulted rulefile: /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/gauss/my_rules.rls
+No errors trapped in reading this rulefile.
+
+STEP 3
+Command: infer
+Attempt to prove n = 46340
+by subgoaling on rule transitivity(29).
+Unsatisfied subgoals are:
+  Subgoal: n = 46340
+
+Commence PROOF BY SUBGOALING attempt
+Entering new proof frame (DEPTH 1) ...
+  All current conclusions withdrawn
+  >>> New goal C1: n = 46340
+
+  STEP 4
+  Command: infer
+  Successful inference with rule: my_rules(6)
+    Proved subgoal: n <= 46340
+  Therefore n = 46340
+  *** New H17: n = 46340
+  *** Proved C1: n = 46340
+  Exiting current proof frame (DEPTH 1)
+*** New H17: n = 46340
+
+STEP 5
+Command: done
+
+STEP 6
+Command: infer
+Successful inference with rule: my_rules(3)
+  (unconstrained rule: no subgoals)
+Therefore integer__base__first = - 2147483648
+*** New H18: integer__base__first = - 2147483648
+
+STEP 7
+Command: infer
+Successful inference with rule: my_rules(4)
+  (unconstrained rule: no subgoals)
+Therefore integer__base__last = 2147483647
+*** New H19: integer__base__last = 2147483647
+
+STEP 8
+Command: infer
+Attempt to prove n <= positive__last
+by subgoaling on rule transitivity(1).
+Unsatisfied subgoals are:
+  Subgoal: 46340 <= positive__last
+
+Commence PROOF BY SUBGOALING attempt
+Entering new proof frame (DEPTH 1) ...
+  All current conclusions withdrawn
+  >>> New goal C1: 46340 <= positive__last
+
+  STEP 9
+  Command: infer
+  Successful inference with rule: my_rules(2)
+    (unconstrained rule: no subgoals)
+  Therefore positive__last = 2147483647
+  *** New H20: positive__last = 2147483647
+
+  STEP 10
+  Command: done
+  *** Proved C1: 46340 <= positive__last
+  Exiting current proof frame (DEPTH 1)
+*** New H20: n <= positive__last
+
+STEP 11
+Command: done
+*** Proved C4: n + 1 >= integer__base__first
+*** Proved C5: n + 1 <= integer__base__last
+
+STEP 12
+Command: infer
+Attempt to prove n * (n + 1) div 2 = 1073720970
+by subgoaling on rule transitivity(29).
+Unsatisfied subgoals are:
+  Subgoal: n * (n + 1) div 2 = 1073720970
+
+Commence PROOF BY SUBGOALING attempt
+Entering new proof frame (DEPTH 1) ...
+  All current conclusions withdrawn
+  >>> New goal C1: n * (n + 1) div 2 = 1073720970
+
+  STEP 13
+  Command: infer
+  Successful inference with rule: inequals(40)
+    Proved subgoal: n <= 46340
+    Proved subgoal: n + 1 >= 0
+  Therefore n * (n + 1) <= 46340 * (n + 1)
+  *** New H21: n * (n + 1) <= 46340 * (n + 1)
+
+  STEP 14
+  Command: replace(c # 1)
+  Successful substitution with rule: eq(1)
+    Proved subgoal: n = 46340
+    Met constraint: n \= 46340
+  Allowing substitution of 46340
+  for n
+  >>> New goal C1: 46340 * (46340 + 1) div 2 = 1073720970
+
+  STEP 15
+  Command: done
+  *** Proved C1: 46340 * (46340 + 1) div 2 = 1073720970
+  Exiting current proof frame (DEPTH 1)
+*** New H21: n * (n + 1) div 2 = 1073720970
+
+STEP 16
+Command: replace(c # 1)
+Successful substitution with rule: eq(1)
+  Proved subgoal: n = 46340
+  Met constraint: n \= 46340
+Allowing substitution of 46340
+for n
+>>> New goal C1: 46340 * (46340 + 1) div 2 <= positive__last
+
+STEP 17
+Command: infer
+Successful inference with rule: my_rules(2)
+  (unconstrained rule: no subgoals)
+Therefore positive__last = 2147483647
+*** New H22: positive__last = 2147483647
+
+STEP 18
+Command: replace(c # 1)
+Successful substitution with rule: eq(1)
+  Proved subgoal: positive__last = 2147483647
+  Met constraint: positive__last \= 2147483647
+Allowing substitution of 2147483647
+for positive__last
+>>> New goal C1: 46340 * (46340 + 1) div 2 <= 2147483647
+
+STEP 19
+Command: done
+*** Proved C1: 46340 * (46340 + 1) div 2 <= 2147483647
+
+STEP 20
+Command: replace(c # 2)
+Successful substitution with rule: eq(1)
+  Proved subgoal: n = 46340
+  Met constraint: n \= 46340
+Allowing substitution of 46340
+for n
+>>> New goal C2: 46340 * (46340 + 1) >= integer__base__first
+
+STEP 21
+Command: replace(c # 3)
+Successful substitution with rule: eq(1)
+  Proved subgoal: n = 46340
+  Met constraint: n \= 46340
+Allowing substitution of 46340
+for n
+>>> New goal C3: 46340 * (46340 + 1) <= integer__base__last
+
+STEP 22
+Command: replace(c # 2)
+Successful substitution with rule: eq(1)
+  Proved subgoal: integer__base__first = - 2147483648
+  Met constraint: integer__base__first \= - 2147483648
+Allowing substitution of - 2147483648
+for integer__base__first
+>>> New goal C2: 46340 * (46340 + 1) >= - 2147483648
+
+STEP 23
+Command: replace(c # 3)
+Successful substitution with rule: eq(1)
+  Proved subgoal: integer__base__last = 2147483647
+  Met constraint: integer__base__last \= 2147483647
+Allowing substitution of 2147483647
+for integer__base__last
+>>> New goal C3: 46340 * (46340 + 1) <= 2147483647
+
+STEP 24
+Command: done
+*** Proved C2: 46340 * (46340 + 1) >= - 2147483648
+*** Proved C3: 46340 * (46340 + 1) <= 2147483647
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_1
+
+The following rules were used in proving the above VC:
+          /home/azzaroff/.spark/bin//../lib/checker/rules/GENINEQS.RUL::transitivity(1)
+          /home/azzaroff/.spark/bin//../lib/checker/rules/GENINEQS.RUL::transitivity(29)
+          /home/azzaroff/.spark/bin//../lib/checker/rules/NUMINEQS.RUL::inequals(40)
+          /home/azzaroff/.spark/bin//../lib/checker/rules/SPECIAL.RUL::eq(1)
+          my_rules.rls::my_rules(2)
+          my_rules.rls::my_rules(3)
+          my_rules.rls::my_rules(4)
+          my_rules.rls::my_rules(6)
+
+
+
+
+
+STEP 25
+*** END OF PROOF SESSION
+
+
+The following rules were used during the above proof session:
+          /home/azzaroff/.spark/bin//../lib/checker/rules/GENINEQS.RUL::transitivity(1)
+          /home/azzaroff/.spark/bin//../lib/checker/rules/GENINEQS.RUL::transitivity(29)
+          /home/azzaroff/.spark/bin//../lib/checker/rules/NUMINEQS.RUL::inequals(40)
+          /home/azzaroff/.spark/bin//../lib/checker/rules/SPECIAL.RUL::eq(1)
+          my_rules.rls::my_rules(2)
+          my_rules.rls::my_rules(3)
+          my_rules.rls::my_rules(4)
+          my_rules.rls::my_rules(6)
+
+The following VCs were proved during this proof session:
+        1 - 2
+
+There are no more VCs left to prove.
+
+Command: exit

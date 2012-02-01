@@ -34,9 +34,9 @@ Summary Dead Path files (.sdp)
         'L' - Live path
 
 in the directory:
-/home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1
+/home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/gauss
 
-Summary produced: 01-FEB-2012 16:34:19.58
+Summary produced: 01-FEB-2012 16:34:11.57
 
 File /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/gauss/gauss_sum.vcg
 procedure Gauss.gauss_sum
