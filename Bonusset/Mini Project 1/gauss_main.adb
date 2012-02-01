@@ -5,5 +5,6 @@ procedure gauss_main is
 
 
 begin
-	Gauss.gauss_sum(Integer'Value(Argument(1)));
+	Ada.Text_IO.Put("Gauss sum of " & Argument(1) & " =");
+    Ada.Text_IO.Put_Line(Gauss.gauss_sum(Gauss.Gauss_Positive'Value(Argument(1)))'Img);
 end gauss_main;

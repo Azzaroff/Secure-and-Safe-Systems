@@ -1,0 +1,77 @@
+           *******************************************************
+                         Report of SPARK Examination
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 01-FEB-2012 10:50:37.54
+
+Options:
+    noswitch
+    index_file=./spark.idx
+    nowarning_file
+    notarget_compiler_data
+    noconfig_file
+    source_extension=ada
+    listing_extension=lst
+    nodictionary_file
+    report_file=spark.rep
+    nohtml
+    vcg
+    nostatistics
+    fdl_identifiers=accept
+    flow_analysis=information
+    language=95
+    profile=sequential
+    annotation_character=#
+    rules=none
+    error_explanations=off
+    justification_option=full
+    output_directory=.
+    output_directory (actual)=/home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/
+
+Selected files:
+   @spark.smf
+
+
+Index Filename(s) used were: 
+   /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/spark.idx
+
+
+Meta File(s) used were:
+   spark.smf
+      /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/gauss.ads
+      /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/gauss.adb
+
+
+Full warning reporting selected
+
+
+Source Filename(s) used were:
+   /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/gauss.ads
+   /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/gauss.adb
+
+
+
+Source Filename:   /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/gauss.ads
+Listing Filename:  /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/gauss.lst
+
+   Unit name:  Gauss
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/gauss.adb
+Listing Filename:  /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 1/gauss.lst
+
+   Unit name:  Gauss
+   Unit type:  package body
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+--End of file--------------------------------------------------

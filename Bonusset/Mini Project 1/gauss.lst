@@ -1,0 +1,27 @@
+           *******************************************************
+                            Listing of SPARK Text
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 01-FEB-2012 10:50:37.54
+
+Line
+   1  
+   2  package body Gauss is
+   3  
+   4  	-- maximum n could be n = 46340, gaussian sum = 1073720970
+   5  	function gauss_sum (n : in Gauss_Positive) return Positive is
+   6  	begin
+   7  		return (n * (n + 1)) / 2;
+   8  	end gauss_sum;
+
++++        Flow analysis of subprogram gauss_sum performed: 
+           no errors found.
+
+   9  
+  10  end Gauss;
+
+
+--End of file--------------------------------------------------
