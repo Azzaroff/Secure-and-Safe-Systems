@@ -5,12 +5,12 @@
            {*******************************************************}
 
 
-                        {DATE : 01-FEB-2012 14:42:48.45}
+                        {DATE : 01-FEB-2012 19:07:35.98}
 
-                     {function Faculty.calculate_faculty}
+                    {procedure Faculty.calculate_faculty}
 
 
-title function calculate_faculty;
+title procedure calculate_faculty;
 
   function round__(real) : integer;
   type faculty_array = array [integer] of integer;

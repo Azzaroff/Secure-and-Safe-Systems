@@ -36,26 +36,28 @@ Summary Dead Path files (.sdp)
 in the directory:
 /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2
 
-Summary produced: 01-FEB-2012 14:42:49.48
+Summary produced: 01-FEB-2012 19:07:37.27
 
 File /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty/calculate_faculty.vcg
-function Faculty.calculate_faculty
+procedure Faculty.calculate_faculty
 
-VCs generated 01-FEB-2012 14:42:48
+VCs generated 01-FEB-2012 19:07:35
 
-VCs simplified 01-FEB-2012 14:42:48
+VCs simplified 01-FEB-2012 19:07:36
 
-VCs for function_calculate_faculty :
+VCs for procedure_calculate_faculty :
  -----------------------------------------------------------------------------
 | #   | From  | To                  | Proved By          | Dead Path | Status |
 |-----------------------------------------------------------------------------
-| 1   | start |    assert @ 7       | Inference          | No DPC    |   I-   |
-| 2   | 7     |    assert @ 9       | Inference          | No DPC    |   I-   |
-| 3   | 9     |    assert @ 9       | Undischarged       | No DPC    |   U-   |
-| 4   | 9     | rtc check @ 10      | Inference          | No DPC    |   I-   |
-| 5   | 9     | rtc check @ 12      | Inference          | No DPC    |   I-   |
-| 6   | 7     |    assert @ finish  | Undischarged       | No DPC    |   U-   |
-| 7   | 9     |    assert @ finish  | Undischarged       | No DPC    |   U-   |
+| 1   | start | rtc check @ 6       | Inference          | No DPC    |   I-   |
+| 2   | start |    assert @ 7       | Undischarged       | No DPC    |   U-   |
+| 3   | 7     |    assert @ 10      | Inference          | No DPC    |   I-   |
+| 4   | 10    |    assert @ 10      | Undischarged       | No DPC    |   U-   |
+| 5   | 10    | rtc check @ 11      | Inference          | No DPC    |   I-   |
+| 6   | 10    | rtc check @ 12      | Inference          | No DPC    |   I-   |
+| 7   | 7     |    assert @ 14      | Inference          | No DPC    |   I-   |
+| 8   | 10    |    assert @ 14      | Undischarged       | No DPC    |   U-   |
+| 9   | 14    |    assert @ finish  | Examiner           | No DPC    |   E-   |
  -----------------------------------------------------------------------------
 
 
@@ -68,7 +70,7 @@ The following subprograms have undischarged VCs (excluding those proved false):
 
 Proof strategies used by subprograms
 -------------------------------------------------------------------------
-Total subprograms with at least one VC proved by examiner:              0
+Total subprograms with at least one VC proved by examiner:              1
 Total subprograms with at least one VC proved by simplifier:            1
 Total subprograms with at least one VC proved by contradiction:         0
 Total subprograms with at least one VC proved with user proof rule:     0
@@ -109,13 +111,13 @@ Note: (User) denotes where the Simplifier has proved VCs using one or
 Total VCs by type:                                       
                        -----------Proved By Or Using-----------
                 Total Examnr   Simp (User) ViCToR Checkr Review  False Undisc
-Assert/Post         5      0      2             0      0      0      0      3
+Assert/Post         6      1      2             0      0      0      0      3
 Precondition        0      0      0             0      0      0      0      0
 Check stmnt.        0      0      0             0      0      0      0      0
-Runtime check       2      0      2             0      0      0      0      0
+Runtime check       3      0      3             0      0      0      0      0
 Refinem. VCs        0      0      0             0      0      0      0      0
 Inherit. VCs        0      0      0             0      0      0      0      0
 ===============================================================================
-Totals:             7      0      4             0      0      0      0      3 <<<
-%Totals:                  0%    57%            0%     0%     0%     0%    43%
+Totals:             9      1      5             0      0      0      0      3 <<<
+%Totals:                 11%    56%            0%     0%     0%     0%    33%
 ===================== End of Semantic Analysis Summary ========================
