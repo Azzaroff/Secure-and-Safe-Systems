@@ -5,9 +5,9 @@ with Mini_RC4; use Mini_RC4;
 
 procedure rc4_brute is
 
-K : Key_Type := (0 => 2, 1 => 21, 2 => 7, 3 => 4);
+K : Key_Type := (0 => 255, 1 => 5, 2 => 0, 3 => 65);
 expand : Context_Type;
-Keystream : Byte_Array (0..5000) := (others => 0);
+Keystream : Byte_Array (0..19) := (others => 0);
 begin
   Key_Scheduler(K, expand);
   Get_Keystream(expand, Keystream);
@@ -21,5 +21,5 @@ begin
     Ada.Integer_Text_IO.Put(Integer'Val(Keystream(I)),2,16);
   end loop;
   Put_Line("");
- -- Brute_Workers (4, Keystream);
+  Brute_Workers (4, Keystream);
 end;

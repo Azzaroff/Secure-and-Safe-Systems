@@ -11,8 +11,15 @@ package Mini_RC4 is
    procedure Key_Scheduler(Key : in Key_Type; Ctx : out Context_Type);   
    procedure Get_Keystream(Ctx : in out Context_Type;
 			   Keystream : out Byte_Array);
+
+    protected type Abort_Tasks is
+	procedure Set_Done;
+	function Is_Done return Boolean;
+	private
+	  Done : Boolean := false;
+    end Abort_Tasks;
   
-   procedure Brute_Workers (Thread_Count : Byte; Keystream : Byte_Array);
+   procedure Brute_Workers (Thread_Count : Positive; Keystream : Byte_Array);
 private
    subtype Expanded_Key_Type is Byte_Array(0..255);
    
