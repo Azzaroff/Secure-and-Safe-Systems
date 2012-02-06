@@ -1,6 +1,6 @@
 V "SPARK 2011"
 A -noswitch
-A -noindex_file
+A -index_file=spark.idx
 A -nowarning_file
 A -notarget_compiler_data
 A -config_file=spark.cfg
@@ -20,7 +20,7 @@ A -rules=none
 A -error_explanations=off
 A -justification_option=full
 A -output_directory=.
-A -output_directory (actual)=/home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 2/
+A -output_directory (actual)=/home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 2/
 P
 R
 
@@ -31,10 +31,6 @@ D faculty.ads 00000000000000 00000000
 D faculty.adb 00000000000000 00000000
 
 X 1 faculty.ads
-2I10 Faculty_Positive 10r15 10r47 2|7r41 7r72 10r30 10r61
-5a2 fac_arr 2|8r30 10r149 14r20
-8i30 n 9r23 10r10 10r42 2|7r30 7r36 7r67 10r19 10r25 10r56
-8i55 fac 9m14 2|7r99 7r126 8r11 8r24 10r88 10r115 10r143 14r14
-X 2 faculty.adb
-4i2 i 7r14 7r25 7r103 7r130 8r38 10r15 10r92 10r119 10r157
-. 14r28
+2I10 Faculty_Positive 10r15 10r47
+8i30 n 9r23 10r10 10r42
+8i55 fac 9m14

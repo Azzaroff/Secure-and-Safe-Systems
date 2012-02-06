@@ -5,7 +5,7 @@
 *****************************************************************************
 
 
-CREATED 01-FEB-2012, 19:07:35  SIMPLIFIED 01-FEB-2012, 19:07:36
+CREATED 06-FEB-2012, 17:16:54  SIMPLIFIED 06-FEB-2012, 17:17:10
 
 SPARK Simplifier GPL 2011
 Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
@@ -21,82 +21,63 @@ procedure_calculate_faculty_1.
 *** true .          /* all conclusions proved */
 
 
-For path(s) from start to assertion of line 7:
+For path(s) from start to default assertion of line 9:
 
 procedure_calculate_faculty_2.
-H1:    n >= 1 .
-H2:    n <= 12 .
-H3:    integer__size >= 0 .
-H4:    positive__size >= 0 .
-H5:    faculty_positive__size >= 0 .
-       ->
-C1:    1 = element(fac_arr, [1]) .
+*** true .          /* all conclusions proved */
 
 
-For path(s) from assertion of line 7 to assertion of line 10:
+For path(s) from default assertion of line 9 to default assertion of line 9:
 
 procedure_calculate_faculty_3.
 *** true .          /* all conclusions proved */
 
 
-For path(s) from assertion of line 10 to assertion of line 10:
-
 procedure_calculate_faculty_4.
-H1:    n <= 12 .
-H2:    element(fac_arr, [i]) * i <= 2147483647 .
-H3:    element(fac_arr, [i]) * i >= 1 .
-H4:    element(fac_arr, [i]) >= 1 .
-H5:    element(fac_arr, [i]) <= 2147483647 .
-H6:    i >= 1 .
-H7:    i + 1 < n .
-H8:    integer__size >= 0 .
-H9:    positive__size >= 0 .
-H10:   faculty_positive__size >= 0 .
-       ->
-C1:    element(fac_arr, [i]) * i * (i + 1) <= 2147483647 .
-C2:    element(fac_arr, [i]) * i = element(fac_arr, [i + 1]) .
+*** true .          /* all conclusions proved */
 
 
-For path(s) from assertion of line 10 to run-time check associated with 
+For path(s) from default assertion of line 9 to run-time check associated with 
           statement of line 11:
 
 procedure_calculate_faculty_5.
 *** true .          /* all conclusions proved */
 
 
-For path(s) from assertion of line 10 to run-time check associated with 
+For path(s) from default assertion of line 9 to run-time check associated with 
           statement of line 12:
 
 procedure_calculate_faculty_6.
-*** true .          /* all conclusions proved */
+H1:    n <= 12 .
+H2:    i >= 1 .
+H3:    i < n .
+H4:    fac >= 0 .
+H5:    fac <= 2147483647 .
+H6:    2147483647 div i <= 2147483647 .
+H7:    fac <= 2147483647 div i .
+H8:    integer__size >= 0 .
+H9:    natural__size >= 0 .
+H10:   positive__size >= 0 .
+H11:   faculty_positive__size >= 0 .
+       ->
+C1:    fac * i <= 2147483647 .
 
 
-For path(s) from assertion of line 7 to assertion of line 14:
+For path(s) from default assertion of line 9 to run-time check associated with 
+          statement of line 13:
 
 procedure_calculate_faculty_7.
 *** true .          /* all conclusions proved */
 
 
-For path(s) from assertion of line 10 to assertion of line 14:
+For path(s) from default assertion of line 9 to run-time check associated with 
+          statement of line 16:
 
 procedure_calculate_faculty_8.
-H1:    i < n .
-H2:    n <= 12 .
-H3:    element(fac_arr, [i]) * i <= 2147483647 .
-H4:    element(fac_arr, [i]) * i >= 1 .
-H5:    element(fac_arr, [i]) >= 1 .
-H6:    element(fac_arr, [i]) <= 2147483647 .
-H7:    i >= 1 .
-H8:    i <= 11 .
-H9:    n <= i + 1 .
-H10:   integer__size >= 0 .
-H11:   positive__size >= 0 .
-H12:   faculty_positive__size >= 0 .
-       ->
-C1:    element(fac_arr, [i]) * i = element(fac_arr, [i + 1]) .
+*** true .          /* all conclusions proved */
 
 
-For path(s) from assertion of line 14 to finish:
+For path(s) from default assertion of line 9 to finish:
 
 procedure_calculate_faculty_9.
 *** true .          /* all conclusions proved */

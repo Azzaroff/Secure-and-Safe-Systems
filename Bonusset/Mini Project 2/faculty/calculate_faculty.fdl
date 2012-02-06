@@ -5,7 +5,7 @@
            {*******************************************************}
 
 
-                        {DATE : 01-FEB-2012 19:07:35.98}
+                        {DATE : 06-FEB-2012 17:16:54.63}
 
                     {procedure Faculty.calculate_faculty}
 
@@ -13,12 +13,12 @@
 title procedure calculate_faculty;
 
   function round__(real) : integer;
-  type faculty_array = array [integer] of integer;
-  const fac_arr : faculty_array = pending;
   const faculty_positive__base__first : integer = pending; 
   const faculty_positive__base__last : integer = pending; 
   const positive__base__first : integer = pending; 
   const positive__base__last : integer = pending; 
+  const natural__base__first : integer = pending; 
+  const natural__base__last : integer = pending; 
   const integer__base__first : integer = pending; 
   const integer__base__last : integer = pending; 
   const faculty_positive__first : integer = pending; 
@@ -27,6 +27,9 @@ title procedure calculate_faculty;
   const positive__first : integer = pending; 
   const positive__last : integer = pending; 
   const positive__size : integer = pending; 
+  const natural__first : integer = pending; 
+  const natural__last : integer = pending; 
+  const natural__size : integer = pending; 
   const integer__first : integer = pending; 
   const integer__last : integer = pending; 
   const integer__size : integer = pending; 

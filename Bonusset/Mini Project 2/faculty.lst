@@ -5,30 +5,38 @@
            *******************************************************
 
 
-                        DATE : 01-FEB-2012 19:07:36.32
+                        DATE : 06-FEB-2012 17:16:54.63
 
 Line
    1  package body Faculty is
    2  	-- maximum n = 12 fac := 12! = 479001600
-   3  	procedure calculate_faculty(n : in Faculty_Positive; fac : out Positive) is
+   3  	procedure calculate_faculty(n : in Faculty_Positive; fac : out Natural) is
    4  	i 	: Faculty_Positive := 1;
-   5  	begin
+   5  	begin 
    6  		fac := 1;
-   7  		--# Assert i >= 1 and i <= n and n <= Faculty_Positive'Last and n >= Faculty_Positive'First and fac*i <= Positive'Last and fac*i >= Positive'First 
-   8  		--# and fac >= 1 and fac = fac_arr(i);
+   7  		---# Assert i >= 1 and i <= n and n <= Faculty_Positive'Last and n >= Faculty_Positive'First and fac*i <= Positive'Last and fac*i >= Positive'First 
+   8  		---# and fac >= 1 and fac = fac_arr(i);
    9  		while i < n loop
-  10  			--# Assert i < n and n <= Faculty_Positive'Last and n >= Faculty_Positive'First and fac*i <= Positive'Last and fac*i >= Positive'First and fac = fac_arr(i);
-  11  			fac := fac * i;
-  12  			i := i + 1;				
-  13  		end loop;
-  14  		--# Assert fac = fac_arr(i);
-  15  	end calculate_faculty;
+
+--- (  1)  Warning           :402: Default assertion planted to cut loop.
+
+  10  			---# Assert i < n and n <= Faculty_Positive'Last and n >= Faculty_Positive'First and fac*i <= Positive'Last and fac*i >= Positive'First and fac = fac_arr(i);
+  11              if fac <= Positive'Last / i then
+  12                  fac := fac * i;
+  13                  i := i + 1;
+  14              else
+  15                --ungültiger zustand falls i zu groß
+  16                fac := 0;
+  17              end if;
+  18  		end loop;
+  19  		---# Assert fac = fac_arr(i);
+  20  	end calculate_faculty;
 
 +++        Flow analysis of subprogram calculate_faculty 
            performed: no errors found.
 
-  16  
-  17  end Faculty;
+  21  
+  22  end Faculty;
 
 
 --End of file--------------------------------------------------

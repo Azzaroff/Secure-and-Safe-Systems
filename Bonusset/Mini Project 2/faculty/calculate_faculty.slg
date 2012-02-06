@@ -5,7 +5,7 @@
 *****************************************************************************
 
 
-CREATED 01-FEB-2012, 19:07:35  SIMPLIFIED 01-FEB-2012, 19:07:36
+CREATED 06-FEB-2012, 17:16:54  SIMPLIFIED 06-FEB-2012, 17:17:10
 
 SPARK Simplifier GPL 2011
 Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
@@ -20,12 +20,12 @@ procedure Faculty.calculate_faculty
 @@@@@@@@@@  VC: procedure_calculate_faculty_1.  @@@@@@@@@@
 ---  Hypothesis H3 has been replaced by "true".  (It is already present, as H1).
 ---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
--S-  Applied substitution rule calculate_fa_rules(9).
-     This was achieved by replacing all occurrences of positive__first by:
-          1.
+-S-  Applied substitution rule calculate_fa_rules(7).
+     This was achieved by replacing all occurrences of natural__first by:
+          0.
 <S>  New C1:  true
--S-  Applied substitution rule calculate_fa_rules(10).
-     This was achieved by replacing all occurrences of positive__last by:
+-S-  Applied substitution rule calculate_fa_rules(8).
+     This was achieved by replacing all occurrences of natural__last by:
           2147483647.
 <S>  New C2:  true
 ***  Proved C1:  true
@@ -36,321 +36,244 @@ procedure Faculty.calculate_faculty
 @@@@@@@@@@  VC: procedure_calculate_faculty_2.  @@@@@@@@@@
 ---  Hypothesis H3 has been replaced by "true".  (It is already present, as H1).
 ---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
-%%%  Simplified C1 on reading formula in, to give:
-     %%%  C1:  true
-%%%  Simplified C5 on reading formula in, to give:
-     %%%  C5:  1 <= positive__last
-%%%  Simplified C6 on reading formula in, to give:
-     %%%  C6:  1 >= positive__first
-%%%  Simplified C7 on reading formula in, to give:
-     %%%  C7:  true
-***  Proved C1:  true
-***  Proved C3:  n <= faculty_positive__last
+***  Proved C1:  n >= faculty_positive__first
+     using hypothesis H1.
+***  Proved C2:  n <= faculty_positive__last
      using hypothesis H2.
-***  Proved C4:  n >= faculty_positive__first
+***  Proved C3:  n >= faculty_positive__first
      using hypothesis H1.
-***  Proved C5:  1 <= positive__last
-     using hypothesis H6.
-***  Proved C6:  1 >= positive__first
-     using hypothesis H5.
-***  Proved C7:  true
-***  Proved C9:  n >= faculty_positive__first
-     using hypothesis H1.
-***  Proved C10:  n <= faculty_positive__last
+***  Proved C4:  n <= faculty_positive__last
      using hypothesis H2.
-***  Proved C11:  n >= faculty_positive__first
-     using hypothesis H1.
-***  Proved C12:  n <= faculty_positive__last
-     using hypothesis H2.
--S-  Applied substitution rule calculate_fa_rules(9).
-     This was achieved by replacing all occurrences of positive__first by:
-          1.
-<S>  New H5:  true
--S-  Applied substitution rule calculate_fa_rules(10).
-     This was achieved by replacing all occurrences of positive__last by:
-          2147483647.
-<S>  New H6:  true
--S-  Applied substitution rule calculate_fa_rules(14).
-     This was achieved by replacing all occurrences of faculty_positive__first 
-          by:
-          1.
-<S>  New H1:  n >= 1
--S-  Applied substitution rule calculate_fa_rules(15).
-     This was achieved by replacing all occurrences of faculty_positive__last 
-          by:
-          12.
-<S>  New H2:  n <= 12
-***  Proved C2:  1 <= n
-     using hypothesis H1.
----  Eliminated hypothesis H3 (true-hypothesis).
----  Eliminated hypothesis H4 (true-hypothesis).
----  Eliminated hypothesis H5 (true-hypothesis).
----  Eliminated hypothesis H6 (true-hypothesis).
-     +++  New H7:  integer__size >= 0
-     +++  New H8:  positive__size >= 0
-     +++  New H9:  faculty_positive__size >= 0
+***  PROVED VC.
 
 
 @@@@@@@@@@  VC: procedure_calculate_faculty_3.  @@@@@@@@@@
----  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
----  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+---  Hypothesis H3 has been replaced by "true".  (It is already present, as H1).
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H5)
           .
----  Hypothesis H11 has been replaced by "true".  (It is already present, as H4)
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H6)
           .
----  Hypothesis H12 has been replaced by "true".  (It is already present, as H3)
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
           .
-***  Proved C1:  i < n
-     using hypothesis H15.
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H6)
+          .
+***  Proved C1:  n >= faculty_positive__first
+     using hypothesis H1.
 ***  Proved C2:  n <= faculty_positive__last
-     using hypothesis H3.
+     using hypothesis H2.
 ***  Proved C3:  n >= faculty_positive__first
-     using hypothesis H4.
-***  Proved C4:  fac * i <= positive__last
-     using hypothesis H5.
-***  Proved C5:  fac * i >= positive__first
-     using hypothesis H6.
-***  Proved C6:  fac = element(fac_arr, [i])
-     using hypothesis H8.
-***  Proved C7:  n >= faculty_positive__first
-     using hypothesis H4.
-***  Proved C8:  n <= faculty_positive__last
-     using hypothesis H3.
-***  Proved C9:  n >= faculty_positive__first
-     using hypothesis H4.
-***  Proved C10:  n <= faculty_positive__last
-     using hypothesis H3.
+     using hypothesis H1.
+***  Proved C4:  n <= faculty_positive__last
+     using hypothesis H2.
 ***  PROVED VC.
 
 
 @@@@@@@@@@  VC: procedure_calculate_faculty_4.  @@@@@@@@@@
----  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
----  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
----  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
----  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+---  Hypothesis H3 has been replaced by "true".  (It is already present, as H1).
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H5)
           .
----  Hypothesis H15 has been replaced by "true".  (It is already present, as H5)
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H6)
           .
----  Hypothesis H16 has been replaced by "true".  (It is already present, as H4)
-          .
----  Hypothesis H17 has been replaced by "true".  (It is already present, as 
-          H13).
----  Hypothesis H18 has been replaced by "true".  (It is already present, as 
-          H14).
----  Hypothesis H21 has been replaced by "true".  (It is already present, as 
-          H19).
----  Hypothesis H22 has been replaced by "true".  (It is already present, as 
-          H20).
-***  Proved C1:  i + 1 < n
-     using hypothesis H23.
+***  Proved C1:  n >= faculty_positive__first
+     using hypothesis H1.
 ***  Proved C2:  n <= faculty_positive__last
      using hypothesis H2.
 ***  Proved C3:  n >= faculty_positive__first
-     using hypothesis H3.
-***  Proved C7:  n >= faculty_positive__first
-     using hypothesis H3.
-***  Proved C8:  n <= faculty_positive__last
+     using hypothesis H1.
+***  Proved C4:  n <= faculty_positive__last
      using hypothesis H2.
-***  Proved C9:  n >= faculty_positive__first
-     using hypothesis H3.
-***  Proved C10:  n <= faculty_positive__last
-     using hypothesis H2.
--S-  Applied substitution rule calculate_fa_rules(10).
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_calculate_faculty_5.  @@@@@@@@@@
+---  Hypothesis H3 has been replaced by "true".  (It is already present, as H1).
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H6)
+          .
+-S-  Applied substitution rule calculate_fa_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C1:  positive__last div i >= - 2147483648
+-S-  Applied substitution rule calculate_fa_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C2:  positive__last div i <= 2147483647
+-S-  Applied substitution rule calculate_fa_rules(7).
+     This was achieved by replacing all occurrences of natural__first by:
+          0.
+<S>  New H8:  fac >= 0
+-S-  Applied substitution rule calculate_fa_rules(8).
+     This was achieved by replacing all occurrences of natural__last by:
+          2147483647.
+<S>  New H9:  fac <= 2147483647
+-S-  Applied substitution rule calculate_fa_rules(13).
      This was achieved by replacing all occurrences of positive__last by:
           2147483647.
-<S>  New H4:  fac * i <= 2147483647
-<S>  New H12:  fac <= 2147483647
-<S>  New C4:  fac * i * (i + 1) <= 2147483647
--S-  Applied substitution rule calculate_fa_rules(9).
-     This was achieved by replacing all occurrences of positive__first by:
-          1.
-<S>  New H5:  fac * i >= 1
-<S>  New H11:  fac >= 1
-<S>  New C5:  fac * i * (i + 1) >= 1
--S-  Applied substitution rule calculate_fa_rules(14).
+<S>  New C1:  2147483647 div i >= - 2147483648
+<S>  New C2:  2147483647 div i <= 2147483647
+-S-  Applied substitution rule calculate_fa_rules(17).
      This was achieved by replacing all occurrences of faculty_positive__first 
           by:
           1.
-<S>  New H3:  n >= 1
-<S>  New H13:  i >= 1
-<S>  New H19:  i >= 0
--S-  Applied substitution rule calculate_fa_rules(15).
+<S>  New H1:  n >= 1
+<S>  New H5:  i >= 1
+-S-  Applied substitution rule calculate_fa_rules(18).
      This was achieved by replacing all occurrences of faculty_positive__last 
           by:
           12.
 <S>  New H2:  n <= 12
-<S>  New H14:  i <= 12
-<S>  New H20:  i <= 11
-***  Proved C5:  fac * i * (i + 1) >= 1
-     via its standard form, which is:
-     Std.Fm C5:  fac * i + fac * i * i >= 1
-     using hypotheses H5 & H19.
----  Eliminated hypothesis H7 (true-hypothesis).
----  Eliminated hypothesis H8 (true-hypothesis).
----  Eliminated hypothesis H9 (true-hypothesis).
----  Eliminated hypothesis H10 (true-hypothesis).
----  Eliminated hypothesis H15 (true-hypothesis).
----  Eliminated hypothesis H16 (true-hypothesis).
----  Eliminated hypothesis H17 (true-hypothesis).
----  Eliminated hypothesis H18 (true-hypothesis).
----  Eliminated hypothesis H21 (true-hypothesis).
----  Eliminated hypothesis H22 (true-hypothesis).
----  Eliminated hypothesis H1 (redundant, given H23).
----  Eliminated hypothesis H3 (redundant, given H13 & H23).
----  Eliminated hypothesis H14 (redundant, given H20).
----  Eliminated hypothesis H19 (redundant, given H13).
----  Eliminated hypothesis H20 (redundant, given H2 & H23).
--S-  Eliminated hypothesis H6.
-     This was achieved by replacing all occurrences of fac by:
-          element(fac_arr, [i]).
-<S>  New H4:  element(fac_arr, [i]) * i <= 2147483647
-<S>  New H5:  element(fac_arr, [i]) * i >= 1
-<S>  New H11:  element(fac_arr, [i]) >= 1
-<S>  New H12:  element(fac_arr, [i]) <= 2147483647
-<S>  New C6:  element(fac_arr, [i]) * i = element(fac_arr, [i + 1])
-<S>  New C4:  element(fac_arr, [i]) * i * (i + 1) <= 2147483647
-     +++  New H24:  integer__size >= 0
-     +++  New H25:  positive__size >= 0
-     +++  New H26:  faculty_positive__size >= 0
-
-
-@@@@@@@@@@  VC: procedure_calculate_faculty_5.  @@@@@@@@@@
----  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
----  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
----  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
----  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
-          .
-***  Proved C1:  fac * i >= positive__first
+<S>  New H6:  i <= 12
+***  Proved C3:  i <> 0
      using hypothesis H5.
-***  Proved C2:  fac * i <= positive__last
-     using hypothesis H4.
+---  Eliminated hypothesis H3 (true-hypothesis).
+---  Eliminated hypothesis H4 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H1 (redundant, given H5 & H7).
+---  Eliminated hypothesis H6 (redundant, given H2 & H7).
+***  Proved C1:  2147483647 div i >= - 2147483648
+     using hypothesis H5.
+***  Proved C2:  2147483647 div i <= 2147483647
+     using hypothesis H5.
 ***  PROVED VC.
 
 
 @@@@@@@@@@  VC: procedure_calculate_faculty_6.  @@@@@@@@@@
----  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
----  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
----  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
----  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+---  Hypothesis H3 has been replaced by "true".  (It is already present, as H1).
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H5)
           .
----  Hypothesis H15 has been replaced by "true".  (It is already present, as H5)
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H6)
           .
----  Hypothesis H16 has been replaced by "true".  (It is already present, as H4)
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
           .
----  Hypothesis H17 has been replaced by "true".  (It is already present, as 
-          H13).
----  Hypothesis H18 has been replaced by "true".  (It is already present, as 
-          H14).
-***  Proved C1:  i + 1 >= faculty_positive__first
-     using hypothesis H13.
--S-  Applied substitution rule calculate_fa_rules(15).
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H6)
+          .
+-S-  Applied substitution rule calculate_fa_rules(7).
+     This was achieved by replacing all occurrences of natural__first by:
+          0.
+<S>  New H8:  fac >= 0
+<S>  New C1:  fac * i >= 0
+-S-  Applied substitution rule calculate_fa_rules(8).
+     This was achieved by replacing all occurrences of natural__last by:
+          2147483647.
+<S>  New H9:  fac <= 2147483647
+<S>  New C2:  fac * i <= 2147483647
+-S-  Applied substitution rule calculate_fa_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H12:  positive__last div i >= - 2147483648
+-S-  Applied substitution rule calculate_fa_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H13:  positive__last div i <= 2147483647
+-S-  Applied substitution rule calculate_fa_rules(13).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New H15:  fac <= 2147483647 div i
+<S>  New H12:  2147483647 div i >= - 2147483648
+<S>  New H13:  2147483647 div i <= 2147483647
+-S-  Applied substitution rule calculate_fa_rules(17).
+     This was achieved by replacing all occurrences of faculty_positive__first 
+          by:
+          1.
+<S>  New H1:  n >= 1
+<S>  New H5:  i >= 1
+-S-  Applied substitution rule calculate_fa_rules(18).
      This was achieved by replacing all occurrences of faculty_positive__last 
           by:
           12.
 <S>  New H2:  n <= 12
-<S>  New H14:  i <= 12
-<S>  New C2:  i <= 11
-***  Proved C2:  i <= 11
-     using hypotheses H1 & H2.
-***  PROVED VC.
+<S>  New H6:  i <= 12
+***  Proved C1:  fac * i >= 0
+     using hypotheses H5 & H8.
+---  Eliminated hypothesis H3 (true-hypothesis).
+---  Eliminated hypothesis H4 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H16 (true-hypothesis).
+---  Eliminated hypothesis H17 (true-hypothesis).
+---  Eliminated hypothesis H18 (true-hypothesis).
+---  Eliminated hypothesis H19 (true-hypothesis).
+---  Eliminated hypothesis H1 (redundant, given H5 & H7).
+---  Eliminated hypothesis H6 (redundant, given H2 & H7).
+---  Eliminated hypothesis H12 (redundant, given H8 & H15).
+---  Eliminated hypothesis H14 (redundant, given H5).
+     +++  New H20:  integer__size >= 0
+     +++  New H21:  natural__size >= 0
+     +++  New H22:  positive__size >= 0
+     +++  New H23:  faculty_positive__size >= 0
 
 
 @@@@@@@@@@  VC: procedure_calculate_faculty_7.  @@@@@@@@@@
----  Hypothesis H9 has been replaced by "true".  (It is already present, as H4).
----  Hypothesis H10 has been replaced by "true".  (It is already present, as H3)
+---  Hypothesis H3 has been replaced by "true".  (It is already present, as H1).
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H5)
           .
----  Hypothesis H11 has been replaced by "true".  (It is already present, as H4)
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H6)
           .
----  Hypothesis H12 has been replaced by "true".  (It is already present, as H3)
+---  Hypothesis H16 has been replaced by "true".  (It is already present, as H8)
           .
-***  Proved C1:  fac = element(fac_arr, [i])
-     using hypothesis H8.
-***  Proved C2:  n >= faculty_positive__first
-     using hypothesis H4.
-***  Proved C3:  n <= faculty_positive__last
-     using hypothesis H3.
-***  Proved C4:  n >= faculty_positive__first
-     using hypothesis H4.
-***  Proved C5:  n <= faculty_positive__last
-     using hypothesis H3.
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as H9)
+          .
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H19 has been replaced by "true".  (It is already present, as H6)
+          .
+---  Hypothesis H22 has been replaced by "true".  (It is already present, as H5)
+          .
+---  Hypothesis H23 has been replaced by "true".  (It is already present, as H6)
+          .
+***  Proved C1:  i + 1 >= faculty_positive__first
+     using hypothesis H5.
+-S-  Applied substitution rule calculate_fa_rules(18).
+     This was achieved by replacing all occurrences of faculty_positive__last 
+          by:
+          12.
+<S>  New H2:  n <= 12
+<S>  New H6:  i <= 12
+<S>  New C2:  i <= 11
+***  Proved C2:  i <= 11
+     using hypotheses H2 & H7.
 ***  PROVED VC.
 
 
 @@@@@@@@@@  VC: procedure_calculate_faculty_8.  @@@@@@@@@@
----  Hypothesis H7 has been replaced by "true".  (It is already present, as H3).
----  Hypothesis H8 has been replaced by "true".  (It is already present, as H2).
----  Hypothesis H9 has been replaced by "true".  (It is already present, as H3).
----  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+---  Hypothesis H3 has been replaced by "true".  (It is already present, as H1).
+---  Hypothesis H4 has been replaced by "true".  (It is already present, as H2).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H5)
           .
----  Hypothesis H15 has been replaced by "true".  (It is already present, as H5)
+---  Hypothesis H11 has been replaced by "true".  (It is already present, as H6)
           .
----  Hypothesis H16 has been replaced by "true".  (It is already present, as H4)
-          .
----  Hypothesis H17 has been replaced by "true".  (It is already present, as 
-          H13).
----  Hypothesis H18 has been replaced by "true".  (It is already present, as 
-          H14).
----  Hypothesis H21 has been replaced by "true".  (It is already present, as 
-          H19).
----  Hypothesis H22 has been replaced by "true".  (It is already present, as 
-          H20).
-***  Proved C2:  n >= faculty_positive__first
-     using hypothesis H3.
-***  Proved C3:  n <= faculty_positive__last
-     using hypothesis H2.
-***  Proved C4:  n >= faculty_positive__first
-     using hypothesis H3.
-***  Proved C5:  n <= faculty_positive__last
-     using hypothesis H2.
->>>  Restructured hypothesis H23 into:
-     >>>  H23:  n <= i + 1
--S-  Applied substitution rule calculate_fa_rules(9).
-     This was achieved by replacing all occurrences of positive__first by:
-          1.
-<S>  New H5:  fac * i >= 1
-<S>  New H11:  fac >= 1
--S-  Applied substitution rule calculate_fa_rules(10).
-     This was achieved by replacing all occurrences of positive__last by:
+-S-  Applied substitution rule calculate_fa_rules(7).
+     This was achieved by replacing all occurrences of natural__first by:
+          0.
+<S>  New H8:  fac >= 0
+<S>  New C1:  true
+-S-  Applied substitution rule calculate_fa_rules(8).
+     This was achieved by replacing all occurrences of natural__last by:
           2147483647.
-<S>  New H4:  fac * i <= 2147483647
-<S>  New H12:  fac <= 2147483647
--S-  Applied substitution rule calculate_fa_rules(14).
-     This was achieved by replacing all occurrences of faculty_positive__first 
-          by:
-          1.
-<S>  New H3:  n >= 1
-<S>  New H13:  i >= 1
-<S>  New H19:  i >= 0
--S-  Applied substitution rule calculate_fa_rules(15).
-     This was achieved by replacing all occurrences of faculty_positive__last 
-          by:
-          12.
-<S>  New H2:  n <= 12
-<S>  New H14:  i <= 12
-<S>  New H20:  i <= 11
----  Eliminated hypothesis H7 (true-hypothesis).
----  Eliminated hypothesis H8 (true-hypothesis).
----  Eliminated hypothesis H9 (true-hypothesis).
----  Eliminated hypothesis H10 (true-hypothesis).
----  Eliminated hypothesis H15 (true-hypothesis).
----  Eliminated hypothesis H16 (true-hypothesis).
----  Eliminated hypothesis H17 (true-hypothesis).
----  Eliminated hypothesis H18 (true-hypothesis).
----  Eliminated hypothesis H21 (true-hypothesis).
----  Eliminated hypothesis H22 (true-hypothesis).
----  Eliminated hypothesis H3 (redundant, given H1 & H13).
----  Eliminated hypothesis H14 (redundant, given H20).
----  Eliminated hypothesis H19 (redundant, given H13).
--S-  Eliminated hypothesis H6.
-     This was achieved by replacing all occurrences of fac by:
-          element(fac_arr, [i]).
-<S>  New H5:  element(fac_arr, [i]) * i >= 1
-<S>  New H11:  element(fac_arr, [i]) >= 1
-<S>  New H4:  element(fac_arr, [i]) * i <= 2147483647
-<S>  New H12:  element(fac_arr, [i]) <= 2147483647
-<S>  New C1:  element(fac_arr, [i]) * i = element(fac_arr, [i + 1])
-     +++  New H24:  integer__size >= 0
-     +++  New H25:  positive__size >= 0
-     +++  New H26:  faculty_positive__size >= 0
+<S>  New H9:  fac <= 2147483647
+<S>  New C2:  true
+***  Proved C1:  true
+***  Proved C2:  true
+***  PROVED VC.
 
 
 @@@@@@@@@@  VC: procedure_calculate_faculty_9.  @@@@@@@@@@

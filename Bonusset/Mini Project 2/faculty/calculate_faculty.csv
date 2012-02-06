@@ -1,0 +1,117 @@
+/* SAVED: 06-FEB-2012, at 17:26:13 */
+'auto_done'('on').
+'auto_newvc'('on').
+'case_pointer'(0).
+'command_logging'('on').
+'csvfile_name'('calculate_faculty.csv').
+'current_vc'('procedure_calculate_faculty_6', 6).
+'current_vc_no'(10).
+'display_subgoals_max'(10).
+'display_var_free_only'('on').
+'echo'('on').
+'fdl_file_title'('procedure_calculate_faculty').
+'fdlfile_name'('calculate_faculty.fdl').
+'function'('round__', ['real'], 'integer').
+'function_template'('round__'(A1), [A1], 'round__').
+'hyp'(11, '>='('faculty_positive__size', 0)).
+'hyp'(10, '>='('positive__size', 0)).
+'hyp'(9, '>='('natural__size', 0)).
+'hyp'(8, '>='('integer__size', 0)).
+'hyp'(7, '<='('fac', 'div'(2147483647, 'i'))).
+'hyp'(6, '<='('div'(2147483647, 'i'), 2147483647)).
+'hyp'(5, '<='('fac', 2147483647)).
+'hyp'(4, '>='('fac', 0)).
+'hyp'(3, '<'('i', 'n')).
+'hyp'(2, '>='('i', 1)).
+'hyp'(1, '<='('n', 12)).
+'hyp'(12, '<='('*'('fac', 'i'), '*'('div'(2147483647, 'i'), 'i'))).
+'hyp'(13, '<='('*'('fac', 'i'), 2147483647)).
+'indentation'(0).
+'indentation_increment'(2).
+'inverse_video'('[]').
+'logfile_name'('calculate_faculty.plg').
+'newline_after_prompts'('off').
+'normal_video'('[]').
+'on_filename'('my_rules.rls').
+'prooflog_width'(0).
+'record_consults'('on').
+'ruleused_this_session'([
+'/home/azzaroff/.spark/bin//../lib/checker/rules/NUMINEQS.RUL', 'inequals'(40)]).
+'ruleused_this_session'(['my_rules.rls', 'my_rules'(1)]).
+'saved_vc'(1, 'hyp'(11, '>='('faculty_positive__size', 0))).
+'saved_vc'(1, 'hyp'(10, '>='('positive__size', 0))).
+'saved_vc'(1, 'hyp'(9, '>='('natural__size', 0))).
+'saved_vc'(1, 'hyp'(8, '>='('integer__size', 0))).
+'saved_vc'(1, 'hyp'(7, '<='('fac', 'div'(2147483647, 'i')))).
+'saved_vc'(1, 'hyp'(6, '<='('div'(2147483647, 'i'), 2147483647))).
+'saved_vc'(1, 'hyp'(5, '<='('fac', 2147483647))).
+'saved_vc'(1, 'hyp'(4, '>='('fac', 0))).
+'saved_vc'(1, 'hyp'(3, '<'('i', 'n'))).
+'saved_vc'(1, 'hyp'(2, '>='('i', 1))).
+'saved_vc'(1, 'hyp'(1, '<='('n', 12))).
+'saved_vc'(1, 'hyp'(12, '<='('*'('fac', 'i'), '*'('div'(2147483647, 'i'), 'i')))).
+'saved_vc'(1, 'conc'(1, '<='('*'('fac', 'i'), 2147483647))).
+'show_vc_changes'('on').
+'simplify_in_infer'('on').
+'simplify_during_load'('on').
+'spark_enabled'.
+'step_number'(5).
+'typechecking'('on').
+'typechecking_during_load'('on').
+'use_subst_rules_for_equality'('on').
+'used_ident'('round__', 'function').
+'used_ident'('faculty_positive__base__first', 'var_const').
+'used_ident'('faculty_positive__base__last', 'var_const').
+'used_ident'('positive__base__first', 'var_const').
+'used_ident'('positive__base__last', 'var_const').
+'used_ident'('natural__base__first', 'var_const').
+'used_ident'('natural__base__last', 'var_const').
+'used_ident'('integer__base__first', 'var_const').
+'used_ident'('integer__base__last', 'var_const').
+'used_ident'('faculty_positive__first', 'var_const').
+'used_ident'('faculty_positive__last', 'var_const').
+'used_ident'('faculty_positive__size', 'var_const').
+'used_ident'('positive__first', 'var_const').
+'used_ident'('positive__last', 'var_const').
+'used_ident'('positive__size', 'var_const').
+'used_ident'('natural__first', 'var_const').
+'used_ident'('natural__last', 'var_const').
+'used_ident'('natural__size', 'var_const').
+'used_ident'('integer__first', 'var_const').
+'used_ident'('integer__last', 'var_const').
+'used_ident'('integer__size', 'var_const').
+'used_ident'('n', 'var_const').
+'used_ident'('fac', 'var_const').
+'used_ident'('i', 'var_const').
+'user_rulefile'('*'(A1, A2), 'my_rules.rls').
+'user_rulefile'('my_rules.rls', 'my_rules'(A1)).
+'user_classification'('>='(A1, A2), 'my_rules.rls', 'my_rules'(A3), [':'(A1, 'ire'), ':'(A2, 
+'ire')]).
+'user_classification'('<='(A1, A2), 'my_rules.rls', 'my_rules'(A3), [':'(A1, 'ire'), ':'(A2, 
+'ire')]).
+'user_classification'(A1, 'my_rules.rls', 'my_rules'(A2), [':'(A1, 'any')]).
+'var_const'('faculty_positive__base__first', 'integer', 'c').
+'var_const'('faculty_positive__base__last', 'integer', 'c').
+'var_const'('positive__base__first', 'integer', 'c').
+'var_const'('positive__base__last', 'integer', 'c').
+'var_const'('natural__base__first', 'integer', 'c').
+'var_const'('natural__base__last', 'integer', 'c').
+'var_const'('integer__base__first', 'integer', 'c').
+'var_const'('integer__base__last', 'integer', 'c').
+'var_const'('faculty_positive__first', 'integer', 'c').
+'var_const'('faculty_positive__last', 'integer', 'c').
+'var_const'('faculty_positive__size', 'integer', 'c').
+'var_const'('positive__first', 'integer', 'c').
+'var_const'('positive__last', 'integer', 'c').
+'var_const'('positive__size', 'integer', 'c').
+'var_const'('natural__first', 'integer', 'c').
+'var_const'('natural__last', 'integer', 'c').
+'var_const'('natural__size', 'integer', 'c').
+'var_const'('integer__first', 'integer', 'c').
+'var_const'('integer__last', 'integer', 'c').
+'var_const'('integer__size', 'integer', 'c').
+'var_const'('n', 'integer', 'v').
+'var_const'('fac', 'integer', 'v').
+'var_const'('i', 'integer', 'v').
+'vcgfile_name'('calculate_faculty.siv').
+'vcs_to_prove'('[]').
