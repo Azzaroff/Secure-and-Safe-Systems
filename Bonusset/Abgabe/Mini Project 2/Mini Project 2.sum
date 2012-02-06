@@ -1,0 +1,121 @@
+-------------------------------------------------------------------------------
+                          Semantic Analysis Summary                            
+                                POGS GPL 2011                                  
+            Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.               
+-------------------------------------------------------------------------------
+
+Summary of:
+
+Verification Condition files (.vcg)
+Simplified Verification Condition files (.siv)
+ViCToR result files (.vct)
+Proof Logs (.plg)
+Dead Path Conjecture files (.dpc)
+Summary Dead Path files (.sdp)
+
+"status" column keys:
+    1st character:
+        '-' - No VC
+        'S' - No SIV
+        'U' - Undischarged
+        'E' - Proved by Examiner
+        'I' - Proved by Simplifier by Inference
+        'X' - Proved by Simplifier by Contradiction
+        'P' - Proved by Simplifier using User Defined Proof Rules
+        'V' - Proved by ViCToR
+        'C' - Proved by Checker
+        'R' - Proved by Review
+        'F' - VC is False
+    2nd character:
+        '-' - No DPC
+        'S' - No SDP
+        'U' - Unchecked
+        'D' - Dead path
+        'L' - Live path
+
+in the directory:
+/home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 2
+
+Summary produced: 06-FEB-2012 17:26:30.58
+
+File /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty/calculate_faculty.vcg
+procedure Faculty.calculate_faculty
+
+VCs generated 06-FEB-2012 17:16:54
+
+VCs simplified 06-FEB-2012 17:17:10
+
+VCs proved 06-FEB-2012 17:17:23
+
+VCs for procedure_calculate_faculty :
+ -----------------------------------------------------------------------------
+| #   | From  | To                  | Proved By          | Dead Path | Status |
+|-----------------------------------------------------------------------------
+| 1   | start | rtc check @ 6       | Inference          | No DPC    |   I-   |
+| 2   | start |    assert @ 9       | Inference          | No DPC    |   I-   |
+| 3   | 9     |    assert @ 9       | Inference          | No DPC    |   I-   |
+| 4   | 9     |    assert @ 9       | Inference          | No DPC    |   I-   |
+| 5   | 9     | rtc check @ 11      | Inference          | No DPC    |   I-   |
+| 6   | 9     | rtc check @ 12      | Checker            | No DPC    |   C-   |
+| 7   | 9     | rtc check @ 13      | Inference          | No DPC    |   I-   |
+| 8   | 9     | rtc check @ 16      | Inference          | No DPC    |   I-   |
+| 9   | 9     |    assert @ finish  | Examiner           | No DPC    |   E-   |
+ -----------------------------------------------------------------------------
+
+
+===============================================================================
+Summary:
+
+Proof strategies used by subprograms
+-------------------------------------------------------------------------
+Total subprograms with at least one VC proved by examiner:              1
+Total subprograms with at least one VC proved by simplifier:            1
+Total subprograms with at least one VC proved by contradiction:         0
+Total subprograms with at least one VC proved with user proof rule:     0
+Total subprograms with at least one VC proved by ViCToR:                0
+Total subprograms with at least one VC proved using checker:            1
+Total subprograms with at least one VC discharged by review:            0
+
+Maximum extent of strategies used for fully proved subprograms:
+-------------------------------------------------------------------------
+Total subprograms with proof completed by examiner:                     0
+Total subprograms with proof completed by simplifier:                   0
+Total subprograms with proof completed with user defined rules:         0
+Total subprograms with proof completed by ViCToR:                       0
+Total subprograms with proof completed by checker:                      1
+Total subprograms with VCs discharged by review:                        0
+
+Overall subprogram summary:
+-------------------------------------------------------------------------
+Total subprograms fully proved:                                         1
+Total subprograms with at least one undischarged VC:                    0
+Total subprograms with at least one false VC:                           0
+                                                                    -----
+Total subprograms for which VCs have been generated:                    1
+
+
+ZombieScope Summary:
+-------------------------------------------------------------------------
+Total subprograms for which DPCs have been generated:                   0
+Total number subprograms with dead paths found:                         0
+Total number of dead paths found:                                       0
+
+
+VC summary:
+-------------------------------------------------------------------------
+Note: (User) denotes where the Simplifier has proved VCs using one or
+      more user-defined proof rules.
+
+Total VCs by type:                                       
+                       -----------Proved By Or Using-----------
+                Total Examnr   Simp (User) ViCToR Checkr Review  False Undisc
+Assert/Post         4      1      3             0      0      0      0      0
+Precondition        0      0      0             0      0      0      0      0
+Check stmnt.        0      0      0             0      0      0      0      0
+Runtime check       5      0      4             0      1      0      0      0
+Refinem. VCs        0      0      0             0      0      0      0      0
+Inherit. VCs        0      0      0             0      0      0      0      0
+===============================================================================
+Totals:             9      1      7             0      1      0      0      0
+%Totals:                 11%    78%            0%    11%     0%     0%     0%
+===================== End of Semantic Analysis Summary ========================

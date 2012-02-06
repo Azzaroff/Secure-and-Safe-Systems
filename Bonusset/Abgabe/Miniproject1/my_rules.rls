@@ -1,0 +1,13 @@
+                          /*function Gauss.gauss_sum*/
+
+rule_family my_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+my_rules(1): integer__last may_be_replaced_by 2147483647.
+my_rules(2): positive__last may_be_replaced_by 2147483647.
+my_rules(3): integer__base__first may_be_replaced_by -2147483648.
+my_rules(4): integer__base__last may_be_replaced_by 2147483647.
+my_rules(5): integer__first may_be_replaced_by -2147483648.
+my_rules(6): X = Y may_be_deduced_from [X<=Y].

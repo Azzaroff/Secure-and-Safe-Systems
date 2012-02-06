@@ -1,0 +1,25 @@
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Integer_Text_IO;
+with Mini_RC4; use Mini_RC4;
+
+
+procedure rc4_brute is
+
+K : Key_Type := (0 => 255, 1 => 5, 2 => 0, 3 => 65);
+expand : Context_Type;
+Keystream : Byte_Array (0..19) := (others => 0);
+begin
+  Key_Scheduler(K, expand);
+  Get_Keystream(expand, Keystream);
+  Put("Key: ");
+  for I in Key_Type'range loop
+    Ada.Integer_Text_IO.Put(Integer'Val(K(I)),2,16);
+  end loop;
+  Put_Line("");
+  Put("Keystream: ");
+  for I in Keystream'range loop
+    Ada.Integer_Text_IO.Put(Integer'Val(Keystream(I)),2,16);
+  end loop;
+  Put_Line("");
+  Brute_Workers (4, Keystream);
+end;
