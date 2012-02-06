@@ -1,0 +1,20 @@
+        -:    0:Source:vectors.ads
+        -:    0:Graph:vectors.gcno
+        -:    0:Data:vectors.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:package Vectors is
+        -:    2:   type Float_Vector is array (Positive range <>) of Float;
+        -:    3:   
+        -:    4:   procedure Vector_Put (X : Float_Vector) ;
+        -:    5:      
+        -:    6:   -- cross product
+        -:    7:   function "*" (Left, Right : Float_Vector) return Float_Vector;
+        -:    8:   
+        -:    9:    -- scalar product
+        -:   10:   function "*" (Left, Right : Float_Vector) return Float;
+        -:   11:   
+        -:   12:   -- stretching
+    #####:   13:   function "*" (Left : Float_Vector; Right : Float) return Float_Vector;
+        -:   14:end Vectors;
+        -:   15:   

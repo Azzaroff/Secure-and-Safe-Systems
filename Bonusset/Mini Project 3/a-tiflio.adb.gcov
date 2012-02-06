@@ -1,0 +1,150 @@
+        -:    0:Source:/usr/lib/gcc/x86_64-linux-gnu/4.6/adainclude/a-tiflio.adb
+        -:    0:Graph:vectors.gcno
+        -:    0:Data:vectors.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:------------------------------------------------------------------------------
+        -:    2:--                                                                          --
+        -:    3:--                         GNAT RUN-TIME COMPONENTS                         --
+        -:    4:--                                                                          --
+        -:    5:--                 A D A . T E X T _ I O . F L O A T _ I O                  --
+        -:    6:--                                                                          --
+        -:    7:--                                 B o d y                                  --
+        -:    8:--                                                                          --
+        -:    9:--          Copyright (C) 1992-2009, Free Software Foundation, Inc.         --
+        -:   10:--                                                                          --
+        -:   11:-- GNAT is free software;  you can  redistribute it  and/or modify it under --
+        -:   12:-- terms of the  GNU General Public License as published  by the Free Soft- --
+        -:   13:-- ware  Foundation;  either version 3,  or (at your option) any later ver- --
+        -:   14:-- sion.  GNAT is distributed in the hope that it will be useful, but WITH- --
+        -:   15:-- OUT ANY WARRANTY;  without even the  implied warranty of MERCHANTABILITY --
+        -:   16:-- or FITNESS FOR A PARTICULAR PURPOSE.                                     --
+        -:   17:--                                                                          --
+        -:   18:-- As a special exception under Section 7 of GPL version 3, you are granted --
+        -:   19:-- additional permissions described in the GCC Runtime Library Exception,   --
+        -:   20:-- version 3.1, as published by the Free Software Foundation.               --
+        -:   21:--                                                                          --
+        -:   22:-- You should have received a copy of the GNU General Public License and    --
+        -:   23:-- a copy of the GCC Runtime Library Exception along with this program;     --
+        -:   24:-- see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see    --
+        -:   25:-- <http://www.gnu.org/licenses/>.                                          --
+        -:   26:--                                                                          --
+        -:   27:-- GNAT was originally developed  by the GNAT team at  New York University. --
+        -:   28:-- Extensive contributions were provided by Ada Core Technologies Inc.      --
+        -:   29:--                                                                          --
+        -:   30:------------------------------------------------------------------------------
+        -:   31:
+        -:   32:with Ada.Text_IO.Float_Aux;
+        -:   33:
+        -:   34:package body Ada.Text_IO.Float_IO is
+        -:   35:
+        -:   36:   package Aux renames Ada.Text_IO.Float_Aux;
+        -:   37:
+        -:   38:   ---------
+        -:   39:   -- Get --
+        -:   40:   ---------
+        -:   41:
+    #####:   42:   procedure Get
+        -:   43:     (File  : File_Type;
+        -:   44:      Item  : out Num;
+        -:   45:      Width : Field := 0)
+        -:   46:   is
+        -:   47:      pragma Unsuppress (Range_Check);
+        -:   48:
+        -:   49:   begin
+    #####:   50:      Aux.Get (File, Long_Long_Float (Item), Width);
+        -:   51:
+        -:   52:      --  In the case where the type is unconstrained (e.g. Standard'Float),
+        -:   53:      --  the above conversion may result in an infinite value, which is
+        -:   54:      --  normally fine for a conversion, but in this case, we want to treat
+        -:   55:      --  that as a data error.
+        -:   56:
+    #####:   57:      if not Item'Valid then
+    #####:   58:         raise Data_Error;
+        -:   59:      end if;
+        -:   60:
+        -:   61:   exception
+    #####:   62:      when Constraint_Error => raise Data_Error;
+    #####:   63:   end Get;
+        -:   64:
+    #####:   65:   procedure Get
+        -:   66:     (Item  : out Num;
+        -:   67:      Width : Field := 0)
+        -:   68:   is
+        -:   69:      pragma Unsuppress (Range_Check);
+        -:   70:
+        -:   71:   begin
+    #####:   72:      Aux.Get (Current_In, Long_Long_Float (Item), Width);
+        -:   73:
+        -:   74:      --  In the case where the type is unconstrained (e.g. Standard'Float),
+        -:   75:      --  the above conversion may result in an infinite value, which is
+        -:   76:      --  normally fine for a conversion, but in this case, we want to treat
+        -:   77:      --  that as a data error.
+        -:   78:
+    #####:   79:      if not Item'Valid then
+    #####:   80:         raise Data_Error;
+        -:   81:      end if;
+        -:   82:
+        -:   83:   exception
+    #####:   84:      when Constraint_Error => raise Data_Error;
+    #####:   85:   end Get;
+        -:   86:
+    #####:   87:   procedure Get
+        -:   88:     (From : String;
+        -:   89:      Item : out Num;
+        -:   90:      Last : out Positive)
+        -:   91:   is
+        -:   92:      pragma Unsuppress (Range_Check);
+        -:   93:
+        -:   94:   begin
+    #####:   95:      Aux.Gets (From, Long_Long_Float (Item), Last);
+        -:   96:
+        -:   97:      --  In the case where the type is unconstrained (e.g. Standard'Float),
+        -:   98:      --  the above conversion may result in an infinite value, which is
+        -:   99:      --  normally fine for a conversion, but in this case, we want to treat
+        -:  100:      --  that as a data error.
+        -:  101:
+    #####:  102:      if not Item'Valid then
+    #####:  103:         raise Data_Error;
+        -:  104:      end if;
+        -:  105:
+        -:  106:   exception
+    #####:  107:      when Constraint_Error => raise Data_Error;
+    #####:  108:   end Get;
+        -:  109:
+        -:  110:   ---------
+        -:  111:   -- Put --
+        -:  112:   ---------
+        -:  113:
+    #####:  114:   procedure Put
+        -:  115:     (File : File_Type;
+        -:  116:      Item : Num;
+        -:  117:      Fore : Field := Default_Fore;
+        -:  118:      Aft  : Field := Default_Aft;
+        -:  119:      Exp  : Field := Default_Exp)
+        -:  120:   is
+        -:  121:   begin
+    #####:  122:      Aux.Put (File, Long_Long_Float (Item), Fore, Aft, Exp);
+    #####:  123:   end Put;
+        -:  124:
+        6:  125:   procedure Put
+        -:  126:     (Item : Num;
+        -:  127:      Fore : Field := Default_Fore;
+        -:  128:      Aft  : Field := Default_Aft;
+        -:  129:      Exp  : Field := Default_Exp)
+        -:  130:   is
+        -:  131:   begin
+        6:  132:      Aux.Put (Current_Out, Long_Long_Float (Item), Fore, Aft, Exp);
+        6:  133:   end Put;
+        -:  134:
+    #####:  135:   procedure Put
+        -:  136:     (To   : out String;
+        -:  137:      Item : Num;
+        -:  138:      Aft  : Field := Default_Aft;
+        -:  139:      Exp  : Field := Default_Exp)
+        -:  140:   is
+        -:  141:   begin
+    #####:  142:      Aux.Puts (To, Long_Long_Float (Item), Aft, Exp);
+    #####:  143:   end Put;
+        -:  144:
+        -:  145:end Ada.Text_IO.Float_IO;
