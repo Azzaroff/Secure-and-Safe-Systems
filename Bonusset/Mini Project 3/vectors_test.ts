@@ -6,6 +6,8 @@ context with Vectors; 		use Vectors;
 		with Stdout;
 		with Read_Line;
 
+Exceptions Constraint_Error;
+
 ***** VECTORS mulityply_test_0
 define  v1 		: Float_Vector := (1.0, 1.0, 1.0);
 		v2 		: Float_Vector := (2.0, 2.0, 2.0);
@@ -51,7 +53,7 @@ test testres := Vectors."*"(v1,v2);
 pass testres = result
 
 -------------------------------------------------------------------------------
-***** VECTORS mulityply_scalar_test_0
+***** VECTORS mulityply_cross_test_0
 define  x		: Float := Float'First;
 		y		: Float := 2.0;
 		v1 		: Float_Vector := (1.0, 1.0, 1.0);
@@ -60,7 +62,7 @@ define  x		: Float := Float'First;
 test testres := Vectors."*"(v1,y);
 pass testres = result
 
-***** VECTORS mulityply_scalar_test_1
+***** VECTORS mulityply_cross_test_1
 define  y		: Float := 0.0;
 		v1 		: Float_Vector := (1.0, 1.0, 1.0);
 		result	: Float_Vector := (0.0, 0.0, 0.0);
@@ -68,7 +70,7 @@ define  y		: Float := 0.0;
 test testres := Vectors."*"(v1,y);
 pass testres = result
 
-***** VECTORS mulityply_scalar_test_2
+***** VECTORS mulityply_cross_test_2
 define  y		: Float := 8.0;
 		v1 		: Float_Vector := (0.0, 0.0, 0.0);
 		result	: Float_Vector := (0.0, 0.0, 0.0);
@@ -76,7 +78,7 @@ define  y		: Float := 8.0;
 test testres := Vectors."*"(v1,y);
 pass testres = result
 
-***** VECTORS mulityply_scalar_test_3
+***** VECTORS mulityply_cross_test_3
 define  x		: Float := Float'First;
 		y		: Float := 1.0;
 		v1 		: Float_Vector := (1.0, 1.0, 1.0);
@@ -85,7 +87,7 @@ define  x		: Float := Float'First;
 test testres := Vectors."*"(v1,x);
 pass testres = result
 
-***** VECTORS mulityply_scalar_test_4
+***** VECTORS mulityply_cross_test_4
 define  x		: Float := Float'First;
 		y		: Float := 1.0;
 		v1 		: Float_Vector := (x, x, x);
@@ -94,7 +96,7 @@ define  x		: Float := Float'First;
 test testres := Vectors."*"(v1,y);
 pass testres = result
 
-***** VECTORS mulityply_scalar_test_4
+***** VECTORS mulityply_cross_test_4
 define  x		: Float := Float'Last;
 		y		: Float := 1.0;
 		v1 		: Float_Vector := (1.0, 1.0, 1.0);
@@ -103,7 +105,7 @@ define  x		: Float := Float'Last;
 test testres := Vectors."*"(v1,x);
 pass testres = result
 
-***** VECTORS mulityply_scalar_test_5
+***** VECTORS mulityply_cross_test_5
 define  x		: Float := Float'Last;
 		y		: Float := 1.0;
 		v1 		: Float_Vector := (x, x, x);
@@ -111,6 +113,33 @@ define  x		: Float := Float'Last;
 		testres : Float_Vector := (5.0, 5.0, 5.0);
 test testres := Vectors."*"(v1,y);
 pass testres = result
+
+***** VECTORS mulityply_cross_test_6
+define  x		: Float := 2.0;
+		y		: Float := 1.0;
+		v1 		: Float_Vector := (x, x);
+		v2 		: Float_Vector := (y, y);
+		testres : Float_Vector := (x, y);
+test testres := Vectors."*"(v1,v2);
+pass Exception Constraint_Error
+
+***** VECTORS mulityply_cross_test_7
+define  x		: Float := 2.0;
+		y		: Float := 1.0;
+		v1 		: Float_Vector := (x, x, y);
+		v2 		: Float_Vector := (y, y);
+		testres : Float_Vector := (x, y);
+test testres := Vectors."*"(v1,v2);
+pass Exception Constraint_Error
+
+***** VECTORS mulityply_cross_test_8
+define  x		: Float := 2.0;
+		y		: Float := 1.0;
+		v1 		: Float_Vector := (x, x);
+		v2 		: Float_Vector := (y, y, x);
+		testres : Float_Vector := (x, y);
+test testres := Vectors."*"(v1,v2);
+pass Exception Constraint_Error
 
 -------------------------------------------------------------
 
@@ -154,6 +183,15 @@ define  x		: Float := Float'Last;
 test testres := Vectors."*"(v1,v2);
 pass testres = result
 
+***** VECTORS mulityply_scalar_product_test_4
+define  x		: Float := Float'Last;
+		y		: Float := 1.0;
+		v1 		: Float_Vector := (x, -x, x);
+		v2 		: Float_Vector := (y, y);
+		result	: Float := Float'Last;
+		testres : Float := 2.0;
+test testres := Vectors."*"(v1,v2);
+pass Exception Constraint_Error
 
 -------------------------------------------------------
 
@@ -168,14 +206,23 @@ test	Redirect_Stdout("out.txt");
 pass	Line = Result
 		
 ***** VECTORS verify_put_procedure_1
-define	x 		: Float := Float'First;	
-		v1		: Float_Vector := (x, x, x);
-		Result	: String := "("&x'Img&","&x'Img&","&x'Img&")";
-		Line	: String := "( 1.0,  2.0,  8.0)";
+define	x 		: Float := 3.0;
+		v1		: Float_Vector := (x, x);
+		Result	: String := "( 3.0,  3.0)";
+		Line	: String := "( 1.0,  2.0)";
 test	Redirect_Stdout("out.txt");
 		Vectors.Vector_Put(v1);
 		Stdout;
 		Read_Line(Line, "out.txt");
-		Ada.Text_IO.Put_Line(Result);
-		Ada.Text_IO.Put_Line(Line);
+pass	Line = Result
+
+***** VECTORS verify_put_procedure_2
+define	x 		: Float := 3.0;
+		v1		: Float_Vector := (1=>x);
+		Result	: String := "( 3.0)";
+		Line	: String := "( 1.0)";
+test	Redirect_Stdout("out.txt");
+		Vectors.Vector_Put(v1);
+		Stdout;
+		Read_Line(Line, "out.txt");
 pass	Line = Result
