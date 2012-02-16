@@ -1,0 +1,733 @@
+*****************************************************************************
+SPADE Transcript of Interactive Proof Session
+
+SPARK Proof Checker GPL 2011
+Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+
+*****************************************************************************
+
+DATE : 15-FEB-2012  TIME : 17:42:29
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_1
+H1:  constraint_positive__first = positive__first
+H2:  positive__first = 1
+H3:  positive__last = 2147483647
+H4:  integer__base__first = - 2147483648
+H5:  integer__base__last = 2147483647
+H6:  constraint_positive__last = 46340
+H7:  constraint_positive__last < positive__last
+H8:  n >= constraint_positive__first
+H9:  n <= constraint_positive__last
+-->
+  C1:  true
+  C2:  1 <= n
+  C3:  n >= 1
+  C4:  n >= constraint_positive__first
+  C5:  n <= constraint_positive__last
+  C6:  constraint_positive__first = positive__first
+  C7:  positive__first = 1
+  C8:  positive__last = 2147483647
+  C9:  integer__base__first = - 2147483648
+  C10:  integer__base__last = 2147483647
+  C11:  constraint_positive__last = 46340
+  C12:  constraint_positive__last < positive__last
+
+
+STEP 2
+Command: done
+*** Proved C1: true
+*** Proved C2: 1 <= n
+*** Proved C3: n >= 1
+*** Proved C4: n >= constraint_positive__first
+*** Proved C5: n <= constraint_positive__last
+*** Proved C6: constraint_positive__first = positive__first
+*** Proved C7: positive__first = 1
+*** Proved C8: positive__last = 2147483647
+*** Proved C9: integer__base__first = - 2147483648
+*** Proved C10: integer__base__last = 2147483647
+*** Proved C11: constraint_positive__last = 46340
+*** Proved C12: constraint_positive__last < positive__last
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_1
+
+The above proof did not make use of the proof rules database
+
+
+
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_2
+H1:  i = 1
+H2:  i <= n
+H3:  n >= 1
+H4:  n >= constraint_positive__first
+H5:  n <= constraint_positive__last
+H6:  constraint_positive__first = positive__first
+H7:  positive__first = 1
+H8:  positive__last = 2147483647
+H9:  integer__base__first = - 2147483648
+H10:  integer__base__last = 2147483647
+H11:  constraint_positive__last = 46340
+H12:  constraint_positive__last < positive__last
+-->
+  C1:  1 >= positive__first
+  C2:  1 <= positive__last
+
+
+STEP 2
+Command: done
+*** Proved C1: 1 >= positive__first
+*** Proved C2: 1 <= positive__last
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_2
+
+The above proof did not make use of the proof rules database
+
+
+
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_3
+H1:  i = 1
+H2:  i <= n
+H3:  n >= 1
+H4:  n >= constraint_positive__first
+H5:  n <= constraint_positive__last
+H6:  constraint_positive__first = positive__first
+H7:  positive__first = 1
+H8:  positive__last = 2147483647
+H9:  integer__base__first = - 2147483648
+H10:  integer__base__last = 2147483647
+H11:  constraint_positive__last = 46340
+H12:  constraint_positive__last < positive__last
+H13:  1 >= positive__first
+H14:  1 <= positive__last
+-->
+  C1:  i = 1
+  C2:  true
+  C3:  1 = i * (i + 1) div 2
+  C4:  n >= constraint_positive__first
+  C5:  n <= constraint_positive__last
+  C6:  constraint_positive__first = positive__first
+  C7:  positive__first = 1
+  C8:  positive__last = 2147483647
+  C9:  integer__base__first = - 2147483648
+  C10:  integer__base__last = 2147483647
+  C11:  constraint_positive__last = 46340
+  C12:  constraint_positive__last < positive__last
+
+
+STEP 2
+Command: done
+*** Proved C1: i = 1
+*** Proved C2: true
+*** Proved C4: n >= constraint_positive__first
+*** Proved C5: n <= constraint_positive__last
+*** Proved C6: constraint_positive__first = positive__first
+*** Proved C7: positive__first = 1
+*** Proved C8: positive__last = 2147483647
+*** Proved C9: integer__base__first = - 2147483648
+*** Proved C10: integer__base__last = 2147483647
+*** Proved C11: constraint_positive__last = 46340
+*** Proved C12: constraint_positive__last < positive__last
+
+STEP 3
+Command: consult
+Consulted rulefile: d:/personal/organisation/dropbox/my dropbox/safe and secure software/bonus/umsetzung/project01/gauss/gauss.rul
+No errors trapped in reading this rulefile.
+
+STEP 4
+Command: infer
+Successful inference with rule: gauss(3)
+  Proved subgoal: i = 1
+Therefore 1 = i * (i + 1) div 2
+*** New H15: 1 = i * (i + 1) div 2
+*** Proved C3: 1 = i * (i + 1) div 2
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_3
+
+The only rule used in proving the above VC was:
+          gauss.rul::gauss(3)
+
+
+
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_4
+H1:  i = 1
+H2:  result = 1
+H3:  result = i * (i + 1) div 2
+H4:  n >= constraint_positive__first
+H5:  n <= constraint_positive__last
+H6:  constraint_positive__first = positive__first
+H7:  positive__first = 1
+H8:  positive__last = 2147483647
+H9:  integer__base__first = - 2147483648
+H10:  integer__base__last = 2147483647
+H11:  constraint_positive__last = 46340
+H12:  constraint_positive__last < positive__last
+H13:  i >= constraint_positive__first
+H14:  i <= constraint_positive__last
+H15:  i < n
+-->
+  C1:  i < n
+  C2:  result = i * (i + 1) div 2
+  C3:  n >= constraint_positive__first
+  C4:  n <= constraint_positive__last
+  C5:  constraint_positive__first = positive__first
+  C6:  positive__first = 1
+  C7:  positive__last = 2147483647
+  C8:  integer__base__first = - 2147483648
+  C9:  integer__base__last = 2147483647
+  C10:  constraint_positive__last = 46340
+  C11:  constraint_positive__last < positive__last
+
+
+STEP 2
+Command: done
+*** Proved C1: i < n
+*** Proved C2: result = i * (i + 1) div 2
+*** Proved C3: n >= constraint_positive__first
+*** Proved C4: n <= constraint_positive__last
+*** Proved C5: constraint_positive__first = positive__first
+*** Proved C6: positive__first = 1
+*** Proved C7: positive__last = 2147483647
+*** Proved C8: integer__base__first = - 2147483648
+*** Proved C9: integer__base__last = 2147483647
+*** Proved C10: constraint_positive__last = 46340
+*** Proved C11: constraint_positive__last < positive__last
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_4
+
+The above proof did not make use of the proof rules database
+
+
+
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_5
+H1:  i <= n
+H2:  result = i * (i + 1) div 2
+H3:  n >= constraint_positive__first
+H4:  n <= constraint_positive__last
+H5:  constraint_positive__first = positive__first
+H6:  positive__first = 1
+H7:  positive__last = 2147483647
+H8:  integer__base__first = - 2147483648
+H9:  integer__base__last = 2147483647
+H10:  constraint_positive__last = 46340
+H11:  constraint_positive__last < positive__last
+H12:  i >= constraint_positive__first
+H13:  i <= constraint_positive__last
+H14:  i < n
+-->
+  C1:  i < n
+  C2:  result = i * (i + 1) div 2
+  C3:  n >= constraint_positive__first
+  C4:  n <= constraint_positive__last
+  C5:  constraint_positive__first = positive__first
+  C6:  positive__first = 1
+  C7:  positive__last = 2147483647
+  C8:  integer__base__first = - 2147483648
+  C9:  integer__base__last = 2147483647
+  C10:  constraint_positive__last = 46340
+  C11:  constraint_positive__last < positive__last
+
+
+STEP 2
+Command: done
+*** Proved C1: i < n
+*** Proved C2: result = i * (i + 1) div 2
+*** Proved C3: n >= constraint_positive__first
+*** Proved C4: n <= constraint_positive__last
+*** Proved C5: constraint_positive__first = positive__first
+*** Proved C6: positive__first = 1
+*** Proved C7: positive__last = 2147483647
+*** Proved C8: integer__base__first = - 2147483648
+*** Proved C9: integer__base__last = 2147483647
+*** Proved C10: constraint_positive__last = 46340
+*** Proved C11: constraint_positive__last < positive__last
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_5
+
+The above proof did not make use of the proof rules database
+
+
+
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_6
+H1:  i < n
+H2:  result = i * (i + 1) div 2
+H3:  n >= constraint_positive__first
+H4:  n <= constraint_positive__last
+H5:  constraint_positive__first = positive__first
+H6:  positive__first = 1
+H7:  positive__last = 2147483647
+H8:  integer__base__first = - 2147483648
+H9:  integer__base__last = 2147483647
+H10:  constraint_positive__last = 46340
+H11:  constraint_positive__last < positive__last
+H12:  i >= constraint_positive__first
+H13:  i <= constraint_positive__last
+-->
+  C1:  i + 1 >= constraint_positive__first
+  C2:  i + 1 <= constraint_positive__last
+
+
+STEP 2
+Command: done
+*** Proved C1: i + 1 >= constraint_positive__first
+
+STEP 3
+Command: consult
+Consulted rulefile: d:/personal/organisation/dropbox/my dropbox/safe and secure software/bonus/umsetzung/project01/gauss/gauss.rul
+No errors trapped in reading this rulefile.
+
+STEP 4
+Command: infer
+Successful inference with rule: gauss(4)
+  Proved subgoal: i < constraint_positive__last
+Therefore i + 1 <= constraint_positive__last
+*** New H14: i + 1 <= constraint_positive__last
+*** Proved C2: i + 1 <= constraint_positive__last
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_6
+
+The only rule used in proving the above VC was:
+          gauss.rul::gauss(4)
+
+
+
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_7
+H1:  i < n
+H2:  result = i * (i + 1) div 2
+H3:  n >= constraint_positive__first
+H4:  n <= constraint_positive__last
+H5:  constraint_positive__first = positive__first
+H6:  positive__first = 1
+H7:  positive__last = 2147483647
+H8:  integer__base__first = - 2147483648
+H9:  integer__base__last = 2147483647
+H10:  constraint_positive__last = 46340
+H11:  constraint_positive__last < positive__last
+H12:  i >= constraint_positive__first
+H13:  i <= constraint_positive__last
+H14:  i + 1 >= constraint_positive__first
+H15:  i + 1 <= constraint_positive__last
+-->
+  C1:  i + 1 <= n
+  C2:  result = i * (i + 1) div 2
+  C3:  n >= constraint_positive__first
+  C4:  n <= constraint_positive__last
+  C5:  constraint_positive__first = positive__first
+  C6:  positive__first = 1
+  C7:  positive__last = 2147483647
+  C8:  integer__base__first = - 2147483648
+  C9:  integer__base__last = 2147483647
+  C10:  constraint_positive__last = 46340
+  C11:  constraint_positive__last < positive__last
+
+
+STEP 2
+Command: done
+*** Proved C2: result = i * (i + 1) div 2
+*** Proved C3: n >= constraint_positive__first
+*** Proved C4: n <= constraint_positive__last
+*** Proved C5: constraint_positive__first = positive__first
+*** Proved C6: positive__first = 1
+*** Proved C7: positive__last = 2147483647
+*** Proved C8: integer__base__first = - 2147483648
+*** Proved C9: integer__base__last = 2147483647
+*** Proved C10: constraint_positive__last = 46340
+*** Proved C11: constraint_positive__last < positive__last
+
+STEP 3
+Command: consult
+Consulted rulefile: d:/personal/organisation/dropbox/my dropbox/safe and secure software/bonus/umsetzung/project01/gauss/gauss.rul
+No errors trapped in reading this rulefile.
+
+STEP 4
+Command: infer
+Successful inference with rule: gauss(4)
+  Proved subgoal: i < n
+Therefore i + 1 <= n
+*** New H16: i + 1 <= n
+*** Proved C1: i + 1 <= n
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_7
+
+The only rule used in proving the above VC was:
+          gauss.rul::gauss(4)
+
+
+
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_8
+H1:  i <= n
+H2:  result = (i - 1) * i div 2
+H3:  n >= constraint_positive__first
+H4:  n <= constraint_positive__last
+H5:  constraint_positive__first = positive__first
+H6:  positive__first = 1
+H7:  positive__last = 2147483647
+H8:  integer__base__first = - 2147483648
+H9:  integer__base__last = 2147483647
+H10:  constraint_positive__last = 46340
+H11:  constraint_positive__last < positive__last
+H12:  result >= positive__first
+H13:  result <= positive__last
+H14:  i >= constraint_positive__first
+H15:  i <= constraint_positive__last
+-->
+  C1:  result + i >= positive__first
+  C2:  result + i <= positive__last
+
+
+STEP 2
+Command: done
+*** Proved C1: result + i >= positive__first
+
+STEP 3
+Command: consult
+Consulted rulefile: d:/personal/organisation/dropbox/my dropbox/safe and secure software/bonus/umsetzung/project01/gauss/gauss.rul
+No errors trapped in reading this rulefile.
+
+STEP 4
+Command: infer
+Successful inference with rule: gauss(7)
+  Proved subgoal: result <= positive__last and i <= constraint_positive__last
+Therefore result + i <= positive__last
+*** New H16: result + i <= positive__last
+*** Proved C2: result + i <= positive__last
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_8
+
+The only rule used in proving the above VC was:
+          gauss.rul::gauss(7)
+
+
+
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_9
+H1:  i <= n
+H2:  result = (i - 1) * i div 2
+H3:  n >= constraint_positive__first
+H4:  n <= constraint_positive__last
+H5:  constraint_positive__first = positive__first
+H6:  positive__first = 1
+H7:  positive__last = 2147483647
+H8:  integer__base__first = - 2147483648
+H9:  integer__base__last = 2147483647
+H10:  constraint_positive__last = 46340
+H11:  constraint_positive__last < positive__last
+H12:  result >= positive__first
+H13:  result <= positive__last
+H14:  i >= constraint_positive__first
+H15:  i <= constraint_positive__last
+H16:  result + i >= positive__first
+H17:  result + i <= positive__last
+-->
+  C1:  i <= n
+  C2:  result + i = i * (i + 1) div 2
+  C3:  n >= constraint_positive__first
+  C4:  n <= constraint_positive__last
+  C5:  constraint_positive__first = positive__first
+  C6:  positive__first = 1
+  C7:  positive__last = 2147483647
+  C8:  integer__base__first = - 2147483648
+  C9:  integer__base__last = 2147483647
+  C10:  constraint_positive__last = 46340
+  C11:  constraint_positive__last < positive__last
+
+
+STEP 2
+Command: done
+*** Proved C1: i <= n
+*** Proved C3: n >= constraint_positive__first
+*** Proved C4: n <= constraint_positive__last
+*** Proved C5: constraint_positive__first = positive__first
+*** Proved C6: positive__first = 1
+*** Proved C7: positive__last = 2147483647
+*** Proved C8: integer__base__first = - 2147483648
+*** Proved C9: integer__base__last = 2147483647
+*** Proved C10: constraint_positive__last = 46340
+*** Proved C11: constraint_positive__last < positive__last
+
+STEP 3
+Command: consult
+Consulted rulefile: d:/personal/organisation/dropbox/my dropbox/safe and secure software/bonus/umsetzung/project01/gauss/gauss.rul
+No errors trapped in reading this rulefile.
+
+STEP 4
+Command: infer
+Successful inference with rule: gauss(8)
+  Proved subgoal: result = (i - 1) * i div 2
+Therefore result + i = i * (i + 1) div 2
+*** New H18: result + i = i * (i + 1) div 2
+*** Proved C2: result + i = i * (i + 1) div 2
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_9
+
+The only rule used in proving the above VC was:
+          gauss.rul::gauss(8)
+
+
+
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_10
+H1:  i = 1
+H2:  result = 1
+H3:  result = i * (i + 1) div 2
+H4:  n >= constraint_positive__first
+H5:  n <= constraint_positive__last
+H6:  constraint_positive__first = positive__first
+H7:  positive__first = 1
+H8:  positive__last = 2147483647
+H9:  integer__base__first = - 2147483648
+H10:  integer__base__last = 2147483647
+H11:  constraint_positive__last = 46340
+H12:  constraint_positive__last < positive__last
+H13:  i >= constraint_positive__first
+H14:  i <= constraint_positive__last
+H15:  not i < n
+-->
+  C1:  i >= n
+  C2:  i <= n
+  C3:  result = i * (i + 1) div 2
+  C4:  n >= constraint_positive__first
+  C5:  n <= constraint_positive__last
+  C6:  constraint_positive__first = positive__first
+  C7:  positive__first = 1
+  C8:  positive__last = 2147483647
+  C9:  integer__base__first = - 2147483648
+  C10:  integer__base__last = 2147483647
+  C11:  constraint_positive__last = 46340
+  C12:  constraint_positive__last < positive__last
+
+
+STEP 2
+Command: done
+*** Proved C1: i >= n
+*** Proved C2: i <= n
+*** Proved C3: result = i * (i + 1) div 2
+*** Proved C4: n >= constraint_positive__first
+*** Proved C5: n <= constraint_positive__last
+*** Proved C6: constraint_positive__first = positive__first
+*** Proved C7: positive__first = 1
+*** Proved C8: positive__last = 2147483647
+*** Proved C9: integer__base__first = - 2147483648
+*** Proved C10: integer__base__last = 2147483647
+*** Proved C11: constraint_positive__last = 46340
+*** Proved C12: constraint_positive__last < positive__last
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_10
+
+The above proof did not make use of the proof rules database
+
+
+
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_11
+H1:  i <= n
+H2:  result = i * (i + 1) div 2
+H3:  n >= constraint_positive__first
+H4:  n <= constraint_positive__last
+H5:  constraint_positive__first = positive__first
+H6:  positive__first = 1
+H7:  positive__last = 2147483647
+H8:  integer__base__first = - 2147483648
+H9:  integer__base__last = 2147483647
+H10:  constraint_positive__last = 46340
+H11:  constraint_positive__last < positive__last
+H12:  i >= constraint_positive__first
+H13:  i <= constraint_positive__last
+H14:  not i < n
+-->
+  C1:  i >= n
+  C2:  i <= n
+  C3:  result = i * (i + 1) div 2
+  C4:  n >= constraint_positive__first
+  C5:  n <= constraint_positive__last
+  C6:  constraint_positive__first = positive__first
+  C7:  positive__first = 1
+  C8:  positive__last = 2147483647
+  C9:  integer__base__first = - 2147483648
+  C10:  integer__base__last = 2147483647
+  C11:  constraint_positive__last = 46340
+  C12:  constraint_positive__last < positive__last
+
+
+STEP 2
+Command: done
+*** Proved C1: i >= n
+*** Proved C2: i <= n
+*** Proved C3: result = i * (i + 1) div 2
+*** Proved C4: n >= constraint_positive__first
+*** Proved C5: n <= constraint_positive__last
+*** Proved C6: constraint_positive__first = positive__first
+*** Proved C7: positive__first = 1
+*** Proved C8: positive__last = 2147483647
+*** Proved C9: integer__base__first = - 2147483648
+*** Proved C10: integer__base__last = 2147483647
+*** Proved C11: constraint_positive__last = 46340
+*** Proved C12: constraint_positive__last < positive__last
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_11
+
+The above proof did not make use of the proof rules database
+
+
+
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_12
+H1:  i >= n
+H2:  i <= n
+H3:  result = i * (i + 1) div 2
+H4:  n >= constraint_positive__first
+H5:  n <= constraint_positive__last
+H6:  constraint_positive__first = positive__first
+H7:  positive__first = 1
+H8:  positive__last = 2147483647
+H9:  integer__base__first = - 2147483648
+H10:  integer__base__last = 2147483647
+H11:  constraint_positive__last = 46340
+H12:  constraint_positive__last < positive__last
+-->
+  C1:  i = n
+  C2:  result = i * (i + 1) div 2
+  C3:  n >= constraint_positive__first
+  C4:  n <= constraint_positive__last
+  C5:  constraint_positive__first = positive__first
+  C6:  positive__first = 1
+  C7:  positive__last = 2147483647
+  C8:  integer__base__first = - 2147483648
+  C9:  integer__base__last = 2147483647
+  C10:  constraint_positive__last = 46340
+  C11:  constraint_positive__last < positive__last
+
+
+STEP 2
+Command: done
+*** Proved C1: i = n
+*** Proved C2: result = i * (i + 1) div 2
+*** Proved C3: n >= constraint_positive__first
+*** Proved C4: n <= constraint_positive__last
+*** Proved C5: constraint_positive__first = positive__first
+*** Proved C6: positive__first = 1
+*** Proved C7: positive__last = 2147483647
+*** Proved C8: integer__base__first = - 2147483648
+*** Proved C9: integer__base__last = 2147483647
+*** Proved C10: constraint_positive__last = 46340
+*** Proved C11: constraint_positive__last < positive__last
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_12
+
+The above proof did not make use of the proof rules database
+
+
+
+
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_gauss_sum_13
+H1:  i = n
+H2:  result = i * (i + 1) div 2
+H3:  n >= constraint_positive__first
+H4:  n <= constraint_positive__last
+H5:  constraint_positive__first = positive__first
+H6:  positive__first = 1
+H7:  positive__last = 2147483647
+H8:  integer__base__first = - 2147483648
+H9:  integer__base__last = 2147483647
+H10:  constraint_positive__last = 46340
+H11:  constraint_positive__last < positive__last
+-->
+  C1:  result = n * (n + 1) div 2
+
+
+STEP 2
+Command: consult
+Consulted rulefile: d:/personal/organisation/dropbox/my dropbox/safe and secure software/bonus/umsetzung/project01/gauss/gauss.rul
+No errors trapped in reading this rulefile.
+
+STEP 3
+Command: infer
+Successful inference with rule: gauss(6)
+  Proved subgoal: n = i and result = i * (i + 1) div 2
+Therefore result = n * (n + 1) div 2
+*** New H12: result = n * (n + 1) div 2
+*** Proved C1: result = n * (n + 1) div 2
+*** Proved all conclusions
+
+*** PROVED VC procedure_gauss_sum_13
+
+The only rule used in proving the above VC was:
+          gauss.rul::gauss(6)
+
+
+
+
+
+STEP 4
+*** END OF PROOF SESSION
+
+
+The following rules were used during the above proof session:
+          gauss.rul::gauss(3)
+          gauss.rul::gauss(4)
+          gauss.rul::gauss(6)
+          gauss.rul::gauss(7)
+          gauss.rul::gauss(8)
+
+The following VCs were proved during this proof session:
+        1 - 13
+
+There are no more VCs left to prove.
+
+Command: exit

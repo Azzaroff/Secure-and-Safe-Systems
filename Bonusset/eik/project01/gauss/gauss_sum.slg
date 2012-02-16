@@ -1,0 +1,581 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+*****************************************************************************
+
+
+CREATED 15-FEB-2012, 17:42:22  SIMPLIFIED 15-FEB-2012, 17:42:22
+
+SPARK Simplifier GPL 2011
+Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+
+procedure Gauss.Gauss_Sum
+
+
+
+
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_1.  @@@@@@@@@@
+%%%  Simplified H4 on reading formula in, to give:
+     %%%  H4:  integer__base__first = - 2147483648
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  integer__base__first = - 2147483648
+***  Proved C1:  true
+***  Proved C2:  1 <= n
+     using hypotheses H1, H2 & H8.
+***  Proved C3:  n >= 1
+     using hypotheses H1, H2 & H8.
+***  Proved C4:  n >= constraint_positive__first
+     using hypothesis H8.
+***  Proved C5:  n <= constraint_positive__last
+     using hypothesis H9.
+***  Proved C6:  constraint_positive__first = positive__first
+     using hypothesis H1.
+***  Proved C7:  positive__first = 1
+     using hypothesis H2.
+***  Proved C8:  positive__last = 2147483647
+     using hypothesis H3.
+***  Proved C9:  integer__base__first = - 2147483648
+     using hypothesis H4.
+***  Proved C10:  integer__base__last = 2147483647
+     using hypothesis H5.
+***  Proved C11:  constraint_positive__last = 46340
+     using hypothesis H6.
+***  Proved C12:  constraint_positive__last < positive__last
+     using hypothesis H7.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_2.  @@@@@@@@@@
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  integer__base__first = - 2147483648
+***  Proved C1:  1 >= positive__first
+     using hypothesis H7.
+***  Proved C2:  1 <= positive__last
+     using hypothesis H8.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_3.  @@@@@@@@@@
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  integer__base__first = - 2147483648
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  integer__base__first = - 2147483648
+***  Proved C1:  i = 1
+     using hypothesis H1.
+***  Proved C2:  true
+***  Proved C4:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C5:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C6:  constraint_positive__first = positive__first
+     using hypothesis H6.
+***  Proved C7:  positive__first = 1
+     using hypothesis H7.
+***  Proved C8:  positive__last = 2147483647
+     using hypothesis H8.
+***  Proved C9:  integer__base__first = - 2147483648
+     using hypothesis H9.
+***  Proved C10:  integer__base__last = 2147483647
+     using hypothesis H10.
+***  Proved C11:  constraint_positive__last = 46340
+     using hypothesis H11.
+***  Proved C12:  constraint_positive__last < positive__last
+     using hypothesis H12.
+-S-  Applied substitution rule gauss_sum_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H9:  true
+-S-  Applied substitution rule gauss_sum_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H10:  true
+-S-  Applied substitution rule gauss_sum_rules(7).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New H6:  constraint_positive__first = 1
+<S>  New H7:  true
+<S>  New H13:  true
+-S-  Applied substitution rule gauss_sum_rules(8).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New H8:  true
+<S>  New H12:  constraint_positive__last < 2147483647
+<S>  New H14:  true
+-S-  Applied substitution rule gauss_sum_rules(12).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__first by:
+          1.
+<S>  New H4:  n >= 1
+<S>  New H6:  true
+-S-  Applied substitution rule gauss_sum_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          46340.
+<S>  New H5:  n <= 46340
+<S>  New H11:  true
+<S>  New H12:  true
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H14 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H4 (duplicate of H3).
+-S-  Eliminated hypothesis H1.
+     This was achieved by replacing all occurrences of i by:
+          1.
+<S>  New H2:  1 <= n
+<S>  New C3:  true
+---  Eliminated conclusion C3, which is a duplicate of C2.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_4.  @@@@@@@@@@
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  integer__base__first = - 2147483648
+%%%  Simplified C8 on reading formula in, to give:
+     %%%  C8:  integer__base__first = - 2147483648
+***  Proved C1:  i < n
+     using hypothesis H15.
+***  Proved C2:  result = i * (i + 1) div 2
+     using hypothesis H3.
+***  Proved C3:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C4:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C5:  constraint_positive__first = positive__first
+     using hypothesis H6.
+***  Proved C6:  positive__first = 1
+     using hypothesis H7.
+***  Proved C7:  positive__last = 2147483647
+     using hypothesis H8.
+***  Proved C8:  integer__base__first = - 2147483648
+     using hypothesis H9.
+***  Proved C9:  integer__base__last = 2147483647
+     using hypothesis H10.
+***  Proved C10:  constraint_positive__last = 46340
+     using hypothesis H11.
+***  Proved C11:  constraint_positive__last < positive__last
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_5.  @@@@@@@@@@
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  integer__base__first = - 2147483648
+%%%  Simplified C8 on reading formula in, to give:
+     %%%  C8:  integer__base__first = - 2147483648
+***  Proved C1:  i < n
+     using hypothesis H14.
+***  Proved C2:  result = i * (i + 1) div 2
+     using hypothesis H2.
+***  Proved C3:  n >= constraint_positive__first
+     using hypothesis H3.
+***  Proved C4:  n <= constraint_positive__last
+     using hypothesis H4.
+***  Proved C5:  constraint_positive__first = positive__first
+     using hypothesis H5.
+***  Proved C6:  positive__first = 1
+     using hypothesis H6.
+***  Proved C7:  positive__last = 2147483647
+     using hypothesis H7.
+***  Proved C8:  integer__base__first = - 2147483648
+     using hypothesis H8.
+***  Proved C9:  integer__base__last = 2147483647
+     using hypothesis H9.
+***  Proved C10:  constraint_positive__last = 46340
+     using hypothesis H10.
+***  Proved C11:  constraint_positive__last < positive__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_6.  @@@@@@@@@@
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  integer__base__first = - 2147483648
+***  Proved C1:  i + 1 >= constraint_positive__first
+     using hypothesis H12.
+-S-  Applied substitution rule gauss_sum_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          46340.
+<S>  New H4:  n <= 46340
+<S>  New H10:  true
+<S>  New H11:  46340 < positive__last
+<S>  New H13:  i <= 46340
+<S>  New C2:  i <= 46339
+***  Proved C2:  i <= 46339
+     using hypotheses H1 & H4.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_7.  @@@@@@@@@@
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  integer__base__first = - 2147483648
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  result = i * (i + 1) div 2
+%%%  Simplified C8 on reading formula in, to give:
+     %%%  C8:  integer__base__first = - 2147483648
+***  Proved C2:  result = i * (i + 1) div 2
+     using hypothesis H2.
+***  Proved C3:  n >= constraint_positive__first
+     using hypothesis H3.
+***  Proved C4:  n <= constraint_positive__last
+     using hypothesis H4.
+***  Proved C5:  constraint_positive__first = positive__first
+     using hypothesis H5.
+***  Proved C6:  positive__first = 1
+     using hypothesis H6.
+***  Proved C7:  positive__last = 2147483647
+     using hypothesis H7.
+***  Proved C8:  integer__base__first = - 2147483648
+     using hypothesis H8.
+***  Proved C9:  integer__base__last = 2147483647
+     using hypothesis H9.
+***  Proved C10:  constraint_positive__last = 46340
+     using hypothesis H10.
+***  Proved C11:  constraint_positive__last < positive__last
+     using hypothesis H11.
+-S-  Applied substitution rule gauss_sum_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H8:  true
+-S-  Applied substitution rule gauss_sum_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H9:  true
+-S-  Applied substitution rule gauss_sum_rules(7).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New H5:  constraint_positive__first = 1
+<S>  New H6:  true
+-S-  Applied substitution rule gauss_sum_rules(8).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New H7:  true
+<S>  New H11:  constraint_positive__last < 2147483647
+-S-  Applied substitution rule gauss_sum_rules(12).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__first by:
+          1.
+<S>  New H3:  n >= 1
+<S>  New H12:  i >= 1
+<S>  New H14:  i >= 0
+<S>  New H5:  true
+-S-  Applied substitution rule gauss_sum_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          46340.
+<S>  New H4:  n <= 46340
+<S>  New H10:  true
+<S>  New H13:  i <= 46340
+<S>  New H15:  i <= 46339
+<S>  New H11:  true
+***  Proved C1:  i + 1 <= n
+     via its standard form, which is:
+     Std.Fm C1:  - i + n > 0
+     using hypothesis H1.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_8.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  result = (i - 1) * i div 2
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  integer__base__first = - 2147483648
+***  Proved C1:  result + i >= positive__first
+     using hypotheses H5, H6, H12 & H14.
+-S-  Applied substitution rule gauss_sum_rules(8).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New H7:  true
+<S>  New H11:  constraint_positive__last < 2147483647
+<S>  New H13:  result <= 2147483647
+<S>  New C2:  result + i <= 2147483647
+-S-  Applied substitution rule gauss_sum_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H8:  true
+-S-  Applied substitution rule gauss_sum_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H9:  true
+-S-  Applied substitution rule gauss_sum_rules(7).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New H5:  constraint_positive__first = 1
+<S>  New H6:  true
+<S>  New H12:  result >= 1
+-S-  Applied substitution rule gauss_sum_rules(12).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__first by:
+          1.
+<S>  New H3:  n >= 1
+<S>  New H14:  i >= 1
+<S>  New H5:  true
+-S-  Applied substitution rule gauss_sum_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          46340.
+<S>  New H4:  n <= 46340
+<S>  New H10:  true
+<S>  New H11:  true
+<S>  New H15:  i <= 46340
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H5 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+-S-  Eliminated hypothesis H2.
+     This was achieved by replacing all occurrences of result by:
+          (i - 1) * i div 2.
+<S>  New H13:  (i - 1) * i div 2 <= 2147483647
+<S>  New H12:  (i - 1) * i div 2 >= 1
+<S>  New C2:  (i - 1) * i div 2 + i <= 2147483647
+***  Proved C2:  (i - 1) * i div 2 + i <= 2147483647
+     using hypothesis H15.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_9.  @@@@@@@@@@
+%%%  Simplified H2 on reading formula in, to give:
+     %%%  H2:  result = (i - 1) * i div 2
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  integer__base__first = - 2147483648
+%%%  Simplified C8 on reading formula in, to give:
+     %%%  C8:  integer__base__first = - 2147483648
+***  Proved C1:  i <= n
+     using hypothesis H1.
+***  Proved C3:  n >= constraint_positive__first
+     using hypothesis H3.
+***  Proved C4:  n <= constraint_positive__last
+     using hypothesis H4.
+***  Proved C5:  constraint_positive__first = positive__first
+     using hypothesis H5.
+***  Proved C6:  positive__first = 1
+     using hypothesis H6.
+***  Proved C7:  positive__last = 2147483647
+     using hypothesis H7.
+***  Proved C8:  integer__base__first = - 2147483648
+     using hypothesis H8.
+***  Proved C9:  integer__base__last = 2147483647
+     using hypothesis H9.
+***  Proved C10:  constraint_positive__last = 46340
+     using hypothesis H10.
+***  Proved C11:  constraint_positive__last < positive__last
+     using hypothesis H11.
+-S-  Applied substitution rule gauss_sum_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H8:  true
+-S-  Applied substitution rule gauss_sum_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H9:  true
+-S-  Applied substitution rule gauss_sum_rules(7).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New H5:  constraint_positive__first = 1
+<S>  New H6:  true
+<S>  New H12:  result >= 1
+<S>  New H16:  result + i >= 1
+-S-  Applied substitution rule gauss_sum_rules(8).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New H7:  true
+<S>  New H11:  constraint_positive__last < 2147483647
+<S>  New H13:  result <= 2147483647
+<S>  New H17:  result + i <= 2147483647
+-S-  Applied substitution rule gauss_sum_rules(12).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__first by:
+          1.
+<S>  New H3:  n >= 1
+<S>  New H14:  i >= 1
+<S>  New H5:  true
+-S-  Applied substitution rule gauss_sum_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          46340.
+<S>  New H4:  n <= 46340
+<S>  New H10:  true
+<S>  New H15:  i <= 46340
+<S>  New H11:  true
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H5 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H13 (redundant, given H14 & H17).
+-S-  Eliminated hypothesis H2.
+     This was achieved by replacing all occurrences of result by:
+          (i - 1) * i div 2.
+<S>  New H12:  (i - 1) * i div 2 >= 1
+<S>  New H16:  (i - 1) * i div 2 + i >= 1
+<S>  New H17:  (i - 1) * i div 2 + i <= 2147483647
+<S>  New C2:  (i - 1) * i div 2 + i = i * (i + 1) div 2
+     +++  New H18:  integer__size >= 0
+     +++  New H19:  positive__size >= 0
+     +++  New H20:  constraint_positive__size >= 0
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_10.  @@@@@@@@@@
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  integer__base__first = - 2147483648
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  integer__base__first = - 2147483648
+***  Proved C1:  i >= n
+     using hypothesis H15.
+***  Proved C2:  i <= n
+     using hypotheses H1, H4, H6 & H7.
+***  Proved C3:  result = i * (i + 1) div 2
+     using hypothesis H3.
+***  Proved C4:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C5:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C6:  constraint_positive__first = positive__first
+     using hypothesis H6.
+***  Proved C7:  positive__first = 1
+     using hypothesis H7.
+***  Proved C8:  positive__last = 2147483647
+     using hypothesis H8.
+***  Proved C9:  integer__base__first = - 2147483648
+     using hypothesis H9.
+***  Proved C10:  integer__base__last = 2147483647
+     using hypothesis H10.
+***  Proved C11:  constraint_positive__last = 46340
+     using hypothesis H11.
+***  Proved C12:  constraint_positive__last < positive__last
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_11.  @@@@@@@@@@
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  integer__base__first = - 2147483648
+%%%  Simplified C9 on reading formula in, to give:
+     %%%  C9:  integer__base__first = - 2147483648
+***  Proved C1:  i >= n
+     using hypothesis H14.
+***  Proved C2:  i <= n
+     using hypothesis H1.
+***  Proved C3:  result = i * (i + 1) div 2
+     using hypothesis H2.
+***  Proved C4:  n >= constraint_positive__first
+     using hypothesis H3.
+***  Proved C5:  n <= constraint_positive__last
+     using hypothesis H4.
+***  Proved C6:  constraint_positive__first = positive__first
+     using hypothesis H5.
+***  Proved C7:  positive__first = 1
+     using hypothesis H6.
+***  Proved C8:  positive__last = 2147483647
+     using hypothesis H7.
+***  Proved C9:  integer__base__first = - 2147483648
+     using hypothesis H8.
+***  Proved C10:  integer__base__last = 2147483647
+     using hypothesis H9.
+***  Proved C11:  constraint_positive__last = 46340
+     using hypothesis H10.
+***  Proved C12:  constraint_positive__last < positive__last
+     using hypothesis H11.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_12.  @@@@@@@@@@
+%%%  Simplified H9 on reading formula in, to give:
+     %%%  H9:  integer__base__first = - 2147483648
+%%%  Simplified C8 on reading formula in, to give:
+     %%%  C8:  integer__base__first = - 2147483648
+***  Proved C1:  i = n
+     using hypotheses H1 & H2.
+***  Proved C2:  result = i * (i + 1) div 2
+     using hypothesis H3.
+***  Proved C3:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C4:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C5:  constraint_positive__first = positive__first
+     using hypothesis H6.
+***  Proved C6:  positive__first = 1
+     using hypothesis H7.
+***  Proved C7:  positive__last = 2147483647
+     using hypothesis H8.
+***  Proved C8:  integer__base__first = - 2147483648
+     using hypothesis H9.
+***  Proved C9:  integer__base__last = 2147483647
+     using hypothesis H10.
+***  Proved C10:  constraint_positive__last = 46340
+     using hypothesis H11.
+***  Proved C11:  constraint_positive__last < positive__last
+     using hypothesis H12.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: procedure_gauss_sum_13.  @@@@@@@@@@
+%%%  Simplified H8 on reading formula in, to give:
+     %%%  H8:  integer__base__first = - 2147483648
+-S-  Applied substitution rule gauss_sum_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H8:  true
+-S-  Applied substitution rule gauss_sum_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H9:  true
+-S-  Applied substitution rule gauss_sum_rules(7).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New H5:  constraint_positive__first = 1
+<S>  New H6:  true
+-S-  Applied substitution rule gauss_sum_rules(8).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New H7:  true
+<S>  New H11:  constraint_positive__last < 2147483647
+-S-  Applied substitution rule gauss_sum_rules(12).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__first by:
+          1.
+<S>  New H3:  n >= 1
+<S>  New H5:  true
+-S-  Applied substitution rule gauss_sum_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          46340.
+<S>  New H4:  n <= 46340
+<S>  New H10:  true
+<S>  New H11:  true
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H5 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+-S-  Eliminated hypothesis H1.
+     This was achieved by replacing all occurrences of i by:
+          n.
+<S>  New H2:  result = n * (n + 1) div 2
+-S-  Eliminated hypothesis H2.
+     This was achieved by replacing all occurrences of result by:
+          n * (n + 1) div 2.
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+

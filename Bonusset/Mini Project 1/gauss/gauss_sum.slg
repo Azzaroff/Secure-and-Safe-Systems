@@ -5,7 +5,7 @@
 *****************************************************************************
 
 
-CREATED 01-FEB-2012, 15:00:00  SIMPLIFIED 01-FEB-2012, 15:00:03
+CREATED 16-FEB-2012, 13:12:27  SIMPLIFIED 16-FEB-2012, 13:12:29
 
 SPARK Simplifier GPL 2011
 Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
@@ -25,11 +25,31 @@ procedure Gauss.gauss_sum
      This was achieved by replacing all occurrences of positive__first by:
           1.
 <S>  New C1:  n * (n + 1) div 2 >= 1
--S-  Applied substitution rule gauss_sum_rules(13).
+-S-  Applied substitution rule gauss_sum_rules(8).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New C2:  n * (n + 1) div 2 <= 2147483647
+-S-  Applied substitution rule gauss_sum_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New C4:  n * (n + 1) >= - 2147483648
+<S>  New C6:  n >= - 2147483649
+-S-  Applied substitution rule gauss_sum_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New C5:  n * (n + 1) <= 2147483647
+<S>  New C7:  n <= 2147483646
+***  Proved C4:  n * (n + 1) >= - 2147483648
+     using hypothesis H2.
+***  Proved C6:  n >= - 2147483649
+     using hypothesis H2.
+***  Proved C7:  n <= 2147483646
+     using hypothesis H1.
+-S-  Applied substitution rule gauss_sum_rules(12).
      This was achieved by replacing all occurrences of gauss_positive__first by:
           1.
 <S>  New H3:  n >= 1
--S-  Applied substitution rule gauss_sum_rules(14).
+-S-  Applied substitution rule gauss_sum_rules(13).
      This was achieved by replacing all occurrences of gauss_positive__last by:
           46340.
 <S>  New H4:  n <= 46340
@@ -37,23 +57,18 @@ procedure Gauss.gauss_sum
 ---  Eliminated hypothesis H3 (duplicate of H2).
 ***  Proved C1:  n * (n + 1) div 2 >= 1
      using hypotheses H3 & H3.
-     +++  New H5:  integer__size >= 0
-     +++  New H6:  integer__first <= integer__last
-     +++  New H7:  integer__base__first <= integer__base__last
-     +++  New H8:  integer__base__first <= integer__first
-     +++  New H9:  integer__base__last >= integer__last
-     +++  New H10:  positive__size >= 0
-     +++  New H11:  positive__base__first <= positive__base__last
-     +++  New H12:  positive__base__last >= positive__last
-     +++  New H13:  gauss_positive__size >= 0
-     +++  New H14:  gauss_positive__base__first <= gauss_positive__base__last
-     +++  New H15:  1 <= positive__last
-     +++  New H16:  positive__base__first <= 1
-     +++  New H17:  gauss_positive__base__first <= 1
-     +++  New H18:  gauss_positive__base__last >= 46340
+***  Proved C2:  n * (n + 1) div 2 <= 2147483647
+     using hypotheses H1 & H1.
+***  Proved C5:  n * (n + 1) <= 2147483647
+     using hypotheses H1 & H1.
+***  PROVED VC.
 
 
 @@@@@@@@@@  VC: procedure_gauss_sum_2.  @@@@@@@@@@
+%%%  Simplified H7 on reading formula in, to give:
+     %%%  H7:  true
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
 ***  Proved C1:  true
 ***  PROVED VC.
 

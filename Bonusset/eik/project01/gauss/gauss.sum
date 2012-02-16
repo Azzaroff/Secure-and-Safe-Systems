@@ -1,0 +1,127 @@
+-------------------------------------------------------------------------------
+                          Semantic Analysis Summary                            
+                                POGS GPL 2011                                  
+            Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.               
+-------------------------------------------------------------------------------
+
+Summary of:
+
+Verification Condition files (.vcg)
+Simplified Verification Condition files (.siv)
+ViCToR result files (.vct)
+Proof Logs (.plg)
+Dead Path Conjecture files (.dpc)
+Summary Dead Path files (.sdp)
+
+"status" column keys:
+    1st character:
+        '-' - No VC
+        'S' - No SIV
+        'U' - Undischarged
+        'E' - Proved by Examiner
+        'I' - Proved by Simplifier by Inference
+        'X' - Proved by Simplifier by Contradiction
+        'P' - Proved by Simplifier using User Defined Proof Rules
+        'V' - Proved by ViCToR
+        'C' - Proved by Checker
+        'R' - Proved by Review
+        'F' - VC is False
+    2nd character:
+        '-' - No DPC
+        'S' - No SDP
+        'U' - Unchecked
+        'D' - Dead path
+        'L' - Live path
+
+in the directory:
+gauss
+
+Summary produced: 15-FEB-2012 17:42:22.69
+
+File gauss\gauss_sum.vcg
+procedure Gauss.Gauss_Sum
+
+VCs generated 15-FEB-2012 17:42:22
+
+VCs simplified 15-FEB-2012 17:42:22
+
+VCs for procedure_gauss_sum :
+ -----------------------------------------------------------------------------
+| #   | From  | To                  | Proved By          | Dead Path | Status |
+|-----------------------------------------------------------------------------
+| 1   | start |    assert @ 6       | Inference          | No DPC    |   I-   |
+| 2   | 6     | rtc check @ 8       | Inference          | No DPC    |   I-   |
+| 3   | 6     |    assert @ 9       | Inference          | No DPC    |   I-   |
+| 4   | 9     |    assert @ 12      | Inference          | No DPC    |   I-   |
+| 5   | 18    |    assert @ 12      | Inference          | No DPC    |   I-   |
+| 6   | 12    | rtc check @ 14      | Inference          | No DPC    |   I-   |
+| 7   | 12    |    assert @ 15      | Inference          | No DPC    |   I-   |
+| 8   | 15    | rtc check @ 17      | Inference          | No DPC    |   I-   |
+| 9   | 15    |    assert @ 18      | Undischarged       | No DPC    |   U-   |
+| 10  | 9     |    assert @ 21      | Inference          | No DPC    |   I-   |
+| 11  | 18    |    assert @ 21      | Inference          | No DPC    |   I-   |
+| 12  | 21    |    assert @ 22      | Inference          | No DPC    |   I-   |
+| 13  | 22    |    assert @ finish  | Inference          | No DPC    |   I-   |
+ -----------------------------------------------------------------------------
+
+
+===============================================================================
+Summary:
+
+The following subprograms have undischarged VCs (excluding those proved false):
+
+   1  gauss\gauss_sum.vcg
+
+Proof strategies used by subprograms
+-------------------------------------------------------------------------
+Total subprograms with at least one VC proved by examiner:              0
+Total subprograms with at least one VC proved by simplifier:            1
+Total subprograms with at least one VC proved by contradiction:         0
+Total subprograms with at least one VC proved with user proof rule:     0
+Total subprograms with at least one VC proved by ViCToR:                0
+Total subprograms with at least one VC proved using checker:            0
+Total subprograms with at least one VC discharged by review:            0
+
+Maximum extent of strategies used for fully proved subprograms:
+-------------------------------------------------------------------------
+Total subprograms with proof completed by examiner:                     0
+Total subprograms with proof completed by simplifier:                   0
+Total subprograms with proof completed with user defined rules:         0
+Total subprograms with proof completed by ViCToR:                       0
+Total subprograms with proof completed by checker:                      0
+Total subprograms with VCs discharged by review:                        0
+
+Overall subprogram summary:
+-------------------------------------------------------------------------
+Total subprograms fully proved:                                         0
+Total subprograms with at least one undischarged VC:                    1  <<<
+Total subprograms with at least one false VC:                           0
+                                                                    -----
+Total subprograms for which VCs have been generated:                    1
+
+
+ZombieScope Summary:
+-------------------------------------------------------------------------
+Total subprograms for which DPCs have been generated:                   0
+Total number subprograms with dead paths found:                         0
+Total number of dead paths found:                                       0
+
+
+VC summary:
+-------------------------------------------------------------------------
+Note: (User) denotes where the Simplifier has proved VCs using one or
+      more user-defined proof rules.
+
+Total VCs by type:                                       
+                       -----------Proved By Or Using-----------
+                Total Examnr   Simp (User) ViCToR Checkr Review  False Undisc
+Assert/Post        10      0      9             0      0      0      0      1
+Precondition        0      0      0             0      0      0      0      0
+Check stmnt.        0      0      0             0      0      0      0      0
+Runtime check       3      0      3             0      0      0      0      0
+Refinem. VCs        0      0      0             0      0      0      0      0
+Inherit. VCs        0      0      0             0      0      0      0      0
+===============================================================================
+Totals:            13      0     12             0      0      0      0      1 <<<
+%Totals:                  0%    92%            0%     0%     0%     0%     8%
+===================== End of Semantic Analysis Summary ========================

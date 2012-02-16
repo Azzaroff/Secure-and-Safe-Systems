@@ -1,0 +1,95 @@
+           *******************************************************
+                         Report of SPARK Examination
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+           *******************************************************
+
+
+                        DATE : 15-FEB-2012 17:55:01.06
+
+Options:
+    noswitch
+    noindex_file
+    nowarning_file
+    notarget_compiler_data
+    config_file=spark.cfg
+    source_extension=ada
+    listing_extension=lst
+    nodictionary_file
+    report_file=spark.rep
+    nohtml
+    vcg
+    nostatistics
+    fdl_identifiers=accept
+    flow_analysis=information
+    language=95
+    profile=sequential
+    annotation_character=#
+    rules=none
+    error_explanations=off
+    justification_option=full
+    output_directory=.
+    output_directory (actual)=D:\personal\organisation\dropbox\My Dropbox\Safe and Secure Software\Bonus\umsetzung\project02\
+
+Selected files:
+   @spark.smf
+
+
+No Index files were used
+
+
+Meta File(s) used were:
+   spark.smf
+      D:\personal\organisation\dropbox\My Dropbox\Safe and Secure Software\Bonus\umsetzung\project02\src\factorial.ads
+      D:\personal\organisation\dropbox\My Dropbox\Safe and Secure Software\Bonus\umsetzung\project02\src\factorial.adb
+
+
+Full warning reporting selected
+
+
+Target configuration file:
+Line
+   1  package Standard is
+   2     type Integer is range -2147483648 ..  2147483647;
+   3     type Float is digits  6 range -3.40282E+38 ..  3.40282E+38;
+   4     type Short_Short_Integer is range -128 ..  127;
+   5     type Short_Integer is range -32768 ..  32767;
+   6     type Long_Integer is range -2147483648 ..  2147483647;
+   7     type Long_Long_Integer is range -9223372036854775808 ..  9223372036854775807;
+   8     type Short_Float is digits  6 range -3.40282E+38 ..  3.40282E+38;
+   9  end Standard;
+
+
+Source Filename(s) used were:
+   D:\personal\organisation\dropbox\My Dropbox\Safe and Secure Software\Bonus\umsetzung\project02\src\factorial.ads
+   D:\personal\organisation\dropbox\My Dropbox\Safe and Secure Software\Bonus\umsetzung\project02\src\factorial.adb
+
+
+
+Source Filename:   D:\personal\organisation\dropbox\My Dropbox\Safe and Secure Software\Bonus\umsetzung\project02\src\factorial.ads
+Listing Filename:  D:\personal\organisation\dropbox\My Dropbox\Safe and Secure Software\Bonus\umsetzung\project02\factorial.lst
+
+   Unit name:  Factorial
+   Unit type:  package specification
+   Unit has been analysed, any errors are listed below.
+
+No errors found
+
+
+Source Filename:   D:\personal\organisation\dropbox\My Dropbox\Safe and Secure Software\Bonus\umsetzung\project02\src\factorial.adb
+Listing Filename:  D:\personal\organisation\dropbox\My Dropbox\Safe and Secure Software\Bonus\umsetzung\project02\factorial.lst
+
+   Unit name:  Factorial
+   Unit type:  package body
+   Unit has been analysed, any errors are listed below.
+
+1 error(s) or warning(s)
+
+Line
+  31  	end Proof_Factorial;
+
+--- (  1)  Warning           : 10: The body of subprogram Proof_Factorial is hidden - 
+           hidden text is ignored by the Examiner.
+
+
+--End of file--------------------------------------------------

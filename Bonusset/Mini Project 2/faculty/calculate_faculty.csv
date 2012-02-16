@@ -1,4 +1,4 @@
-/* SAVED: 06-FEB-2012, at 17:26:13 */
+/* SAVED: 16-FEB-2012, at 14:01:39 */
 'auto_done'('on').
 'auto_newvc'('on').
 'case_pointer'(0).
@@ -12,20 +12,23 @@
 'fdl_file_title'('procedure_calculate_faculty').
 'fdlfile_name'('calculate_faculty.fdl').
 'function'('round__', ['real'], 'integer').
+'function'('test', ['integer'], 'integer').
 'function_template'('round__'(A1), [A1], 'round__').
-'hyp'(11, '>='('faculty_positive__size', 0)).
-'hyp'(10, '>='('positive__size', 0)).
-'hyp'(9, '>='('natural__size', 0)).
-'hyp'(8, '>='('integer__size', 0)).
-'hyp'(7, '<='('fac', 'div'(2147483647, 'i'))).
-'hyp'(6, '<='('div'(2147483647, 'i'), 2147483647)).
-'hyp'(5, '<='('fac', 2147483647)).
-'hyp'(4, '>='('fac', 0)).
-'hyp'(3, '<'('i', 'n')).
-'hyp'(2, '>='('i', 1)).
-'hyp'(1, '<='('n', 12)).
-'hyp'(12, '<='('*'('fac', 'i'), '*'('div'(2147483647, 'i'), 'i'))).
-'hyp'(13, '<='('*'('fac', 'i'), 2147483647)).
+'function_template'('test'(A1), [A1], 'test').
+'hyp'(13, '<='('*'('fac', 'i'), '*'('div'(2147483647, 'i'), 'i'))).
+'hyp'(12, '>='('faculty_positive__size', 0)).
+'hyp'(11, '>='('positive__size', 0)).
+'hyp'(10, '>='('natural__size', 0)).
+'hyp'(9, '>='('integer__size', 0)).
+'hyp'(8, '<='('fac', 'div'(2147483647, 'i'))).
+'hyp'(7, '<='('div'(2147483647, 'i'), 2147483647)).
+'hyp'(6, '<='('fac', 2147483647)).
+'hyp'(5, '>='('fac', 0)).
+'hyp'(4, '<='('i', 'n')).
+'hyp'(3, '>='('i', 1)).
+'hyp'(2, '<='('n', 12)).
+'hyp'(1, '>='('n', 1)).
+'hyp'(14, '='('*'('div'(2147483647, 'i'), 'i'), 2147483647)).
 'indentation'(0).
 'indentation_increment'(2).
 'inverse_video'('[]').
@@ -35,27 +38,15 @@
 'on_filename'('my_rules.rls').
 'prooflog_width'(0).
 'record_consults'('on').
+'ruleused_this_session'(['my_rules.rls', 'my_rules'(2)]).
 'ruleused_this_session'([
 '/home/azzaroff/.spark/bin//../lib/checker/rules/NUMINEQS.RUL', 'inequals'(40)]).
 'ruleused_this_session'(['my_rules.rls', 'my_rules'(1)]).
-'saved_vc'(1, 'hyp'(11, '>='('faculty_positive__size', 0))).
-'saved_vc'(1, 'hyp'(10, '>='('positive__size', 0))).
-'saved_vc'(1, 'hyp'(9, '>='('natural__size', 0))).
-'saved_vc'(1, 'hyp'(8, '>='('integer__size', 0))).
-'saved_vc'(1, 'hyp'(7, '<='('fac', 'div'(2147483647, 'i')))).
-'saved_vc'(1, 'hyp'(6, '<='('div'(2147483647, 'i'), 2147483647))).
-'saved_vc'(1, 'hyp'(5, '<='('fac', 2147483647))).
-'saved_vc'(1, 'hyp'(4, '>='('fac', 0))).
-'saved_vc'(1, 'hyp'(3, '<'('i', 'n'))).
-'saved_vc'(1, 'hyp'(2, '>='('i', 1))).
-'saved_vc'(1, 'hyp'(1, '<='('n', 12))).
-'saved_vc'(1, 'hyp'(12, '<='('*'('fac', 'i'), '*'('div'(2147483647, 'i'), 'i')))).
-'saved_vc'(1, 'conc'(1, '<='('*'('fac', 'i'), 2147483647))).
 'show_vc_changes'('on').
 'simplify_in_infer'('on').
 'simplify_during_load'('on').
 'spark_enabled'.
-'step_number'(5).
+'step_number'(4).
 'typechecking'('on').
 'typechecking_during_load'('on').
 'use_subst_rules_for_equality'('on').
@@ -83,6 +74,7 @@
 'used_ident'('n', 'var_const').
 'used_ident'('fac', 'var_const').
 'used_ident'('i', 'var_const').
+'used_ident'('test', 'function').
 'user_rulefile'('*'(A1, A2), 'my_rules.rls').
 'user_rulefile'('my_rules.rls', 'my_rules'(A1)).
 'user_classification'('>='(A1, A2), 'my_rules.rls', 'my_rules'(A3), [':'(A1, 'ire'), ':'(A2, 

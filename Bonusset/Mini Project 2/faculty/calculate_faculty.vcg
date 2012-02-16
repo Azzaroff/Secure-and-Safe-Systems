@@ -5,7 +5,7 @@
            *******************************************************
 
 
-                        DATE : 06-FEB-2012 17:16:54.63
+                        DATE : 16-FEB-2012 13:31:21.53
 
                     procedure Faculty.calculate_faculty
 
@@ -24,7 +24,7 @@ C1:    1 >= natural__first .
 C2:    1 <= natural__last .
  
 
-For path(s) from start to default assertion of line 9:
+For path(s) from start to default assertion of line 7:
 
 procedure_calculate_faculty_2.
 H1:    n >= faculty_positive__first .
@@ -40,34 +40,34 @@ C3:    n >= faculty_positive__first .
 C4:    n <= faculty_positive__last .
  
 
-For path(s) from default assertion of line 9 to default assertion of line 9:
+For path(s) from default assertion of line 7 to default assertion of line 7:
 
 procedure_calculate_faculty_3.
 H1:    n >= faculty_positive__first .
 H2:    n <= faculty_positive__last .
 H3:    n >= faculty_positive__first .
 H4:    n <= faculty_positive__last .
-H5:    i >= faculty_positive__first .
-H6:    i <= faculty_positive__last .
-H7:    i < n .
+H5:    i >= positive__first .
+H6:    i <= positive__last .
+H7:    i <= n .
 H8:    fac >= natural__first .
 H9:    fac <= natural__last .
-H10:   i >= faculty_positive__first .
-H11:   i <= faculty_positive__last .
+H10:   i >= positive__first .
+H11:   i <= positive__last .
 H12:   positive__last div i >= integer__base__first .
 H13:   positive__last div i <= integer__base__last .
 H14:   i <> 0 .
 H15:   fac <= positive__last div i .
 H16:   fac >= natural__first .
 H17:   fac <= natural__last .
-H18:   i >= faculty_positive__first .
-H19:   i <= faculty_positive__last .
+H18:   i >= positive__first .
+H19:   i <= positive__last .
 H20:   fac * i >= natural__first .
 H21:   fac * i <= natural__last .
-H22:   i >= faculty_positive__first .
-H23:   i <= faculty_positive__last .
-H24:   i + 1 >= faculty_positive__first .
-H25:   i + 1 <= faculty_positive__last .
+H22:   i >= positive__first .
+H23:   i <= positive__last .
+H24:   i + 1 >= positive__first .
+H25:   i + 1 <= positive__last .
         ->
 C1:    n >= faculty_positive__first .
 C2:    n <= faculty_positive__last .
@@ -80,13 +80,13 @@ H1:    n >= faculty_positive__first .
 H2:    n <= faculty_positive__last .
 H3:    n >= faculty_positive__first .
 H4:    n <= faculty_positive__last .
-H5:    i >= faculty_positive__first .
-H6:    i <= faculty_positive__last .
-H7:    i < n .
+H5:    i >= positive__first .
+H6:    i <= positive__last .
+H7:    i <= n .
 H8:    fac >= natural__first .
 H9:    fac <= natural__last .
-H10:   i >= faculty_positive__first .
-H11:   i <= faculty_positive__last .
+H10:   i >= positive__first .
+H11:   i <= positive__last .
 H12:   positive__last div i >= integer__base__first .
 H13:   positive__last div i <= integer__base__last .
 H14:   i <> 0 .
@@ -100,98 +100,98 @@ C3:    n >= faculty_positive__first .
 C4:    n <= faculty_positive__last .
  
 
-For path(s) from default assertion of line 9 to run-time check associated with statement of line 11:
+For path(s) from default assertion of line 7 to run-time check associated with statement of line 8:
 
 procedure_calculate_faculty_5.
 H1:    n >= faculty_positive__first .
 H2:    n <= faculty_positive__last .
 H3:    n >= faculty_positive__first .
 H4:    n <= faculty_positive__last .
-H5:    i >= faculty_positive__first .
-H6:    i <= faculty_positive__last .
-H7:    i < n .
+H5:    i >= positive__first .
+H6:    i <= positive__last .
+H7:    i <= n .
 H8:    fac >= natural__first .
 H9:    fac <= natural__last .
-H10:   i >= faculty_positive__first .
-H11:   i <= faculty_positive__last .
+H10:   i >= positive__first .
+H11:   i <= positive__last .
         ->
 C1:    positive__last div i >= integer__base__first .
 C2:    positive__last div i <= integer__base__last .
 C3:    i <> 0 .
  
 
-For path(s) from default assertion of line 9 to run-time check associated with statement of line 12:
+For path(s) from default assertion of line 7 to run-time check associated with statement of line 9:
 
 procedure_calculate_faculty_6.
 H1:    n >= faculty_positive__first .
 H2:    n <= faculty_positive__last .
 H3:    n >= faculty_positive__first .
 H4:    n <= faculty_positive__last .
-H5:    i >= faculty_positive__first .
-H6:    i <= faculty_positive__last .
-H7:    i < n .
+H5:    i >= positive__first .
+H6:    i <= positive__last .
+H7:    i <= n .
 H8:    fac >= natural__first .
 H9:    fac <= natural__last .
-H10:   i >= faculty_positive__first .
-H11:   i <= faculty_positive__last .
+H10:   i >= positive__first .
+H11:   i <= positive__last .
 H12:   positive__last div i >= integer__base__first .
 H13:   positive__last div i <= integer__base__last .
 H14:   i <> 0 .
 H15:   fac <= positive__last div i .
 H16:   fac >= natural__first .
 H17:   fac <= natural__last .
-H18:   i >= faculty_positive__first .
-H19:   i <= faculty_positive__last .
+H18:   i >= positive__first .
+H19:   i <= positive__last .
         ->
 C1:    fac * i >= natural__first .
 C2:    fac * i <= natural__last .
  
 
-For path(s) from default assertion of line 9 to run-time check associated with statement of line 13:
+For path(s) from default assertion of line 7 to run-time check associated with statement of line 10:
 
 procedure_calculate_faculty_7.
 H1:    n >= faculty_positive__first .
 H2:    n <= faculty_positive__last .
 H3:    n >= faculty_positive__first .
 H4:    n <= faculty_positive__last .
-H5:    i >= faculty_positive__first .
-H6:    i <= faculty_positive__last .
-H7:    i < n .
+H5:    i >= positive__first .
+H6:    i <= positive__last .
+H7:    i <= n .
 H8:    fac >= natural__first .
 H9:    fac <= natural__last .
-H10:   i >= faculty_positive__first .
-H11:   i <= faculty_positive__last .
+H10:   i >= positive__first .
+H11:   i <= positive__last .
 H12:   positive__last div i >= integer__base__first .
 H13:   positive__last div i <= integer__base__last .
 H14:   i <> 0 .
 H15:   fac <= positive__last div i .
 H16:   fac >= natural__first .
 H17:   fac <= natural__last .
-H18:   i >= faculty_positive__first .
-H19:   i <= faculty_positive__last .
+H18:   i >= positive__first .
+H19:   i <= positive__last .
 H20:   fac * i >= natural__first .
 H21:   fac * i <= natural__last .
-H22:   i >= faculty_positive__first .
-H23:   i <= faculty_positive__last .
+H22:   i >= positive__first .
+H23:   i <= positive__last .
         ->
-C1:    i + 1 >= faculty_positive__first .
-C2:    i + 1 <= faculty_positive__last .
+C1:    i + 1 >= positive__first .
+C2:    i + 1 <= positive__last .
  
 
-For path(s) from default assertion of line 9 to run-time check associated with statement of line 16:
+For path(s) from default assertion of line 7 to run-time check associated with statement of line 13:
 
 procedure_calculate_faculty_8.
 H1:    n >= faculty_positive__first .
 H2:    n <= faculty_positive__last .
 H3:    n >= faculty_positive__first .
 H4:    n <= faculty_positive__last .
-H5:    i >= faculty_positive__first .
-H6:    i <= faculty_positive__last .
-H7:    i < n .
+H5:    i >= positive__first .
+H6:    i <= positive__last .
+H7:    i <= n .
 H8:    fac >= natural__first .
 H9:    fac <= natural__last .
-H10:   i >= faculty_positive__first .
-H11:   i <= faculty_positive__last .
+H10:   i >= positive__first .
+H11:   i <= positive__last .
 H12:   positive__last div i >= integer__base__first .
 H13:   positive__last div i <= integer__base__last .
 H14:   i <> 0 .
@@ -201,9 +201,17 @@ C1:    0 >= natural__first .
 C2:    0 <= natural__last .
  
 
-For path(s) from default assertion of line 9 to finish:
+For path(s) from default assertion of line 7 to finish:
 
 procedure_calculate_faculty_9.
-*** true .          /* trivially true VC removed by Examiner */
-
+H1:    n >= faculty_positive__first .
+H2:    n <= faculty_positive__last .
+H3:    n >= faculty_positive__first .
+H4:    n <= faculty_positive__last .
+H5:    i >= positive__first .
+H6:    i <= positive__last .
+H7:    not (i <= n) .
+        ->
+C1:    fac = test(n) .
+ 
 

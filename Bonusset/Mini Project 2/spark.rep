@@ -5,7 +5,7 @@
            *******************************************************
 
 
-                        DATE : 06-FEB-2012 17:16:54.63
+                        DATE : 16-FEB-2012 13:31:21.53
 
 Options:
     noswitch
@@ -84,12 +84,17 @@ Listing Filename:  /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Min
    Unit type:  package body
    Unit has been analysed, any errors are listed below.
 
-1 error(s) or warning(s)
+2 error(s) or warning(s)
 
 Line
-   9  		while i < n loop
+   7  		while i <= n loop
 
 --- (  1)  Warning           :402: Default assertion planted to cut loop.
+
+  27  	end Proof_Factorial;
+
+--- (  2)  Warning           : 10: The body of subprogram Proof_Factorial is hidden - 
+           hidden text is ignored by the Examiner.
 
 
 --End of file--------------------------------------------------

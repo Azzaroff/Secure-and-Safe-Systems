@@ -5,7 +5,7 @@
 *****************************************************************************
 
 
-CREATED 06-FEB-2012, 17:16:54  SIMPLIFIED 06-FEB-2012, 17:17:10
+CREATED 16-FEB-2012, 13:31:21  SIMPLIFIED 16-FEB-2012, 13:31:21
 
 SPARK Simplifier GPL 2011
 Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
@@ -21,13 +21,13 @@ procedure_calculate_faculty_1.
 *** true .          /* all conclusions proved */
 
 
-For path(s) from start to default assertion of line 9:
+For path(s) from start to default assertion of line 7:
 
 procedure_calculate_faculty_2.
 *** true .          /* all conclusions proved */
 
 
-For path(s) from default assertion of line 9 to default assertion of line 9:
+For path(s) from default assertion of line 7 to default assertion of line 7:
 
 procedure_calculate_faculty_3.
 *** true .          /* all conclusions proved */
@@ -37,49 +37,59 @@ procedure_calculate_faculty_4.
 *** true .          /* all conclusions proved */
 
 
-For path(s) from default assertion of line 9 to run-time check associated with 
-          statement of line 11:
+For path(s) from default assertion of line 7 to run-time check associated with 
+          statement of line 8:
 
 procedure_calculate_faculty_5.
 *** true .          /* all conclusions proved */
 
 
-For path(s) from default assertion of line 9 to run-time check associated with 
-          statement of line 12:
+For path(s) from default assertion of line 7 to run-time check associated with 
+          statement of line 9:
 
 procedure_calculate_faculty_6.
-H1:    n <= 12 .
-H2:    i >= 1 .
-H3:    i < n .
-H4:    fac >= 0 .
-H5:    fac <= 2147483647 .
-H6:    2147483647 div i <= 2147483647 .
-H7:    fac <= 2147483647 div i .
-H8:    integer__size >= 0 .
-H9:    natural__size >= 0 .
-H10:   positive__size >= 0 .
-H11:   faculty_positive__size >= 0 .
+H1:    n >= 1 .
+H2:    n <= 12 .
+H3:    i >= 1 .
+H4:    i <= n .
+H5:    fac >= 0 .
+H6:    fac <= 2147483647 .
+H7:    2147483647 div i <= 2147483647 .
+H8:    fac <= 2147483647 div i .
+H9:    integer__size >= 0 .
+H10:   natural__size >= 0 .
+H11:   positive__size >= 0 .
+H12:   faculty_positive__size >= 0 .
        ->
 C1:    fac * i <= 2147483647 .
 
 
-For path(s) from default assertion of line 9 to run-time check associated with 
-          statement of line 13:
+For path(s) from default assertion of line 7 to run-time check associated with 
+          statement of line 10:
 
 procedure_calculate_faculty_7.
 *** true .          /* all conclusions proved */
 
 
-For path(s) from default assertion of line 9 to run-time check associated with 
-          statement of line 16:
+For path(s) from default assertion of line 7 to run-time check associated with 
+          statement of line 13:
 
 procedure_calculate_faculty_8.
 *** true .          /* all conclusions proved */
 
 
-For path(s) from default assertion of line 9 to finish:
+For path(s) from default assertion of line 7 to finish:
 
 procedure_calculate_faculty_9.
-*** true .          /* all conclusions proved */
+H1:    n >= 1 .
+H2:    n <= 12 .
+H3:    i <= 2147483647 .
+H4:    n < i .
+H5:    integer__size >= 0 .
+H6:    natural__size >= 0 .
+H7:    positive__size >= 0 .
+H8:    faculty_positive__size >= 0 .
+       ->
+C1:    fac = test(n) .
 
 

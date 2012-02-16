@@ -1,0 +1,13 @@
+rule_family fac:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+fac(1): X + 1 <= Y may_be_deduced_from [X < Z and Z <= Y].
+fac(2): 1 = test(1) may_be_deduced.
+fac(3): X * Y >= 1 may_be_deduced_from [X >= 1 and Y >= 1].
+fac(4): Result * I <= positive__last may_be_deduced_from [I <= constraint_positive__last and Result = test(I - 1)].
+fac(5): X >= 1 may_be_deduced_from [X = test(Y)].
+fac(6): X * I = test(I) may_be_deduced_from [X = test(I - 1)]. 
+fac(7): X = Y may_be_deduced_from [X <= Y and X >= Y]. 
+fac(8): X = test(N) may_be_deduced_from [I <= N and N >= I and X = test(I)].

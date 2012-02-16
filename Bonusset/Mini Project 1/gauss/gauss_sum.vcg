@@ -5,7 +5,7 @@
            *******************************************************
 
 
-                        DATE : 01-FEB-2012 15:00:00.71
+                        DATE : 16-FEB-2012 13:12:27.02
 
                          procedure Gauss.gauss_sum
 
@@ -32,6 +32,18 @@ C7:    n + 1 <= integer__base__last .
 For path(s) from start to finish:
 
 procedure_gauss_sum_2.
-*** true .          /* trivially true VC removed by Examiner */
-
+H1:    n <= 46340 .
+H2:    n > 0 .
+H3:    n >= gauss_positive__first .
+H4:    n <= gauss_positive__last .
+H5:    n * (n + 1) div 2 >= positive__first .
+H6:    n * (n + 1) div 2 <= positive__last .
+H7:    2 <> 0 .
+H8:    n * (n + 1) >= integer__base__first .
+H9:    n * (n + 1) <= integer__base__last .
+H10:   n + 1 >= integer__base__first .
+H11:   n + 1 <= integer__base__last .
+        ->
+C1:    n * (n + 1) div 2 = n * (n + 1) div 2 .
+ 
 

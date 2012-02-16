@@ -5,7 +5,7 @@
            {*******************************************************}
 
 
-                        {DATE : 06-FEB-2012 17:16:54.63}
+                        {DATE : 16-FEB-2012 13:31:21.53}
 
                     {procedure Faculty.calculate_faculty}
 
@@ -36,5 +36,6 @@ title procedure calculate_faculty;
   var n : integer;
   var fac : integer;
   var i : integer;
+  function test(integer) : integer;
 
 end;

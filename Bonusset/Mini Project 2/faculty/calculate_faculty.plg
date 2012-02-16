@@ -6,7 +6,7 @@ Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
 
 *****************************************************************************
 
-DATE : 06-FEB-2012  TIME : 17:17:23
+DATE : 16-FEB-2012  TIME : 13:58:38
 
 
 STEP 0
@@ -17,22 +17,65 @@ STEP 0
 *** True VC eliminated: procedure_calculate_faculty_5
 *** True VC eliminated: procedure_calculate_faculty_7
 *** True VC eliminated: procedure_calculate_faculty_8
-*** True VC eliminated: procedure_calculate_faculty_9
+
+STEP 1
+Command: newvc
+Now attempting proof of VC: procedure_calculate_faculty_9
+H1:  n >= 1
+H2:  n <= 12
+H3:  i <= 2147483647
+H4:  n < i
+H5:  integer__size >= 0
+H6:  natural__size >= 0
+H7:  positive__size >= 0
+H8:  faculty_positive__size >= 0
+-->
+  C1:  fac = test(n)
+
+
+STEP 2
+Command: consult
+Consulted rulefile: /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty/my_rules.rls
+No errors trapped in reading this rulefile.
+
+STEP 3
+Command: consult
+Consulted rulefile: /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty/my_rules.rls
+No errors trapped in reading this rulefile.
+
+STEP 4
+Command: infer
+Successful inference with rule: my_rules(2)
+  (unconstrained rule: no subgoals)
+Therefore fac = test(n)
+*** New H9: fac = test(n)
+*** Proved C1: fac = test(n)
+*** Proved all conclusions
+
+*** PROVED VC procedure_calculate_faculty_9
+
+The only rule used in proving the above VC was:
+          my_rules.rls::my_rules(2)
+
+
+
+
 
 STEP 1
 Command: newvc
 Now attempting proof of VC: procedure_calculate_faculty_6
-H1:  n <= 12
-H2:  i >= 1
-H3:  i < n
-H4:  fac >= 0
-H5:  fac <= 2147483647
-H6:  2147483647 div i <= 2147483647
-H7:  fac <= 2147483647 div i
-H8:  integer__size >= 0
-H9:  natural__size >= 0
-H10:  positive__size >= 0
-H11:  faculty_positive__size >= 0
+H1:  n >= 1
+H2:  n <= 12
+H3:  i >= 1
+H4:  i <= n
+H5:  fac >= 0
+H6:  fac <= 2147483647
+H7:  2147483647 div i <= 2147483647
+H8:  fac <= 2147483647 div i
+H9:  integer__size >= 0
+H10:  natural__size >= 0
+H11:  positive__size >= 0
+H12:  faculty_positive__size >= 0
 -->
   C1:  fac * i <= 2147483647
 
@@ -43,34 +86,17 @@ Successful inference with rule: inequals(40)
   Proved subgoal: fac <= 2147483647 div i
   Proved subgoal: i >= 0
 Therefore fac * i <= 2147483647 div i * i
-*** New H12: fac * i <= 2147483647 div i * i
+*** New H13: fac * i <= 2147483647 div i * i
 
 STEP 3
 Command: infer
-Attempt to prove fac * i <= 2147483647
-by subgoaling on rule inequals(40).
-Unsatisfied subgoals are:
-  Subgoal: 2147483647 = 2147483647 div i * i
+Successful inference with rule: my_rules(1)
+  (unconstrained rule: no subgoals)
+Therefore 2147483647 div i * i = 2147483647
+*** New H14: 2147483647 div i * i = 2147483647
 
-Commence PROOF BY SUBGOALING attempt
-Entering new proof frame (DEPTH 1) ...
-  All current conclusions withdrawn
-  >>> New goal C1: 2147483647 = 2147483647 div i * i
-
-  STEP 4
-  Command: consult
-  Consulted rulefile: /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 2/faculty/my_rules.rls
-  No errors trapped in reading this rulefile.
-
-  STEP 5
-  Command: infer
-  Successful inference with rule: my_rules(1)
-    (unconstrained rule: no subgoals)
-  Therefore 2147483647 = 2147483647 div i * i
-  *** New H13: 2147483647 = 2147483647 div i * i
-  *** Proved C1: 2147483647 = 2147483647 div i * i
-  Exiting current proof frame (DEPTH 1)
-*** New H13: fac * i <= 2147483647
+STEP 4
+Command: done
 *** Proved C1: fac * i <= 2147483647
 *** Proved all conclusions
 
@@ -84,13 +110,14 @@ The following rules were used in proving the above VC:
 
 
 
-STEP 6
+STEP 5
 *** END OF PROOF SESSION
 
 
 The following rules were used during the above proof session:
           /home/azzaroff/.spark/bin//../lib/checker/rules/NUMINEQS.RUL::inequals(40)
           my_rules.rls::my_rules(1)
+          my_rules.rls::my_rules(2)
 
 The following VCs were proved during this proof session:
         1 - 9

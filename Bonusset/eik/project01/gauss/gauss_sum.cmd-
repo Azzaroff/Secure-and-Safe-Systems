@@ -1,0 +1,46 @@
+1.
+done.
+2.
+done.
+3.
+done.
+consult 'gauss.rls'.
+list.
+infer c # 3 using gauss.
+4.
+done.
+5.
+done.
+6.
+done.
+list.
+consult 'gauss.rls'.
+infer c # 2 using gauss.
+7.
+done.
+list.
+consult 'gauss.rls'.
+infer c # 1 using gauss.
+8.
+done.
+list.
+consult 'gauss.rls'.
+infer c # 2 using gauss.
+9.
+done.
+list.
+consult 'gauss.rls'.
+infer c # 2 using gauss.
+10.
+done.
+11.
+list.
+done.
+12.
+done.
+13.
+done.
+consult 'gauss.rls'.
+infer c # 1 using gauss.
+save.
+exit.

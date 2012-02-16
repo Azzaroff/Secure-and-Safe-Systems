@@ -1,0 +1,104 @@
+/* SAVED: 15-FEB-2012, at 17:56:56 */
+'auto_done'('on').
+'auto_newvc'('on').
+'case_pointer'(0).
+'command_logging'('on').
+'csvfile_name'('fac.csv').
+'current_vc'('function_fac_10', 10).
+'current_vc_no'(11).
+'display_subgoals_max'(10).
+'display_var_free_only'('on').
+'echo'('on').
+'fdl_file_title'('function_fac').
+'fdlfile_name'('fac.fdl').
+'function'('round__', ['real'], 'integer').
+'function'('test', ['integer'], 'integer').
+'function_template'('round__'(A1), [A1], 'round__').
+'function_template'('test'(A1), [A1], 'test').
+'hyp'(15, '<='('result', 'positive__last')).
+'hyp'(14, '>='('result', 'positive__first')).
+'hyp'(13, '='('constraint_positive__last', 12)).
+'hyp'(12, '='('constraint_positive__first', 1)).
+'hyp'(11, '='('integer__base__last', 2147483647)).
+'hyp'(10, '='('integer__base__first', '-'(2147483648))).
+'hyp'(9, '='('positive__last', 2147483647)).
+'hyp'(8, '='('positive__first', 1)).
+'hyp'(7, '<='('n', 'constraint_positive__last')).
+'hyp'(6, '>='('n', 'constraint_positive__first')).
+'hyp'(5, '<='('n', 'constraint_positive__last')).
+'hyp'(4, '>='('n', 'constraint_positive__first')).
+'hyp'(3, '='('result', 'test'('i'))).
+'hyp'(2, '>='('i', 'n')).
+'hyp'(1, '<='('i', 'n')).
+'hyp'(16, '='('result', 'test'('n'))).
+'indentation'(0).
+'indentation_increment'(2).
+'inverse_video'('[]').
+'logfile_name'('factorial.plg').
+'newline_after_prompts'('off').
+'normal_video'('[]').
+'on_filename'('fac.rul').
+'prooflog_width'(0).
+'record_consults'('on').
+'ruleused_this_session'(['fac.rul', 'fac'(2)]).
+'ruleused_this_session'(['fac.rul', 'fac'(1)]).
+'ruleused_this_session'(['fac.rul', 'fac'(3)]).
+'ruleused_this_session'(['fac.rul', 'fac'(4)]).
+'ruleused_this_session'(['fac.rul', 'fac'(6)]).
+'ruleused_this_session'(['fac.rul', 'fac'(8)]).
+'show_vc_changes'('on').
+'simplify_in_infer'('on').
+'simplify_during_load'('on').
+'spark_enabled'.
+'step_number'(4).
+'type_alias'('constraint_positive', 'integer').
+'typechecking'('on').
+'typechecking_during_load'('on').
+'use_subst_rules_for_equality'('on').
+'used_ident'('round__', 'function').
+'used_ident'('constraint_positive', 'type').
+'used_ident'('constraint_positive__base__first', 'var_const').
+'used_ident'('constraint_positive__base__last', 'var_const').
+'used_ident'('positive__base__first', 'var_const').
+'used_ident'('positive__base__last', 'var_const').
+'used_ident'('integer__base__first', 'var_const').
+'used_ident'('integer__base__last', 'var_const').
+'used_ident'('constraint_positive__first', 'var_const').
+'used_ident'('constraint_positive__last', 'var_const').
+'used_ident'('constraint_positive__size', 'var_const').
+'used_ident'('positive__first', 'var_const').
+'used_ident'('positive__last', 'var_const').
+'used_ident'('positive__size', 'var_const').
+'used_ident'('integer__first', 'var_const').
+'used_ident'('integer__last', 'var_const').
+'used_ident'('integer__size', 'var_const').
+'used_ident'('n', 'var_const').
+'used_ident'('i', 'var_const').
+'used_ident'('result', 'var_const').
+'used_ident'('test', 'function').
+'user_rulefile'('<='(A1, A2), 'fac.rul').
+'user_rulefile'('fac.rul', 'fac'(A1)).
+'user_rulefile'('>='(A1, A2), 'fac.rul').
+'user_classification'('>='(A1, A2), 'fac.rul', 'fac'(A3), [':'(A1, 'ire'), ':'(A2, 'ire')]).
+'user_classification'('<='(A1, A2), 'fac.rul', 'fac'(A3), [':'(A1, 'ire'), ':'(A2, 'ire')]).
+'user_classification'(A1, 'fac.rul', 'fac'(A2), [':'(A1, 'any')]).
+'var_const'('constraint_positive__base__first', 'integer', 'c').
+'var_const'('constraint_positive__base__last', 'integer', 'c').
+'var_const'('positive__base__first', 'integer', 'c').
+'var_const'('positive__base__last', 'integer', 'c').
+'var_const'('integer__base__first', 'integer', 'c').
+'var_const'('integer__base__last', 'integer', 'c').
+'var_const'('constraint_positive__first', 'integer', 'c').
+'var_const'('constraint_positive__last', 'integer', 'c').
+'var_const'('constraint_positive__size', 'integer', 'c').
+'var_const'('positive__first', 'integer', 'c').
+'var_const'('positive__last', 'integer', 'c').
+'var_const'('positive__size', 'integer', 'c').
+'var_const'('integer__first', 'integer', 'c').
+'var_const'('integer__last', 'integer', 'c').
+'var_const'('integer__size', 'integer', 'c').
+'var_const'('n', 'integer', 'v').
+'var_const'('i', 'integer', 'v').
+'var_const'('result', 'integer', 'v').
+'vcgfile_name'('fac.vcg').
+'vcs_to_prove'('[]').

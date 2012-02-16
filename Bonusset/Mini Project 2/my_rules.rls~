@@ -1,0 +1,7 @@
+rule_family my_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+my_rules(1): X div Y * Y may_be_replaced_by X.
+my_rules(1): fac = test(n) may_be_deduced.

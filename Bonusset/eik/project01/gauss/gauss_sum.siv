@@ -1,0 +1,110 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+*****************************************************************************
+
+
+CREATED 15-FEB-2012, 17:42:22  SIMPLIFIED 15-FEB-2012, 17:42:22
+
+SPARK Simplifier GPL 2011
+Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+
+procedure Gauss.Gauss_Sum
+
+
+
+
+For path(s) from start to assertion of line 6:
+
+procedure_gauss_sum_1.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 6 to run-time check associated with 
+          statement of line 8:
+
+procedure_gauss_sum_2.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 6 to assertion of line 9:
+
+procedure_gauss_sum_3.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 9 to assertion of line 12:
+
+procedure_gauss_sum_4.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 18 to assertion of line 12:
+
+procedure_gauss_sum_5.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 12 to run-time check associated with 
+          statement of line 14:
+
+procedure_gauss_sum_6.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 12 to assertion of line 15:
+
+procedure_gauss_sum_7.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 15 to run-time check associated with 
+          statement of line 17:
+
+procedure_gauss_sum_8.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 15 to assertion of line 18:
+
+procedure_gauss_sum_9.
+H1:    i <= n .
+H2:    n >= 1 .
+H3:    n <= 46340 .
+H4:    (i - 1) * i div 2 >= 1 .
+H5:    i >= 1 .
+H6:    i <= 46340 .
+H7:    (i - 1) * i div 2 + i >= 1 .
+H8:    (i - 1) * i div 2 + i <= 2147483647 .
+H9:    integer__size >= 0 .
+H10:   positive__size >= 0 .
+H11:   constraint_positive__size >= 0 .
+       ->
+C1:    (i - 1) * i div 2 + i = i * (i + 1) div 2 .
+
+
+For path(s) from assertion of line 9 to assertion of line 21:
+
+procedure_gauss_sum_10.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 18 to assertion of line 21:
+
+procedure_gauss_sum_11.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 21 to assertion of line 22:
+
+procedure_gauss_sum_12.
+*** true .          /* all conclusions proved */
+
+
+For path(s) from assertion of line 22 to finish:
+
+procedure_gauss_sum_13.
+*** true .          /* all conclusions proved */
+
+

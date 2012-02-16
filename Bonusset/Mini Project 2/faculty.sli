@@ -31,6 +31,7 @@ D faculty.ads 00000000000000 00000000
 D faculty.adb 00000000000000 00000000
 
 X 1 faculty.ads
-2I10 Faculty_Positive 10r15 10r47
-8i30 n 9r23 10r10 10r42
-8i55 fac 9m14
+2I10 Faculty_Positive 4r30 7r15 7r47
+4V22 Test 4>27 8r24
+5i30 n 6r23 7r10 7r42 8r29
+5i55 fac 6m14 8r18

@@ -5,7 +5,7 @@
 *****************************************************************************
 
 
-CREATED 01-FEB-2012, 15:00:00  SIMPLIFIED 01-FEB-2012, 15:00:03
+CREATED 16-FEB-2012, 13:12:27  SIMPLIFIED 16-FEB-2012, 13:12:29
 
 SPARK Simplifier GPL 2011
 Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
@@ -18,28 +18,7 @@ procedure Gauss.gauss_sum
 For path(s) from start to run-time check associated with statement of line 7:
 
 procedure_gauss_sum_1.
-H1:    n <= 46340 .
-H2:    n > 0 .
-H3:    integer__size >= 0 .
-H4:    integer__first <= integer__last .
-H5:    integer__base__first <= integer__base__last .
-H6:    integer__base__first <= integer__first .
-H7:    integer__base__last >= integer__last .
-H8:    positive__size >= 0 .
-H9:    positive__base__first <= positive__base__last .
-H10:   positive__base__last >= positive__last .
-H11:   gauss_positive__size >= 0 .
-H12:   gauss_positive__base__first <= gauss_positive__base__last .
-H13:   1 <= positive__last .
-H14:   positive__base__first <= 1 .
-H15:   gauss_positive__base__first <= 1 .
-H16:   gauss_positive__base__last >= 46340 .
-       ->
-C1:    n * (n + 1) div 2 <= positive__last .
-C2:    n * (n + 1) >= integer__base__first .
-C3:    n * (n + 1) <= integer__base__last .
-C4:    n + 1 >= integer__base__first .
-C5:    n + 1 <= integer__base__last .
+*** true .          /* all conclusions proved */
 
 
 For path(s) from start to finish:

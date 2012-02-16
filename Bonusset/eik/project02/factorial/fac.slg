@@ -1,0 +1,587 @@
+*****************************************************************************
+                       Semantic Analysis of SPARK Text
+                              Examiner GPL 2011
+             Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+*****************************************************************************
+
+
+CREATED 15-FEB-2012, 17:55:01  SIMPLIFIED 15-FEB-2012, 17:55:01
+
+SPARK Simplifier GPL 2011
+Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.
+
+function Factorial.Fac
+
+
+
+
+
+
+@@@@@@@@@@  VC: function_fac_1.  @@@@@@@@@@
+%%%  Simplified H5 on reading formula in, to give:
+     %%%  H5:  integer__base__first = - 2147483648
+---  Hypothesis H9 has been replaced by "true".  (It is already present, as H1).
+---  Hypothesis H10 has been replaced by "true".  (It is already present, as H2)
+          .
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  true
+%%%  Simplified C2 on reading formula in, to give:
+     %%%  C2:  true
+%%%  Simplified C10 on reading formula in, to give:
+     %%%  C10:  integer__base__first = - 2147483648
+***  Proved C1:  true
+***  Proved C2:  true
+***  Proved C4:  n >= constraint_positive__first
+     using hypothesis H1.
+***  Proved C5:  n <= constraint_positive__last
+     using hypothesis H2.
+***  Proved C6:  n >= constraint_positive__first
+     using hypothesis H1.
+***  Proved C7:  n <= constraint_positive__last
+     using hypothesis H2.
+***  Proved C8:  positive__first = 1
+     using hypothesis H3.
+***  Proved C9:  positive__last = 2147483647
+     using hypothesis H4.
+***  Proved C10:  integer__base__first = - 2147483648
+     using hypothesis H5.
+***  Proved C11:  integer__base__last = 2147483647
+     using hypothesis H6.
+***  Proved C12:  constraint_positive__first = 1
+     using hypothesis H7.
+***  Proved C13:  constraint_positive__last = 12
+     using hypothesis H8.
+-S-  Applied substitution rule fac_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H5:  true
+-S-  Applied substitution rule fac_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H6:  true
+-S-  Applied substitution rule fac_rules(7).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New H3:  true
+-S-  Applied substitution rule fac_rules(8).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New H4:  true
+-S-  Applied substitution rule fac_rules(12).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__first by:
+          1.
+<S>  New H1:  n >= 1
+<S>  New H7:  true
+-S-  Applied substitution rule fac_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          12.
+<S>  New H2:  n <= 12
+<S>  New H8:  true
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H5 (true-hypothesis).
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H3 (true-hypothesis).
+---  Eliminated hypothesis H4 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+     +++  New H11:  integer__size >= 0
+     +++  New H12:  positive__size >= 0
+     +++  New H13:  constraint_positive__size >= 0
+
+
+@@@@@@@@@@  VC: function_fac_2.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  integer__base__first = - 2147483648
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H15).
+***  Proved C1:  i + 1 >= constraint_positive__first
+     using hypothesis H14.
+***  Proved C2:  i + 1 <= constraint_positive__last
+     using hypotheses H1 & H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fac_3.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  integer__base__first = - 2147483648
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H15).
+***  Proved C1:  i + 1 >= constraint_positive__first
+     using hypothesis H14.
+-S-  Applied substitution rule fac_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          12.
+<S>  New H5:  n <= 12
+<S>  New H13:  true
+<S>  New H15:  i <= 12
+<S>  New C2:  i <= 11
+***  Proved C2:  i <= 11
+     using hypotheses H5 & H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fac_4.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  integer__base__first = - 2147483648
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H15).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  i >= 0
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  result = test(i)
+%%%  Simplified C10 on reading formula in, to give:
+     %%%  C10:  integer__base__first = - 2147483648
+***  Proved C1:  i >= 0
+     using hypothesis H1.
+***  Proved C3:  result = test(i)
+     using hypothesis H3.
+***  Proved C4:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C5:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C6:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C7:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C8:  positive__first = 1
+     using hypothesis H8.
+***  Proved C9:  positive__last = 2147483647
+     using hypothesis H9.
+***  Proved C10:  integer__base__first = - 2147483648
+     using hypothesis H10.
+***  Proved C11:  integer__base__last = 2147483647
+     using hypothesis H11.
+***  Proved C12:  constraint_positive__first = 1
+     using hypothesis H12.
+***  Proved C13:  constraint_positive__last = 12
+     using hypothesis H13.
+>>>  Restructured hypothesis H16 into:
+     >>>  H16:  i < n
+-S-  Applied substitution rule fac_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H10:  true
+-S-  Applied substitution rule fac_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H11:  true
+-S-  Applied substitution rule fac_rules(7).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New H8:  true
+-S-  Applied substitution rule fac_rules(8).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New H9:  true
+-S-  Applied substitution rule fac_rules(12).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__first by:
+          1.
+<S>  New H4:  n >= 1
+<S>  New H12:  true
+<S>  New H14:  i >= 1
+<S>  New H19:  i >= 0
+-S-  Applied substitution rule fac_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          12.
+<S>  New H5:  n <= 12
+<S>  New H13:  true
+<S>  New H15:  i <= 12
+<S>  New H20:  i <= 11
+***  Proved C2:  i + 1 <= n
+     using hypotheses H1, H14 & H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fac_5.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  integer__base__first = - 2147483648
+---  Hypothesis H17 has been replaced by "true".  (It is already present, as 
+          H14).
+---  Hypothesis H18 has been replaced by "true".  (It is already present, as 
+          H15).
+%%%  Simplified C1 on reading formula in, to give:
+     %%%  C1:  i >= 0
+%%%  Simplified C3 on reading formula in, to give:
+     %%%  C3:  result = test(i)
+%%%  Simplified C10 on reading formula in, to give:
+     %%%  C10:  integer__base__first = - 2147483648
+***  Proved C1:  i >= 0
+     using hypothesis H1.
+***  Proved C3:  result = test(i)
+     using hypothesis H3.
+***  Proved C4:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C5:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C6:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C7:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C8:  positive__first = 1
+     using hypothesis H8.
+***  Proved C9:  positive__last = 2147483647
+     using hypothesis H9.
+***  Proved C10:  integer__base__first = - 2147483648
+     using hypothesis H10.
+***  Proved C11:  integer__base__last = 2147483647
+     using hypothesis H11.
+***  Proved C12:  constraint_positive__first = 1
+     using hypothesis H12.
+***  Proved C13:  constraint_positive__last = 12
+     using hypothesis H13.
+>>>  Restructured hypothesis H16 into:
+     >>>  H16:  i < n
+-S-  Applied substitution rule fac_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H10:  true
+-S-  Applied substitution rule fac_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H11:  true
+-S-  Applied substitution rule fac_rules(7).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New H8:  true
+-S-  Applied substitution rule fac_rules(8).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New H9:  true
+-S-  Applied substitution rule fac_rules(12).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__first by:
+          1.
+<S>  New H4:  n >= 1
+<S>  New H12:  true
+<S>  New H14:  i >= 1
+<S>  New H19:  i >= 0
+-S-  Applied substitution rule fac_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          12.
+<S>  New H5:  n <= 12
+<S>  New H13:  true
+<S>  New H15:  i <= 12
+<S>  New H20:  i <= 11
+***  Proved C2:  i + 1 <= n
+     via its standard form, which is:
+     Std.Fm C2:  - i + n > 0
+     using hypothesis H16.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fac_6.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  integer__base__first = - 2147483648
+***  Proved C3:  i >= positive__first
+     using hypotheses H1 & H8.
+***  Proved C4:  i <= positive__last
+     using hypotheses H2, H5, H9 & H13.
+-S-  Applied substitution rule fac_rules(7).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New H8:  true
+<S>  New H16:  result >= 1
+<S>  New C1:  result * i >= 1
+-S-  Applied substitution rule fac_rules(8).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New H9:  true
+<S>  New H17:  result <= 2147483647
+<S>  New C2:  result * i <= 2147483647
+-S-  Applied substitution rule fac_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H10:  true
+-S-  Applied substitution rule fac_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H11:  true
+-S-  Applied substitution rule fac_rules(12).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__first by:
+          1.
+<S>  New H4:  n >= 1
+<S>  New H12:  true
+<S>  New H14:  i >= 1
+-S-  Applied substitution rule fac_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          12.
+<S>  New H5:  n <= 12
+<S>  New H13:  true
+<S>  New H15:  i <= 12
+***  Proved C1:  result * i >= 1
+     via its standard form, which is:
+     Std.Fm C1:  i * result > 0
+     using hypotheses H1 & H16.
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H14 (duplicate of H1).
+-S-  Eliminated hypothesis H3.
+     This was achieved by replacing all occurrences of result by:
+          test(i - 1).
+<S>  New H16:  test(i - 1) >= 1
+<S>  New H17:  test(i - 1) <= 2147483647
+<S>  New C2:  test(i - 1) * i <= 2147483647
+     +++  New H18:  integer__size >= 0
+     +++  New H19:  positive__size >= 0
+     +++  New H20:  constraint_positive__size >= 0
+
+
+@@@@@@@@@@  VC: function_fac_7.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  integer__base__first = - 2147483648
+%%%  Simplified C10 on reading formula in, to give:
+     %%%  C10:  integer__base__first = - 2147483648
+***  Proved C1:  i >= 1
+     using hypothesis H1.
+***  Proved C2:  i <= n
+     using hypothesis H2.
+***  Proved C4:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C5:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C6:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C7:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C8:  positive__first = 1
+     using hypothesis H8.
+***  Proved C9:  positive__last = 2147483647
+     using hypothesis H9.
+***  Proved C10:  integer__base__first = - 2147483648
+     using hypothesis H10.
+***  Proved C11:  integer__base__last = 2147483647
+     using hypothesis H11.
+***  Proved C12:  constraint_positive__first = 1
+     using hypothesis H12.
+***  Proved C13:  constraint_positive__last = 12
+     using hypothesis H13.
+-S-  Applied substitution rule fac_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H10:  true
+-S-  Applied substitution rule fac_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H11:  true
+-S-  Applied substitution rule fac_rules(7).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New H8:  true
+<S>  New H16:  result >= 1
+<S>  New H18:  result * i >= 1
+<S>  New H20:  i >= 1
+-S-  Applied substitution rule fac_rules(8).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New H9:  true
+<S>  New H17:  result <= 2147483647
+<S>  New H19:  result * i <= 2147483647
+<S>  New H21:  i <= 2147483647
+-S-  Applied substitution rule fac_rules(12).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__first by:
+          1.
+<S>  New H4:  n >= 1
+<S>  New H12:  true
+<S>  New H14:  i >= 1
+-S-  Applied substitution rule fac_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          12.
+<S>  New H5:  n <= 12
+<S>  New H13:  true
+<S>  New H15:  i <= 12
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+---  Eliminated hypothesis H20 (duplicate of H1).
+---  Eliminated hypothesis H14 (duplicate of H1).
+---  Eliminated hypothesis H21 (redundant, given H15).
+-S-  Eliminated hypothesis H3.
+     This was achieved by replacing all occurrences of result by:
+          test(i - 1).
+<S>  New H16:  test(i - 1) >= 1
+<S>  New H18:  test(i - 1) * i >= 1
+<S>  New H17:  test(i - 1) <= 2147483647
+<S>  New H19:  test(i - 1) * i <= 2147483647
+<S>  New C3:  test(i - 1) * i = test(i)
+     +++  New H22:  integer__size >= 0
+     +++  New H23:  positive__size >= 0
+     +++  New H24:  constraint_positive__size >= 0
+
+
+@@@@@@@@@@  VC: function_fac_8.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  integer__base__first = - 2147483648
+%%%  Simplified C10 on reading formula in, to give:
+     %%%  C10:  integer__base__first = - 2147483648
+***  Proved C1:  i <= n
+     using hypotheses H1, H4 & H12.
+***  Proved C2:  i >= n
+     using hypothesis H16.
+***  Proved C3:  result = test(i)
+     using hypothesis H3.
+***  Proved C4:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C5:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C6:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C7:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C8:  positive__first = 1
+     using hypothesis H8.
+***  Proved C9:  positive__last = 2147483647
+     using hypothesis H9.
+***  Proved C10:  integer__base__first = - 2147483648
+     using hypothesis H10.
+***  Proved C11:  integer__base__last = 2147483647
+     using hypothesis H11.
+***  Proved C12:  constraint_positive__first = 1
+     using hypothesis H12.
+***  Proved C13:  constraint_positive__last = 12
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fac_9.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  integer__base__first = - 2147483648
+%%%  Simplified C10 on reading formula in, to give:
+     %%%  C10:  integer__base__first = - 2147483648
+***  Proved C1:  i <= n
+     using hypothesis H2.
+***  Proved C2:  i >= n
+     using hypothesis H16.
+***  Proved C3:  result = test(i)
+     using hypothesis H3.
+***  Proved C4:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C5:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C6:  n >= constraint_positive__first
+     using hypothesis H4.
+***  Proved C7:  n <= constraint_positive__last
+     using hypothesis H5.
+***  Proved C8:  positive__first = 1
+     using hypothesis H8.
+***  Proved C9:  positive__last = 2147483647
+     using hypothesis H9.
+***  Proved C10:  integer__base__first = - 2147483648
+     using hypothesis H10.
+***  Proved C11:  integer__base__last = 2147483647
+     using hypothesis H11.
+***  Proved C12:  constraint_positive__first = 1
+     using hypothesis H12.
+***  Proved C13:  constraint_positive__last = 12
+     using hypothesis H13.
+***  PROVED VC.
+
+
+@@@@@@@@@@  VC: function_fac_10.  @@@@@@@@@@
+---  Hypothesis H6 has been replaced by "true".  (It is already present, as H4).
+---  Hypothesis H7 has been replaced by "true".  (It is already present, as H5).
+%%%  Simplified H10 on reading formula in, to give:
+     %%%  H10:  integer__base__first = - 2147483648
+***  Proved C2:  result >= positive__first
+     using hypothesis H14.
+***  Proved C3:  result <= positive__last
+     using hypothesis H15.
+-S-  Applied substitution rule fac_rules(4).
+     This was achieved by replacing all occurrences of integer__base__first by:
+          - 2147483648.
+<S>  New H10:  true
+-S-  Applied substitution rule fac_rules(5).
+     This was achieved by replacing all occurrences of integer__base__last by:
+          2147483647.
+<S>  New H11:  true
+-S-  Applied substitution rule fac_rules(7).
+     This was achieved by replacing all occurrences of positive__first by:
+          1.
+<S>  New H8:  true
+<S>  New H14:  result >= 1
+-S-  Applied substitution rule fac_rules(8).
+     This was achieved by replacing all occurrences of positive__last by:
+          2147483647.
+<S>  New H9:  true
+<S>  New H15:  result <= 2147483647
+-S-  Applied substitution rule fac_rules(12).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__first by:
+          1.
+<S>  New H4:  n >= 1
+<S>  New H12:  true
+-S-  Applied substitution rule fac_rules(13).
+     This was achieved by replacing all occurrences of 
+          constraint_positive__last by:
+          12.
+<S>  New H5:  n <= 12
+<S>  New H13:  true
+%%%  Hypotheses H1 & H2 together imply that
+          i = n.
+     H1 & H2 have therefore been deleted and a new H16 added to this effect.
+---  Eliminated hypothesis H6 (true-hypothesis).
+---  Eliminated hypothesis H7 (true-hypothesis).
+---  Eliminated hypothesis H10 (true-hypothesis).
+---  Eliminated hypothesis H11 (true-hypothesis).
+---  Eliminated hypothesis H8 (true-hypothesis).
+---  Eliminated hypothesis H9 (true-hypothesis).
+---  Eliminated hypothesis H12 (true-hypothesis).
+---  Eliminated hypothesis H13 (true-hypothesis).
+-S-  Eliminated hypothesis H3.
+     This was achieved by replacing all occurrences of result by:
+          test(i).
+<S>  New H14:  test(i) >= 1
+<S>  New H15:  test(i) <= 2147483647
+<S>  New C1:  test(i) = test(n)
+-S-  Eliminated hypothesis H16.
+     This was achieved by replacing all occurrences of i by:
+          n.
+<S>  New H14:  test(n) >= 1
+<S>  New H15:  test(n) <= 2147483647
+<S>  New C1:  true
+***  Proved C1:  true
+***  PROVED VC.
+

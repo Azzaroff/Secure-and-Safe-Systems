@@ -1,0 +1,44 @@
+1.
+done.
+list.
+consult 'fac.rul'.
+infer c # 3 using fac.
+2.
+done.
+3.
+done.
+list.
+consult 'fac.rul'.
+infer c # 2 using fac.
+4.
+done.
+list.
+consult 'fac.rul'.
+infer c # 2 using fac.
+5.
+done.
+list.
+consult 'fac.rul'.
+infer c # 2 using fac.
+6.
+done.
+list.
+consult 'fac.rul'.
+infer c # 1 using fac.
+infer c # 2 using fac.
+7.
+done.
+list.
+consult 'fac.rul'.
+infer c # 3 using fac.
+8.
+done.
+9.
+done.
+10.
+done.
+list.
+consult 'fac.rul'.
+infer c # 1 using fac.
+save.
+exit.

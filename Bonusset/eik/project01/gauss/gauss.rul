@@ -1,0 +1,13 @@
+rule_family gauss:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+gauss(1): X * (X + 1) div 2 <= X * (X + 1) may_be_deduced_from [X].
+gauss(2): X * (X + 1) div 2 >= X may_be_deduced_from [X].
+gauss(3): 1 = X * (X + 1) div 2 may_be_deduced_from [X = 1].
+gauss(4): X + 1 <= Y may_be_deduced_from [X < Y].
+gauss(5): Y = X * (X - 1) div 2 may_be_deduced_from [Y = Z * (Z + 1) div 2 and X = Z + 1].
+gauss(6): Y = X * (X + 1) div 2 may_be_deduced_from [X = Z and Y = Z * (Z + 1) div 2].
+gauss(7): X + Y <= positive__last may_be_deduced_from [X <= positive__last and Y <= constraint_positive__last].
+gauss(8): X + I = I * (I + 1) div 2 may_be_deduced_from [X = (I - 1) * I div 2]. 

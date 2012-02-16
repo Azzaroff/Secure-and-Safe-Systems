@@ -1,0 +1,32 @@
+           /*********************************************************/
+                           /*Proof Rule Declarations*/
+                              /*Examiner GPL 2011*/
+             /*Copyright (C) 2011 Altran Praxis Limited, Bath, U.K.*/
+           /*********************************************************/
+
+
+                        /*DATE : 15-FEB-2012 17:42:22.11*/
+
+                         /*procedure Gauss.Gauss_Sum*/
+
+
+rule_family gauss_sum_rules:
+     X      requires [X:any] &
+     X <= Y requires [X:ire, Y:ire] &
+     X >= Y requires [X:ire, Y:ire].
+
+gauss_sum_rules(1): integer__size >= 0 may_be_deduced.
+gauss_sum_rules(2): integer__first may_be_replaced_by -2147483648.
+gauss_sum_rules(3): integer__last may_be_replaced_by 2147483647.
+gauss_sum_rules(4): integer__base__first may_be_replaced_by -2147483648.
+gauss_sum_rules(5): integer__base__last may_be_replaced_by 2147483647.
+gauss_sum_rules(6): positive__size >= 0 may_be_deduced.
+gauss_sum_rules(7): positive__first may_be_replaced_by 1.
+gauss_sum_rules(8): positive__last may_be_replaced_by 2147483647.
+gauss_sum_rules(9): positive__base__first may_be_replaced_by -2147483648.
+gauss_sum_rules(10): positive__base__last may_be_replaced_by 2147483647.
+gauss_sum_rules(11): constraint_positive__size >= 0 may_be_deduced.
+gauss_sum_rules(12): constraint_positive__first may_be_replaced_by 1.
+gauss_sum_rules(13): constraint_positive__last may_be_replaced_by 46340.
+gauss_sum_rules(14): constraint_positive__base__first may_be_replaced_by -2147483648.
+gauss_sum_rules(15): constraint_positive__base__last may_be_replaced_by 2147483647.
