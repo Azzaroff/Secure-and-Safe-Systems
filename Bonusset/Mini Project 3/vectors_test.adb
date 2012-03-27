@@ -3,8 +3,8 @@
 
   -- Test Driver Source
 
-  -- File:       /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 3/vectors_test.adb
-  -- Script:     /home/paul/SSS/Secure-and-Safe-Systems/Bonusset/Mini Project 3/vectors_test.ts
+  -- File:       /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 3/vectors_test.adb
+  -- Script:     /home/azzaroff/workspace/Secure-and-Safe-Systems/Bonusset/Mini Project 3/vectors_test.ts
 
 
 with Ada.Command_Line, Ada.Exceptions;
